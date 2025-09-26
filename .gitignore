@@ -13,3 +13,4 @@ features/*
 models/*checkpoint*
 results/*
 !data/refs/*
+.DS_Store
