@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.envs/
+conda-meta/
+.ipynb_checkpoints/
+data/raw/*
+!data/raw/.keep
+alignments/*
+features/*
+models/*checkpoint*
+results/*
+!data/refs/*
