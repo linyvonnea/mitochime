@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage{apacite}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[Chapter 4]{placeins}
+\usepackage{enumitem}
+\usepackage{lineno}
+\usepackage{setspace}
+\setlistdepth{9}
+\linenumbers
+\doublespacing
+
+\begin{document}
+\linenumbers
+\include{title_page}
+\include{abstract}
+\pagenumbering{roman}   %number pages as i, ii, iii, etc...
+\setcounter{page}{2}
+\tableofcontents                  %generate the Table of Contents
+\newpage
+\listoffigures                    %generate List of Figures
+\newpage                       
+\listoftables                     %generate List of Tables
+\newpage
+\pagenumbering{arabic}            %number pages as 1, 2, 3, etc...
+\setcounter{page}{1}        
+\input{chapter_1}
+\newpage
+\input{chapter_2}
+\newpage
+\input{chapter_3}
+\newpage
+\input{chapter_4}
+\newpage
+\input{chapter_5}
+\newpage
+
+\bibliographystyle{apacite}
+\bibliography{myreferences}
+
+\appendix
+% \include{appendix_A}
+\include{appendix_B}
+\end{document}
