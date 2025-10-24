@@ -1,9 +1,9 @@
 %   Filename    : chapter_1.tex
-\section*{Chapter 1}\label{sec:researchdesc}
+% \section*{Chapter 1}\label{sec:researchdesc}
 
-\section{Introduction}
+\chapter{Introduction}
 
-\subsection{Overview}\label{subsec:overview}
+\section{Overview}\label{subsec:overview}
 
 The rapid advancement of next-generation sequencing (NGS) technologies has transformed genomic research by enabling high-throughput and cost-effective DNA analysis \citep{Metzker2010}. Among current platforms, Illumina sequencing remains the most widely adopted, capable of producing millions of short reads that can be assembled into reference genomes or analyzed for genetic variation \citep{Bentley2008,Glenn2011}. Despite its high base-calling accuracy, Illumina sequencing is prone to artifacts introduced during library preparation, particularly polymerase chain reaction (PCR)-induced chimeras, which are artificial hybrid sequences that do not exist in the true genome \citep{Judo1998}.
 
@@ -11,17 +11,17 @@ PCR chimeras form when incomplete extension products from one template anneal to
 
 This study focuses on mitochondrial sequencing data from the genus \textit{Sardinella}, a group of small pelagic fishes widely distributed in Philippine waters. Among them, \textit{Sardinella lemuru} (Bali sardinella) is one of the country’s most abundant and economically important species, providing protein and livelihood to coastal communities \citep{Willette2011,Labrador2021}. Accurate mitochondrial assemblies are critical for understanding its population genetics, stock structure, and evolutionary history. However, assembly pipelines often encounter errors or fail to complete due to undetected chimeric reads. To address this gap, this research introduces \textbf{MitoChime}, a machine-learning pipeline designed to detect and filter PCR-induced chimeric reads using both alignment- and sequence-derived statistical features. The tool aims to provide bioinformatics laboratories, particularly the Philippine Genome Center Visayas, with an efficient, interpretable, and resource-optimized solution for improving mitochondrial genome reconstruction.
 
-\subsection{Problem Statement}\label{subsec:probstatement}
+\section{Problem Statement}\label{subsec:probstatement}
 
-While NGS technologies have revolutionized genomic data acquisition, the accuracy of mitochondrial genome assembly remains limited by artifacts produced during PCR amplification. These chimeric reads can distort assembly graphs and cause misassemblies, with especially severe effects in small, circular mitochondrial genomes\cite{Boore1999,Cameron2014}. Existing assembly pipelines such as GetOrganelle, MITObim, and NOVOPlasty assume that sequencing reads are free of such artifacts\cite{Hahn2013,Dierckxsens2017,Jin2020}. At the Philippine Genome Center Visayas, several mitochondrial assemblies have failed or yielded incomplete contigs despite sufficient coverage, suggesting that undetected chimeric reads compromise assembly reliability. Meanwhile, existing chimera-detection tools such as UCHIME and VSEARCH were developed primarily for amplicon-based microbial community analysis and rely heavily on reference or taxonomic comparisons\cite{Edgar2011,Rognes2016}. These approaches are unsuitable for single-species organellar data, where complete reference genomes are often unavailable. Therefore, there is a pressing need for a reference-independent, data-driven tool capable of automatically detecting and filtering PCR-induced chimeras in mitochondrial sequencing datasets.
+While NGS technologies have revolutionized genomic data acquisition, the accuracy of mitochondrial genome assembly remains limited by artifacts produced during PCR amplification. These chimeric reads can distort assembly graphs and cause misassemblies, with especially severe effects in small, circular mitochondrial genomes \citep{Boore1999,Cameron2014}. Existing assembly pipelines such as GetOrganelle, MITObim, and NOVOPlasty assume that sequencing reads are free of such artifacts \citep{Hahn2013,Dierckxsens2017,Jin2020}. At the Philippine Genome Center Visayas, several mitochondrial assemblies have failed or yielded incomplete contigs despite sufficient coverage, suggesting that undetected chimeric reads compromise assembly reliability. Meanwhile, existing chimera-detection tools such as UCHIME and VSEARCH were developed primarily for amplicon-based microbial community analysis and rely heavily on reference or taxonomic comparisons \citep{Edgar2011,Rognes2016}. These approaches are unsuitable for single-species organellar data, where complete reference genomes are often unavailable. Therefore, there is a pressing need for a reference-independent, data-driven tool capable of automatically detecting and filtering PCR-induced chimeras in mitochondrial sequencing datasets.
 
-\subsection{Research Objectives}\label{subsecsec:researchobjectives}
+\section{Research Objectives}\label{subsecsec:researchobjectives}
 
-\subsubsection{General Objective}\label{subsec:generalobjective}
+\subsection{General Objective}\label{subsec:generalobjective}
 
 To develop and evaluate a machine-learning-based pipeline (MitoChime) capable of detecting PCR-induced chimeric reads in \textit{Sardinella} mitochondrial sequencing data to improve the accuracy of mitochondrial genome assembly.
 
-\subsubsection{Specific Objectives}\label{subsec:specificobjectives}
+\subsection{Specific Objectives}\label{subsec:specificobjectives}
 
 Specifically, the researchers aim to:
 \begin{enumerate}
@@ -32,10 +32,10 @@ Specifically, the researchers aim to:
   \item Integrate the optimized classifier into a modular and interpretable pipeline deployable on standard computing environments at PGC Visayas.
 \end{enumerate}
 
-\subsection{Scope and Limitations of the Research}\label{sec:scopelimitations}
+\section{Scope and Limitations of the Research}\label{sec:scopelimitations}
 
 This study focuses on detecting PCR-induced chimeric reads in Illumina paired-end mitochondrial sequencing data from \textit{Sardinella} species. The work emphasizes \texttt{wgsim} simulations and selected empirical data obtained from open-access genomic repositories such as the National Center for Biotechnology Information (NCBI). The study excludes naturally occurring chimeras, nuclear mitochondrial pseudogenes (NUMTs), and large-scale structural rearrangements in nuclear genomes. Feature extraction prioritizes interpretable, shallow statistics and alignment metrics rather than deep-learning embeddings to ensure transparency and computational efficiency. Testing on long-read platforms (e.g., Nanopore, PacBio) and other taxa lies beyond the project’s scope. The resulting pipeline will serve as a foundation for future, broader chimera-detection frameworks applicable to diverse organellar genomes.
 
-\subsection{Significance of the Research}\label{sec:significance}
+\section{Significance of the Research}\label{sec:significance}
 
 This research provides both methodological and practical contributions to mitochondrial genomics and bioinformatics. First, MitoChime enhances assembly accuracy by filtering PCR-induced chimeras prior to genome assembly, thereby improving the contiguity and correctness of \textit{Sardinella} mitochondrial genomes. Second, it promotes automation and reproducibility by replacing subjective manual curation with a data-driven, machine-learning-based workflow. Third, the pipeline demonstrates computational efficiency through its design, enabling implementation on modest computing infrastructures commonly available in regional laboratories. Beyond technical improvements, MitoChime contributes to local capacity building by strengthening expertise in bioinformatics and machine-learning integration, aligning with the mission of the Philippine Genome Center Visayas. Finally, accurate mitochondrial assemblies are vital for fisheries management, population genetics, and biodiversity conservation, providing reliable genomic resources for species such as \textit{Sardinella}. Through these contributions, MitoChime advances the reliability of mitochondrial genome reconstruction and supports sustainable, data-driven research in Philippine genomics.
