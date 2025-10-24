@@ -1,98 +1,94 @@
-% %   Filename    : chapter_4.tex 
-% \section*{Chapter 3}
-% \section{Research Methodology}
-% This chapter lists and discusses the specific steps and activities carried out to complete the project. 
+\documentclass{article}
+\usepackage{graphicx} 
+\usepackage{float} 
 
-% \subsection{Research Activities}
+\begin{document}
 
-% As illustrated in Figure \ref{fig:process diagram}, the researchers conducted a series of research activities. They have first consulted domain experts to gather data, clarify its interpretation, and discuss enhancements on the ontology’s structure. The gathered data was then encoded into the digital ontology, incorporating the suggested enhancements. Parallel to this, chatbot development  began, using only some of the initially encoded data to expedite progress rather than waiting for the completion of encoding all gathered folk narratives. The chatbot was trained and tested on the basis of specified metrics, then deployed on a website.
+\section*{Chapter 3}
+\section{Research Methodology}
+This chapter outlines and explains the specific steps and activities to be carried out in completing the project.
 
-% \begin{comment}[H]
-%     \centering
-%     \includegraphics[width=0.8\linewidth]{figures/Process Diagram of Special Project.png}
-%     \caption{Process Diagram of Special Project}
-%     \label{fig:process diagram}
-% \end{comment}
+ \subsection{Research Activities}
+ As illustrated in Figure \ref{fig:process_diagram}, the researchers will carry out a sequence of computational procedures designed to detect PCR-induced chimeric reads in mitochondrial genomes. The process begins with the collection of mitochondrial reference sequences from the NCBI database, which will serve as the foundation for generating simulated chimeric reads. These datasets will then undergo bioinformatics pipeline development, which includes alignment, k-mer extraction, and homology-based filtering to prepare the data for model construction. The machine learning model will subsequently be trained and tested using the processed datasets to assess its accuracy and reliability. Depending on the evaluation results, the model will either be refined and retrained to improve performance or, if the metrics meet the desired threshold, deployed for further validation and application.
 
-% \subsection{Ontology Development}
-% \subsubsection{Data Collection} 
-%     The researchers gathered Panayanon myths and legends from the terminal report by \citeA{dimzonmyths}, which compiles various aspects of West Visayan culture and was presented to the U.P. Visayas Center for West Visayan Studies (CWVS), a research and extension arm of UPV. In addition to this report, the researchers were provided with the accompanying digital ontology, which serves as the foundational groundwork for this special project. 
-    
-%     Given the scope of the project, only stories from Panay Island were included and others were ignored. While the researchers considered incorporating additional stories from other sources, Mrs. Dimzon explained that research and anthologies from different sources might introduce classifications that differ from those used in her work. The researchers thought this may potentially overcomplicate the structure of the digital ontology; hence, they opted to work exclusively with her work.
-    
-% \subsubsection{Ontology Enhancement} 
-%     Based on consultations with the domain expert Mrs. Dimzon, a few classes were created in the digital ontology. The new classes were created using Protégé, an open-source ontology editor that supports OWL (Web Ontology Language) for formalizing domain knowledge. Protégé has features such as logical constraints and reasoning, which were utilized in ensuring consistency and inferring class hierarchy. Each class was connected through relationships with other entities to create a structured and interconnected narrative representation. These additions enable the ontology to store more information, allowing users to apply specific filters when making more complex queries.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/research_activities.png}
+    \caption{Process Diagram of Special Project}
+    \label{fig:process_diagram}  
+\end{figure}
 
-% \subsubsection{Ontology Expansion}
-%     The researchers have consulted with Mrs. Dimzon in how to properly identify key story elements, and the contextual relationships between entities in a story. With this, the researchers closely read and examined each story from the collected data, looking for relevant story elements and relationships. From their findings, they expanded the digital ontology by populating it with new stories, entities, and relationships based on the enhanced ontological structure. 
-    
-%     Protégé was utilized for ontology expansion for its extensive support in OWL files and SPARQL querying, reasoning, and consistency checking features.
+ \subsubsection{Data Collection} 
+The researchers will collect mitochondrial genome reference sequences of \textit{Sardinella lemuru} from the National Center for Biotechnology Information (NCBI) database. The downloaded files will be in FASTA format to ensure compatibility with bioinformatics tools and subsequent analysis. The gathered sequences will serve as the basis for generating simulated chimeric reads to be used in model development.
 
-% \subsection{Chatbot Development}
-% \subsubsection{Chatbot Development Tools}
-%     The researchers developed a chatbot prototype that can handle English queries from users, query the ontology to search for relevant data, and present the information to the user in comprehensible English sentences. Specifically, the researchers utilized Python as the primary programming language to develop the chatbot, spaCy as the natural language processing (NLP) library to analyze and process user queries, Rasa as the machine learning framework to extract the entities and intents of user inputs, GraphDB as the knowledge base to host the ontology, and a natural language generation (NLG) server to generate conversational responses to the user.
+The expected outcome of this process is a comprehensive dataset of \textit{Sardinella lemuru} mitochondrial reference sequences that will serve as the foundation for the succeeding stages of the study. This step is scheduled to start in the first week of November 2025 and is expected to be completed by the last week of November 2025, with a total duration of approximately one (1) month.
 
-% \subsubsection{User Experience}
-%     To enhance user experience, the chatbot was designed to exhibit a conversational tone while maintaining the accuracy and professionalism required for ontology-based information retrieval. By incorporating NLG techniques, the chatbot aims to engage users with dynamic and contextually appropriate responses that emulate human-like interaction. This conversational approach is expected to improve user engagement and satisfaction, especially when addressing more complex queries that may require clarification or follow-up interactions.
+ \subsubsection{Data Simulation} 
+ The researchers will simulate sequencing data using the reference sequences collected from NCBI. Using wgsim, a total of 5,000 paired-end reads (R1 and R2) will be generated from the reference genome and designated as clean reads. These reads will be saved in FASTQ (.fastq) format. From the same reference, a Bash script will be created to deliberately cut and reconnect portions of the sequence, introducing artificial junctions that mimic chimeric regions. The manipulated reference file, saved in FASTA (.fasta) format, will then be processed in wgsim to simulate an additional 5,000 paired-end chimeric reads, also stored in FASTQ (.fastq) format. The resulting read files will be aligned to the original reference genome using SAMtools, generating SAM (.sam) or BAM (.bam) alignment files. During this alignment process, clean reads will be labeled as “0,” while chimeric reads will be labeled as “1” in a corresponding CSV (.csv) file.
 
-%     With this chatbot, users will be able to interact with the ontology in natural language in a conversational and friendly manner. This is in pursuit of data querying, which is \citeA{manansala2007}) third and final pillar of ontology frameworks. 
+ The expected outcome of this process is a complete set of clean and chimeric paired-end reads prepared for subsequent analysis and model development. This step is scheduled to start in the first week of November 2025 and is expected to be completed by the last week of November 2025, with a total duration of approximately one (1) month.
 
-% \subsubsection{Rasa Framework}
-%     Figure \ref{fig:rasa framework} shows the flow of data from user input to chatbot response generation. The ontology is converted into a graph database that can be queried for relevant information. The Rasa Agent works as a controller to easily orchestrate the dialogue flow of the chatbot, and manage the interaction of the different components. 
-    
-%     When the user inputs a message, the NLU pipeline will first process it to extract its entities and intents. The extracted information is then passed through the Rasa Agent to the Dialogue Policies, which determine the appropriate action. If an external query is required, the Action Server requests information from the Knowledge Base. The data retrieved from the query are passed through an NLG server that contains Rasa's contextual response rephraser to generate more natural and conversational responses. The Rasa Agent receives this to then output the response to the user. The Tracker Store also receives the extracted entities, intents, and executed actions in order to maintain conversation history, which will help the Dialogue Policies make more context-aware decisions over time.
+ \subsubsection{Bioinformatics Tools Pipeline} 
+ The researchers will obtain the necessary analytical features through the development and implementation of a bioinformatics pipeline. This pipeline will serve as a reproducible and modular workflow that accepts FASTQ and BAM inputs, processes these through a series of analytical stages, and outputs tabular feature matrices (TSV/CSV) for downstream machine learning. All scripts will be version-controlled through GitHub, and computational environments will be standardized using Conda to ensure cross-platform reproducibility. To promote transparency and replicability, the exact software versions, parameters, and command-line arguments used in each stage will be documented. To further ensure correctness and adherence to best practices, the researchers will consult with bioinformatics experts in Philippine Genome Center Visayas for validation of pipeline design, feature extraction logic, and overall data integrity. This stage of the study is scheduled to begin in the last week of November 2025 and conclude by the last week of January 2026, with an estimated total duration of approximately two (2) months. 
+ 
+The bioinformatics pipeline focuses on three principal features from the simulated and aligned sequencing data:  (1) supplementary alignment count (SA count), (2) k-mer composition difference between read segments, and (3) micro-homology length at potential junctions. Each of these features captures a distinct biological or computational signature associated with PCR-induced chimeras.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=\linewidth]{figures/Rasa Framework.png}
-%     \caption{Diagram of Rasa Framework}
-%     \label{fig:rasa framework}
-% \end{figure}
+\paragraph{Alignment and Supplementary Alignment Count}\hfill\\
+This will be derived through sequence alignment using Minimap2, with subsequent processing performed using SAMtools and pysam in Python. Sequencing reads will be aligned to the Sardinella lemuru mitochondrial reference genome using Minimap2 with the -ax sr preset optimized for short reads. The output will be converted and sorted using SAMtools, producing an indexed BAM file which will be parsed using pysam to count the number of supplementary alignments (SA tags) per read. Each read’s mapping quality, number of split segments, and alignment characteristics will be recorded in a corresponding TSV file. This is of particular importance because the presence of multiple alignment loci within a single read, as reflected by a nonzero SA count, serves as direct computational evidence of chimerism. Reads that contain supplementary alignments or soft-clipped regions are strong candidates for chimeric artifacts arising from PCR template switching or improper assembly during sequencing.
 
-%     Figure \ref{fig:nlu pipeline} illustrates Rasa's natural language understanding pipeline. The first component is the spaCy tokeniser, which splits the user's input into tokens. The second component is the spaCy featurizer, which is a dense featurizer that extracts features used for entity extraction, intent identification of the user's message, and response classification. The regex featurizer is a sparse featurizer that creates a vector representation of the user's message using regular expressions for the purpose of entity extraction and intent identification. Next is the lexical syntactic featurizer, which is a sparse featurizer that creates lexical and syntactic features for a user's message for the purpose of entity extraction. The fifth component is the count vectors featurizer, which generates a bag-of-words representation of the bot user's message, intent, and response for the purpose of intent identification and response selection. The DIET Classifier is a multi-task transformer architecture that is responsible for intent classification and entity extraction. The final component is the Entity Synonym Mapper that maps entities to their synonyms if they appeared in the training data. The extracted entities and identified intents in the NLU pipeline will then be passed to the chatbot dialogue policies to determine the appropriate actions that the bot will perform. 
+\paragraph{K-mer Composition Difference}\hfill\\
+Chimeric reads often comprise fragments from distinct genomic regions, resulting in a compositional discontinuity between segments. Comparing k-mer frequency profiles between the left and right halves of a read allows detection of such abrupt compositional shifts, independent of alignment information. This will be obtained using Jellyfish, a fast k-mer counting software. For each read, the sequence will be divided into two segments, either at the midpoint or at empirically determined breakpoints inferred from supplementary alignment data, to generate left and right sequence segments. Jellyfish will then compute k-mer frequency profiles (with k = 5 or 6) for each segment. The resulting k-mer frequency vectors will be normalized and compared using distance metrics such as cosine similarity or Jensen–Shannon divergence to quantify compositional disparity between the two halves of the same read. The resulting difference scores will be stored in a structured TSV file.
 
-%     The components within the pipeline are used to process the user's input and extracts entities and intents from the user's input. This will be then queried through the knowledge base. Finally, the query results will be formatted in English using NLP techniques. 
+\paragraph{Micro-homology Length}\hfill\\
+The micro-homology length will be computed using a custom Python script that detects the longest exact suffix–prefix overlap within ±30 base pairs surrounding a candidate breakpoint. This analysis identifies the number of consecutive bases shared between the end of one segment and the beginning of another. The presence and length of such micro-homology are classic molecular signatures of PCR-induced template switching, where short identical regions (typically 3–15 base pairs) promote premature termination and recombination of DNA synthesis on a different template strand. By quantifying micro-homology, the researchers can assess whether the suspected breakpoint exhibits characteristics consistent with PCR artifacts rather than true biological variants. Each read will therefore be annotated with its corresponding micro-homology length, overlap sequence, and GC content.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=\linewidth]{figures/NLU Pipeline.png}
-%     \caption{Diagram of NLU Pipeline}
-%     \label{fig:nlu pipeline}
-% \end{figure}
+After the extraction of the three primary features, all resulting TSV files will be joined using the read identifier as a common key to generate a unified feature matrix. Additional read-level metadata such as read length, mean base quality, and number of clipped bases will also be included to provide contextual information. This consolidated dataset will serve as the input for subsequent machine learning model development and evaluation.
 
-% \subsubsection{Chatbot Testing}
-%     The evaluation of the PAROT model by Ochieng (2020) involved the use of QALD-9 challenge metrics, including accuracy, recall, and F-measure. Similarly, the utilization of these metrics will be applied in the evaluation of the model under development of this special project.
+ \subsubsection{Machine-Learning Model Development} 
+ The classification component of MitoChime employed two ensemble algorithms: Random Forest (RF) and Extreme Gradient Boosting (XGBoost) to evaluate complementary learning paradigms. Random Forest applies bootstrap aggregation (bagging) to reduce model variance and improve stability, whereas XGBoost implements gradient boosting to minimize bias and capture complex non-linear relationships among genomic features. Using both models enabled a balanced assessment of predictive performance and interpretability.
 
-%     With each iteration of the chatbot, the researchers will perform tests to verify chatbot query accuracy and response relevance, assess user interaction with the chatbot, and measure response times and optimize as needed.
-    
-% \subsection{System Deployment}
-% \subsubsection{Rasa Chatbot}
-%     The chatbot, developed using the Rasa framework, was deployed via the Google Kubernetes Engine (GKE), a managed Kubernetes service provided by the Google Cloud Platform (GCP). The use of GKE facilitated the creation of Kubernetes clusters without the manual setup of the Kubernetes infrastructure \cite{sullivan2023}. The deployment process followed the guidelines outlined in the Rasa Open Source documentation.
+ The dataset was divided into training (80\%) and testing (20\%) subsets. The training data were used for model fitting and hyperparameter optimization through five-fold cross-validation, in which the data were partitioned into five folds; four folds were used for training and one for validation in each iteration. Performance metrics were averaged across folds, and the optimal parameters were selected based on mean cross-validation accuracy. The final models were then evaluated on the held-out test set to obtain unbiased performance estimates.
 
-% % [Rasa Docs, https://legacy-docs-oss.rasa.com/docs/rasa/deploy/deploy-rasa/]
+Model development and evaluation were implemented in Python (Version 3.11) using the scikit-learn and xgboost libraries. Standard metrics including accuracy, precision, recall, F1-score, and area under the ROC curve (AUC) were computed to quantify predictive performance. Feature-importance analyses were performed to identify the most discriminative variables contributing to chimera detection.
 
-% \subsubsection{PanayHub Website}
-%     Website hosting was facilitated through the Render.com platform, selected for its usability and streamlined deployment capabilities. Render.com provides infrastructure for hosting websites and servers, with integrated support for popular Git repository hosting services such as GitHub and GitLab. This integration enables automated deployment triggered by each new commit, enhancing development workflow efficiency.
+ \subsubsection{Validation and Testing} 
+Validation involved both internal and external evaluations. Internal validation was achieved through five-fold cross-validation on the training data to verify model generalization and reduce variance due to random sampling. External validation was achieved through testing on the 20\% hold-out dataset derived from the simulated reads which will serve as an unbiased benchmark to evaluate how well the trained models generalize to unseen data. All feature extraction and preprocessing steps will be performed using the same bioinformatics pipeline to ensure consistency and comparability across validation stages.
 
-%     Figures \ref{fig:panayhub-home}, \ref{fig:panayhub-contact}, and \ref{fig:panayhub-chatbot} present the user interface of the website. Figure \ref{fig:panayhub-home} illustrates the homepage, which functions as the primary landing page and navigation hub for users. Figure \ref{fig:panayhub-contact} depicts the \textit{Contact Us} page, which provides users with a channel for communication with researchers and affiliated institutions. Lastly, Figure \ref{fig:panayhub-chatbot} displays the chatbot interface, allowing user interaction with the chatbot for inquiries related to the folk narratives of Panay.
+Comparative evaluation between the Random Forest and XGBoost classifiers established which model achieved superior predictive accuracy and computational efficiency under identical data conditions.
 
-%     \begin{figure}
-%         \centering
-%         \includegraphics[width=0.5\linewidth]{figures/Home.png}
-%         \caption{Homepage of PanayHub}
-%         \label{fig:panayhub-home}
-%     \end{figure}
-    
-%     \begin{figure}
-%         \centering
-%         \includegraphics[width=0.5\linewidth]{figures/Contact Us.png}
-%         \caption{Contact Us page of PanayHub}
-%         \label{fig:panayhub-contact}
-%     \end{figure}
+\subsubsection{Documentation} 
+Comprehensive documentation will be maintained throughout the study to ensure transparency, reproducibility, and scientific integrity. All stages of the research including data acquisition, preprocessing, feature extraction, model training, and validation will be systematically recorded. For each analytical step, the corresponding parameters, software versions, and command-line scripts will be documented to enable exact replication of results.
 
-%     \begin{figure}
-%         \centering
-%         \includegraphics[width=0.5\linewidth]{figures/Chatbot.png}
-%         \caption{Chatbot page of PanayHub}
-%         \label{fig:panayhub-chatbot}
-%     \end{figure}
+Version control and collaborative management will be implemented through GitHub, which will serve as the central repository for all project files, including Python scripts, configuration settings, and Jupyter notebooks. The repository structure will follow standard research data management practices, with clear directories for datasets, processed outputs, and analysis scripts. Changes will be tracked through commit histories to ensure traceability and accountability. 
+
+Computational environments will be standardized using Conda, with environment files specifying dependencies and package versions to maintain consistency across systems. Experimental workflows and exploratory analyses will be conducted in Jupyter Notebooks,  which facilitated real-time visualization, annotation, and incremental testing of results.
+
+For the preparation of the final manuscript and supplementary materials, Overleaf (LaTeX) will be utilized to produce publication-quality formatting, consistent referencing, and reproducible document compilation. The documentation process will also include a project timeline outlining major milestones like data collection, simulation, feature extraction, model evaluation, and reporting to ensure systematic progress and adherence to the research schedule.
+
+ \subsection{Calendar of Activities} 
+ Table \ref{tab:project_timeline} presents the project timeline in the form of a Gantt chart, where each bullet point corresponds to approximately one week of planned activity.
+
+\begin{table}[H]
+\centering
+\caption{Timetable of Activities}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Activities (2025)} & \textbf{Nov} & \textbf{Dec} & \textbf{Jan} & \textbf{Feb} & \textbf{Mar} & \textbf{Apr} & \textbf{May} \\
+\hline
+Data Collection and Simulation & $\bullet\bullet\bullet\bullet$ &  &  &  &  &  &  \\
+\hline
+Bioinformatics Tools Pipeline & $\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ &  &  &  &  \\
+\hline
+Machine Learning Development &  &  & $\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet$ &  \\
+\hline
+Testing and Validation &  &  &  &  &  & $\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ \\
+\hline
+Documentation & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ \\
+\hline
+\end{tabular}
+}
+\label{tab:project_timeline}
+\end{table}
+
+\end{document}
