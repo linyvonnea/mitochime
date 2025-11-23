@@ -1,0 +1,919 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Anderson%
+\ \protect \BOthers {.}}{%
+Anderson%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1981}}%
+}]{%
+Anderson1981}
+\APACinsertmetastar {%
+Anderson1981}%
+\begin{APACrefauthors}%
+Anderson, S.%
+, Bankier, A.%
+, Barrell, B.%
+, Bruijn, M.%
+, Coulson, A.%
+, Drouin, J.%
+\BDBL {}Young, I.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1981}{04}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Sequence and organization of the human mitochondrial genome} {Sequence and organization of the human mitochondrial genome}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature}{290}{}{457-465}.
+\newblock
+\begin{APACrefDOI} \doi{10.1038/290457a0} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Arango%
+\ \protect \BOthers {.}}{%
+Arango%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2018}}%
+}]{%
+Arango2018}
+\APACinsertmetastar {%
+Arango2018}%
+\begin{APACrefauthors}%
+Arango, G.%
+, Garner, E.%
+, Pruden, A.%
+, Heath, L.%
+, Vikesland, P.%
+\BCBL {}\ \BBA {} Zhang, L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{02}{}.
+\newblock
+{\BBOQ}\APACrefatitle {DeepARG: A deep learning approach for predicting antibiotic resistance genes from metagenomic data} {Deeparg: A deep learning approach for predicting antibiotic resistance genes from metagenomic data}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Microbiome}{6}{}{}.
+\newblock
+\begin{APACrefDOI} \doi{10.1186/s40168-018-0401-z} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bentley%
+\ \protect \BOthers {.}}{%
+Bentley%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2008}}%
+}]{%
+Bentley2008}
+\APACinsertmetastar {%
+Bentley2008}%
+\begin{APACrefauthors}%
+Bentley, D\BPBI R.%
+, Balasubramanian, S.%
+, Swerdlow, H\BPBI P.%
+, Smith, G\BPBI P.%
+, Milton, J.%
+, Brown, C\BPBI G.%
+\BDBL {}Smith, A\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2008}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Accurate whole human genome sequencing using reversible terminator chemistry} {Accurate whole human genome sequencing using reversible terminator chemistry}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature}{456}{7218}{53--59}.
+\newblock
+\begin{APACrefDOI} \doi{10.1038/nature07517} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bi%
+\ \protect \BOthers {.}}{%
+Bi%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2024}}%
+}]{%
+Bi2024}
+\APACinsertmetastar {%
+Bi2024}%
+\begin{APACrefauthors}%
+Bi, C.%
+, Shen, F.%
+, Han, F.%
+, Qu, Y.%
+, Hou, J.%
+, Xu, K.%
+\BDBL {}Yin, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2024}{01}{}.
+\newblock
+{\BBOQ}\APACrefatitle {PMAT: an efficient plant mitogenome assembly toolkit using low-coverage HiFi sequencing data} {Pmat: an efficient plant mitogenome assembly toolkit using low-coverage hifi sequencing data}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Horticulture Research}{11}{3}{uhae023}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1093/hr/uhae023} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1093/hr/uhae023} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Boore%
+}{%
+Boore%
+}{%
+{\protect \APACyear {1999}}%
+}]{%
+Boore1999}
+\APACinsertmetastar {%
+Boore1999}%
+\begin{APACrefauthors}%
+Boore, J\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1999}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Animal mitochondrial genomes} {Animal mitochondrial genomes}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nucleic Acids Research}{27}{8}{1767--1780}.
+\newblock
+\begin{APACrefDOI} \doi{10.1093/nar/27.8.1767} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Cameron%
+}{%
+Cameron%
+}{%
+{\protect \APACyear {2014}}%
+}]{%
+Cameron2014}
+\APACinsertmetastar {%
+Cameron2014}%
+\begin{APACrefauthors}%
+Cameron, S\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Insect Mitochondrial Genomics: Implications for Evolution and Phylogeny} {Insect mitochondrial genomics: Implications for evolution and phylogeny}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Annual Review of Entomology}{59}{}{95--117}.
+\newblock
+\begin{APACrefDOI} \doi{10.1146/annurev-ento-011613-162007} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Dierckxsens%
+, Mardulyn%
+\BCBL {}\ \BBA {} Smits%
+}{%
+Dierckxsens%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2017}}%
+}]{%
+Dierckxsens2017}
+\APACinsertmetastar {%
+Dierckxsens2017}%
+\begin{APACrefauthors}%
+Dierckxsens, N.%
+, Mardulyn, P.%
+\BCBL {}\ \BBA {} Smits, G.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {NOVOPlasty: de novo assembly of organelle genomes from whole genome data} {Novoplasty: de novo assembly of organelle genomes from whole genome data}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nucleic Acids Research}{45}{4}{e18}.
+\newblock
+\begin{APACrefDOI} \doi{10.1093/nar/gkw955} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Edgar%
+}{%
+Edgar%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+Edgar2016}
+\APACinsertmetastar {%
+Edgar2016}%
+\begin{APACrefauthors}%
+Edgar, R\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {UCHIME2: improved chimera prediction for amplicon sequencing} {Uchime2: improved chimera prediction for amplicon sequencing}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{bioRxiv}{}{}{}.
+\newblock
+\begin{APACrefURL} \url{https://api.semanticscholar.org/CorpusID:88955007} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Edgar%
+}{%
+Edgar%
+}{%
+{\protect \APACyear {n.d}}%
+}]{%
+EdgarManual}
+\APACinsertmetastar {%
+EdgarManual}%
+\begin{APACrefauthors}%
+Edgar, R\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{n.d}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {UCHIME in Practice} {Uchime in practice}.{\BBCQ}
+\newblock
+\begin{APACrefURL} \url{https://www.drive5.com/usearch/manual7/uchime_practical.html} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Edgar%
+, Haas%
+, Clemente%
+, Quince%
+\BCBL {}\ \BBA {} Knight%
+}{%
+Edgar%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2011}}%
+}]{%
+Edgar2011}
+\APACinsertmetastar {%
+Edgar2011}%
+\begin{APACrefauthors}%
+Edgar, R\BPBI C.%
+, Haas, B\BPBI J.%
+, Clemente, J\BPBI C.%
+, Quince, C.%
+\BCBL {}\ \BBA {} Knight, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {UCHIME improves sensitivity and speed of chimera detection} {Uchime improves sensitivity and speed of chimera detection}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Bioinformatics}{27}{16}{2194--2200}.
+\newblock
+\begin{APACrefDOI} \doi{10.1093/bioinformatics/btr381} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Frenkel-Morgenstern%
+\ \protect \BOthers {.}}{%
+Frenkel-Morgenstern%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2012}}%
+}]{%
+Frenkel2012}
+\APACinsertmetastar {%
+Frenkel2012}%
+\begin{APACrefauthors}%
+Frenkel-Morgenstern, M.%
+, Lacroix, V.%
+, Ezkurdia, I.%
+, Levin, Y.%
+, Gabashvili, A.%
+, Prilusky, J.%
+\BDBL {}Valencia, A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{05}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Chimeras taking shape: Potential functions of proteins encoded by chimeric RNA transcripts} {Chimeras taking shape: Potential functions of proteins encoded by chimeric rna transcripts}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Genome research}{22}{}{1231-42}.
+\newblock
+\begin{APACrefDOI} \doi{10.1101/gr.130062.111} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Glenn%
+}{%
+Glenn%
+}{%
+{\protect \APACyear {2011}}%
+}]{%
+Glenn2011}
+\APACinsertmetastar {%
+Glenn2011}%
+\begin{APACrefauthors}%
+Glenn, T\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Field guide to next‐generation DNA sequencers} {Field guide to next‐generation dna sequencers}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Molecular Ecology Resources}{11}{5}{759--769}.
+\newblock
+\begin{APACrefDOI} \doi{10.1111/j.1755-0998.2011.03024.x} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Gonzalez%
+, Zimmermann%
+\BCBL {}\ \BBA {} Saiz-Jimenez%
+}{%
+Gonzalez%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2004}}%
+}]{%
+Gonzalez2004}
+\APACinsertmetastar {%
+Gonzalez2004}%
+\begin{APACrefauthors}%
+Gonzalez, J\BPBI M.%
+, Zimmermann, J.%
+\BCBL {}\ \BBA {} Saiz-Jimenez, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2004}{09}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Evaluating putative chimeric sequences from PCR-amplified products} {Evaluating putative chimeric sequences from pcr-amplified products}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Bioinformatics}{21}{3}{333-337}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1093/bioinformatics/bti008} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1093/bioinformatics/bti008} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Gray%
+}{%
+Gray%
+}{%
+{\protect \APACyear {2012}}%
+}]{%
+Gray1999}
+\APACinsertmetastar {%
+Gray1999}%
+\begin{APACrefauthors}%
+Gray, M\BPBI W.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Mitochondrial Evolution} {Mitochondrial evolution}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Cold Spring Harbor perspectives in biology}{4}{}{}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1101/cshperspect.a011403} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1101/cshperspect.a011403} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Hahn%
+, Bachmann%
+\BCBL {}\ \BBA {} Chevreux%
+}{%
+Hahn%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2013}}%
+}]{%
+Hahn2013}
+\APACinsertmetastar {%
+Hahn2013}%
+\begin{APACrefauthors}%
+Hahn, C.%
+, Bachmann, L.%
+\BCBL {}\ \BBA {} Chevreux, B.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Reconstructing mitochondrial genomes directly from genomic next-generation sequencing reads—a baiting and iterative mapping approach} {Reconstructing mitochondrial genomes directly from genomic next-generation sequencing reads—a baiting and iterative mapping approach}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nucleic Acids Research}{41}{13}{e129}.
+\newblock
+\begin{APACrefDOI} \doi{10.1093/nar/gkt371} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Jin%
+\ \protect \BOthers {.}}{%
+Jin%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2020}}%
+}]{%
+Jin2020}
+\APACinsertmetastar {%
+Jin2020}%
+\begin{APACrefauthors}%
+Jin, J\BHBI J.%
+, Yu, W\BHBI B.%
+, Yang, J.%
+, Song, Y.%
+, dePamphilis, C\BPBI W.%
+, Yi, T\BHBI S.%
+\BCBL {}\ \BBA {} Li, D\BHBI Z.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {GetOrganelle: a fast and versatile toolkit for accurate de novo assembly of organelle genomes} {Getorganelle: a fast and versatile toolkit for accurate de novo assembly of organelle genomes}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Genome Biology}{21}{1}{241}.
+\newblock
+\begin{APACrefDOI} \doi{10.1186/s13059-020-02154-5} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Judo%
+, Wedel%
+\BCBL {}\ \BBA {} Wilson%
+}{%
+Judo%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1998}}%
+}]{%
+Judo1998}
+\APACinsertmetastar {%
+Judo1998}%
+\begin{APACrefauthors}%
+Judo, M\BPBI S\BPBI B.%
+, Wedel, W\BPBI R.%
+\BCBL {}\ \BBA {} Wilson, B\BPBI H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1998}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Stimulation and suppression of PCR-mediated recombination} {Stimulation and suppression of pcr-mediated recombination}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nucleic Acids Research}{26}{7}{1819--1825}.
+\newblock
+\begin{APACrefDOI} \doi{10.1093/nar/26.7.1819} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Labrador%
+, Agmata%
+, Palermo%
+, Ravago-Gotanco%
+\BCBL {}\ \BBA {} Pante%
+}{%
+Labrador%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2021}}%
+}]{%
+Labrador2021}
+\APACinsertmetastar {%
+Labrador2021}%
+\begin{APACrefauthors}%
+Labrador, K.%
+, Agmata, A.%
+, Palermo, J\BPBI D.%
+, Ravago-Gotanco, R.%
+\BCBL {}\ \BBA {} Pante, M\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Mitochondrial DNA reveals genetically structured haplogroups of Bali sardinella (Sardinella lemuru) in Philippine waters} {Mitochondrial dna reveals genetically structured haplogroups of bali sardinella (sardinella lemuru) in philippine waters}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Regional Studies in Marine Science}{41}{}{101588}.
+\newblock
+\begin{APACrefDOI} \doi{10.1016/j.rsma.2020.101588} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Layer%
+, Hall%
+\BCBL {}\ \BBA {} Quinlan%
+}{%
+Layer%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2014}}%
+}]{%
+Layer2014}
+\APACinsertmetastar {%
+Layer2014}%
+\begin{APACrefauthors}%
+Layer, R.%
+, Hall, I.%
+\BCBL {}\ \BBA {} Quinlan, A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{10}{}.
+\newblock
+{\BBOQ}\APACrefatitle {LUMPY: A probabilistic framework for structural variant discovery} {Lumpy: A probabilistic framework for structural variant discovery}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Genome Biology}{15}{}{}.
+\newblock
+\begin{APACrefDOI} \doi{10.1186/gb-2014-15-6-r84} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Li%
+}{%
+Li%
+}{%
+{\protect \APACyear {2018}}%
+}]{%
+Li2018}
+\APACinsertmetastar {%
+Li2018}%
+\begin{APACrefauthors}%
+Li, H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{05}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Minimap2: pairwise alignment for nucleotide sequences} {Minimap2: pairwise alignment for nucleotide sequences}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Bioinformatics}{34}{18}{3094-3100}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1093/bioinformatics/bty191} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1093/bioinformatics/bty191} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Liang%
+, Bible%
+, Liu%
+, Zou%
+\BCBL {}\ \BBA {} Wei%
+}{%
+Liang%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2020}}%
+}]{%
+Liang2020}
+\APACinsertmetastar {%
+Liang2020}%
+\begin{APACrefauthors}%
+Liang, Q.%
+, Bible, P\BPBI W.%
+, Liu, Y.%
+, Zou, B.%
+\BCBL {}\ \BBA {} Wei, L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{02}{}.
+\newblock
+{\BBOQ}\APACrefatitle {DeepMicrobes: taxonomic classification for metagenomics with deep learning} {Deepmicrobes: taxonomic classification for metagenomics with deep learning}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{NAR Genomics and Bioinformatics}{2}{1}{lqaa009}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1093/nargab/lqaa009} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1093/nargab/lqaa009} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Metzker%
+}{%
+Metzker%
+}{%
+{\protect \APACyear {2010}}%
+}]{%
+Metzker2010}
+\APACinsertmetastar {%
+Metzker2010}%
+\begin{APACrefauthors}%
+Metzker, M\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2010}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Sequencing technologies — the next generation} {Sequencing technologies — the next generation}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature Reviews Genetics}{11}{1}{31--46}.
+\newblock
+\begin{APACrefDOI} \doi{10.1038/nrg2626} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Mysara%
+, Saeys%
+, Leys%
+, Raes%
+\BCBL {}\ \BBA {} Monsieurs%
+}{%
+Mysara%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2015}}%
+}]{%
+Mysara2015}
+\APACinsertmetastar {%
+Mysara2015}%
+\begin{APACrefauthors}%
+Mysara, M.%
+, Saeys, Y.%
+, Leys, N.%
+, Raes, J.%
+\BCBL {}\ \BBA {} Monsieurs, P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {CATCh, an Ensemble Classifier for Chimera Detection in 16S rRNA Sequencing Studies} {Catch, an ensemble classifier for chimera detection in 16s rrna sequencing studies}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Applied and Environmental Microbiology}{81}{5}{1573-1584}.
+\newblock
+\begin{APACrefURL} \url{https://journals.asm.org/doi/abs/10.1128/aem.02896-14} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1128/AEM.02896-14} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Qin%
+\ \protect \BOthers {.}}{%
+Qin%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2023}}%
+}]{%
+Qin2023}
+\APACinsertmetastar {%
+Qin2023}%
+\begin{APACrefauthors}%
+Qin, Y.%
+, Wu, L.%
+, Zhang, Q.%
+, Wen, C.%
+, Nostrand, J\BPBI D\BPBI V.%
+, Ning, D.%
+\BDBL {}Zhou, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2023}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Effects of error, chimera, bias, and GC content on the accuracy of amplicon sequencing} {Effects of error, chimera, bias, and gc content on the accuracy of amplicon sequencing}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{mSystems}{8}{6}{e01025-23}.
+\newblock
+\begin{APACrefURL} \url{https://journals.asm.org/doi/abs/10.1128/msystems.01025-23} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1128/msystems.01025-23} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Qiu%
+\ \protect \BOthers {.}}{%
+Qiu%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2001}}%
+}]{%
+Qiu2001}
+\APACinsertmetastar {%
+Qiu2001}%
+\begin{APACrefauthors}%
+Qiu, X.%
+, Wu, L.%
+, Huang, H.%
+, McDonel, P\BPBI E.%
+, Palumbo, A\BPBI V.%
+, Tiedje, J\BPBI M.%
+\BCBL {}\ \BBA {} Zhou, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2001}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Evaluation of PCR-Generated Chimeras, Mutations, and Heteroduplexes with 16S rRNA Gene-Based Cloning} {Evaluation of pcr-generated chimeras, mutations, and heteroduplexes with 16s rrna gene-based cloning}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Applied and Environmental Microbiology}{67}{2}{880--887}.
+\newblock
+\begin{APACrefDOI} \doi{10.1128/AEM.67.2.880-887.2001} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Ren%
+\ \protect \BOthers {.}}{%
+Ren%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2020}}%
+}]{%
+Ren2020}
+\APACinsertmetastar {%
+Ren2020}%
+\begin{APACrefauthors}%
+Ren, J.%
+, Song, K.%
+, Deng, C.%
+, Ahlgren, N.%
+, Fuhrman, J.%
+, Li, Y.%
+\BDBL {}Sun, F.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{01}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Identifying viruses from metagenomic data using deep learning} {Identifying viruses from metagenomic data using deep learning}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Quantitative Biology}{8}{}{}.
+\newblock
+\begin{APACrefDOI} \doi{10.1007/s40484-019-0187-4} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Rodriguez-Martin%
+\ \protect \BOthers {.}}{%
+Rodriguez-Martin%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2017}}%
+}]{%
+Rodriguez2017}
+\APACinsertmetastar {%
+Rodriguez2017}%
+\begin{APACrefauthors}%
+Rodriguez-Martin, B.%
+, Palumbo, E.%
+, Marco-Sola, S.%
+, Griebel, T.%
+, Ribeca, P.%
+, Alonso, G.%
+\BDBL {}Djebali, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{01}{}.
+\newblock
+{\BBOQ}\APACrefatitle {ChimPipe: Accurate detection of fusion genes and transcription-induced chimeras from RNA-seq data} {Chimpipe: Accurate detection of fusion genes and transcription-induced chimeras from rna-seq data}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{BMC Genomics}{18}{}{}.
+\newblock
+\begin{APACrefDOI} \doi{10.1186/s12864-016-3404-9} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Rognes%
+, Flouri%
+, Nichols%
+, Quince%
+\BCBL {}\ \BBA {} Mah{\'e}%
+}{%
+Rognes%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2016}}%
+}]{%
+Rognes2016}
+\APACinsertmetastar {%
+Rognes2016}%
+\begin{APACrefauthors}%
+Rognes, T.%
+, Flouri, T.%
+, Nichols, B.%
+, Quince, C.%
+\BCBL {}\ \BBA {} Mah{\'e}, F.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {VSEARCH: a versatile open source tool for metagenomics} {Vsearch: a versatile open source tool for metagenomics}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{PeerJ}{4}{}{e2584}.
+\newblock
+\begin{APACrefDOI} \doi{10.7717/peerj.2584} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Sedlazeck%
+\ \protect \BOthers {.}}{%
+Sedlazeck%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2018}}%
+}]{%
+Sedlazeck2018}
+\APACinsertmetastar {%
+Sedlazeck2018}%
+\begin{APACrefauthors}%
+Sedlazeck, F.%
+, Rescheneder, P.%
+, Smolka, M.%
+, Fang, H.%
+, Nattestad, M.%
+, von Haeseler, A.%
+\BCBL {}\ \BBA {} Schatz, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{06}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Accurate detection of complex structural variations using single-molecule sequencing} {Accurate detection of complex structural variations using single-molecule sequencing}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature Methods}{15}{}{}.
+\newblock
+\begin{APACrefDOI} \doi{10.1038/s41592-018-0001-7} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Sfeir%
+\ \BBA {} Symington%
+}{%
+Sfeir%
+\ \BBA {} Symington%
+}{%
+{\protect \APACyear {2015}}%
+}]{%
+Sfeir2015}
+\APACinsertmetastar {%
+Sfeir2015}%
+\begin{APACrefauthors}%
+Sfeir, A.%
+\BCBT {}\ \BBA {} Symington, L\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Microhomology-Mediated End Joining: A Back-up Survival Mechanism or Dedicated Pathway?} {Microhomology-mediated end joining: A back-up survival mechanism or dedicated pathway?}{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Trends in Biochemical Sciences}{40}{11}{701-714}.
+\newblock
+\begin{APACrefURL} \url{https://www.sciencedirect.com/science/article/pii/S0968000415001589} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{https://doi.org/10.1016/j.tibs.2015.08.006} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Vervier%
+}{%
+Vervier%
+}{%
+{\protect \APACyear {2015}}%
+}]{%
+Vervier2015}
+\APACinsertmetastar {%
+Vervier2015}%
+\begin{APACrefauthors}%
+Vervier, M\BPBI P\BPBI T\BPBI M\BPBI V\BPBI J\BPBI B\BPBI \BPBI V\BPBI J\BPBI P., K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Large-scale machine learning for metagenomics sequence classification} {Large-scale machine learning for metagenomics sequence classification}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Bioinformatics}{32}{}{1023 - 1032}.
+\newblock
+\begin{APACrefURL} \url{https://api.semanticscholar.org/CorpusID:9863600} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Willette%
+, Bognot%
+, Mutia%
+\BCBL {}\ \BBA {} Santos%
+}{%
+Willette%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2011}}%
+}]{%
+Willette2011}
+\APACinsertmetastar {%
+Willette2011}%
+\begin{APACrefauthors}%
+Willette, D.%
+, Bognot, E.%
+, Mutia, M\BPBI T.%
+\BCBL {}\ \BBA {} Santos, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+\APACrefbtitle {Biology and Ecology of Sardines in the Philippines: A Review} {Biology and ecology of sardines in the philippines: A review}\ \APACbVolEdTR{\BVOL~13}{\BTR{}\ \BNUM~1}.
+\newblock
+\APACaddressInstitution{}{NFRDI Technical Paper Series}.
+\newblock
+\begin{APACrefURL} \url{https://nfrdi.da.gov.ph/tpjf/etc/Willette\%20et\%20al.\%20Sardines\%20Review.pdf} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}
