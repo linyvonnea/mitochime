@@ -5,7 +5,7 @@ This chapter presents an overview of the literature relevant to the study. It di
 
 \section{The Mitochondrial Genome}
 Mitochondrial genome (mtDNA) is a small, typically circular molecule found in most eukaryotes. It encodes essential genes involved in oxidative phosphorylation and energy metabolism. Because of its conserved structure and maternal inheritance, mtDNA has become a valuable genetic marker for studies in evolution, population genetics, and phylogenetics \citep{Anderson1981,Boore1999}. 
-In animal species, the mitochondrial genome ranges from 15--20 kb and contains 13 protein-coding genes, 22 tRNAs, and two rRNAs arranged compactly without introns \citep{Gray1999}. In comparison to nuclear DNA the ratio of the number of copies of mtDNA is higher and has relatively simple organization which make it particularly suitable for genome sequencing and assembly studies \citep{Dierckxsens2017}. Moreover, mitochondrial genomes provide crucial insights into evolutionary relationships among species and are increasingly used for testing new genomic assembly and analysis methods.
+In animal species, the mitochondrial genome ranges from 15--20 kilobase and contains 13 protein-coding genes, 22 tRNAs, and two rRNAs arranged compactly without introns \citep{Gray1999}. In comparison to nuclear DNA the ratio of the number of copies of mtDNA is higher and has relatively simple organization which make it particularly suitable for genome sequencing and assembly studies \citep{Dierckxsens2017}. Moreover, mitochondrial genomes provide crucial insights into evolutionary relationships among species and are increasingly used for testing new genomic assembly and analysis methods.
 
 \subsection {Mitochondrial Genome Assembly}
 Mitochondrial genome assembly refers to the reconstruction of the complete mitochondrial DNA (mtDNA) sequence from raw or fragmented sequencing reads. It is conducted to obtain high-quality, continuous representations of the mitochondrial genome that can be used for a wide range of analyses, including species identification, phylogenetic reconstruction, evolutionary studies, and investigations of mitochondrial diseases. Because mtDNA evolves relatively rapidly and is maternally inherited, its assembled sequence provides valuable insights into population structure, lineage divergence, and adaptive evolution across taxa \citep{Boore1999}. Compared to nuclear genome assembly, assembling the mitochondrial genome is often considered more straightforward but still encounters distinct technical challenges such as sequencing errors, low coverage regions, and chimeric reads that can distort the final assembly, leading to incomplete or misassembled genomes. These errors can propagate into downstream analyses, emphasizing the need for robust chimera detection and sequence validation methods in mitochondrial genome research.
@@ -69,3 +69,56 @@ In genomic analysis, feature extraction converts DNA sequences into numerical re
 Machine learning models can also leverage alignment-derived features such as the frequency of split alignments, variation in mapping quality, and local coverage irregularities. Split reads and discordant read pairs are classical signatures of genomic junctions and have been formalized in probabilistic frameworks for structural-variant discovery that integrate multiple evidence types \citep{Layer2014}. Similarly, long-read tools such as Sniffles employ split-alignment and coverage anomalies to accurately localize breakpoints \citep{Sedlazeck2018}. Modern aligners such as Minimap2 \citep{Li2018} output supplementary (SA tags) and secondary alignments as well as chaining and alignment-score statistics that can be summarized into quantitative predictors for machine-learning models. These alignment-signal features are particularly relevant to PCR-induced mitochondrial chimeras, where template-switching events produce reads partially matching distinct regions of the same or related genomes. Integrating such cues within a supervised-learning framework enables artifact detection even in datasets lacking complete or perfectly assembled references.
 
 A further biologically grounded descriptor is micro-homology length at putative junctions. Micro-homology refers to short, shared sequences (often in the range of a few to tens of base pairs) that are near breakpoints and mediate non-canonical repair or template-switch mechanisms. Studies of double strand break repair and structural variation have demonstrated that the length of micro-homology correlates with the likelihood of micro-homology-mediated end joining (MMEJ) or fork-stalled template-switching pathways \citep{Sfeir2015}. In the context of PCR-induced chimeras, template switching during amplification often leaves short identical sequences at the junction of two concatenated fragments. Quantifying the longest exact suffix–prefix overlap at each candidate breakpoint thus provides a mechanistic signature of chimerism and complements both compositional (k-mer) and alignment (SA count) features.
+
+\section{Synthesis of Chimera Detection Approaches}
+To provide an integrated overview of the literature discussed in this chapter, Table~\ref{tab:study_summary} summarizes the major chimera detection studies, their methodological approaches, and their known limitations. This consolidated comparison brings together reference-based approaches, de novo strategies, alignment-driven tools, ensemble machine-learning systems, and general ML-based sequence-quality frameworks. Presenting these methods side-by-side clarifies their performance boundaries and highlights the unresolved challenges that persist in mitochondrial genome analysis and chimera detection.
+
+\begin{longtable}{|p{0.25\textwidth}|p{0.375\textwidth}|p{0.375\textwidth}|}
+\caption{Summary of Existing Methods and Research Gaps}\label{tab:study_summary} \\
+\hline
+\textbf{Method/Study} & \textbf{Scope/Approach} & \textbf{Limitations} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Method/Study} & \textbf{Scope/Approach} & \textbf{Limitations} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+Reference-based Chimera Detection &
+Compares query sequences against curated, non-chimeric reference databases; identifies mosaic sequences by evaluating similarity to known templates. &
+Depends heavily on completeness and quality of reference databases; often fails when novel taxa or missing parent sequences are present; reduced accuracy for low-divergence chimeras. \\
+\hline
+De novo Chimera Detection &
+Identifies chimeras using only internal dataset relationships; relies on abundance patterns and compositional similarity; reconstructs sequences as mosaics of high-abundance parents. &
+Assumes true sequences are more abundant—fails when amplification bias distorts abundance; struggles with evenly abundant parental sequences; can misclassify highly similar true variants. \\
+\hline
+UCHIME &
+Alignment-based chimera detection; segments query sequence, identifies parent candidates, performs 3-way alignment, and computes chimera scores; supports both reference-based and de novo modes. &
+Accuracy inflated in original benchmarks; suffers under incomplete databases; poor performance on low-divergence chimeras; sensitive to sequencing errors; misclassifies when parents are missing. \\
+\hline
+UCHIME2 &
+Improved uncertainty handling; classifies ambiguous sequences as unknown; offers multiple sensitivity/specificity modes; more robust with incomplete references; higher sensitivity (93--99\%). &
+Cannot achieve perfect accuracy due to ``perfect fake models''; genuine variants may be indistinguishable from artificial recombinants; theoretical detection limit remains. \\
+\hline
+CATCh &
+First ML ensemble tool for 16S chimera detection; integrates outputs of UCHIME, ChimeraSlayer, DECIPHER, Pintail, Perseus via SVM classifier; significantly improves sensitivity and specificity. &
+Depends on performance of underlying tools; ML model limited to features they output; ensemble can still misclassify in datasets with extreme novelty or low coverage. \\
+\hline
+ChimPipe &
+Pipeline for detecting fusion genes and transcript-derived chimeras in RNA-seq; uses discordant paired-end reads and split-alignments; predicts isoforms and breakpoint coordinates. &
+Designed for RNA-seq, not amplicons; needs high-quality genome and annotation; computationally heavier; limited to organisms with reference genomes. \\
+\hline
+Machine-Learning Sequence Quality \& Chimera Detection (general) &
+Uses k-mer profiles, GC content shifts, entropy, split-read statistics, mapping quality variation, and micro-homology signatures as predictive features; identifies subtle artifacts missed by heuristics. &
+Requires labeled training data; model performance depends on feature engineering; may capture dataset-specific biases; limited generalization if training data is narrow or unrepresentative. \\
+\hline
+\end{longtable}
+
+Across existing studies, no single approach reliably detects all forms of chimeric sequences, particularly those generated by PCR-induced template switching in mitochondrial genomes. Reference-based tools perform poorly when parental sequences are absent; de novo methods rely strongly on abundance assumptions; alignment-based systems show reduced sensitivity to low-divergence chimeras; and ensemble methods inherit the limitations of their component algorithms. RNA-seq–oriented pipelines likewise do not generalize well to organelle data. Although machine learning approaches offer promising feature-based detection, they are rarely applied to mitochondrial genomes and are not trained specifically on PCR-induced organelle chimeras. These limitations indicate a clear research gap: the need for a specialized, feature-driven classifier tailored to mitochondrial PCR-induced chimeras that integrates k-mer composition, split-alignment signals, and micro-homology features to achieve more accurate detection than current heuristic or alignment-based tools.
