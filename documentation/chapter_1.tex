@@ -26,15 +26,17 @@ To develop and evaluate a machine-learning-based pipeline (MitoChime) capable of
 Specifically, the researchers aim to:
 \begin{enumerate}
   \item Construct empirical as well as simulated \textit{Sardinella} Illumina paired-end datasets containing both clean and PCR-induced chimeric reads.
-  \item Extract alignment- and sequence-based features (e.g., k-mer composition, junction complexity, split-alignment counts) from both clean and chimeric reads.
-  \item Train, validate, and compare supervised machine-learning models (e.g., Random Forest, XGBoost) for classifying reads as clean or chimeric.
+  \item Extract alignment and sequence-based features such as k-mer composition, junction complexity, split-alignment counts from both clean and chimeric reads.
+  \item Train, validate, and compare supervised machine-learning models for classifying reads as clean or chimeric.
   \item Determine feature importance and identify the most informative indicators of PCR-induced chimerism.
   \item Integrate the optimized classifier into a modular and interpretable pipeline deployable on standard computing environments at PGC Visayas.
 \end{enumerate}
 
 \section{Scope and Limitations of the Research}\label{sec:scopelimitations}
 
-This study focuses on detecting PCR-induced chimeric reads in Illumina paired-end mitochondrial sequencing data from \textit{Sardinella} species. The work emphasizes \texttt{wgsim} simulations and selected empirical data obtained from open-access genomic repositories such as the National Center for Biotechnology Information (NCBI). The study excludes naturally occurring chimeras, nuclear mitochondrial pseudogenes (NUMTs), and large-scale structural rearrangements in nuclear genomes. Feature extraction prioritizes interpretable, shallow statistics and alignment metrics rather than deep-learning embeddings to ensure transparency and computational efficiency. Testing on long-read platforms (e.g., Nanopore, PacBio) and other taxa lies beyond the project’s scope. The resulting pipeline will serve as a foundation for future, broader chimera-detection frameworks applicable to diverse organellar genomes.
+This study focuses on detecting PCR-induced chimeric reads in Illumina paired-end mitochondrial sequencing data from the \textit{Sardinella lemuru} species. The decision to limit the taxonomic scope is motivated by three factors: (1) To provide a biologically coherent system by eliminating interspecific variation, such as differences in mitochondrial genome size, GC content, and repetitive regions. Restricting the analysis to \textit{S. lemuru} reduces biological noise and ensures that observed patterns reflect chimeric artifacts rather than taxonomic differences. (2) The selected species is directly relevant to ongoing research initiatives and sequencing efforts at the Philippine Genome Center Visayas, making it a strategically appropriate choice for developing and validating the analytical framework; and (3) \textit{Sardinella lemuru} possesses a moderately complex but well-characterized mitochondrial genome, with clear gene boundaries and sufficient publicly available data from repositories such as the National Center for Biotechnology Information (NCBI).
+
+The study emphasizes \texttt{wgsim}-based simulations and selected empirical mitochondrial datasets. It excludes naturally occurring chimeras, nuclear mitochondrial pseudogenes (NUMTs), and large-scale structural rearrangements in nuclear genomes. Feature extraction prioritizes interpretable, shallow statistics and alignment metrics rather than deep-learning embeddings to ensure transparency and computational efficiency. Testing on long-read platforms (e.g., Nanopore, PacBio) and other taxa lies beyond the project’s scope. The resulting pipeline will serve as a foundation for future, broader chimera-detection frameworks applicable to diverse organellar genomes.
 
 \section{Significance of the Research}\label{sec:significance}
 
