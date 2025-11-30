@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  29 NOV 2025 11:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  30 NOV 2025 10:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -840,7 +840,7 @@ Overfull \hbox (16.43361pt too wide) in paragraph at lines 82--118
 
 ] (./chapter_3.tex
 Chapter 3.
-<figures/research_activities.png, id=446, 338.26375pt x 453.695pt>
+<figures/research_activities.png, id=450, 338.26375pt x 453.695pt>
 File: figures/research_activities.png Graphic file (type png)
 <use figures/research_activities.png>
 Package pdftex.def Info: figures/research_activities.png  used on input line 11
@@ -907,10 +907,10 @@ usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></us
 r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
 /local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (43 pages, 188990 bytes).
+Output written on main.pdf (43 pages, 188803 bytes).
 PDF statistics:
- 612 PDF objects out of 1000 (max. 8388607)
- 545 compressed objects within 6 object streams
+ 616 PDF objects out of 1000 (max. 8388607)
+ 549 compressed objects within 6 object streams
  122 named destinations out of 1000 (max. 500000)
  238 words of extra memory for PDF output out of 10000 (max. 10000000)
 
