@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+A level-1 auxiliary file: title_page.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+A level-1 auxiliary file: abstract.aux
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: apacite.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: myreferences.bib
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+Warning--No journal in EdgarManual
+ptr=1, stack=
+
+---the literal stack isn't empty for entry EdgarManual
+while executing---line 5079 of file apacite.bst
+You've used 30 entries,
+            6951 wiz_defined-function locations,
+            1515 strings with 17971 characters,
+and the built_in function-call counts, 65218 in all, are:
+= -- 7657
+> -- 620
+< -- 3287
++ -- 3555
+- -- 60
+* -- 4529
+:= -- 12044
+add.period$ -- 116
+call.type$ -- 30
+change.case$ -- 530
+chr.to.int$ -- 0
+cite$ -- 61
+duplicate$ -- 2028
+empty$ -- 2499
+format.name$ -- 1155
+if$ -- 11900
+int.to.chr$ -- 0
+int.to.str$ -- 90
+missing$ -- 0
+newline$ -- 867
+num.names$ -- 240
+pop$ -- 871
+preamble$ -- 1
+purify$ -- 140
+quote$ -- 0
+skip$ -- 3949
+stack$ -- 0
+substring$ -- 3823
+swap$ -- 1156
+text.length$ -- 85
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 2400
+warning$ -- 1
+while$ -- 408
+width$ -- 0
+write$ -- 1115
+(There was 1 error message)

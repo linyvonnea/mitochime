@@ -16,7 +16,7 @@ As illustrated in \figref{fig:process_diagram}, this study carried out a sequenc
 
 \subsection{Data Collection}
 
-The mitochondrial genome reference sequence of \textit{S.~lemuru} was obtained from the NCBI database (accession number NC\_039553.1) in FASTA format. This sequence served as the basis for generating simulated chimeric reads for model development.
+The mitochondrial genome reference sequence of \textit{S.~lemuru} was obtained from the NCBI database (accession number NC\_039553.1) in FASTA format. This sequence served as the basis for generating simulated reads for model development.
 
 This step is scheduled to begin in the first week of November~2025 and is expected to be completed by the last week of November~2025, with a total duration of approximately one (1) month.
 
@@ -80,12 +80,20 @@ This whole process is scheduled to start in the first week of November~2025 and 
 
 \subsection{Bioinformatics Tools Pipeline}
 
-A bioinformatics pipeline will be developed and implemented to extract the necessary analytical features. This pipeline will serve as a reproducible and modular workflow that accepts FASTQ and BAM inputs, processes these through a series of analytical stages, and outputs tabular feature matrices (TSV) for downstream machine learning. All scripts will be version-controlled through GitHub, and computational environments will be standardized using Conda to ensure cross-platform reproducibility. To promote transparency and replicability, the exact software versions, parameters, and command-line arguments used in each stage will be documented. To further ensure correctness and adherence to best practices, bioinformatics experts at the Philippine Genome Center Visayas will be consulted to validate the pipeline design, feature extraction logic, and overall data integrity. This stage of the study is scheduled to begin in the last week of November~2025 and conclude by the last week of January~2026, with an estimated total duration of approximately two (2) months.
+A bioinformatics pipeline will be developed and implemented to extract the necessary analytical features. This pipeline will function as a reproducible and modular workflow that accepts FASTQ and BAM/SAM file inputs, processes them using tools such as \texttt{samtools} and \texttt{jellyfish} (Version 2.3.1), and produces tabular feature matrices (TSV) for downstream machine learning. To ensure correctness and adherence to best practices, bioinformatics experts at the PGC Visayas will be consulted to validate the pipeline design, feature extraction logic, and overall data integrity. This stage of the study is scheduled to begin in the first week of January~2026 and conclude by the last week of February~2026, with an estimated total duration of approximately two (2) months.
 
-The bioinformatics pipeline focuses on three principal features from the simulated and aligned sequencing data: (1) supplementary alignment count (SA count), (2) k-mer composition difference between read segments, and (3) micro-homology length at potential junctions. Each of these features captures a distinct biological or computational signature associated with PCR-induced chimeras.
+The bioinformatics pipeline focuses on three principal features from the simulated and aligned sequencing data: (1) supplementary alignment flag (SA count), (2) k-mer composition difference between read segments, and (3) microhomology length at potential junctions. Each of these features captures a distinct biological or computational signature associated with PCR-induced chimeras.
 
-\subsubsection{Alignment and Supplementary Alignment Count}
-This will be derived through sequence alignment using Minimap2, with subsequent processing performed using SAMtools and \texttt{pysam} in Python. Sequencing reads will be aligned to the \textit{Sardinella lemuru} mitochondrial reference genome using Minimap2 with the \texttt{-ax sr} preset (optimized for short reads). The output will be converted and sorted using SAMtools, producing an indexed BAM file which will be parsed using \texttt{pysam} to count the number of supplementary alignments (SA tags) per read. Each read’s mapping quality, number of split segments, and alignment characteristics will be recorded in a corresponding TSV file. The presence of multiple alignment loci within a single read, as reflected by a nonzero SA count, serves as direct computational evidence of chimerism. Reads that contain supplementary alignments or soft-clipped regions are strong candidates for chimeric artifacts arising from PCR template switching or improper assembly during sequencing.
+\subsubsection{Supplementary Alignment Flag}
+Supplementary alignment information will be assessed using the mapped and sorted BAM files (\texttt{clean.sorted.bam} and \texttt{chimeric.sorted.bam}) generated from the data preprocessing stage. Alignment summaries will be checked using \texttt{samtools flagstat} to obtain preliminary quality-control statistics, including counts of primary, secondary, and supplementary (SA) alignments.
+
+Both BAM files will be converted to SAM format for detailed inspection of reads in each file:
+\begin{verbatim}
+samtools view -h clean.sorted.bam -o clean.sorted.sam
+samtools view -h chimeric.sorted.bam -o chimeric.sorted.sam
+\end{verbatim}
+
+The SAM output will be checked for reads containing the \texttt{SA:Z} flag, as it denotes supplementary alignments. Reads exhibiting these or substantial soft-clipped regions will be considered strong candidates for chimeric artifacts. A custom Python script would be created to extract the alignment-derived features and relevant metadata including mapping quality, SAM flag information, CIGAR-based clipping, and alignment coordinates. These extracted attributes would then be organized and compiled into a TSV (\texttt{.tsv}) file.
 
 \subsubsection{K-mer Composition Difference}
 Chimeric reads often comprise fragments from distinct genomic regions, resulting in a compositional discontinuity between segments. Comparing k-mer frequency profiles between the left and right halves of a read allows detection of such abrupt compositional shifts, independent of alignment information. This will be obtained using Jellyfish, a fast k-mer counting software. For each read, the sequence will be divided into two segments, either at the midpoint or at empirically determined breakpoints inferred from supplementary alignment data, to generate left and right sequence segments. Jellyfish will then compute k-mer frequency profiles (with $k = 5$ or $6$) for each segment. The resulting k-mer frequency vectors will be normalized and compared using distance metrics such as cosine similarity or Jensen–Shannon divergence to quantify compositional disparity between the two halves of the same read. The resulting difference scores will be stored in a structured TSV file.
@@ -131,7 +139,7 @@ Table~\ref{tab:project_timeline} presents the project timeline in the form of a 
       \hline
       Data Collection and Simulation & $\bullet\bullet\bullet\bullet$ &  &  &  &  &  &  \\
       \hline
-      Bioinformatics Tools Pipeline & $\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ &  &  &  &  \\
+      Bioinformatics Tools Pipeline & & & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ &  &  &  \\
       \hline
       Machine Learning Development &  &  & $\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet$ &  \\
       \hline
