@@ -42,14 +42,12 @@ The command parameters are as follows:
 Chimeric sequences were then generated from the same NCBI reference using a separate Python script. Two non-adjacent segments were randomly selected such that their midpoint distances fell within specified minimum and maximum thresholds. The script attempts to retain microhomology, or short identical sequences at segment junctions, to mimic PCR-induced template switching. The resulting chimeras were written to \texttt{chimera\_reference.fasta}, with headers recording segment positions and microhomology length.  
 The \texttt{chimera\_reference.fasta} file was subsequently processed with \texttt{wgsim} to simulate 10{,}000 paired-end chimeric reads (\texttt{chimeric1.fastq} and \texttt{chimeric2.fastq}) using the same command format.
 
-A custom script will be created to merge all simulated reads into a single dataset and assign class labels: clean reads as ``0'' and chimeric reads as ``1''. The dataset will then be partitioned so that 80\% are used for training the machine learning model and 20\% for testing. The merged and labeled dataset will be saved in TSV (\texttt{.tsv}) format. This will result in a balanced dataset with an equal number of clean and chimeric reads, which is important to prevent model bias and allow the machine learning classifiers to correctly distinguish chimeric reads.
-
 Next, a \texttt{minimap2} index of the reference genome was created using:
 \begin{verbatim}
 minimap2 -d ref.mmi original_reference.fasta
 \end{verbatim}
 
-Minimap2 (Version 2.28) is a tool used to map reads to a reference genome. Mapping allows extraction of alignment features from each read, which will be used as input for the machine learning model. The simulated clean and chimeric reads were then mapped to the reference index (\texttt{ref.mmi}) as follows:
+Minimap2 (Version 2.28) is a tool used to map reads to a reference genome. The index \texttt{ref.mmi} of the original reference sequence is required by \texttt{minimap2} for efficient read mapping. Mapping allows extraction of alignment features from each read, which will be used as input for the machine learning model. The simulated clean and chimeric reads were then mapped to the reference index as follows:
 \begin{verbatim}
 minimap2 -ax sr -t 8 ref.mmi ref1.fastq ref2.fastq > clean.sam
 \end{verbatim}
@@ -74,7 +72,9 @@ samtools sort chimeric.bam -o chimeric.sorted.bam
 samtools index chimeric.sorted.bam
 \end{verbatim}
 
-BAM files are the compressed binary version of SAM files, enabling faster processing and reduced storage. Sorting will arrange reads by genomic coordinates, and indexing will allow detection of supplementary alignments (SA) as a feature for the machine learning model.
+BAM files are the compressed binary version of SAM files, which enables faster processing and reduced storage. Sorting will arrange reads by genomic coordinates, and indexing will allow detection of supplementary alignments (SA) as a feature for the machine learning model.
+
+The results of this process will be used for feature extraction. Once the primary features have been extracted from the reads, a custom script will be created to merge them into a single dataset and assign class labels: clean reads as ``0'' and chimeric reads as ``1''. The final dataset will contain 10{,}000 clean reads and 10{,}000 chimeric reads (a total of 20{,}000 entries) to ensure equal representation of both classes. The merged dataset will be saved in TSV (\texttt{.tsv}) format and subsequently split so that 80\% are used for training and 20\% for testing.
 
 This whole process is scheduled to start in the first week of November~2025 and is expected to be completed by the last week of November~2025, with a total duration of approximately one (1) month.
 
