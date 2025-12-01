@@ -9,6 +9,7 @@ dependencies:
   - ipykernel
   # ARM-safe bio tools
   - minimap2=2.28
+  - wgsim = 1.13
   - samtools=1.20
   - seqtk=1.4
   - fastp=0.23.4

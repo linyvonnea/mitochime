@@ -25,11 +25,11 @@
 \contentsline {section}{\numberline {3.1}Research Activities}{23}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Data Collection}{24}{subsection.3.1.1}%
 \contentsline {subsubsection}{Data Preprocessing}{25}{section*.6}%
-\contentsline {subsection}{\numberline {3.1.2}Bioinformatics Tools Pipeline}{26}{subsection.3.1.2}%
-\contentsline {subsubsection}{Alignment and Supplementary Alignment Count}{27}{section*.7}%
-\contentsline {subsubsection}{K-mer Composition Difference}{27}{section*.8}%
-\contentsline {subsubsection}{Micro-homology Length}{28}{section*.9}%
-\contentsline {subsection}{\numberline {3.1.3}Machine-Learning Model Development}{29}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Validation and Testing}{30}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}Documentation}{30}{subsection.3.1.5}%
-\contentsline {section}{\numberline {3.2}Calendar of Activities}{31}{section.3.2}%
+\contentsline {subsection}{\numberline {3.1.2}Bioinformatics Tools Pipeline}{28}{subsection.3.1.2}%
+\contentsline {subsubsection}{Alignment and Supplementary Alignment Count}{29}{section*.7}%
+\contentsline {subsubsection}{K-mer Composition Difference}{29}{section*.8}%
+\contentsline {subsubsection}{Micro-homology Length}{30}{section*.9}%
+\contentsline {subsection}{\numberline {3.1.3}Machine Learning Model Development}{31}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Validation and Testing}{32}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Documentation}{32}{subsection.3.1.5}%
+\contentsline {section}{\numberline {3.2}Calendar of Activities}{33}{section.3.2}%

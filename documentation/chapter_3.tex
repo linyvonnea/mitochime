@@ -2,9 +2,11 @@
 % \section*{Chapter 3}\label{sec:researchmethod}
 \chapter{Research Methodology}
 
+This chapter outlines the steps involved in completing the study, including data gathering, generating simulated mitochondrial Illumina reads, preprocessing and indexing the data, developing a bioinformatics pipeline to extract key features, applying machine learning algorithms for chimera detection, and validating and comparing model performance.
+
 \section{Research Activities}
 
-As illustrated in \figref{fig:process_diagram}, this study will carry out a sequence of computational procedures designed to detect PCR-induced chimeric reads in mitochondrial genomes. The process begins with the collection of mitochondrial reference sequences from the NCBI database, which will serve as the foundation for generating simulated chimeric reads. These datasets will then undergo bioinformatics pipeline development, which includes alignment, k-mer extraction, and homology-based filtering to prepare the data for model construction. The machine-learning model will subsequently be trained and tested using the processed datasets to assess its accuracy and reliability. Depending on the evaluation results, the model will either be refined and retrained to improve performance or, if the metrics meet the desired threshold, deployed for further validation and application.
+As illustrated in \figref{fig:process_diagram}, this study carried out a sequence of procedures to detect PCR-induced chimeric reads in mitochondrial genomes. The process began with collecting a mitochondrial reference sequence of \textit{Sardinella lemuru} from the National Center for Biotechnology Information (NCBI) database, which was used as a reference for generating simulated clean and chimeric reads. These reads were subsequently indexed and mapped. These datasets will go through a bioinformatics pipeline that includes k-mer extraction and homology-based filtering to prepare the data for model construction. The machine learning model will subsequently be trained and tested using the processed datasets to assess its precision and accuracy. The model will undergo refinement and retraining until it meets the required performance threshold, after which it will proceed to validation, testing, and deployment.
 
 \begin{figure}[H]
   \centering
@@ -14,15 +16,67 @@ As illustrated in \figref{fig:process_diagram}, this study will carry out a sequ
 
 \subsection{Data Collection}
 
-The mitochondrial genome reference sequences of \textit{Sardinella lemuru} will be collected from the National Center for Biotechnology Information (NCBI) database. The downloaded files will be in FASTA format to ensure compatibility with bioinformatics tools and subsequent analysis. The gathered sequences will serve as the basis for generating simulated chimeric reads to be used in model development.
+The mitochondrial genome reference sequence of \textit{S.~lemuru} was obtained from the NCBI database (accession number NC\_039553.1) in FASTA format. This sequence served as the basis for generating simulated chimeric reads for model development.
 
-The expected outcome of this process is a comprehensive dataset of \textit{Sardinella lemuru} mitochondrial reference sequences that will serve as the foundation for the succeeding stages of the study. This step is scheduled to start in the first week of November~2025 and is expected to be completed by the last week of November~2025, with a total duration of approximately one (1) month.
+This step is scheduled to begin in the first week of November~2025 and is expected to be completed by the last week of November~2025, with a total duration of approximately one (1) month.
 
 \subsubsection{Data Preprocessing}
 
-Sequencing data will be simulated using the reference sequences collected from NCBI. Using \texttt{wgsim}, a total of 10{,}000 paired-end reads (R1 and R2) will be generated from the reference genome and designated as clean reads. These reads will be saved in FASTQ (\texttt{.fastq}) format. From the same reference, a Bash script will be created to deliberately cut and reconnect portions of the sequence, introducing artificial junctions that mimic chimeric regions. The manipulated reference file, saved in FASTA (\texttt{.fasta}) format, will then be processed in \texttt{wgsim} to simulate an additional 10{,}000 paired-end chimeric reads, also stored in FASTQ (\texttt{.fastq}) format. The resulting read files will be aligned to the original reference genome using SAMtools, generating SAM (\texttt{.sam}) or BAM (\texttt{.bam}) alignment files. During this alignment process, clean reads will be labeled as ``0,'' while chimeric reads will be labeled as ``1'' in a corresponding CSV (\texttt{.tsv}) file. This results in a balanced dataset with an equal number of clean and chimeric reads. This is important to prevent model bias and ensure that the machine learning classifiers can learn to detect chimeras accurately.
+To reduce manual repetition, all steps in the simulation and preprocessing pipeline were executed using a custom script in Python (Version 3.11). The script runs each stage, including read simulation, reference indexing, mapping, and alignment processing, in a fixed sequence.
 
-The expected outcome of this process is a complete set of clean and chimeric paired-end reads prepared for subsequent analysis and model development. This step is scheduled to start in the first week of November~2025 and is expected to be completed by the last week of November~2025, with a total duration of approximately one (1) month.
+Sequencing data were simulated from the NCBI reference genome using \texttt{wgsim} (Version 1.13). First, 10{,}000 paired-end reads (R1 and R2) were generated from the original reference (\texttt{original\_reference.fasta}) and designated as clean reads using the command:
+
+\begin{verbatim}
+wgsim -1 150 -2 150 -r 0 -R 0 -X 0 -e 0.001 -N 10000 \
+       original_reference.fasta ref1.fastq ref2.fastq
+\end{verbatim}
+
+The command parameters are as follows:
+\begin{itemize}
+    \item \texttt{-1} and \texttt{-2}: read lengths of 150~base pairs for each paired-end read.
+    \item \texttt{-r}, \texttt{-R}, \texttt{-X}: mutation rate, fraction of indels, and indel extension probability, all set to a default value of 0.
+    \item \texttt{-e}: base error rate, set to 0.001 to simulate realistic sequencing errors.
+    \item \texttt{-N}: number of read pairs, set to 10{,}000.
+\end{itemize}
+
+Chimeric sequences were then generated from the same NCBI reference using a separate Python script. Two non-adjacent segments were randomly selected such that their midpoint distances fell within specified minimum and maximum thresholds. The script attempts to retain microhomology, or short identical sequences at segment junctions, to mimic PCR-induced template switching. The resulting chimeras were written to \texttt{chimera\_reference.fasta}, with headers recording segment positions and microhomology length.  
+The \texttt{chimera\_reference.fasta} file was subsequently processed with \texttt{wgsim} to simulate 10{,}000 paired-end chimeric reads (\texttt{chimeric1.fastq} and \texttt{chimeric2.fastq}) using the same command format.
+
+A custom script will be created to merge all simulated reads into a single dataset and assign class labels: clean reads as ``0'' and chimeric reads as ``1''. The dataset will then be partitioned so that 80\% are used for training the machine learning model and 20\% for testing. The merged and labeled dataset will be saved in TSV (\texttt{.tsv}) format. This will result in a balanced dataset with an equal number of clean and chimeric reads, which is important to prevent model bias and allow the machine learning classifiers to correctly distinguish chimeric reads.
+
+Next, a \texttt{minimap2} index of the reference genome was created using:
+\begin{verbatim}
+minimap2 -d ref.mmi original_reference.fasta
+\end{verbatim}
+
+Minimap2 (Version 2.28) is a tool used to map reads to a reference genome. Mapping allows extraction of alignment features from each read, which will be used as input for the machine learning model. The simulated clean and chimeric reads were then mapped to the reference index (\texttt{ref.mmi}) as follows:
+\begin{verbatim}
+minimap2 -ax sr -t 8 ref.mmi ref1.fastq ref2.fastq > clean.sam
+\end{verbatim}
+
+\begin{verbatim}
+minimap2 -ax sr -t 8 ref.mmi \
+chimeric1.fastq chimeric2.fastq > chimeric.sam
+\end{verbatim}
+
+Here, \texttt{-ax sr} specifies short-read alignment mode, and \texttt{-t 8} uses 8 CPU threads. The resulting clean and chimeric SAM files contain the alignment positions of each read relative to the original reference genome.
+
+The SAM files were then converted to BAM format, sorted, and indexed using \texttt{samtools} (Version 1.20):
+
+\begin{verbatim}
+samtools view -bS clean.sam -o clean.bam
+samtools view -bS chimeric.sam -o chimeric.bam
+
+samtools sort clean.bam -o clean.sorted.bam
+samtools index clean.sorted.bam
+
+samtools sort chimeric.bam -o chimeric.sorted.bam
+samtools index chimeric.sorted.bam
+\end{verbatim}
+
+BAM files are the compressed binary version of SAM files, enabling faster processing and reduced storage. Sorting will arrange reads by genomic coordinates, and indexing will allow detection of supplementary alignments (SA) as a feature for the machine learning model.
+
+This whole process is scheduled to start in the first week of November~2025 and is expected to be completed by the last week of November~2025, with a total duration of approximately one (1) month.
 
 \subsection{Bioinformatics Tools Pipeline}
 
@@ -41,13 +95,13 @@ The micro-homology length will be computed using a custom Python script that det
 
 After extracting the three primary features, all resulting TSV files will be joined using the read identifier as a common key to generate a unified feature matrix. Additional read-level metadata such as read length, mean base quality, and number of clipped bases will also be included to provide contextual information. This consolidated dataset will serve as the input for subsequent machine-learning model development and evaluation.
 
-\subsection{Machine-Learning Model Development}
+\subsection{Machine Learning Model Development}
 
 This study will explore multiple machine-learning approaches to detect PCR-induced chimeras from mitochondrial Illumina reads: Support Vector Machines (SVM) to separate reads with complex patterns, decision trees to capture hierarchical interactions among SA count, k-mer composition, and micro-homology length, logistic regression as a linear baseline, Random Forest (RF) to improve stability and reduce variance, and gradient boosting (e.g., XGBoost) to model non-linear relationships among the extracted features. Using these approaches enables a balanced assessment of predictive performance and interpretability.
 
 The dataset will be divided into training (80\%) and testing (20\%) subsets. The training data will be used for model fitting and hyperparameter optimization through five-fold cross-validation, in which the data are partitioned into five folds; four folds are used for training and one for validation in each iteration. Performance metrics will be averaged across folds, and the optimal parameters will be selected based on mean cross-validation accuracy. The final models will then be evaluated on the held-out test set to obtain unbiased performance estimates.
 
-Model development and evaluation will be implemented in Python (version~3.11) using the \texttt{scikit-learn} and \texttt{xgboost} libraries. Standard metrics including accuracy, precision, recall, F1-score, and area under the ROC curve (AUC) will be computed to quantify predictive performance. Feature-importance analyses will be performed to identify the most discriminative variables contributing to chimera detection.
+Model development and evaluation will be implemented in Python (v3.11) using the \texttt{scikit-learn} and \texttt{xgboost} libraries. Standard metrics including accuracy, precision, recall, F1-score, and area under the ROC curve (AUC) will be computed to quantify predictive performance. 
 
 \subsection{Validation and Testing}
 
@@ -57,13 +111,11 @@ Comparative evaluation across all candidate algorithms, including SVM, decision 
 
 \subsection{Documentation}
 
-Comprehensive documentation will be maintained throughout the study to ensure transparency, reproducibility, and scientific integrity. All stages of the research—including data acquisition, preprocessing, feature extraction, model training, and validation—will be systematically recorded. For each analytical step, the corresponding parameters, software versions, and command-line scripts will be documented to enable exact replication of results.
+Comprehensive documentation will be maintained throughout the study to ensure transparency and reproducibility. All stages of the research, including data gathering, preprocessing, feature extraction, model training, and validation, will be systematically recorded in a \texttt{.README} file in the GitHub repository. For each analytical step, the corresponding parameters, software versions, and command line scripts will be documented to enable exact replication of results.
 
-Version control and collaborative management will be implemented through GitHub, which will serve as the central repository for all project files, including Python scripts, configuration settings, and Jupyter notebooks. The repository structure will follow standard research data management practices, with clear directories for datasets, processed outputs, and analysis scripts. Changes will be tracked through commit histories to ensure traceability and accountability.
+The repository structure will follow standard research data management practices, with clear directories for datasets and scripts. Computational environments will be standardized using Conda, with an environment file (\texttt{environment.arm.yml}) specifying dependencies and package versions to maintain consistency across systems.
 
-Computational environments will be standardized using Conda, with environment files specifying dependencies and package versions to maintain consistency across systems. Experimental workflows and exploratory analyses will be conducted in Jupyter Notebooks, which facilitate real-time visualization, annotation, and incremental testing of results.
-
-For the preparation of the final manuscript and supplementary materials, Overleaf (LaTeX) will be utilized to produce publication-quality formatting, consistent referencing, and reproducible document compilation. The documentation process will also include a project timeline outlining major milestones such as data collection, simulation, feature extraction, model evaluation, and reporting to ensure systematic progress and adherence to the research schedule.
+For manuscript preparation and supplementary materials, Overleaf (\LaTeX) will be used to produce publication-quality formatting and consistent referencing.
 
 \section{Calendar of Activities}
 
