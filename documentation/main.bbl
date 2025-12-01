@@ -96,40 +96,6 @@ Bentley, D\BPBI R.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Bi%
-\ \protect \BOthers {.}}{%
-Bi%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2024}}%
-}]{%
-Bi2024}
-\APACinsertmetastar {%
-Bi2024}%
-\begin{APACrefauthors}%
-Bi, C.%
-, Shen, F.%
-, Han, F.%
-, Qu, Y.%
-, Hou, J.%
-, Xu, K.%
-\BDBL {}Yin, T.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2024}{01}{}.
-\newblock
-{\BBOQ}\APACrefatitle {PMAT: an efficient plant mitogenome assembly toolkit
-  using low-coverage HiFi sequencing data} {Pmat: an efficient plant mitogenome
-  assembly toolkit using low-coverage hifi sequencing data}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Horticulture Research}{11}{3}{uhae023}.
-\newblock
-\begin{APACrefURL} \url{https://doi.org/10.1093/hr/uhae023} \end{APACrefURL}
-\newblock
-\begin{APACrefDOI} \doi{10.1093/hr/uhae023} \end{APACrefDOI}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
 Boore%
 }{%
 Boore%
@@ -293,38 +259,6 @@ Edgar, R\BPBI C.%
 \APACjournalVolNumPages{Bioinformatics}{27}{16}{2194--2200}.
 \newblock
 \begin{APACrefDOI} \doi{10.1093/bioinformatics/btr381} \end{APACrefDOI}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Frenkel-Morgenstern%
-\ \protect \BOthers {.}}{%
-Frenkel-Morgenstern%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2012}}%
-}]{%
-Frenkel2012}
-\APACinsertmetastar {%
-Frenkel2012}%
-\begin{APACrefauthors}%
-Frenkel-Morgenstern, M.%
-, Lacroix, V.%
-, Ezkurdia, I.%
-, Levin, Y.%
-, Gabashvili, A.%
-, Prilusky, J.%
-\BDBL {}Valencia, A.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2012}{05}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Chimeras taking shape: Potential functions of proteins
-  encoded by chimeric RNA transcripts} {Chimeras taking shape: Potential
-  functions of proteins encoded by chimeric rna transcripts}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Genome research}{22}{}{1231-42}.
-\newblock
-\begin{APACrefDOI} \doi{10.1101/gr.130062.111} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -936,30 +870,39 @@ Sfeir, A.%
 
 \bibitem [\protect \citeauthoryear {%
 Vervier%
+, Mahé%
+, Tournoud%
+, Veyrieras%
+\BCBL {}\ \BBA {} Vert%
 }{%
 Vervier%
-}{%
+\ \protect \BOthers {.}}{%
 {\protect \APACyear {2015}}%
 }]{%
 Vervier2015}
 \APACinsertmetastar {%
 Vervier2015}%
 \begin{APACrefauthors}%
-Vervier, M\BPBI P\BPBI T\BPBI M\BPBI V\BPBI J\BPBI B\BPBI \BPBI V\BPBI J\BPBI
-  P., K.%
+Vervier, K.%
+, Mahé, P.%
+, Tournoud, M.%
+, Veyrieras, J\BHBI B.%
+\BCBL {}\ \BBA {} Vert, J\BHBI P.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2015}{}{}.
+\APACrefYearMonthDay{2015}{11}{}.
 \newblock
 {\BBOQ}\APACrefatitle {Large-scale machine learning for metagenomics sequence
   classification} {Large-scale machine learning for metagenomics sequence
   classification}.{\BBCQ}
 \newblock
-\APACjournalVolNumPages{Bioinformatics}{32}{}{1023 - 1032}.
+\APACjournalVolNumPages{Bioinformatics}{32}{7}{1023-1032}.
 \newblock
-\begin{APACrefURL} \url{https://api.semanticscholar.org/CorpusID:9863600}
+\begin{APACrefURL} \url{https://doi.org/10.1093/bioinformatics/btv683}
   \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1093/bioinformatics/btv683} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
