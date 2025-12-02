@@ -179,7 +179,7 @@ def main():
             f"--min-distance 500 "
             f"--max-distance 8000 "
             f"--min-mh 3 "
-            f"--max-mh 20"
+            f"--max-mh 8"
         )
         run_cmd(gen_cmd, env_name=None)
 
