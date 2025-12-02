@@ -2,15 +2,13 @@
 """
 extract_features.py
 
-Extract per-read features from a BAM file for MitoChime.
+Extract per-read features from a BAM file:
 
-For each PRIMARY mapped read, this script computes:
-
-  - Basic read/alignment info:
-      read_id, label, read_length, mean_base_quality,
+  - read-level metadata:
+      read_length, mean_base_quality
       ref_name, ref_start_1based, strand, mapq, cigar
 
-  - SA (supplementary alignment) features:
+  - SA-based split-alignment structure:
       has_sa, sa_count, num_segments,
       sa_diff_contig,
       sa_min_delta_pos, sa_max_delta_pos, sa_mean_delta_pos,
@@ -18,46 +16,34 @@ For each PRIMARY mapped read, this script computes:
       sa_max_mapq, sa_mean_mapq,
       sa_min_nm, sa_mean_nm
 
-  - Clipping features:
+  - clipping:
       softclip_left, softclip_right, total_clipped_bases
 
-  - K-mer composition discontinuity (mid-read breakpoint):
-      breakpoint_read_pos,
+  - breakpoint (read coordinate):
+      breakpoint_read_pos  (now inferred from clipping / alignment)
+
+  - k-mer composition jump (left vs right halves):
       kmer_cosine_diff, kmer_js_divergence
 
-  - Micro-homology (±window around breakpoint):
+  - micro-homology around inferred breakpoint:
       microhomology_length, microhomology_gc
 
-The output is a TSV with one row per read.
+Usage
+-----
 
-USAGE EXAMPLES
---------------
+Example: clean vs chimeric BAMs
 
-  # Clean reads (label = 0)
-  python extract_features.py \
-      --bam clean.sorted.bam \
-      --out clean_features.tsv \
-      --label 0
+    python scripts/extract_features.py \
+        --bam data/aligned/clean.sorted.bam \
+        --out data/features/clean_features.tsv \
+        --label 0
 
-  # Chimeric reads (label = 1)
-  python extract_features.py \
-      --bam chimeric.sorted.bam \
-      --out chim_features.tsv \
-      --label 1
+    python scripts/extract_features.py \
+        --bam data/aligned/chimeric.sorted.bam \
+        --out data/features/chim_features.tsv \
+        --label 1
 
-  # Custom k-mer size and micro-homology window
-  python extract_features.py \
-      --bam clean.sorted.bam \
-      --out clean_features_k6.tsv \
-      --label 0 \
-      --k 6 \
-      --micro-window 40
-
-Requirements:
-  - Python >= 3.9
-  - pysam
-  - numpy
-
+Requirements: pysam, numpy
 """
 
 import argparse
@@ -66,9 +52,11 @@ import csv
 import numpy as np
 import pysam
 
+
 # ============================
 # K-MER UTILITIES
 # ============================
+
 
 def kmer_profile(seq: str, k: int = 5) -> dict:
     """
@@ -77,11 +65,11 @@ def kmer_profile(seq: str, k: int = 5) -> dict:
     """
     seq = seq.upper()
     n = len(seq)
-    counts = {}
+    counts: dict[str, int] = {}
     if n < k:
         return counts
     for i in range(n - k + 1):
-        kmer = seq[i:i+k]
+        kmer = seq[i : i + k]
         if "N" in kmer:
             continue
         counts[kmer] = counts.get(kmer, 0) + 1
@@ -101,7 +89,7 @@ def normalize_counts(counts: dict) -> dict:
 def js_divergence(p: dict, q: dict) -> float:
     """
     Jensen–Shannon divergence between two discrete distributions
-    given as dicts of probabilities. Returns value in [0, 1]-ish.
+    given as dicts of probabilities. Returns value in [0, ~1].
     """
     keys = set(p.keys()) | set(q.keys())
     if not keys:
@@ -142,14 +130,14 @@ def cosine_difference(p: dict, q: dict) -> float:
         return 0.0
 
     cos_sim = dot / (normP * normQ)
-    # Clamp numerical noise slightly outside [-1,1]
-    cos_sim = max(min(cos_sim, 1.0), -1.0)
+    cos_sim = max(min(cos_sim, 1.0), -1.0)  # clamp
     return 1.0 - cos_sim
 
 
 # ============================
 # MICRO-HOMOLOGY
 # ============================
+
 
 def longest_suffix_prefix_overlap(left: str, right: str, max_len: int = 30) -> int:
     """
@@ -177,6 +165,7 @@ def gc_content(seq: str) -> float:
 # ============================
 # ALIGNMENT / CIGAR FEATURES
 # ============================
+
 
 def soft_clips(read: pysam.AlignedSegment) -> tuple[int, int]:
     """
@@ -206,11 +195,50 @@ def total_clipped(read: pysam.AlignedSegment) -> int:
     return total
 
 
+def infer_breakpoint(read: pysam.AlignedSegment, read_len: int) -> int:
+    """
+    Infer a likely breakpoint position on the read (0-based index).
+
+    Priority:
+      1) If there is soft clipping, assume the junction is at the edge
+         of the aligned block (left or right, whichever has larger clip).
+      2) If no clipping but SA tag exists, use the midpoint of the
+         aligned portion (query_alignment_start/end).
+      3) Fallback: midpoint of the read.
+
+    This is more biologically reasonable than always using the strict
+    read midpoint, because many chimeric events manifest as truncated
+    alignments with clipped ends.
+    """
+    left_clip, right_clip = soft_clips(read)
+
+    # Case 1: soft clipping present -> junction at edge of aligned region
+    if left_clip > 0 or right_clip > 0:
+        # If both sides clipped, use the side with larger clip
+        if left_clip >= right_clip:
+            # Alignment starts at read position left_clip
+            return left_clip
+        else:
+            # Alignment ends at read position read_len - right_clip
+            return max(0, read_len - right_clip)
+
+    # Case 2: no clipping, but split alignment hinted by SA tag
+    if read.has_tag("SA"):
+        q_start = read.query_alignment_start
+        q_end = read.query_alignment_end
+        if q_start is not None and q_end is not None and q_end > q_start:
+            return (q_start + q_end) // 2
+
+    # Case 3: fallback to simple midpoint
+    return read_len // 2
+
+
 # ============================
 # SA TAG FEATURES
 # ============================
 
-def parse_sa_tag(read: pysam.AlignedSegment):
+
+def parse_sa_tag(read: pysam.AlignedSegment) -> list[dict]:
     """
     Parse SA:Z tag into list of dicts:
     [{rname, pos, strand, cigar, mapq, nm}, ...]
@@ -221,43 +249,41 @@ def parse_sa_tag(read: pysam.AlignedSegment):
     sa_raw = read.get_tag("SA")
     entries = [e for e in sa_raw.split(";") if e]
 
-    segments = []
+    segments: list[dict] = []
     for e in entries:
         rname, pos, strand, cigar, mapq, nm = e.split(",")
-        segments.append({
-            "rname": rname,
-            "pos": int(pos),   # 1-based
-            "strand": strand,  # "+" or "-"
-            "cigar": cigar,
-            "mapq": int(mapq),
-            "nm": int(nm),
-        })
+        segments.append(
+            {
+                "rname": rname,
+                "pos": int(pos),  # 1-based pos
+                "strand": strand,
+                "cigar": cigar,
+                "mapq": int(mapq),
+                "nm": int(nm),
+            }
+        )
     return segments
 
 
-def sa_feature_stats(primary_rname: str,
-                     primary_pos: int,
-                     primary_strand: str,
-                     sa_segments: list[dict]):
+def sa_feature_stats(
+    primary_rname: str,
+    primary_pos: int,
+    primary_strand: str,
+    sa_segments: list[dict],
+) -> dict:
     """
-    Compute SA-based numeric features:
-    - has_sa, sa_count, num_segments
-    - sa_diff_contig
-    - sa_min_delta_pos, sa_max_delta_pos, sa_mean_delta_pos
-    - sa_same_strand_count, sa_opp_strand_count
-    - sa_max_mapq, sa_mean_mapq, sa_min_nm, sa_mean_nm
+    Compute SA-based numeric features.
     """
     has_sa = 1 if sa_segments else 0
     sa_count = len(sa_segments)
     num_segments = 1 + sa_count
 
-    # Distances on same contig
-    deltas_same = []
+    deltas_same: list[int] = []
     diff_contig = 0
     same_strand = 0
     opp_strand = 0
-    sa_mapqs = []
-    sa_nms = []
+    sa_mapqs: list[int] = []
+    sa_nms: list[int] = []
 
     for seg in sa_segments:
         sa_mapqs.append(seg["mapq"])
@@ -318,11 +344,14 @@ def sa_feature_stats(primary_rname: str,
 # MAIN FEATURE EXTRACTION
 # ============================
 
-def extract_features(bam_path: str,
-                     out_tsv: str,
-                     label: int,
-                     k: int = 5,
-                     micro_window: int = 30):
+
+def extract_features(
+    bam_path: str,
+    out_tsv: str,
+    label: int,
+    k: int = 5,
+    micro_window: int = 30,
+) -> None:
     """
     Main feature extraction loop.
     One row per primary mapped read.
@@ -333,43 +362,45 @@ def extract_features(bam_path: str,
         writer = csv.writer(f_out, delimiter="\t")
 
         # Header (sequence NOT included as feature, only read_id)
-        writer.writerow([
-            "read_id",
-            "label",
-            "read_length",
-            "mean_base_quality",
-            "ref_name",
-            "ref_start_1based",
-            "strand",
-            "mapq",
-            "cigar",
-            # SA features
-            "has_sa",
-            "sa_count",
-            "num_segments",
-            "sa_diff_contig",
-            "sa_min_delta_pos",
-            "sa_max_delta_pos",
-            "sa_mean_delta_pos",
-            "sa_same_strand_count",
-            "sa_opp_strand_count",
-            "sa_max_mapq",
-            "sa_mean_mapq",
-            "sa_min_nm",
-            "sa_mean_nm",
-            # clipping
-            "softclip_left",
-            "softclip_right",
-            "total_clipped_bases",
-            # breakpoint position (in read coordinates)
-            "breakpoint_read_pos",
-            # k-mer features
-            "kmer_cosine_diff",
-            "kmer_js_divergence",
-            # micro-homology
-            "microhomology_length",
-            "microhomology_gc"
-        ])
+        writer.writerow(
+            [
+                "read_id",
+                "label",
+                "read_length",
+                "mean_base_quality",
+                "ref_name",
+                "ref_start_1based",
+                "strand",
+                "mapq",
+                "cigar",
+                # SA features
+                "has_sa",
+                "sa_count",
+                "num_segments",
+                "sa_diff_contig",
+                "sa_min_delta_pos",
+                "sa_max_delta_pos",
+                "sa_mean_delta_pos",
+                "sa_same_strand_count",
+                "sa_opp_strand_count",
+                "sa_max_mapq",
+                "sa_mean_mapq",
+                "sa_min_nm",
+                "sa_mean_nm",
+                # clipping
+                "softclip_left",
+                "softclip_right",
+                "total_clipped_bases",
+                # breakpoint
+                "breakpoint_read_pos",
+                # k-mer features
+                "kmer_cosine_diff",
+                "kmer_js_divergence",
+                # micro-homology
+                "microhomology_length",
+                "microhomology_gc",
+            ]
+        )
 
         for read in bam.fetch(until_eof=True):
             # Only use primary mapped reads
@@ -403,15 +434,21 @@ def extract_features(bam_path: str,
                 primary_rname=ref_name,
                 primary_pos=ref_start_1based,
                 primary_strand=strand,
-                sa_segments=sa_segments
+                sa_segments=sa_segments,
             )
 
             # Clipping
             soft_left, soft_right = soft_clips(read)
             clipped_total = total_clipped(read)
 
-            # Breakpoint (for now: midpoint of read)
-            breakpoint = read_len // 2
+            # Breakpoint: inferred from clipping / alignment
+            breakpoint = infer_breakpoint(read, read_len)
+
+            # Guard: ensure in range
+            if breakpoint < 0:
+                breakpoint = 0
+            elif breakpoint > read_len:
+                breakpoint = read_len
 
             # K-mer composition difference between left/right halves
             left_seq = seq[:breakpoint]
@@ -425,7 +462,7 @@ def extract_features(bam_path: str,
             kmer_cos_diff = cosine_difference(left_probs, right_probs)
             kmer_js = js_divergence(left_probs, right_probs)
 
-            # Micro-homology in ±micro_window around breakpoint
+            # Micro-homology in ±micro_window around inferred breakpoint
             left_window_start = max(0, breakpoint - micro_window)
             left_window = seq[left_window_start:breakpoint]
 
@@ -436,63 +473,74 @@ def extract_features(bam_path: str,
                 left_window, right_window, max_len=micro_window
             )
 
-            # GC of the micro-homology sequence itself
             if mh_len > 0:
                 mh_seq = left_window[-mh_len:]
                 mh_gc = gc_content(mh_seq)
             else:
                 mh_gc = 0.0
 
-            writer.writerow([
-                read.query_name,          # read_id (the "read name" you're keeping)
-                label,
-                read_len,
-                f"{mean_q:.3f}",
-                ref_name,
-                ref_start_1based,
-                strand,
-                mapq,
-                cigar,
-                sa_feats["has_sa"],
-                sa_feats["sa_count"],
-                sa_feats["num_segments"],
-                sa_feats["sa_diff_contig"],
-                sa_feats["sa_min_delta_pos"],
-                sa_feats["sa_max_delta_pos"],
-                f"{sa_feats['sa_mean_delta_pos']:.3f}",
-                sa_feats["sa_same_strand_count"],
-                sa_feats["sa_opp_strand_count"],
-                sa_feats["sa_max_mapq"],
-                f"{sa_feats['sa_mean_mapq']:.3f}",
-                sa_feats["sa_min_nm"],
-                f"{sa_feats['sa_mean_nm']:.3f}",
-                soft_left,
-                soft_right,
-                clipped_total,
-                breakpoint,
-                f"{kmer_cos_diff:.6f}",
-                f"{kmer_js:.6f}",
-                mh_len,
-                f"{mh_gc:.3f}",
-            ])
+            writer.writerow(
+                [
+                    read.query_name,
+                    label,
+                    read_len,
+                    f"{mean_q:.3f}",
+                    ref_name,
+                    ref_start_1based,
+                    strand,
+                    mapq,
+                    cigar,
+                    sa_feats["has_sa"],
+                    sa_feats["sa_count"],
+                    sa_feats["num_segments"],
+                    sa_feats["sa_diff_contig"],
+                    sa_feats["sa_min_delta_pos"],
+                    sa_feats["sa_max_delta_pos"],
+                    f"{sa_feats['sa_mean_delta_pos']:.3f}",
+                    sa_feats["sa_same_strand_count"],
+                    sa_feats["sa_opp_strand_count"],
+                    sa_feats["sa_max_mapq"],
+                    f"{sa_feats['sa_mean_mapq']:.3f}",
+                    sa_feats["sa_min_nm"],
+                    f"{sa_feats['sa_mean_nm']:.3f}",
+                    soft_left,
+                    soft_right,
+                    clipped_total,
+                    breakpoint,
+                    f"{kmer_cos_diff:.6f}",
+                    f"{kmer_js:.6f}",
+                    mh_len,
+                    f"{mh_gc:.3f}",
+                ]
+            )
 
     bam.close()
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Extract alignment, SA, k-mer, and micro-homology features from a BAM file."
     )
-    parser.add_argument("--bam", required=True,
-                        help="Input BAM file (sorted, indexed).")
-    parser.add_argument("--out", required=True,
-                        help="Output TSV file.")
-    parser.add_argument("--label", type=int, required=True,
-                        help="Class label for these reads (e.g., 0 = clean, 1 = chimeric).")
-    parser.add_argument("--k", type=int, default=5,
-                        help="k-mer size for composition features (default: 5).")
-    parser.add_argument("--micro-window", type=int, default=30,
-                        help="Window size around breakpoint for micro-homology (default: 30).")
+    parser.add_argument("--bam", required=True, help="Input BAM file (sorted, indexed).")
+    parser.add_argument("--out", required=True, help="Output TSV file.")
+    parser.add_argument(
+        "--label",
+        type=int,
+        required=True,
+        help="Class label for these reads (e.g., 0 = clean, 1 = chimeric).",
+    )
+    parser.add_argument(
+        "--k",
+        type=int,
+        default=5,
+        help="k-mer size for composition features (default: 5).",
+    )
+    parser.add_argument(
+        "--micro-window",
+        type=int,
+        default=30,
+        help="Window size around breakpoint for micro-homology (default: 30).",
+    )
 
     args = parser.parse_args()
 
@@ -501,9 +549,9 @@ def main():
         out_tsv=args.out,
         label=args.label,
         k=args.k,
-        micro_window=args.micro_window
+        micro_window=args.micro_window,
     )
 
 
-if __name__ == "__main__":
+if __name__ == "_main_":
     main()
