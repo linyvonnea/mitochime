@@ -179,7 +179,7 @@ def main():
             f"--min-distance 500 "
             f"--max-distance 8000 "
             f"--min-mh 3 "
-            f"--max-mh 20"
+            f"--max-mh 8"
         )
         run_cmd(gen_cmd, env_name=None)
 
@@ -212,9 +212,9 @@ def main():
     # Generate WGSIM reads
     # --------------------------
     print("\n=== Generating reads with wgsim ===")
-    # Keep original parameters: no sequencing errors (-e 0)
+
     run_cmd(
-        f"wgsim -1 150 -2 150 -r 0 -R 0 -X 0 -e 0 -N {NUM_READS} "
+        f"wgsim -1 150 -2 150 -r 0 -R 0 -X 0 -e 0.05 -N {NUM_READS} "
         f"{original_ref} ref1.fastq ref2.fastq",
         env_name="wgsim",
     )
