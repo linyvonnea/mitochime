@@ -84,7 +84,7 @@ NUM_READS = 10000  # Number of reads to simulate (read pairs)
 
 ## ATTENTION !!!! EME
 ## INCLUDE the word "original" in original reference (from ncbi) name file
-## INCLUDE the word "chimera" in chimera reference (generated or manual) name file
+## INCLUDE the word "chimera" in chimera reference (generated or manual) name file :)
 
 
 def find_reference(ref_dir, keyword):
@@ -264,7 +264,7 @@ def main():
     run_cmd(
         "samtools view chimeric.sorted.bam -o chimeric.sorted.sam",
         env_name="samtools",
-    )
+    ) 
 
     print("\nPipeline complete! All FASTQ, SAM, and BAM files are ready.\n")
 
