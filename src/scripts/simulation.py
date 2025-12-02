@@ -80,7 +80,7 @@ import sys
 import subprocess
 from pathlib import Path
 
-NUM_READS = 50  # Number of reads to simulate (read pairs)
+NUM_READS = 10000  # Number of reads to simulate (read pairs)
 
 ## ATTENTION !!!! EME
 ## INCLUDE the word "original" in original reference (from ncbi) name file
