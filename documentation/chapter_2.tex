@@ -18,7 +18,7 @@ In the context of amplicon-based sequencing, the presence of chimeras can inflat
 
 \clearpage
 
-\section{Existing Traditional Approaches for Chimera Detection}
+\section{Existing Traditional Approaches for Chimera Detection} \label{sec:abundance_skew}
 Several computational tools have been developed to identify chimeric sequences in NGS datasets. These tools generally fall into two categories: reference-based and de novo approaches.
 Reference-based chimera detection, also known as database-dependent detection, is one of the earliest and most widely used computational strategies for identifying chimeric sequences in amplicon-based community studies. These methods rely on the comparison of each query sequence against a curated, high-quality database of known, non-chimeric reference sequences \citep{Edgar2011}.
 
@@ -27,22 +27,16 @@ On the other hand, the de novo chimera detection, also referred to as reference-
 In practice, many modern bioinformatics pipelines combine both paradigms sequentially: an initial de novo step identifies dataset-specific chimeras, followed by a reference-based pass that removes remaining artifacts relative to established databases \citep{Edgar2016}. These two methods of detection form the foundation of tools such as UCHIME and later UCHIME2.
 
 \subsection{UCHIME}
-Developed by Edgar et al. \citep{Edgar2011}, UCHIME is one of the most widely used computational tools for detecting chimeric sequences in amplicon sequencing data. The UCHIME algorithm detects chimeras by evaluating how well a query sequence (Q) can be explained as a mosaic of two parent sequences (A and B) from a reference database. The query sequence is first divided into four non-overlapping segments or chunks. Each chunk is independently searched against a reference database that is assumed to be free of chimeras. The best matches to each segment are collected, and from these results, two candidate parent sequences are identified, typically the two sequences that best explain all chunks of the query. Then a three-way alignment among the query (Q) and the two parent candidates (A and B) is done. From this alignment, UCHIME attempts to find a chimeric model (M) which is a hypothetical recombinant sequence formed by concatenating fragments from A and B that best match the observed Q
+UCHIME is one of the most widely used computational tools for detecting chimeric sequences in amplicon sequencing data, as it serves as a critical quality control step to prevent the misinterpretation of PCR artifacts as novel biological diversity. The algorithm operates by searching for a model ($M$) where a query ($Q$) sequence can be perfectly explained as a combination of two parent sequences, denoted as $A$ and $B$ \citep{Edgar2011}.
 
-\subsubsection{Chimeric Alignment and Scoring}  
-To decide whether a query is chimeric, UCHIME computes several alignment-based metrics between Q, its top hit (T, the most similar known sequence), and the chimeric model (M). The key differences are measured as: dQT or the number of mismatches between the query and the top hit as well as dQM or the number of mismatches between the query and the chimeric model. From these, a chimera score is calculated to quantify how much better the chimeric model fits the query compared to a single parent. If the model’s similarity to Q exceeds a defined threshold (typically $\ge$0.8\% better identity), the sequence is reported as chimeric. A higher score indicates stronger evidence of chimerism, while lower scores suggest that the sequence is more likely to be authentic.
+In reference mode, UCHIME divides the query into four chunks and maps them to a trusted chimeric-free database to identify candidate parents. It then constructs a three-way alignment to calculate a score based on ``votes.'' A ``Yes'' vote indicates the query aligns with parent $A$ in one region and parent $B$ in another, while a ``No'' vote penalizes the score if the query diverges from the expected chimeric model. In de novo mode, the algorithm operationalizes the abundance skew principle described in Section~\ref{sec:abundance_skew}. Instead of using an external database, UCHIME dynamically treats the sample’s own high-abundance sequences as a reference database, testing if lower-abundance sequences can be reconstructed as mosaics of these internal ancestors \citep{Edgar2011}.
 
-In de novo mode, UCHIME applies an abundance-driven strategy. Only sequences at least twice as abundant as the query are considered as potential parents. Non-chimeric sequences identified at each step are added iteratively to a growing internal database for subsequent queries.
-
-\subsubsection{Limitations of UCHIME}
-Although UCHIME was a significant advancement in chimera detection, it has notable limitations. According to \citep{Edgar2016} and the UCHIME practical notes \citep{EdgarManual}, many of the accuracy results reported in the original 2011 paper were overly optimistic due to unrealistic benchmark designs that assumed complete reference coverage and perfect sequence quality. In practice, UCHIME’s accuracy can decline when (1) the reference database is incomplete or contains erroneous entries; (2) low-divergence chimeras are present, as these closely resemble genuine biological variants; (3) sequence datasets include residual sequencing errors, leading to spurious alignments or misidentification; and (4) the abundance ratio between parent and chimera is distorted by amplification bias. Additionally, UCHIME tends to misclassify sequences as non-chimeric when parent sequences are missing from the database. These limitations motivated the development of UCHIME2.
+Despite its high sensitivity, UCHIME has inherent limitations rooted in sequence divergence and database quality. The algorithm struggles to detect chimeras formed from parents that are very closely related, specifically when the sequence divergence between parents is less than roughly 0.8\%, as the signal-to-noise ratio becomes too low to distinguish a crossover event from sequencing error \citep{Edgar2011}. Furthermore, in reference mode, the accuracy is strictly bound by the completeness of the database; if true parents are absent, the tool may fail to identify the chimera or produce false positives. Similarly, the de novo mode relies on the assumption that parents are present and sufficiently more abundant in the sample, which may not hold true in unevenly amplified samples or complex communities.
 
 \subsection{UCHIME2}
-To overcome the limitations of its predecessor, UCHIME2 \citep{Edgar2016} introduced several methodological and algorithmic refinements that significantly enhanced the accuracy and reliability of chimera detection. One major improvement lies in its approach to uncertainty handling. In earlier versions, sequences with limited reference support were often incorrectly classified as non-chimeric, increasing the likelihood of false negatives. UCHIME2 addresses this issue by designating such ambiguous sequences as “unknown,” thereby providing a more conservative and reliable classification framework.
+Building upon the original algorithm, UCHIME2 was developed to address the nuances of high-resolution amplicon sequencing. A key contribution of the UCHIME2 study was the critical re-evaluation of chimera detection benchmarks. In the UCHIME2 paper \citep{Edgar2016} and the UCHIME in practice website \citep{EdgarManual}, the author has noted that the accuracy results reported in the original UCHIME paper were ``highly over-optimistic'' because they relied on unrealistic benchmark designs where parent sequences were assumed to be 100\% known and present. UCHIME2 introduced more rigorous testing (the CHSIMA benchmark), revealing that ``fake models,'' where a valid biological sequence perfectly mimics a chimera of two other valid sequences, are far more common than previously assumed. This discovery suggests that error-free detection is impossible in principle \citep{Edgar2016}.Another notable improvement is the introduction of multiple application-specific modes that allow users to tailor the algorithm’s performance to the characteristics of their datasets. The following parameter presets: denoised, balanced, sensitive, specific, and high-confidence, enable researchers to optimize the balance between sensitivity and specificity according to the goals of their analysis.
 
-Another notable advancement is the introduction of multiple application-specific modes that allow users to tailor the algorithm’s performance to the characteristics of their datasets. The following parameter presets: denoised, balanced, sensitive, specific, and high-confidence, enable researchers to optimize the balance between sensitivity and specificity according to the goals of their analysis.
-
-In comparative evaluations, UCHIME2 demonstrated superior detection performance, achieving sensitivity levels between 93\% and 99\% and lower overall error rates than earlier versions or other contemporary tools such as DECIPHER and ChimeraSlayer. Despite these advances, the study also acknowledged a fundamental limitation in chimera detection: complete error-free identification is theoretically unattainable. This is due to the presence of “perfect fake models,” wherein genuine non-chimeric sequences can be perfectly reconstructed from other reference fragments. This underscore the uncertainty in differentiating authentic biological sequences from artificial recombinants based solely on sequence similarity, emphasizing the need for continued methodological refinement and cautious interpretation of results.
+However despite these advancements, the practical application of UCHIME2 requires caution. The author explicitly advises against using UCHIME2 as a stand-alone tool in standard OTU clustering or denoising pipelines. Using UCHIME2 as an independent filtering step in these workflows is discouraged, as it often results in significantly higher error rates, increasing both false positives (discarding valid sequences) and false negatives (retaining chimeras) \citep{Edgar2016}.
 
 \subsection{CATch}
 As previously mentioned, UCHIME \citep{Edgar2011} relied on alignment-based sequences in amplicon data. However, researchers soon observed that different algorithms often produced inconsistent predictions. A sequence might be identified as chimeric by one tool but classified as non-chimeric by another, resulting in unreliable filtering outcomes across studies.
@@ -72,49 +66,51 @@ A further biologically grounded descriptor is the length of microhomology at put
 To provide an integrated overview of the literature discussed in this chapter, Table~\ref{tab:study_summary} summarizes the major chimera detection studies, their methodological approaches, and their known limitations.
 
 \begin{landscape}
-\newgeometry{left=1.2cm, right=1.2cm, top=1.8cm, bottom=1.8cm} % Adjust margins for landscape
-\begin{table}[ht]
-\centering
-\caption{Summary of Existing Methods and Research Gaps}
-\label{tab:study_summary}
-\begin{adjustbox}{max width=1.03\textwidth} % Ensure table fits within page width
-\renewcommand{\arraystretch}{1.25} % Increase row height for readability
-\begin{tabularx}{1.03\textwidth}{|X|X|X|} % Use tabularx for dynamic column widths
-\hline
-    \textbf{Method/Study} & \textbf{Scope/Approach} & \textbf{Limitations} \\
-\hline
-Reference-based Chimera Detection &
-Compares query sequences against curated, non-chimeric reference databases; identifies mosaic sequences by evaluating similarity to known templates. &
-Depends heavily on completeness and quality of reference databases; often fails when novel taxa or missing parent sequences are present; reduced accuracy for low-divergence chimeras. \\
-\hline
-De novo Chimera Detection &
-Identifies chimeras using only internal dataset relationships; relies on abundance patterns and compositional similarity; reconstructs sequences as mosaics of high-abundance parents. &
-Assumes true sequences are more abundant—fails when amplification bias distorts abundance; struggles with evenly abundant parental sequences; can misclassify highly similar true variants. \\
-\hline
-UCHIME &
-Alignment-based chimera detection; segments query sequence, identifies parent candidates, performs 3-way alignment, and computes chimera scores; supports both reference-based and de novo modes. &
-Accuracy inflated in original benchmarks; suffers under incomplete databases; poor performance on low-divergence chimeras; sensitive to sequencing errors; misclassifies when parents are missing. \\
-\hline
-UCHIME2 &
-Improved uncertainty handling; classifies ambiguous sequences as unknown; offers multiple sensitivity/specificity modes; more robust with incomplete references; higher sensitivity (93--99\%). &
-Cannot achieve perfect accuracy due to ``perfect fake models''; genuine variants may be indistinguishable from artificial recombinants; theoretical detection limit remains. \\
-\hline
-CATCh &
-First ML ensemble tool for 16S chimera detection; integrates outputs of UCHIME, ChimeraSlayer, DECIPHER, Pintail, Perseus via SVM classifier; significantly improves sensitivity and specificity. &
-Depends on performance of underlying tools; ML model limited to features they output; ensemble can still misclassify in datasets with extreme novelty or low coverage. \\
-\hline
-ChimPipe &
-Pipeline for detecting fusion genes and transcript-derived chimeras in RNA-seq; uses discordant paired-end reads and split-alignments; predicts isoforms and breakpoint coordinates. &
-Designed for RNA-seq, not amplicons; needs high-quality genome and annotation; computationally heavier; limited to organisms with reference genomes. \\
-\hline
-Machine-Learning Sequence Quality \& Chimera Detection (general) &
-Uses k-mer profiles, GC content shifts, entropy, split-read statistics, mapping quality variation, and micro-homology signatures as predictive features; identifies subtle artifacts missed by heuristics. &
-Requires labeled training data; model performance depends on feature engineering; may capture dataset-specific biases; limited generalization if training data is narrow or unrepresentative. \\
-\hline
-\end{tabularx}
-\end{adjustbox}
-\end{table}
-\restoregeometry
+    \begin{table}[ht]
+        \centering
+        \caption{Comparison of Chimera Detection Methods}
+        \label{tab:study_summary}
+        
+        % Column setup:
+        % l = left align (adjust width as needed, e.g., p{3cm})
+        % X = auto-width column that wraps text
+        \begin{tabularx}{\linewidth}{>{\bfseries}p{3cm} X X}
+            \toprule
+            Methods & \textbf{Approach} & \textbf{Limitations} \\
+            \midrule
+            
+            Reference-based Chimera Detection &
+            Compares query sequences against curated, non-chimeric reference databases; identifies mosaic sequences by evaluating similarity to known templates. &
+            Depends heavily on completeness and quality of reference databases; often fails when novel taxa or missing parent sequences are present; reduced accuracy for low-divergence chimeras. \\
+            \addlinespace % Adds a little breathing room between rows
+            
+            De novo Chimera Detection &
+            Identifies chimeras using only internal dataset relationships; relies on abundance patterns and compositional similarity; reconstructs sequences as mosaics of high-abundance parents. &
+            Assumes true sequences are more abundant—fails when amplification bias distorts abundance; struggles with evenly abundant parental sequences; can misclassify highly similar true variants. \\
+            \addlinespace
+            
+            UCHIME &
+            Alignment-based chimera detection; segments query sequence, identifies parent candidates, performs 3-way alignment, and computes chimera scores; supports both reference-based and de novo modes. &
+            Accuracy inflated in original benchmarks; suffers under incomplete databases; poor performance on low-divergence chimeras; sensitive to sequencing errors; misclassifies when parents are missing. \\
+            \addlinespace
+            
+            UCHIME2 &
+            Improved initial UCHIME benchmarking; offers multiple sensitivity/specificity modes; more robust with incomplete references; higher sensitivity. &
+            Cannot achieve perfect accuracy due to ``perfect fake models''; genuine variants may be indistinguishable from artificial recombinants; theoretical detection limit remains. \\
+            \addlinespace
+            
+            CATCh &
+            First ML ensemble tool for 16S chimera detection; integrates outputs of UCHIME, ChimeraSlayer, DECIPHER, Pintail, Perseus via SVM classifier; significantly improves sensitivity and specificity. &
+            Depends on performance of underlying tools; ML model limited to features they output; ensemble can still misclassify in datasets with extreme novelty or low coverage. \\
+            \addlinespace
+            
+            ChimPipe &
+            Pipeline for detecting fusion genes and transcript-derived chimeras in RNA-seq; uses discordant paired-end reads and split-alignments; predicts isoforms and breakpoint coordinates. &
+            Designed for RNA-seq, not amplicons; needs high-quality genome and annotation; computationally heavier; limited to organisms with reference genomes. \\
+            
+            \bottomrule
+        \end{tabularx}
+    \end{table}
 \end{landscape}
 
 Across existing studies, no single approach reliably detects all forms of chimeric sequences, particularly those generated by PCR-induced template switching in mitochondrial genomes. Reference-based tools perform poorly when parental sequences are absent; de novo methods rely strongly on abundance assumptions; alignment-based systems show reduced sensitivity to low-divergence chimeras; and ensemble methods inherit the limitations of their component algorithms. RNA-seq–oriented pipelines likewise do not generalize well to organelle data. Although machine learning approaches offer promising feature-based detection, they are rarely applied to mitochondrial genomes and are not trained specifically on PCR-induced organelle chimeras. These limitations indicate a clear research gap: the need for a specialized, feature-driven classifier tailored to mitochondrial PCR-induced chimeras that integrates k-mer composition, split-alignment signals, and micro-homology features to achieve more accurate detection than current heuristic or alignment-based tools.

@@ -19,50 +19,44 @@ Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: myreferences.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
-Warning--No journal in EdgarManual
-ptr=1, stack=
-
----the literal stack isn't empty for entry EdgarManual
-while executing---line 5079 of file apacite.bst
 You've used 31 entries,
             6951 wiz_defined-function locations,
             1523 strings with 18353 characters,
-and the built_in function-call counts, 68167 in all, are:
+and the built_in function-call counts, 68170 in all, are:
 = -- 7983
 > -- 647
 < -- 3472
 + -- 3748
 - -- 62
-* -- 4760
-:= -- 12665
+* -- 4755
+:= -- 12666
 add.period$ -- 120
 call.type$ -- 31
 change.case$ -- 549
 chr.to.int$ -- 0
-cite$ -- 63
-duplicate$ -- 2112
-empty$ -- 2595
+cite$ -- 62
+duplicate$ -- 2115
+empty$ -- 2598
 format.name$ -- 1209
-if$ -- 12388
+if$ -- 12392
 int.to.chr$ -- 0
 int.to.str$ -- 93
 missing$ -- 0
 newline$ -- 898
 num.names$ -- 248
-pop$ -- 902
+pop$ -- 952
 preamble$ -- 1
 purify$ -- 146
 quote$ -- 0
-skip$ -- 4093
+skip$ -- 4046
 stack$ -- 0
 substring$ -- 4023
-swap$ -- 1205
+swap$ -- 1201
 text.length$ -- 89
 text.prefix$ -- 0
 top$ -- 1
 type$ -- 2480
-warning$ -- 1
+warning$ -- 0
 while$ -- 427
 width$ -- 0
 write$ -- 1156
-(There was 1 error message)
