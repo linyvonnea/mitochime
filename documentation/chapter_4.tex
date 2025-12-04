@@ -1,5 +1,67 @@
 % \section*{Chapter 4}\label{sec:results}
 \chapter{Results and Discussion}
+\section{Descriptive Analysis of Features}
+
+This chapter presents the performance of the proposed feature set and machine-learning models for detecting PCR-induced chimeric reads in simulated mitochondrial Illumina data. We first describe the behaviour of the main features, then compare baseline classifiers, assess the effect of hyperparameter tuning, and finally analyse feature importance in terms of individual variables and biologically motivated feature families.
+
+The final dataset contained 31\,986 reads for training and 7\,997 reads for testing, with classes balanced (approximately 4\,000 clean and 4\,000 chimeric reads in the test split).
+
+\subsection{Univariate Distributions}
+
+The kernel density plots in Figures~\ref{fig:sa_count}--\ref{fig:kmer_cosine} collectively show that alignment-based features provide the strongest separation between clean and chimeric reads. The distribution of \texttt{sa\_count} (Figure~\ref{fig:sa_count}) is distinctly bimodal, with clean reads concentrated near zero and chimeric reads peaking around one, reflecting the frequent presence of supplementary alignments in chimeras. A similar pattern of clear separation is observed in \texttt{softclip\_left} and \texttt{softclip\_right} (Figures~\ref{fig:softclip_left} and \ref{fig:softclip_right}), where clean reads cluster tightly at zero while chimeric reads display broad, long-tailed distributions, consistent with extensive soft clipping when a read spans multiple genomic locations. In contrast, \texttt{microhomology\_length} (Figure~\ref{fig:microhomology}) shows substantial overlap between classes, with both distributions sharply concentrated near zero and exhibiting smaller secondary peaks at short integer lengths, indicating limited discriminative value under the simulated conditions. Finally, the k-mer–based features \texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff} (Figures~\ref{fig:kmer_js} and \ref{fig:kmer_cosine}) exhibit highly overlapping, multimodal distributions with both classes peaking near 1.0; although chimeric reads appear slightly less concentrated at the highest similarity values, the separation is weak overall.
+
+\begin{figure}[H]
+    \centering
+
+    % Row 1
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/kd_sa_count.png}
+        \caption{sa\_count density}
+        \label{fig:sa_count}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/kd_microhomology.png}
+        \caption{microhomology\_length density}
+        \label{fig:microhomology}
+    \end{subfigure}
+
+    \vspace{8pt}
+
+    % Row 2
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/kd_softclip_left.png}
+        \caption{softclip\_left density}
+        \label{fig:softclip_left}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/kd_softclip_right.png}
+        \caption{softclip\_right density}
+        \label{fig:softclip_right}
+    \end{subfigure}
+
+    \vspace{8pt}
+
+    % Row 3
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/kd_kmer_js.png}
+        \caption{kmer\_js\_divergence density}
+        \label{fig:kmer_js}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/kd_kmer_cosine.png}
+        \caption{kmer\_cosine\_diff density}
+        \label{fig:kmer_cosine}
+    \end{subfigure}
+
+    \caption{Kernel density plots of six key features comparing clean and chimeric reads.}
+    \label{fig:kdens_all}
+\end{figure}
 
 \section{Baseline Classification Performance}
 
