@@ -423,7 +423,7 @@ def extract_features(
 
             ref_name = bam.get_reference_name(read.reference_id)
             ref_start_1based = read.reference_start + 1
-            strand = "-" if read.is_reverse else "+"
+            strand = 1 if read.is_reverse else 0
 
             mapq = read.mapping_quality
             cigar = read.cigarstring if read.cigarstring is not None else "*"
