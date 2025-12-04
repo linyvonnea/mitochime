@@ -1,0 +1,71 @@
+% \section*{Chapter 4}\label{sec:results}
+\chapter{Results and Discussion}
+
+\section{Baseline Classification Performance}
+
+Table~\ref{tab:baseline_models_noq} summarises the performance of eleven classifiers trained on the engineered feature set using five-fold cross-validation and evaluated on the held-out test set. All models were optimised using default hyperparameters, without dedicated tuning.
+
+The dummy baseline, which always predicts the same class regardless of the input features, achieved an accuracy of 0.50 and test F1-score of 0.67. This reflects the balanced class distribution and provides a lower bound for meaningful performance.
+
+Across other models, test F1-scores clustered in a narrow band between approximately 0.74 and 0.77 and ROC--AUC values between 0.82 and 0.84. Gradient boosting, CatBoost, LightGBM, XGBoost, bagging trees, random forest, and multilayer perceptron (MLP) all produced very similar scores, with CatBoost and gradient boosting slightly ahead (test F1 $\approx 0.77$, ROC--AUC $\approx 0.84$). Linear models (logistic regression and calibrated linear SVM) performed only marginally worse (test F1 $\approx 0.74$), while Gaussian Naive Bayes lagged behind with substantially lower F1 ($\approx 0.65$) despite very high precision for the chimeric class.
+
+\input{tables/baseline_models_noq}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{figures/baseline_f1.png}
+  \caption{Test F1 of all baseline classifiers, showing that no single model clearly dominates and several achieve comparable performance.}
+  \label{fig:baseline_f1}
+\end{figure}
+
+\section{Effect of Hyperparameter Tuning}
+
+To assess whether performance could be improved further, ten model families underwent randomised hyperparameter search (Chapter~3). The tuned metrics are summarised in Table~\ref{tab:tuned_models_noq}. Overall, tuning yielded modest but consistent gains for tree-based ensembles and boosting methods, while leaving linear models essentially unchanged or slightly worse.
+
+CatBoost, gradient boosting, LightGBM, XGBoost, random forest, bagging trees, and MLP all experienced small increases in test F1 (typically $\Delta \mathrm{F1} \approx 0.002$--0.009) and ROC--AUC (up to $\Delta \mathrm{AUC} \approx 0.008$). After tuning, CatBoost remained the best performer with test accuracy 0.802, precision 0.924, recall 0.658, F1-score 0.769, and ROC--AUC 0.844. Gradient boosting achieved almost identical performance (F1 0.767, AUC 0.843). Random forest and bagging trees also improved to F1 scores around 0.763 with AUC $\approx 0.842$.
+
+\input{tables/tuned_models_noq}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/f1_auc_tuning.png}
+  \caption{Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models. Hyperparameter tuning yields small but consistent gains, particularly for tree-based ensembles.}
+  \label{fig:f1_auc_tuning}
+\end{figure}
+
+Because improvements are small and within cross-validation variability, we interpret tuning as stabilising and slightly refining the models rather than fundamentally altering their behaviour or their relative ranking.
+
+\section{Detailed Evaluation of Representative Models}
+
+For interpretability and diversity, four tuned models were selected for deeper analysis: CatBoost (best-performing boosted tree), scikit-learn gradient boosting (canonical gradient-boosting implementation), random forest (non-boosted ensemble baseline), and L2-regularised logistic regression (linear baseline). All models were trained on the engineered feature set and evaluated on the same held-out test data.
+
+\subsection{Confusion Matrices and Error Patterns}
+
+Classification reports and confusion matrices for the four models reveal consistent patterns. CatBoost and gradient boosting both reached overall accuracy of approximately 0.80 with similar macro-averaged F1 scores ($\sim 0.80$). For CatBoost, precision and recall for clean reads were 0.73 and 0.95, respectively, while for chimeric reads they were 0.92 and 0.66 (F1 = 0.77). Gradient boosting showed nearly identical trade-offs.
+
+Random forest attained slightly lower accuracy (0.80) and chimeric F1 (0.76), whereas logistic regression achieved the lowest accuracy among the four (0.79) and chimeric F1 (0.74), although it provided the highest chimeric precision (0.95) at the cost of lower recall (0.61).
+
+Across all models, errors were asymmetric. False negatives (chimeric reads predicted as clean) were more frequent than false positives. For example, CatBoost misclassified 1\,369 chimeric reads as clean but only 215 clean reads as chimeric. This pattern indicates that the models are conservative: they prioritise avoiding spurious chimera calls at the expense of missing some true chimeras. Depending on downstream application, alternative decision thresholds or cost-sensitive training could be explored to adjust this balance.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\linewidth]{figures/cm_catboost.png}
+  \includegraphics[width=0.45\linewidth]{figures/cm_gradient_boosting.png}\\[4pt]
+  \includegraphics[width=0.45\linewidth]{figures/cm_random_forest.png}
+  \includegraphics[width=0.45\linewidth]{figures/cm_logreg_l2.png}
+  \caption{Confusion matrices for the four representative models on the held-out test set. All models show more false negatives (chimeric reads called clean) than false positives.}
+  \label{fig:confusion_matrices}
+\end{figure}
+
+\subsection{ROC and Precision--Recall Curves}
+
+Receiver operating characteristic (ROC) and precision--recall (PR) curves (Figure~\ref{fig:roc_pr_curves}) further support the similarity among the top models. The three tree-based ensembles (CatBoost, gradient boosting, random forest) achieved ROC--AUC values of approximately 0.84 and average precision (AP) around 0.88. Logistic regression performed slightly worse (AUC $\approx 0.82$, AP $\approx 0.87$) but still substantially better than random guessing.
+
+The PR curves show that precision remains above 0.9 across a broad range of recall values (up to roughly 0.5--0.6), after which precision gradually declines. This behaviour indicates that the models can assign very high confidence to a subset of chimeric reads, while more ambiguous reads can only be recovered by accepting lower precision.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/roc_pr_curves.png}
+  \caption{ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set. Tree-based ensembles cluster closely, with logistic regression performing slightly but consistently worse.}
+  \label{fig:roc_pr_curves}
+\end{figure}

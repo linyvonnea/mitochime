@@ -32,3 +32,9 @@
 \contentsline {subsection}{\numberline {3.1.6}Validation and Testing}{32}{subsection.3.1.6}%
 \contentsline {subsection}{\numberline {3.1.7}Documentation}{33}{subsection.3.1.7}%
 \contentsline {section}{\numberline {3.2}Calendar of Activities}{34}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Baseline Classification Performance}{35}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Effect of Hyperparameter Tuning}{37}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Detailed Evaluation of Representative Models}{38}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Confusion Matrices and Error Patterns}{39}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}ROC and Precision--Recall Curves}{40}{subsection.4.3.2}%
