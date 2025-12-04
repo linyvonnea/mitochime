@@ -12,25 +12,23 @@
 \contentsline {section}{\numberline {2.2}PCR Amplification and Chimera Formation}{9}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Existing Traditional Approaches for Chimera Detection}{10}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}UCHIME}{11}{subsection.2.3.1}%
-\contentsline {subsubsection}{Chimeric Alignment and Scoring}{12}{section*.4}%
-\contentsline {subsubsection}{Limitations of UCHIME}{12}{section*.5}%
-\contentsline {subsection}{\numberline {2.3.2}UCHIME2}{13}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}CATch}{14}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}ChimPipe}{15}{subsection.2.3.4}%
-\contentsline {section}{\numberline {2.4}Machine Learning Approaches for Chimera and Sequence Quality Detection}{16}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Feature-Based Representations of Genomic Sequences}{17}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.3.2}UCHIME2}{12}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}CATch}{13}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}ChimPipe}{14}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Machine Learning Approaches for Chimera and Sequence Quality Detection}{15}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Feature-Based Representations of Genomic Sequences}{16}{subsection.2.4.1}%
 \contentsline {section}{\numberline {2.5}Synthesis of Chimera Detection Approaches}{18}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Research Methodology}{22}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Research Activities}{22}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Data Collection}{23}{subsection.3.1.1}%
-\contentsline {subsubsection}{Data Preprocessing}{24}{section*.6}%
-\contentsline {subsection}{\numberline {3.1.2}Bioinformatics Tools Pipeline}{27}{subsection.3.1.2}%
-\contentsline {subsubsection}{Supplementary Alignment Flag}{27}{section*.7}%
-\contentsline {subsubsection}{K-mer Composition Difference}{28}{section*.8}%
-\contentsline {subsubsection}{Microhomology Length}{29}{section*.9}%
-\contentsline {subsection}{\numberline {3.1.3}Machine Learning Model Development}{30}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Model Benchmarking, Hyperparameter Optimization, and Evaluation}{31}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}Feature Importance and Interpretation}{32}{subsection.3.1.5}%
-\contentsline {subsection}{\numberline {3.1.6}Validation and Testing}{33}{subsection.3.1.6}%
-\contentsline {subsection}{\numberline {3.1.7}Documentation}{34}{subsection.3.1.7}%
-\contentsline {section}{\numberline {3.2}Calendar of Activities}{35}{section.3.2}%
+\contentsline {chapter}{\numberline {3}Research Methodology}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Research Activities}{21}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Data Collection}{22}{subsection.3.1.1}%
+\contentsline {subsubsection}{Data Preprocessing}{23}{section*.4}%
+\contentsline {subsection}{\numberline {3.1.2}Bioinformatics Tools Pipeline}{26}{subsection.3.1.2}%
+\contentsline {subsubsection}{Supplementary Alignment Flag}{26}{section*.5}%
+\contentsline {subsubsection}{K-mer Composition Difference}{27}{section*.6}%
+\contentsline {subsubsection}{Microhomology Length}{28}{section*.7}%
+\contentsline {subsection}{\numberline {3.1.3}Machine Learning Model Development}{29}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Model Benchmarking, Hyperparameter Optimization, and Evaluation}{30}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Feature Importance and Interpretation}{31}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Validation and Testing}{32}{subsection.3.1.6}%
+\contentsline {subsection}{\numberline {3.1.7}Documentation}{33}{subsection.3.1.7}%
+\contentsline {section}{\numberline {3.2}Calendar of Activities}{34}{section.3.2}%

@@ -220,7 +220,7 @@ Edgar, R\BPBI C.%
 \newblock
 \APACrefYearMonthDay{n.d}{}{}.
 \newblock
-{\BBOQ}\APACrefatitle {UCHIME in Practice} {Uchime in practice}.{\BBCQ}
+\APACrefbtitle {UCHIME in Practice.} {Uchime in practice.}
 \newblock
 \begin{APACrefURL}
   \url{https://www.drive5.com/usearch/manual7/uchime_practical.html}
