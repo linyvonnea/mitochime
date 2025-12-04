@@ -1,0 +1,14 @@
+{
+  "model": "xgboost",
+  "cv_accuracy_mean": 0.8040707480349762,
+  "cv_accuracy_std": 0.004923134193151079,
+  "cv_f1_mean": 0.7697531291533022,
+  "cv_f1_std": 0.00696496095447434,
+  "test_accuracy": 0.8089283481305489,
+  "test_precision": 0.9345991561181435,
+  "test_recall": 0.6645,
+  "test_f1": 0.7767387492694331,
+  "test_roc_auc": 0.8494984363272454,
+  "n_train": 31986,
+  "n_test": 7997
+}

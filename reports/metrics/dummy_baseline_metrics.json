@@ -1,0 +1,14 @@
+{
+  "model": "dummy_baseline",
+  "cv_accuracy_mean": 0.5002188477005207,
+  "cv_accuracy_std": 3.127442856611928e-05,
+  "cv_f1_mean": 0.6668611689989685,
+  "cv_f1_std": 2.7792251099167945e-05,
+  "test_accuracy": 0.5001875703388771,
+  "test_precision": 0.5001875703388771,
+  "test_recall": 1.0,
+  "test_f1": 0.6668333750104193,
+  "test_roc_auc": 0.5,
+  "n_train": 31986,
+  "n_test": 7997
+}

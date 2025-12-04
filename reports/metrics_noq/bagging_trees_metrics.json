@@ -1,0 +1,14 @@
+{
+  "model": "bagging_trees",
+  "cv_accuracy_mean": 0.8002565089537956,
+  "cv_accuracy_std": 0.00559212970938224,
+  "cv_f1_mean": 0.7704081825283156,
+  "cv_f1_std": 0.006752084927847922,
+  "test_accuracy": 0.8038014255345755,
+  "test_precision": 0.906385824139084,
+  "test_recall": 0.67775,
+  "test_f1": 0.775568588184809,
+  "test_roc_auc": 0.8503468226169628,
+  "n_train": 31986,
+  "n_test": 7997
+}

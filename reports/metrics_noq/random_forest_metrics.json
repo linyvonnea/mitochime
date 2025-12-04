@@ -1,0 +1,14 @@
+{
+  "model": "random_forest",
+  "cv_accuracy_mean": 0.7966925434872152,
+  "cv_accuracy_std": 0.005986340012248451,
+  "cv_f1_mean": 0.7662460160839956,
+  "cv_f1_std": 0.007178472647147062,
+  "test_accuracy": 0.8010503938977116,
+  "test_precision": 0.9040590405904059,
+  "test_recall": 0.67375,
+  "test_f1": 0.7720956882968056,
+  "test_roc_auc": 0.846966068301226,
+  "n_train": 31986,
+  "n_test": 7997
+}
