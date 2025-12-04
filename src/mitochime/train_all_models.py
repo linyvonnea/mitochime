@@ -17,10 +17,10 @@ Workflow:
 
 Run:
 python3 -m mitochime.train_all_models \
-  --train data/processed/train.tsv \
-  --test data/processed/test.tsv \
-  --models-dir models \
-  --reports-dir reports/metrics
+  --train data/processed/train_noq.tsv \
+  --test  data/processed/test_noq.tsv \
+  --models-dir  models_noq \
+  --reports-dir reports/metrics_noq
 """
 
 from __future__ import annotations
