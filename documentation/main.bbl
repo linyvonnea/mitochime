@@ -635,6 +635,41 @@ Mysara, M.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Peccoud%
+\ \protect \BOthers {.}}{%
+Peccoud%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2018}}%
+}]{%
+Peccoud2018}
+\APACinsertmetastar {%
+Peccoud2018}%
+\begin{APACrefauthors}%
+Peccoud, J.%
+, Lequime, S.%
+, Moltini-Conclois, I.%
+, Giraud, I.%
+, Lambrechts, L.%
+\BCBL {}\ \BBA {} Gilbert, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{04}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A Survey of Virus Recombination Uncovers Canonical
+  Features of Artificial Chimeras Generated During Deep Sequencing Library
+  Preparation} {A survey of virus recombination uncovers canonical features of
+  artificial chimeras generated during deep sequencing library
+  preparation}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{G3 Genes|Genomes|Genetics}{8}{4}{1129-1138}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1534/g3.117.300468} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1534/g3.117.300468} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Qin%
 \ \protect \BOthers {.}}{%
 Qin%
