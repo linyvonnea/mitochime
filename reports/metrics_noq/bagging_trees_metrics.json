@@ -1,14 +1,14 @@
 {
   "model": "bagging_trees",
-  "cv_accuracy_mean": 0.8002565089537956,
-  "cv_accuracy_std": 0.00559212970938224,
-  "cv_f1_mean": 0.7704081825283156,
-  "cv_f1_std": 0.006752084927847922,
-  "test_accuracy": 0.8038014255345755,
-  "test_precision": 0.906385824139084,
-  "test_recall": 0.67775,
-  "test_f1": 0.775568588184809,
-  "test_roc_auc": 0.8503468226169628,
+  "cv_accuracy_mean": 0.801256870417777,
+  "cv_accuracy_std": 0.003681645888741497,
+  "cv_f1_mean": 0.7720794722031779,
+  "cv_f1_std": 0.005449341557528629,
+  "test_accuracy": 0.7919219707390271,
+  "test_precision": 0.9,
+  "test_recall": 0.657,
+  "test_f1": 0.7595375722543353,
+  "test_roc_auc": 0.837332561921441,
   "n_train": 31986,
   "n_test": 7997
 }

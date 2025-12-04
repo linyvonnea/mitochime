@@ -10,9 +10,9 @@ Usage
 python3 -m mitochime.build_datasets \
   --clean data/features/v1/clean_features_k6.tsv \
   --chim  data/features/v1/chimera_features_k6.tsv \
-  --out-all data/processed/all_reads_k6.tsv \
-  --train data/processed/train_k6.tsv \
-  --test  data/processed/test_k6.tsv \
+  --out-all data/processed/all_reads.tsv \
+  --train  data/processed/train.tsv \
+  --test   data/processed/test.tsv \
   --test-size 0.2 \
   --random-state 42
 """

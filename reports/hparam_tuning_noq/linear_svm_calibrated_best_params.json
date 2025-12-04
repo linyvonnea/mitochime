@@ -1,3 +1,3 @@
 {
-  "estimator__C": 0.1
+  "estimator__C": 0.01
 }
