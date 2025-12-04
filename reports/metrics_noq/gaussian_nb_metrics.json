@@ -1,14 +1,14 @@
 {
   "model": "gaussian_nb",
-  "cv_accuracy_mean": 0.7442321670887166,
-  "cv_accuracy_std": 0.0066294342605639,
-  "cv_f1_mean": 0.6572765139124632,
-  "cv_f1_std": 0.011602746127441301,
-  "test_accuracy": 0.7485306990121295,
-  "test_precision": 0.9960099750623441,
-  "test_recall": 0.49925,
-  "test_f1": 0.6651124063280599,
-  "test_roc_auc": 0.8286377595696772,
+  "cv_accuracy_mean": 0.7480775144530617,
+  "cv_accuracy_std": 0.006290597887308014,
+  "cv_f1_mean": 0.6641560148446313,
+  "cv_f1_std": 0.011172122325141776,
+  "test_accuracy": 0.7405276978867075,
+  "test_precision": 0.9963898916967509,
+  "test_recall": 0.483,
+  "test_f1": 0.6506145815793904,
+  "test_roc_auc": 0.8193401613710283,
   "n_train": 31986,
   "n_test": 7997
 }

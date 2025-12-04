@@ -18,15 +18,8 @@ We tune 10 model families:
 Usage
 -----
 
-# On original features
-python -m mitochime.hyperparam_search_top \
-  --train data/processed/train.tsv \
-  --test  data/processed/test.tsv \
-  --models-dir models_tuned \
-  --reports-dir reports/hparam_tuning
-
 # On ablated (no-quality / no-metadata) features
-python -m mitochime.hyperparam_search_top \
+python3 -m mitochime.hyperparam_search_top \
   --train data/processed/train_noq.tsv \
   --test  data/processed/test_noq.tsv \
   --models-dir models_noq_tuned \

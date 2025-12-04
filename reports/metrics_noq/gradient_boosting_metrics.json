@@ -1,14 +1,14 @@
 {
   "model": "gradient_boosting",
-  "cv_accuracy_mean": 0.807853712687591,
-  "cv_accuracy_std": 0.006474878670261508,
-  "cv_f1_mean": 0.7739195911081249,
-  "cv_f1_std": 0.00869599299544989,
-  "test_accuracy": 0.8094285357008878,
-  "test_precision": 0.9377652050919377,
-  "test_recall": 0.663,
-  "test_f1": 0.7768014059753954,
-  "test_roc_auc": 0.8485251751313486,
+  "cv_accuracy_mean": 0.8101357686470237,
+  "cv_accuracy_std": 0.0034181067056102982,
+  "cv_f1_mean": 0.7771418378085404,
+  "cv_f1_std": 0.0048325586117464875,
+  "test_accuracy": 0.8021758159309741,
+  "test_precision": 0.9364620938628159,
+  "test_recall": 0.6485,
+  "test_f1": 0.7663220088626292,
+  "test_roc_auc": 0.8400745871903926,
   "n_train": 31986,
   "n_test": 7997
 }
