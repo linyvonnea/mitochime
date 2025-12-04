@@ -1,0 +1,14 @@
+{
+  "model": "catboost",
+  "cv_accuracy_mean": 0.8076348698736997,
+  "cv_accuracy_std": 0.006160058183134543,
+  "cv_f1_mean": 0.773489197997719,
+  "cv_f1_std": 0.008320869528055996,
+  "test_accuracy": 0.8096786294860573,
+  "test_precision": 0.9371912491178547,
+  "test_recall": 0.664,
+  "test_f1": 0.7772900204858063,
+  "test_roc_auc": 0.8490477545659244,
+  "n_train": 31986,
+  "n_test": 7997
+}

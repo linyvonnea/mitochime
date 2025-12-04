@@ -1,24 +1,39 @@
 paths:
-  refs_mito: "data/refs/mito/LC_Mito.fa"
-  refs_nuclear: null
-  reads_r1: "data/raw/sample_R1.fastq.gz"
-  reads_r2: "data/raw/sample_R2.fastq.gz"
-  outdir: "results/run01"
+  # References
+  refs_mito: "data/refs/mito_original.fasta"
+  refs_nuclear: null                # keep null for now if unused
+
+  # Raw reads (paired-end)
+  reads_r1: "data/raw/mito_clean_R1.fastq"
+  reads_r2: "data/raw/mito_clean_R2.fastq"
+
+  # Optional: chimeric set (if a script wants them)
+  chim_reads_r1: "data/raw/mito_chim_R1.fastq"
+  chim_reads_r2: "data/raw/mito_chim_R2.fastq"
+
+  # Where intermediate + feature files live
+  alignments_dir: "data/interim/alignments"
+  features_dir:   "data/features/v1"
+
+  # Outputs
+  models_dir:  "models"
+  reports_dir: "reports"
+  outdir:      "results/run01"     # whatever name you want for this run
 
 alignment:
-  tool: "minimap2"     # or "bwa"
-  preset: "sr"         # minimap2 preset; "map-ont" for ONT
-  extra: ""            # extra CLI flags if needed
+  tool: "minimap2"                 # or "bwa"
+  preset: "sr"                     # "sr" for short reads; "map-ont" for ONT
+  extra: ""                        # extra CLI flags if you ever need them
 
 features:
-  kmer_k: 5
-  gc_window: 100
-  cov_window: 200
-  use_graph_features: false
+  kmer_k: 5                        # k-mer length for k-mer jump
+  gc_window: 100                   # window size for GC discontinuity (if used)
+  cov_window: 200                  # coverage window (if you add coverage feats)
+  use_graph_features: false        # placeholder for later
 
 model:
-  type: "xgboost"
-  threshold: 0.9
+  type: "xgboost"                  # default main model (can change per run)
+  threshold: 0.9                   # decision threshold for “chimeric” class
   params:
     n_estimators: 400
     max_depth: 6
