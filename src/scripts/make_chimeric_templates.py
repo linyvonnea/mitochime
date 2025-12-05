@@ -16,7 +16,7 @@ Features:
   junction position varies within the template.
 
 Usage (manual example):
-    python make_chimeric_templates.py \
+    python scripts/make_chimeric_templates.py \
         --ref /path/to/NC_039553.1_original.fasta \
         --out /path/to/NC_039553.1_chimera.fasta \
         --num-templates 1000 \
@@ -24,7 +24,7 @@ Usage (manual example):
         --min-distance 500 \
         --max-distance 8000 \
         --min-mh 3 \
-        --max-mh 8
+        --max-mh 20
 
 This script is also meant to be called automatically by simulation.py.
 """

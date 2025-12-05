@@ -36,12 +36,16 @@ Example: clean vs chimeric BAMs
     python scripts/extract_features.py \
         --bam data/aligned/clean.sorted.bam \
         --out data/features/clean_features.tsv \
-        --label 0
+        --label 0 \
+        --k 6 \
+        --micro-window 40
 
     python scripts/extract_features.py \
         --bam data/aligned/chimeric.sorted.bam \
         --out data/features/chim_features.tsv \
-        --label 1
+        --label 1 \
+        --k 6 \
+        --micro-window 40
 
 Requirements: pysam, numpy
 """
