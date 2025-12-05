@@ -477,36 +477,6 @@ Labrador, K.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Layer%
-, Hall%
-\BCBL {}\ \BBA {} Quinlan%
-}{%
-Layer%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2014}}%
-}]{%
-Layer2014}
-\APACinsertmetastar {%
-Layer2014}%
-\begin{APACrefauthors}%
-Layer, R.%
-, Hall, I.%
-\BCBL {}\ \BBA {} Quinlan, A.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2014}{10}{}.
-\newblock
-{\BBOQ}\APACrefatitle {LUMPY: A probabilistic framework for structural variant
-  discovery} {Lumpy: A probabilistic framework for structural variant
-  discovery}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Genome Biology}{15}{}{}.
-\newblock
-\begin{APACrefDOI} \doi{10.1186/gb-2014-15-6-r84} \end{APACrefDOI}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
 Li%
 }{%
 Li%
