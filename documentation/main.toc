@@ -34,13 +34,14 @@
 \contentsline {section}{\numberline {3.2}Calendar of Activities}{32}{section.3.2}%
 \contentsline {chapter}{\numberline {4}Results and Discussion}{33}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Descriptive Analysis of Features}{33}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Univariate Distributions}{34}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{36}{section.4.2}%
+\contentsline {subsection}{\numberline {4.1.1}Exploratory Data Analysis}{34}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{35}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Effect of Hyperparameter Tuning}{37}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Detailed Evaluation of Representative Models}{39}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Confusion Matrices and Error Patterns}{40}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}ROC and Precision--Recall Curves}{41}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Feature Importance and Biological Interpretation}{43}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{43}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{44}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Summary of Findings}{46}{section.4.6}%
+\contentsline {section}{\numberline {4.4}Detailed Evaluation of Representative Models}{38}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Confusion Matrices and Error Patterns}{39}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}ROC and Precision--Recall Curves}{40}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Feature Importance and Biological Interpretation}{42}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{42}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{43}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Summary of Findings}{45}{section.4.6}%
+\contentsline {chapter}{\numberline {A}Histograms of Key Features}{47}{appendix.A}%

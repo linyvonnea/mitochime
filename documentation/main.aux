@@ -101,64 +101,70 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Descriptive Analysis of Features}{33}{section.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Univariate Distributions}{34}{subsection.4.1.1}\protected@file@percent }
-\newlabel{fig:sa_count}{{4.1a}{35}{sa\_count density}{figure.caption.11}{}}
-\newlabel{sub@fig:sa_count}{{a}{35}{sa\_count density}{figure.caption.11}{}}
-\newlabel{fig:microhomology}{{4.1b}{35}{microhomology\_length density}{figure.caption.11}{}}
-\newlabel{sub@fig:microhomology}{{b}{35}{microhomology\_length density}{figure.caption.11}{}}
-\newlabel{fig:softclip_left}{{4.1c}{35}{softclip\_left density}{figure.caption.11}{}}
-\newlabel{sub@fig:softclip_left}{{c}{35}{softclip\_left density}{figure.caption.11}{}}
-\newlabel{fig:softclip_right}{{4.1d}{35}{softclip\_right density}{figure.caption.11}{}}
-\newlabel{sub@fig:softclip_right}{{d}{35}{softclip\_right density}{figure.caption.11}{}}
-\newlabel{fig:kmer_js}{{4.1e}{35}{kmer\_js\_divergence density}{figure.caption.11}{}}
-\newlabel{sub@fig:kmer_js}{{e}{35}{kmer\_js\_divergence density}{figure.caption.11}{}}
-\newlabel{fig:kmer_cosine}{{4.1f}{35}{kmer\_cosine\_diff density}{figure.caption.11}{}}
-\newlabel{sub@fig:kmer_cosine}{{f}{35}{kmer\_cosine\_diff density}{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Kernel density plots of six key features comparing clean and chimeric reads.}}{35}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:kdens_all}{{4.1}{35}{Kernel density plots of six key features comparing clean and chimeric reads}{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{36}{section.4.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Performance of baseline classifiers on the held-out test set.}}{37}{table.caption.12}\protected@file@percent }
-\newlabel{tab:baseline_models_noq}{{4.1}{37}{Performance of baseline classifiers on the held-out test set}{table.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Test F1 of all baseline classifiers, showing that no single model clearly dominates and several achieve comparable performance.}}{37}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:baseline_f1}{{4.2}{37}{Test F1 of all baseline classifiers, showing that no single model clearly dominates and several achieve comparable performance}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Exploratory Data Analysis}{34}{subsection.4.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Feature correlation heatmap showing relationships among alignment-derived and sequence-derived variables.}}{35}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:correlation_heatmap}{{4.1}{35}{Feature correlation heatmap showing relationships among alignment-derived and sequence-derived variables}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{35}{section.4.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Performance of baseline classifiers on the held-out test set.}}{36}{table.caption.12}\protected@file@percent }
+\newlabel{tab:baseline_models_noq}{{4.1}{36}{Performance of baseline classifiers on the held-out test set}{table.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Test F1 of all baseline classifiers, showing that no single model clearly dominates and several achieve comparable performance.}}{36}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:baseline_f1}{{4.2}{36}{Test F1 of all baseline classifiers, showing that no single model clearly dominates and several achieve comparable performance}{figure.caption.13}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Effect of Hyperparameter Tuning}{37}{section.4.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Performance of tuned classifiers on the held-out test set.}}{38}{table.caption.14}\protected@file@percent }
-\newlabel{tab:tuned_models_noq}{{4.2}{38}{Performance of tuned classifiers on the held-out test set}{table.caption.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models. Hyperparameter tuning yields small but consistent gains, particularly for tree-based ensembles.}}{39}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:f1_auc_tuning}{{4.3}{39}{Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models. Hyperparameter tuning yields small but consistent gains, particularly for tree-based ensembles}{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Detailed Evaluation of Representative Models}{39}{section.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Confusion Matrices and Error Patterns}{40}{subsection.4.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Confusion matrices for the four representative models on the held-out test set. All models show more false negatives (chimeric reads called clean) than false positives.}}{41}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:confusion_matrices}{{4.4}{41}{Confusion matrices for the four representative models on the held-out test set. All models show more false negatives (chimeric reads called clean) than false positives}{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}ROC and Precision--Recall Curves}{41}{subsection.4.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set. Tree-based ensembles cluster closely, with logistic regression performing slightly but consistently worse.}}{42}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:roc_pr_curves}{{4.5}{42}{ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set. Tree-based ensembles cluster closely, with logistic regression performing slightly but consistently worse}{figure.caption.17}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Feature Importance and Biological Interpretation}{43}{section.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{43}{subsection.4.5.1}\protected@file@percent }
-\newlabel{fig:catboost_imp}{{4.6a}{44}{CatBoost}{figure.caption.18}{}}
-\newlabel{sub@fig:catboost_imp}{{a}{44}{CatBoost}{figure.caption.18}{}}
-\newlabel{fig:gradient_imp}{{4.6b}{44}{Gradient Boosting}{figure.caption.18}{}}
-\newlabel{sub@fig:gradient_imp}{{b}{44}{Gradient Boosting}{figure.caption.18}{}}
-\newlabel{fig:randomforest_imp}{{4.6c}{44}{Random Forest}{figure.caption.18}{}}
-\newlabel{sub@fig:randomforest_imp}{{c}{44}{Random Forest}{figure.caption.18}{}}
-\newlabel{fig:logreg_imp}{{4.6d}{44}{L$_2$-regularized Logistic Regression}{figure.caption.18}{}}
-\newlabel{sub@fig:logreg_imp}{{d}{44}{L$_2$-regularized Logistic Regression}{figure.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Permutation-based feature importance for four representative classifiers. Clipping and k-mer composition features are generally the strongest predictors, whereas microhomology and other alignment metrics contribute minimally.}}{44}{figure.caption.18}\protected@file@percent }
-\newlabel{fig:all_models_imp}{{4.6}{44}{Permutation-based feature importance for four representative classifiers. Clipping and k-mer composition features are generally the strongest predictors, whereas microhomology and other alignment metrics contribute minimally}{figure.caption.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{44}{subsection.4.5.2}\protected@file@percent }
-\newlabel{fig:catboost_family}{{4.7a}{46}{CatBoost}{figure.caption.19}{}}
-\newlabel{sub@fig:catboost_family}{{a}{46}{CatBoost}{figure.caption.19}{}}
-\newlabel{fig:gb_family}{{4.7b}{46}{Gradient Boosting}{figure.caption.19}{}}
-\newlabel{sub@fig:gb_family}{{b}{46}{Gradient Boosting}{figure.caption.19}{}}
-\newlabel{fig:rf_family}{{4.7c}{46}{Random Forest}{figure.caption.19}{}}
-\newlabel{sub@fig:rf_family}{{c}{46}{Random Forest}{figure.caption.19}{}}
-\newlabel{fig:logreg_family}{{4.7d}{46}{L$_2$-regularized Logistic Regression}{figure.caption.19}{}}
-\newlabel{sub@fig:logreg_family}{{d}{46}{L$_2$-regularized Logistic Regression}{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Aggregated feature family importance across four models. Clipping and k-mer compositional shifts are consistently the dominant contributors, while SA\_structure, Micro\_homology, and other features contribute minimally.}}{46}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:feature_family_all}{{4.7}{46}{Aggregated feature family importance across four models. Clipping and k-mer compositional shifts are consistently the dominant contributors, while SA\_structure, Micro\_homology, and other features contribute minimally}{figure.caption.19}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Summary of Findings}{46}{section.4.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Performance of tuned classifiers on the held-out test set.}}{37}{table.caption.14}\protected@file@percent }
+\newlabel{tab:tuned_models_noq}{{4.2}{37}{Performance of tuned classifiers on the held-out test set}{table.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models. Hyperparameter tuning yields small but consistent gains, particularly for tree-based ensembles.}}{38}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:f1_auc_tuning}{{4.3}{38}{Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models. Hyperparameter tuning yields small but consistent gains, particularly for tree-based ensembles}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Detailed Evaluation of Representative Models}{38}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Confusion Matrices and Error Patterns}{39}{subsection.4.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Confusion matrices for the four representative models on the held-out test set. All models show more false negatives (chimeric reads called clean) than false positives.}}{40}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:confusion_matrices}{{4.4}{40}{Confusion matrices for the four representative models on the held-out test set. All models show more false negatives (chimeric reads called clean) than false positives}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}ROC and Precision--Recall Curves}{40}{subsection.4.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set. Tree-based ensembles cluster closely, with logistic regression performing slightly but consistently worse.}}{41}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:roc_pr_curves}{{4.5}{41}{ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set. Tree-based ensembles cluster closely, with logistic regression performing slightly but consistently worse}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Feature Importance and Biological Interpretation}{42}{section.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{42}{subsection.4.5.1}\protected@file@percent }
+\newlabel{fig:catboost_imp}{{4.6a}{43}{CatBoost}{figure.caption.18}{}}
+\newlabel{sub@fig:catboost_imp}{{a}{43}{CatBoost}{figure.caption.18}{}}
+\newlabel{fig:gradient_imp}{{4.6b}{43}{Gradient Boosting}{figure.caption.18}{}}
+\newlabel{sub@fig:gradient_imp}{{b}{43}{Gradient Boosting}{figure.caption.18}{}}
+\newlabel{fig:randomforest_imp}{{4.6c}{43}{Random Forest}{figure.caption.18}{}}
+\newlabel{sub@fig:randomforest_imp}{{c}{43}{Random Forest}{figure.caption.18}{}}
+\newlabel{fig:logreg_imp}{{4.6d}{43}{L$_2$-regularized Logistic Regression}{figure.caption.18}{}}
+\newlabel{sub@fig:logreg_imp}{{d}{43}{L$_2$-regularized Logistic Regression}{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Permutation-based feature importance for four representative classifiers. Clipping and k-mer composition features are generally the strongest predictors, whereas microhomology and other alignment metrics contribute minimally.}}{43}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:all_models_imp}{{4.6}{43}{Permutation-based feature importance for four representative classifiers. Clipping and k-mer composition features are generally the strongest predictors, whereas microhomology and other alignment metrics contribute minimally}{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{43}{subsection.4.5.2}\protected@file@percent }
+\newlabel{fig:catboost_family}{{4.7a}{45}{CatBoost}{figure.caption.19}{}}
+\newlabel{sub@fig:catboost_family}{{a}{45}{CatBoost}{figure.caption.19}{}}
+\newlabel{fig:gb_family}{{4.7b}{45}{Gradient Boosting}{figure.caption.19}{}}
+\newlabel{sub@fig:gb_family}{{b}{45}{Gradient Boosting}{figure.caption.19}{}}
+\newlabel{fig:rf_family}{{4.7c}{45}{Random Forest}{figure.caption.19}{}}
+\newlabel{sub@fig:rf_family}{{c}{45}{Random Forest}{figure.caption.19}{}}
+\newlabel{fig:logreg_family}{{4.7d}{45}{L$_2$-regularized Logistic Regression}{figure.caption.19}{}}
+\newlabel{sub@fig:logreg_family}{{d}{45}{L$_2$-regularized Logistic Regression}{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Aggregated feature family importance across four models. Clipping and k-mer compositional shifts are consistently the dominant contributors, while SA\_structure, Micro\_homology, and other features contribute minimally.}}{45}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:feature_family_all}{{4.7}{45}{Aggregated feature family importance across four models. Clipping and k-mer compositional shifts are consistently the dominant contributors, while SA\_structure, Micro\_homology, and other features contribute minimally}{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Summary of Findings}{45}{section.4.6}\protected@file@percent }
 \bibstyle{apacite}
 \bibdata{myreferences}
+\newlabel{appendix:eda}{{4.6}{47}{Summary of Findings}{section.4.6}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Histograms of Key Features}{47}{appendix.A}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{fig:eda_sa_count}{{A.1a}{48}{\texttt {sa\_count}}{figure.caption.20}{}}
+\newlabel{sub@fig:eda_sa_count}{{a}{48}{\texttt {sa\_count}}{figure.caption.20}{}}
+\newlabel{fig:eda_microhomology}{{A.1b}{48}{Microhomology length}{figure.caption.20}{}}
+\newlabel{sub@fig:eda_microhomology}{{b}{48}{Microhomology length}{figure.caption.20}{}}
+\newlabel{fig:eda_softclip_left}{{A.1c}{48}{\texttt {softclip\_left}}{figure.caption.20}{}}
+\newlabel{sub@fig:eda_softclip_left}{{c}{48}{\texttt {softclip\_left}}{figure.caption.20}{}}
+\newlabel{fig:eda_softclip_right}{{A.1d}{48}{\texttt {softclip\_right}}{figure.caption.20}{}}
+\newlabel{sub@fig:eda_softclip_right}{{d}{48}{\texttt {softclip\_right}}{figure.caption.20}{}}
+\newlabel{fig:eda_js}{{A.1e}{48}{k-mer Jensen–Shannon divergence}{figure.caption.20}{}}
+\newlabel{sub@fig:eda_js}{{e}{48}{k-mer Jensen–Shannon divergence}{figure.caption.20}{}}
+\newlabel{fig:eda_cosine}{{A.1f}{48}{k-mer cosine difference}{figure.caption.20}{}}
+\newlabel{sub@fig:eda_cosine}{{f}{48}{k-mer cosine difference}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Histogram plots of six key features comparing clean and chimeric reads.}}{48}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:eda_all}{{A.1}{48}{Histogram plots of six key features comparing clean and chimeric reads}{figure.caption.20}{}}
 \bibcite{Anderson1981}{{1}{{\APACyear {1981}}}{{Anderson\ \BOthers {.}}}{{Anderson\ \BOthers {.}}}}
 \bibcite{Arango2018}{{2}{{\APACyear {2018}}}{{Arango\ \BOthers {.}}}{{Arango\ \BOthers {.}}}}
 \bibcite{Bentley2008}{{3}{{\APACyear {2008}}}{{Bentley\ \BOthers {.}}}{{Bentley\ \BOthers {.}}}}
@@ -189,4 +195,4 @@
 \bibcite{Sfeir2015}{{28}{{\APACyear {2015}}}{{Sfeir\ \BBA  {} Symington}}{{Sfeir\ \BBA  {} Symington}}}
 \bibcite{Vervier2015}{{29}{{\APACyear {2015}}}{{Vervier\ \BOthers {.}}}{{Vervier, Mahé, Tournoud, Veyrieras,{}\ \BBA  {} Vert}}}
 \bibcite{Willette2011}{{30}{{\APACyear {2011}}}{{Willette\ \BOthers {.}}}{{Willette, Bognot, Mutia,{}\ \BBA  {} Santos}}}
-\gdef \@abspage@last{59}
+\gdef \@abspage@last{60}
