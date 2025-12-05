@@ -23,42 +23,42 @@ Database file #1: myreferences.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
 You've used 30 entries,
             6951 wiz_defined-function locations,
-            1519 strings with 18216 characters,
-and the built_in function-call counts, 66174 in all, are:
-= -- 7750
+            1518 strings with 18213 characters,
+and the built_in function-call counts, 66117 in all, are:
+= -- 7739
 > -- 628
-< -- 3369
-+ -- 3651
+< -- 3366
++ -- 3649
 - -- 60
-* -- 4618
-:= -- 12289
+* -- 4616
+:= -- 12279
 add.period$ -- 116
 call.type$ -- 30
-change.case$ -- 530
+change.case$ -- 523
 chr.to.int$ -- 0
 cite$ -- 60
 duplicate$ -- 2060
 empty$ -- 2519
 format.name$ -- 1177
-if$ -- 12023
+if$ -- 12012
 int.to.chr$ -- 0
 int.to.str$ -- 90
 missing$ -- 0
 newline$ -- 870
 num.names$ -- 240
-pop$ -- 926
+pop$ -- 929
 preamble$ -- 1
-purify$ -- 140
+purify$ -- 139
 quote$ -- 0
-skip$ -- 3920
+skip$ -- 3911
 stack$ -- 0
-substring$ -- 3920
+substring$ -- 3918
 swap$ -- 1169
-text.length$ -- 85
+text.length$ -- 84
 text.prefix$ -- 0
 top$ -- 1
 type$ -- 2400
 warning$ -- 0
-while$ -- 413
+while$ -- 412
 width$ -- 0
 write$ -- 1119

@@ -181,6 +181,30 @@ Edgar%
 }{%
 Edgar%
 }{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+EdgarManual}
+\APACinsertmetastar {%
+EdgarManual}%
+\begin{APACrefauthors}%
+Edgar, R\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APACrefbtitle {UCHIME in Practice.} {Uchime in practice.}
+\newblock
+\begin{APACrefURL}
+  \url{https://www.drive5.com/usearch/manual7/uchime_practical.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Edgar%
+}{%
+Edgar%
+}{%
 {\protect \APACyear {2016}}%
 }]{%
 Edgar2016}
@@ -200,30 +224,6 @@ Edgar, R\BPBI C.%
 \APACjournalVolNumPages{bioRxiv}{}{}{}.
 \newblock
 \begin{APACrefURL} \url{https://api.semanticscholar.org/CorpusID:88955007}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Edgar%
-}{%
-Edgar%
-}{%
-{\protect \APACyear {n.d}}%
-}]{%
-EdgarManual}
-\APACinsertmetastar {%
-EdgarManual}%
-\begin{APACrefauthors}%
-Edgar, R\BPBI C.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{n.d}{}{}.
-\newblock
-\APACrefbtitle {UCHIME in Practice.} {Uchime in practice.}
-\newblock
-\begin{APACrefURL}
-  \url{https://www.drive5.com/usearch/manual7/uchime_practical.html}
   \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
