@@ -131,3 +131,99 @@ The PR curves show that precision remains above 0.9 across a broad range of reca
   \caption{ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set. Tree-based ensembles cluster closely, with logistic regression performing slightly but consistently worse.}
   \label{fig:roc_pr_curves}
 \end{figure}
+
+\section{Feature Importance and Biological Interpretation}
+
+\subsection{Permutation Importance of Individual Features}
+
+To understand how each classifier made predictions, feature importance was quantified using permutation importance. In this approach, the values of a single feature are randomly shuffled, and the resulting drop in F$_1$ score ($\Delta F_1$) reflects how strongly the model depends on that feature. Greater decreases in F$_1$ indicate stronger reliance on that feature. This analysis was applied to four representative models: CatBoost, Gradient Boosting, Random Forest, and L$_2$-regularized Logistic Regression.
+
+As shown in Figure~\ref{fig:all_models_imp}, the total number of clipped bases consistently provides a strong predictive signal, particularly in Random Forest, Gradient Boosting, and L$_2$-regularized Logistic Regression. CatBoost differs by assigning the highest importance to k-mer divergence metrics such as \texttt{kmer\_js\_divergence}, which capture subtle sequence changes resulting from structural variants or PCR-induced chimeras. Soft-clipping features (\texttt{softclip\_left} and \texttt{softclip\_right}) provide additional context around breakpoints, complementing these primary signals in all models except Gradient Boosting. L$_2$-regularized Logistic Regression relies more on alignment-based split-read metrics when breakpoints are simple, but it is less effective at detecting complex rearrangements that introduce novel sequences. 
+
+Overall, these results indicate that accurate detection of chimeric reads relies on both alignment-based signals and k-mer compositional information. Explicit microhomology features contribute minimally in this analysis, and combining both alignment-based and sequence-level features enhances model sensitivity and specificity.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/catboost_imp.png}
+        \caption{CatBoost}
+        \label{fig:catboost_imp}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/gradient_imp.png}
+        \caption{Gradient Boosting}
+        \label{fig:gradient_imp}
+    \end{subfigure}
+
+    \vspace{0.5em}
+
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/randomforest_imp.png}
+        \caption{Random Forest}
+        \label{fig:randomforest_imp}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/logreg_imp.png}
+        \caption{L$_2$-regularized Logistic Regression}
+        \label{fig:logreg_imp}
+    \end{subfigure}
+
+    \caption{Permutation-based feature importance for four representative classifiers. Clipping and k-mer composition features are generally the strongest predictors, whereas microhomology and other alignment metrics contribute minimally.}
+    \label{fig:all_models_imp}
+\end{figure}
+
+\subsection{Feature Family Importance}
+
+To evaluate the contribution of broader biological signals, features were grouped into five families: SA\_structure (supplementary alignment and segment metrics, e.g., \texttt{has\_sa}, \texttt{sa\_count}, \texttt{sa\_min\_delta\_pos}, \texttt{sa\_mean\_nm}), Clipping (\texttt{softclip\_left}, \texttt{softclip\_right}, \texttt{total\_clipped\_bases}, \texttt{breakpoint\_read\_pos}), Kmer\_jump (\texttt{kmer\_cosine\_diff}, \texttt{kmer\_js\_divergence}), Micro\_homology, and Other (e.g., \texttt{mapq}).
+
+Aggregated analyses reveal consistent patterns across models. In CatBoost, the Clipping family has the largest cumulative contribution (0.14), followed by Kmer\_jump (0.12), with Other features contributing modestly (0.005) and SA\_structure (0.003) and Micro\_homology (0.003) providing minimal predictive power. Gradient Boosting shows a similar trend, with Clipping (0.13) dominating, Kmer\_jump (0.11) secondary, and the remaining families contributing negligibly. Random Forest integrates both Clipping (0.088) and Kmer\_jump (0.08) effectively, while SA\_structure, Micro\_homology, and Other remain minor contributors. L$_2$-regularized Logistic Regression emphasizes Clipping (0.09) and SA\_structure (0.07), with Kmer\_jump and Micro\_homology having minimal impact.
+
+Both feature-level and aggregated analyses indicate that detection of chimeric reads in this dataset relies primarily on alignment disruptions (Clipping) and k-mer compositional shifts (Kmer\_jump), which often arise from PCR-induced recombination events, while explicit microhomology features contribute minimally.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{catboost_family.png}
+        \caption{CatBoost}
+        \label{fig:catboost_family}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{gradient_family.png}
+        \caption{Gradient Boosting}
+        \label{fig:gb_family}
+    \end{subfigure}
+    
+    \vspace{0.5em}
+    
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{randomforest_family.png}
+        \caption{Random Forest}
+        \label{fig:rf_family}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logreg_family.png}
+        \caption{L$_2$-regularized Logistic Regression}
+        \label{fig:logreg_family}
+    \end{subfigure}
+
+    \caption{Aggregated feature family importance across four models. Clipping and k-mer compositional shifts are consistently the dominant contributors, while SA\_structure, Micro\_homology, and other features contribute minimally.}
+    \label{fig:feature_family_all}
+\end{figure}
+
+\section{Summary of Findings}
+
+After removing trivially discriminative metadata, all models performed substantially better than the dummy baseline, with test F1-scores around 0.76 and ROC-AUC values near 0.84. Hyperparameter tuning yielded modest improvements, with boosting methods, particularly CatBoost and gradient boosting, achieving the highest performance. Confusion matrices and precision-recall curves indicate that these models prioritise precision for chimeric reads while accepting lower recall, which a conservative strategy appropriate for scenarios where false positives are costly.
+
+Feature importance analyses revealed that alignment disruptions, such as clipping, and abrupt k-mer composition changes accounted for most predictive power. In contrast, microhomology metrics and supplementary alignment descriptors contributed minimally. These results indicate that features based on read alignment and k-mer composition are sufficient to train classifiers for detecting mitochondrial PCR-induced chimera reads, without needing additional quality-score or positional information in the conditions tested.
