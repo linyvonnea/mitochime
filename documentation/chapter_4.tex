@@ -2,7 +2,7 @@
 \chapter{Results and Discussion}
 \section{Descriptive Analysis of Features}
 
-This chapter presents the performance of the proposed feature set and machine-learning models for detecting PCR-induced chimeric reads in simulated mitochondrial Illumina data. We first describe the behaviour of the main features, then compare baseline classifiers, assess the effect of hyperparameter tuning, and finally analyse feature importance in terms of individual variables and biologically motivated feature families.
+This chapter presents the performance of the proposed feature set and machine learning models for detecting PCR-induced chimeric reads in simulated mitochondrial Illumina data. We first describe the behaviour of the main features, then compare baseline classifiers, assess the effect of hyperparameter tuning, and finally analyse feature importance in terms of individual variables and biologically motivated feature families.
 
 The final dataset contained 31{,}986 reads for training and 7{,}997 reads for testing, with classes balanced (approximately 4{,}000 clean and 4{,}000 chimeric reads in the test split).
 
@@ -54,7 +54,7 @@ Because improvements are small and within cross-validation variability, we inter
 
 \section{Detailed Evaluation of Representative Models}
 
-For interpretability and diversity, four tuned models were selected for deeper analysis: CatBoost (best-performing boosted tree), scikit-learn gradient boosting (canonical gradient-boosting implementation), random forest (non-boosted ensemble baseline), and L2-regularised logistic regression (linear baseline). All models were trained on the engineered feature set and evaluated on the same held-out test data.
+For interpretability and diversity, four tuned models were selected for deeper analysis: CatBoost (best-performing boosted tree), scikit-learn gradient boosting (canonical gradient-boosting implementation), random forest (non-boosted ensemble baseline), and $L_2$-regularised logistic regression (linear baseline). All models were trained on the engineered feature set and evaluated on the same held-out test data.
 
 \subsection{Confusion Matrices and Error Patterns}
 

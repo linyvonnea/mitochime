@@ -27,7 +27,7 @@ Specifically, the study aims to:
 \begin{enumerate}
  \item construct simulated \textit{Sardinella lemuru} Illumina paired-end datasets containing both clean and PCR-induced chimeric reads,
  \item extract alignment-based and sequence-based features such as k-mer composition, junction complexity, and split-alignment counts from both clean and chimeric reads,
- \item train, validate, and compare supervised machine-learning models for classifying reads as clean or chimeric,
+ \item train, validate, and compare supervised machine learning models for classifying reads as clean or chimeric,
  \item determine feature importance and identify indicators of PCR-induced chimerism,
  \item integrate the optimized classifier into a modular and interpretable pipeline deployable on standard computing environments at PGC Visayas.
 \end{enumerate}
@@ -38,7 +38,7 @@ This study focuses on detecting PCR-induced chimeric reads in Illumina paired-en
 
 The study emphasizes \texttt{wgsim}-based simulations and selected empirical mitochondrial datasets from \textit{S. lemuru}. It excludes naturally occurring chimeras, nuclear mitochondrial pseudogenes (NUMTs), and large-scale assembly rearrangements in nuclear genomes. Feature extraction is restricted to low-dimensional alignment and sequence statistics, such as k-mer frequency profiles, GC content, read length, soft and hard clipping metrics, split-alignment counts, and mapping quality, rather than high-dimensional deep learning embeddings. This design keeps model behaviour interpretable and ensures that the pipeline can be run on standard workstations at PGC Visayas. Testing on long-read platforms (e.g., Nanopore, PacBio) and other taxa is outside the scope of this project; the implemented pipeline is evaluated only on short-read \textit{S. lemuru} datasets.
 
-Other limitations in this study include the following: simulations with varying error rates were not performed, so the effect of different sequencing errors on model performance remains unexplored; alternative parameter settings, including k-mer lengths and microhomology window sizes, were not systematically tested, which could affect the sensitivity of both k-mer and microhomology feature detection as well as the identification of chimeric junctions; and the machine-learning models rely on supervised training with labeled examples, which may limit their ability to detect novel or unexpected chimeric patterns.
+Other limitations in this study include the following: simulations with varying error rates were not performed, so the effect of different sequencing errors on model performance remains unexplored; alternative parameter settings, including k-mer lengths and microhomology window sizes, were not systematically tested, which could affect the sensitivity of both k-mer and microhomology feature detection as well as the identification of chimeric junctions; and the machine learning models rely on supervised training with labeled examples, which may limit their ability to detect novel or unexpected chimeric patterns.
 
 \section{Significance of the Research}\label{sec:significance}
 
