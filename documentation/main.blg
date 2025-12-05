@@ -5,6 +5,8 @@ Reallocating 'name_of_file' (item size: 1) to 15 items.
 A level-1 auxiliary file: title_page.aux
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 A level-1 auxiliary file: abstract.aux
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+A level-1 auxiliary file: appendix_A.aux
 Reallocating 'name_of_file' (item size: 1) to 8 items.
 The style file: apacite.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
@@ -21,7 +23,7 @@ Database file #1: myreferences.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
 You've used 30 entries,
             6951 wiz_defined-function locations,
-            1518 strings with 18202 characters,
+            1519 strings with 18216 characters,
 and the built_in function-call counts, 66174 in all, are:
 = -- 7750
 > -- 628
