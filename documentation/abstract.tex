@@ -1,16 +1,19 @@
 % %   Filename    : abstract.tex 
-% \begin{abstract}
+\newgeometry{top=12pt, right=1.75in}
+\begin{abstract}
+Next-generation sequencing (NGS) platforms have advanced research but remain susceptible to artifacts such as PCR-induced chimeras that compromise mitochondrial genome assembly. These artificial hybrid sequences are problematic for small, circular, and repetitive mitochondrial genomes, where they can generate fragmented contigs and false junctions. Existing detection tools, such as UCHIME, are optimized for amplicon-based microbial community analysis and depend on reference databases or abundance assumptions unsuitable for organellar assembly. To address this gap, this study presents MitoChime, a machine learning pipeline for detecting PCR-induced chimeric reads in \textit{Sardinella lemuru} Illumina paired-end data without relying on external reference databases. 
 
-% Currently, little work is being done on the development of digital ontologies, particularly that of the folklore of Western Visayas. However, there exists a digital ontology developed by \citeA{dimzon2015} which stores various Western Visayan oral traditions, including folk narratives. To fill this digital preservation gap, the researchers enhanced and expanded the original ontology to accompany more depth of information and store more folk narratives from Panay Island, specifically myths, legends, and folk tales. In addition, the researchers developed a chatbot capable of providing insights and details on the stored Panayanon folk narratives. Specifically, the researchers to created a knowledge base of Panayanon folk narratives and subsequently developed and trained a chatbot to understand and answer inquiries about the Panayanon folk narratives.
+Using simulated datasets containing clean and chimeric reads, we extracted a feature set combining alignment-based metrics (e.g., supplementary alignments, soft-clipping) with sequence-derived statistics (e.g., k-mer composition, microhomology). A comparative evaluation of supervised learning models identified tree-based ensembles CatBoost and Gradient Boosting as top performers, achieving an F1-score of 0.77 and an ROC-AUC of 0.84 on held-out test data. Feature importance analysis highlighted soft-clipping and k-mer compositional shifts as the strongest predictors of chimerism, whereas microhomology contributed minimally. Integrating MitoChime as a pre-assembly step can aid in streamlining mitochondrial reconstruction pipelines.
 
-% \begin{flushleft}
-% \begin{tabular}{lp{3in}}
-% \hspace{-0.5em}\textbf{Keywords:}\hspace{0.25em} &
-% Philippine folk literature, 
-% Digital preservation,
-% Ontology-based system, 
-% Chat bot
-% \\
-% \end{tabular}
-% \end{flushleft}
-% \end{abstract}
+\begin{flushleft}
+\begin{tabular}{lp{3in}}
+\hspace{-0.5em}\textbf{Keywords:}\hspace{0.25em} &
+Chimera detection, 
+Mitochondrial genome,
+Assembly, 
+Machine learning
+\\
+\end{tabular}
+\end{flushleft}
+\end{abstract}
+\restoregeometry
