@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.26)  5 DEC 2025 22:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.26)  5 DEC 2025 22:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -840,7 +840,7 @@ Chapter 3.
 [19
 
 ]
-<figures/research_activities.png, id=541, 337.26pt x 452.69125pt>
+<figures/research_activities.png, id=537, 337.26pt x 452.69125pt>
 File: figures/research_activities.png Graphic file (type png)
 <use figures/research_activities.png>
 Package pdftex.def Info: figures/research_activities.png  used on input line 13
@@ -852,7 +852,7 @@ Chapter 4.
 [32
 
 ]
-<../notebooks/figures/correlation.png, id=607, 672.111pt x 570.933pt>
+<../notebooks/figures/correlation.png, id=603, 672.111pt x 570.933pt>
 File: ../notebooks/figures/correlation.png Graphic file (type png)
 <use ../notebooks/figures/correlation.png>
 Package pdftex.def Info: ../notebooks/figures/correlation.png  used on input li
@@ -865,7 +865,7 @@ Overfull \hbox (30.4271pt too wide) in paragraph at lines 6--25
  []
 
 )
-<figures/baseline_f1.png, id=618, 498.1812pt x 281.3712pt>
+<figures/baseline_f1.png, id=614, 498.1812pt x 281.3712pt>
 File: figures/baseline_f1.png Graphic file (type png)
 <use figures/baseline_f1.png>
 Package pdftex.def Info: figures/baseline_f1.png  used on input line 33.
@@ -876,57 +876,57 @@ Overfull \hbox (61.74414pt too wide) in paragraph at lines 6--22
  []
 
 )
-<figures/f1_auc_tuning.png, id=627, 859.2903pt x 353.8821pt>
+<figures/f1_auc_tuning.png, id=623, 859.2903pt x 353.8821pt>
 File: figures/f1_auc_tuning.png Graphic file (type png)
 <use figures/f1_auc_tuning.png>
 Package pdftex.def Info: figures/f1_auc_tuning.png  used on input line 48.
 (pdftex.def)             Requested size: 415.55249pt x 171.13582pt.
  [36] [37 <./figures/f1_auc_tuning.png>]
-<figures/cm_catboost.png, id=637, 280.4076pt x 281.3712pt>
+<figures/cm_catboost.png, id=633, 280.4076pt x 281.3712pt>
 File: figures/cm_catboost.png Graphic file (type png)
 <use figures/cm_catboost.png>
 Package pdftex.def Info: figures/cm_catboost.png  used on input line 69.
 (pdftex.def)             Requested size: 186.99734pt x 187.63757pt.
-<figures/cm_gradient_boosting.png, id=638, 280.4076pt x 281.3712pt>
+<figures/cm_gradient_boosting.png, id=634, 280.4076pt x 281.3712pt>
 File: figures/cm_gradient_boosting.png Graphic file (type png)
 <use figures/cm_gradient_boosting.png>
 Package pdftex.def Info: figures/cm_gradient_boosting.png  used on input line 7
 0.
 (pdftex.def)             Requested size: 186.99734pt x 187.63757pt.
-<figures/cm_random_forest.png, id=639, 280.4076pt x 281.3712pt>
+<figures/cm_random_forest.png, id=635, 280.4076pt x 281.3712pt>
 File: figures/cm_random_forest.png Graphic file (type png)
 <use figures/cm_random_forest.png>
 Package pdftex.def Info: figures/cm_random_forest.png  used on input line 71.
 (pdftex.def)             Requested size: 186.99734pt x 187.63757pt.
-<figures/cm_logreg_l2.png, id=640, 280.4076pt x 281.3712pt>
+<figures/cm_logreg_l2.png, id=636, 280.4076pt x 281.3712pt>
 File: figures/cm_logreg_l2.png Graphic file (type png)
 <use figures/cm_logreg_l2.png>
 Package pdftex.def Info: figures/cm_logreg_l2.png  used on input line 72.
 (pdftex.def)             Requested size: 186.99734pt x 187.63757pt.
  [38] [39 <./figures/cm_catboost.png> <./figures/cm_gradient_boosting.png> <./f
 igures/cm_random_forest.png> <./figures/cm_logreg_l2.png>]
-<figures/roc_pr_curves.png, id=654, 714.7503pt x 281.3712pt>
+<figures/roc_pr_curves.png, id=650, 714.7503pt x 281.3712pt>
 File: figures/roc_pr_curves.png Graphic file (type png)
 <use figures/roc_pr_curves.png>
 Package pdftex.def Info: figures/roc_pr_curves.png  used on input line 85.
 (pdftex.def)             Requested size: 415.55249pt x 163.5947pt.
  [40 <./figures/roc_pr_curves.png>]
-<figures/catboost_imp.png, id=661, 426.393pt x 281.853pt>
+<figures/catboost_imp.png, id=657, 426.393pt x 281.853pt>
 File: figures/catboost_imp.png Graphic file (type png)
 <use figures/catboost_imp.png>
 Package pdftex.def Info: figures/catboost_imp.png  used on input line 104.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/gradient_imp.png, id=662, 426.393pt x 281.853pt>
+<figures/gradient_imp.png, id=658, 426.393pt x 281.853pt>
 File: figures/gradient_imp.png Graphic file (type png)
 <use figures/gradient_imp.png>
 Package pdftex.def Info: figures/gradient_imp.png  used on input line 111.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/randomforest_imp.png, id=663, 425.6703pt x 281.853pt>
+<figures/randomforest_imp.png, id=659, 425.6703pt x 281.853pt>
 File: figures/randomforest_imp.png Graphic file (type png)
 <use figures/randomforest_imp.png>
 Package pdftex.def Info: figures/randomforest_imp.png  used on input line 120.
 (pdftex.def)             Requested size: 186.99734pt x 123.81787pt.
-<figures/logreg_imp.png, id=664, 425.6703pt x 281.853pt>
+<figures/logreg_imp.png, id=660, 425.6703pt x 281.853pt>
 File: figures/logreg_imp.png Graphic file (type png)
 <use figures/logreg_imp.png>
 Package pdftex.def Info: figures/logreg_imp.png  used on input line 127.
@@ -953,23 +953,23 @@ Overfull \hbox (86.31497pt too wide) in paragraph at lines 138--139
 
 [42 <./figures/catboost_imp.png> <./figures/gradient_imp.png> <./figures/random
 forest_imp.png> <./figures/logreg_imp.png>]
-<figures/catboost_family.png, id=678, 426.393pt x 281.853pt>
+<figures/catboost_family.png, id=674, 426.393pt x 281.853pt>
 File: figures/catboost_family.png Graphic file (type png)
 <use figures/catboost_family.png>
 Package pdftex.def Info: figures/catboost_family.png  used on input line 148.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/gradient_family.png, id=679, 426.393pt x 281.853pt>
+<figures/gradient_family.png, id=675, 426.393pt x 281.853pt>
 File: figures/gradient_family.png Graphic file (type png)
 <use figures/gradient_family.png>
 Package pdftex.def Info: figures/gradient_family.png  used on input line 155.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/randomforest_family.png, id=680, 426.393pt x 281.853pt>
+<figures/randomforest_family.png, id=676, 426.393pt x 281.853pt>
 File: figures/randomforest_family.png Graphic file (type png)
 <use figures/randomforest_family.png>
 Package pdftex.def Info: figures/randomforest_family.png  used on input line 16
 4.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/logreg_family.png, id=681, 426.393pt x 281.853pt>
+<figures/logreg_family.png, id=677, 426.393pt x 281.853pt>
 File: figures/logreg_family.png Graphic file (type png)
 <use figures/logreg_family.png>
 Package pdftex.def Info: figures/logreg_family.png  used on input line 171.
@@ -980,13 +980,13 @@ igures/randomforest_family.png> <./figures/logreg_family.png>] [45]
 
  (appendix_A.tex
 Appendix A.
-<../notebooks/figures/eda_sa_count.png, id=698, 353.4003pt x 281.3712pt>
+<../notebooks/figures/eda_sa_count.png, id=694, 353.4003pt x 281.3712pt>
 File: ../notebooks/figures/eda_sa_count.png Graphic file (type png)
 <use ../notebooks/figures/eda_sa_count.png>
 Package pdftex.def Info: ../notebooks/figures/eda_sa_count.png  used on input l
 ine 13.
 (pdftex.def)             Requested size: 186.99734pt x 148.88559pt.
-<../notebooks/figures/eda_microhomology_length.png, id=699, 353.4003pt x 281.37
+<../notebooks/figures/eda_microhomology_length.png, id=695, 353.4003pt x 281.37
 12pt>
 File: ../notebooks/figures/eda_microhomology_length.png Graphic file (type png)
 
@@ -994,26 +994,26 @@ File: ../notebooks/figures/eda_microhomology_length.png Graphic file (type png)
 Package pdftex.def Info: ../notebooks/figures/eda_microhomology_length.png  use
 d on input line 20.
 (pdftex.def)             Requested size: 186.99734pt x 148.88559pt.
-<../notebooks/figures/eda_softclip_left.png, id=700, 353.4003pt x 281.3712pt>
+<../notebooks/figures/eda_softclip_left.png, id=696, 353.4003pt x 281.3712pt>
 File: ../notebooks/figures/eda_softclip_left.png Graphic file (type png)
 <use ../notebooks/figures/eda_softclip_left.png>
 Package pdftex.def Info: ../notebooks/figures/eda_softclip_left.png  used on in
 put line 28.
 (pdftex.def)             Requested size: 186.99734pt x 148.88559pt.
-<../notebooks/figures/eda_softclip_right.png, id=701, 353.4003pt x 281.3712pt>
+<../notebooks/figures/eda_softclip_right.png, id=697, 353.4003pt x 281.3712pt>
 File: ../notebooks/figures/eda_softclip_right.png Graphic file (type png)
 <use ../notebooks/figures/eda_softclip_right.png>
 Package pdftex.def Info: ../notebooks/figures/eda_softclip_right.png  used on i
 nput line 35.
 (pdftex.def)             Requested size: 186.99734pt x 148.88559pt.
-<../notebooks/figures/eda_kmer_js_divergence.png, id=702, 353.4003pt x 281.3712
+<../notebooks/figures/eda_kmer_js_divergence.png, id=698, 353.4003pt x 281.3712
 pt>
 File: ../notebooks/figures/eda_kmer_js_divergence.png Graphic file (type png)
 <use ../notebooks/figures/eda_kmer_js_divergence.png>
 Package pdftex.def Info: ../notebooks/figures/eda_kmer_js_divergence.png  used 
 on input line 43.
 (pdftex.def)             Requested size: 186.99734pt x 148.88559pt.
-<../notebooks/figures/eda_kmer_cosine_diff.png, id=703, 353.4003pt x 281.3712pt
+<../notebooks/figures/eda_kmer_cosine_diff.png, id=699, 353.4003pt x 281.3712pt
 >
 File: ../notebooks/figures/eda_kmer_cosine_diff.png Graphic file (type png)
 <use ../notebooks/figures/eda_kmer_cosine_diff.png>
@@ -1040,9 +1040,6 @@ L3 programming layer <2024-01-04>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: E4D15C8CE3FE6C3CAAA49DAB5F1BDCF5;8824.
  ) 
@@ -1066,9 +1063,9 @@ sers/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti1
 2.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmtt10.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (60 pages, 1556991 bytes).
+Output written on main.pdf (60 pages, 1555834 bytes).
 PDF statistics:
- 852 PDF objects out of 1000 (max. 8388607)
+ 848 PDF objects out of 1000 (max. 8388607)
  159 named destinations out of 1000 (max. 500000)
  468 words of extra memory for PDF output out of 10000 (max. 10000000)
 
