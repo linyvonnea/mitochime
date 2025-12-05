@@ -3,12 +3,12 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Process Diagram of Special Project}}{20}{figure.caption.5}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Feature correlation heatmap showing relationships among alignment-derived and sequence-derived variables.}}{35}{figure.caption.11}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Test F1 of all baseline classifiers, showing that no single model clearly dominates and several achieve comparable performance.}}{36}{figure.caption.13}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models. Hyperparameter tuning yields small but consistent gains, particularly for tree-based ensembles.}}{38}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Confusion matrices for the four representative models on the held-out test set. All models show more false negatives (chimeric reads called clean) than false positives.}}{40}{figure.caption.16}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set. Tree-based ensembles cluster closely, with logistic regression performing slightly but consistently worse.}}{41}{figure.caption.17}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Permutation-based feature importance for four representative classifiers. Clipping and k-mer composition features are generally the strongest predictors, whereas microhomology and other alignment metrics contribute minimally.}}{43}{figure.caption.18}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Aggregated feature family importance across four models. Clipping and k-mer compositional shifts are consistently the dominant contributors, while SA\_structure, Micro\_homology, and other features contribute minimally.}}{45}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Feature correlation heatmap showing relationships among alignment-derived and sequence-derived features.}}{34}{figure.caption.11}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Test F1 of all baseline classifiers, showing that no single model clearly dominates and several achieve comparable performance.}}{35}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models.}}{37}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Confusion matrices for the four representative models on the held-out test set.}}{39}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set.}}{40}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Permutation-based feature importance for four representative classifiers.}}{42}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Aggregated feature family importance across four models.}}{44}{figure.caption.19}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Histogram plots of six key features comparing clean and chimeric reads.}}{48}{figure.caption.20}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Histogram plots of six key features comparing clean and chimeric reads.}}{47}{figure.caption.20}%
