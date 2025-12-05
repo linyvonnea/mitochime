@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.26)  5 DEC 2025 09:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.26)  5 DEC 2025 09:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -726,84 +726,77 @@ Underfull \hbox (badness 2828) in paragraph at lines 58--58
  []
 
 [16] [17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(30.0pt, 554.295pt, 30.0pt)
+* v-part:(T,H,B)=(50.0pt, 684.96999pt, 60.0pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=554.295pt
+* \textheight=684.96999pt
+* \oddsidemargin=-42.26999pt
+* \evensidemargin=-42.26999pt
+* \topmargin=-59.26999pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=40.65187pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--113
 []|\OT1/cmr/bx/n/12 Reference-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
+Underfull \hbox (badness 10000) in paragraph at lines 113--113
 \OT1/cmr/bx/n/12 based
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
+Underfull \hbox (badness 10000) in paragraph at lines 113--113
 \OT1/cmr/bx/n/12 Chimera
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
+Underfull \hbox (badness 2970) in paragraph at lines 113--113
+[]|\OT1/cmr/m/n/12 Compares query se-quences against cu-rated, non-
+ []
+
+
+Underfull \hbox (badness 1609) in paragraph at lines 113--113
+\OT1/cmr/m/n/12 chimeric ref-er-ence databases; iden-ti-fies mo-saic se-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--113
 []|\OT1/cmr/bx/n/12 De novo
  []
 
 
-Underfull \hbox (badness 7203) in paragraph at lines 112--112
+Underfull \hbox (badness 7203) in paragraph at lines 113--113
 \OT1/cmr/bx/n/12 Chimera De-
  []
 
-
-Underfull \hbox (badness 7777) in paragraph at lines 112--112
-[]|\OT1/cmr/m/n/12 Assumes true se-quences are more abun-
- []
+[19
 
 
-Underfull \hbox (badness 2512) in paragraph at lines 112--112
-\OT1/cmr/m/n/12 dant|fails when am-pli-fi-ca-tion bias dis-torts
- []
-
-
-Underfull \hbox (badness 1953) in paragraph at lines 112--112
-\OT1/cmr/m/n/12 abun-dance; strug-gles with evenly abun-dant
- []
-
-
-Underfull \hbox (badness 1028) in paragraph at lines 112--112
-\OT1/cmr/m/n/12 query se-quence, iden-ti-fies par-ent can-di-dates,
- []
-
-
-Underfull \hbox (badness 7326) in paragraph at lines 112--112
-\OT1/cmr/m/n/12 per-forms 3-way align-ment, and com-putes
- []
-
-
-Underfull \hbox (badness 4467) in paragraph at lines 112--112
-[]|\OT1/cmr/m/n/12 First ML en-sem-ble tool for 16S chimera
- []
-
-
-Underfull \hbox (badness 3735) in paragraph at lines 112--112
-\OT1/cmr/m/n/12 de-tec-tion; in-te-grates out-puts of UCHIME,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
-[]|\OT1/cmr/m/n/12 Pipeline for de-tect-ing fu-sion genes and
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
-\OT1/cmr/m/n/12 transcript-derived chimeras in RNA-seq;
- []
-
-
-Underfull \hbox (badness 1975) in paragraph at lines 112--112
-\OT1/cmr/m/n/12 uses dis-cor-dant paired-end reads and split-
- []
-
-
-LaTeX Warning: Float too large for page by 72.13947pt on input line 113.
-
-[19]) [20
+]) [20
 
 
 ] (chapter_3.tex
@@ -992,7 +985,7 @@ Here is how much of TeX's memory you used:
  37254 multiletter control sequences out of 15000+600000
  567875 words of font info for 73 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 88i,10n,134p,1532b,644s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,10n,134p,1532b,646s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Duranne\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tc
 rm1200.pk><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmbx12.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type
@@ -1005,7 +998,7 @@ s/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmti12.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (62 pages, 1325557 bytes).
+Output written on main.pdf (62 pages, 1325533 bytes).
 PDF statistics:
  887 PDF objects out of 1000 (max. 8388607)
  160 named destinations out of 1000 (max. 500000)
