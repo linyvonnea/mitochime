@@ -1,17 +1,53 @@
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %
-% %   Filename    : appendix_A.tex 
-% %
-% %   Description : This file is for including the Research Ethics Documents (delegated as Appendix A) 
-% %                 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Histograms of Key Features}
 
-% \chapter{Appendix Title}
-% \label{sec:appendixa}
+\begin{figure}[ht!]
+    \centering
 
+    % Row 1
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../notebooks/figures/eda_sa_count.png}
+        \caption{\texttt{sa\_count}}
+        \label{fig:eda_sa_count}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../notebooks/figures/eda_microhomology_length.png}
+        \caption{Microhomology length}
+        \label{fig:eda_microhomology}
+    \end{subfigure}
 
+    % Row 2
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../notebooks/figures/eda_softclip_left.png}
+        \caption{\texttt{softclip\_left}}
+        \label{fig:eda_softclip_left}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../notebooks/figures/eda_softclip_right.png}
+        \caption{\texttt{softclip\_right}}
+        \label{fig:eda_softclip_right}
+    \end{subfigure}
 
-% % Save the file you want to include in PDF format.
-% % Uncomment the commant below specifying the correct appendix file. 
-% %\includepdf[pages=-, scale = 0.9, pagecommand={}, offset = -30 0]{appendixA.pdf}
+    % Row 3
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../notebooks/figures/eda_kmer_js_divergence.png}
+        \caption{k-mer Jensen–Shannon divergence}
+        \label{fig:eda_js}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../notebooks/figures/eda_kmer_cosine_diff.png}
+        \caption{k-mer cosine difference}
+        \label{fig:eda_cosine}
+    \end{subfigure}
 
+    \caption{Histogram plots of six key features comparing clean and chimeric reads.}
+    \label{fig:eda_all}
+\end{figure}
