@@ -2,19 +2,19 @@
 \chapter{Results and Discussion}
 \section{Descriptive Analysis of Features}
 
-This chapter presents the performance of the proposed feature set and machine learning models for detecting PCR-induced chimeric reads in simulated mitochondrial Illumina data. We first describe the behaviour of the main features, then compare baseline classifiers, assess the effect of hyperparameter tuning, and finally analyse feature importance in terms of individual variables and biologically motivated feature families.
+This chapter presents the performance of the proposed feature set and machine learning models for detecting PCR-induced chimeric reads in simulated mitochondrial Illumina data. The behaviour of the main features is first described, followed by a comparison of baseline classifiers, an assessment of the effect of hyperparameter tuning, and an analysis of feature importance in terms of individual variables and feature families.
 
 The final dataset contained 31{,}986 reads for training and 7{,}997 reads for testing, with classes balanced (approximately 4{,}000 clean and 4{,}000 chimeric reads in the test split).
 
 \subsection{Exploratory Data Analysis} 
-An exploratory data analysis (EDA) was conducted on the extracted feature matrix to characterize general patterns in the data and gain preliminary insight into which variables might meaningfully contribute to classification. Histograms of key features indicated that alignment-based variables showed clear class separation as chimeric reads have higher frequencies of split alignments and and noticeably broader long-tailed distribution on soft-clipped regions (\texttt{softclip\_left} and \texttt{softclip\_right}). In contrast, sequence-based variables such a microhomology length and k-mer divergence displayed substantial overlap between classes, suggesting more limited discriminative value. The complete set of histograms is provided in Appendix \ref{appendix:eda}.
+An exploratory data analysis (EDA) was conducted on the extracted feature matrix to characterize general patterns in the data and gain preliminary insight into which variables might meaningfully contribute to classification. Histograms of key features indicated that alignment-based variables showed clear class separation as chimeric reads have higher frequencies of split alignments and broader long-tailed distribution on soft-clipped regions (\texttt{softclip\_left} and \texttt{softclip\_right}). In contrast, sequence-based variables such a microhomology length and k-mer divergence displayed substantial overlap between classes, suggesting more limited discriminative value. The complete set of histograms is provided in Appendix~\ref{appendix:appendix_A}.
 
-As shown in Figure \ref{fig:correlation_heatmap}, the feature correlation heatmap shows that alignment-derived variables form a strongly correlated cluster, whereas sequence-derived measures show weak correlations with both the alignment-based features and with one another. This heterogeneity indicates that no single feature family captures all relevant signal sources.
+As shown in Figure \ref{fig:correlation_heatmap}, the feature correlation heatmap shows that alignment-derived features form a strongly correlated cluster, whereas sequence-derived features show weak correlations with both the alignment-based features and with one another. This heterogeneity indicates that no single feature family captures all relevant signal sources.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{../notebooks/figures/correlation.png}
-    \caption{Feature correlation heatmap showing relationships among alignment-derived and sequence-derived variables.}
+    \caption{Feature correlation heatmap showing relationships among alignment-derived and sequence-derived features.}
     \label{fig:correlation_heatmap}
 \end{figure}
 
@@ -37,20 +37,20 @@ Across other models, test F1-scores clustered in a narrow band between approxima
 
 \section{Effect of Hyperparameter Tuning}
 
-To assess whether performance could be improved further, ten model families underwent randomised hyperparameter search (Chapter~3). The tuned metrics are summarised in Table~\ref{tab:tuned_models_noq}. Overall, tuning yielded modest but consistent gains for tree-based ensembles and boosting methods, while leaving linear models essentially unchanged or slightly worse.
+To assess whether performance could be improved further, ten model families underwent randomised hyperparameter search. The tuned metrics are summarised in Table~\ref{tab:tuned_models_noq}. Overall, tuning yielded modest but consistent gains for tree-based ensembles and boosting methods, while leaving linear models essentially unchanged or slightly worse.
 
-CatBoost, gradient boosting, LightGBM, XGBoost, random forest, bagging trees, and MLP all experienced small increases in test F1 (typically $\Delta \mathrm{F1} \approx 0.002$--0.009) and ROC--AUC (up to $\Delta \mathrm{AUC} \approx 0.008$). After tuning, CatBoost remained the best performer with test accuracy 0.802, precision 0.924, recall 0.658, F1-score 0.769, and ROC--AUC 0.844. Gradient boosting achieved almost identical performance (F1 0.767, AUC 0.843). Random forest and bagging trees also improved to F1 scores around 0.763 with AUC $\approx 0.842$.
+CatBoost, gradient boosting, LightGBM, XGBoost, random forest, bagging trees, and MLP all experienced small increases in test F1 (typically $\Delta \mathrm{F1} \approx 0.002$--0.009) and ROC--AUC (up to $\Delta \mathrm{AUC} \approx 0.008$). After tuning, CatBoost remained the best performer with test accuracy 0.80, precision 0.92, recall 0.66, F1-score 0.77, and ROC--AUC 0.84. Gradient boosting achieved almost identical performance (F1 0.77, AUC 0.84). Random forest and bagging trees also improved to F1 scores around 0.76 with AUC $\approx 0.84$.
 
 \input{tables/tuned_models_noq}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/f1_auc_tuning.png}
-  \caption{Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models. Hyperparameter tuning yields small but consistent gains, particularly for tree-based ensembles.}
+  \caption{Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models.}
   \label{fig:f1_auc_tuning}
 \end{figure}
 
-Because improvements are small and within cross-validation variability, we interpret tuning as stabilising and slightly refining the models rather than fundamentally altering their behaviour or their relative ranking.
+Because improvements are small and within cross-validation variability, tuning was interpreted as stabilising and slightly refining the models rather than completely altering their behaviour or their relative ranking.
 
 \section{Detailed Evaluation of Representative Models}
 
@@ -62,7 +62,7 @@ Classification reports and confusion matrices for the four models reveal consist
 
 Random forest attained slightly lower accuracy (0.80) and chimeric F1 (0.76), whereas logistic regression achieved the lowest accuracy among the four (0.79) and chimeric F1 (0.74), although it provided the highest chimeric precision (0.95) at the cost of lower recall (0.61).
 
-Across all models, errors were asymmetric. False negatives (chimeric reads predicted as clean) were more frequent than false positives. For example, CatBoost misclassified 1\,369 chimeric reads as clean but only 215 clean reads as chimeric. This pattern indicates that the models are conservative: they prioritise avoiding spurious chimera calls at the expense of missing some true chimeras. Depending on downstream application, alternative decision thresholds or cost-sensitive training could be explored to adjust this balance.
+Across all models, errors were asymmetric. False negatives (chimeric reads predicted as clean) were more frequent than false positives. For example, CatBoost misclassified 1{,}369 chimeric reads as clean but only 215 clean reads as chimeric. This pattern indicates that the models are conservative and prioritise avoiding false chimera calls at the expense of missing some true chimeras.
 
 \begin{figure}[H]
   \centering
@@ -70,20 +70,20 @@ Across all models, errors were asymmetric. False negatives (chimeric reads predi
   \includegraphics[width=0.45\linewidth]{figures/cm_gradient_boosting.png}\\[4pt]
   \includegraphics[width=0.45\linewidth]{figures/cm_random_forest.png}
   \includegraphics[width=0.45\linewidth]{figures/cm_logreg_l2.png}
-  \caption{Confusion matrices for the four representative models on the held-out test set. All models show more false negatives (chimeric reads called clean) than false positives.}
+  \caption{Confusion matrices for the four representative models on the held-out test set.}
   \label{fig:confusion_matrices}
 \end{figure}
 
 \subsection{ROC and Precision--Recall Curves}
 
-Receiver operating characteristic (ROC) and precision--recall (PR) curves (Figure~\ref{fig:roc_pr_curves}) further support the similarity among the top models. The three tree-based ensembles (CatBoost, gradient boosting, random forest) achieved ROC--AUC values of approximately 0.84 and average precision (AP) around 0.88. Logistic regression performed slightly worse (AUC $\approx 0.82$, AP $\approx 0.87$) but still substantially better than random guessing.
+Receiver operating characteristic (ROC) and precision--recall (PR) curves as shown in Figure~\ref{fig:roc_pr_curves} further support the similarity among the top models. The three tree-based ensembles (CatBoost, gradient boosting, random forest) achieved ROC--AUC values of approximately 0.84 and average precision (AP) around 0.88. Logistic regression performed slightly worse (AUC $\approx 0.82$, AP $\approx 0.87$) but still substantially better than the dummy baseline.
 
 The PR curves show that precision remains above 0.9 across a broad range of recall values (up to roughly 0.5--0.6), after which precision gradually declines. This behaviour indicates that the models can assign very high confidence to a subset of chimeric reads, while more ambiguous reads can only be recovered by accepting lower precision.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/roc_pr_curves.png}
-  \caption{ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set. Tree-based ensembles cluster closely, with logistic regression performing slightly but consistently worse.}
+  \caption{ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set.}
   \label{fig:roc_pr_curves}
 \end{figure}
 
@@ -91,9 +91,9 @@ The PR curves show that precision remains above 0.9 across a broad range of reca
 
 \subsection{Permutation Importance of Individual Features}
 
-To understand how each classifier made predictions, feature importance was quantified using permutation importance. In this approach, the values of a single feature are randomly shuffled, and the resulting drop in F$_1$ score ($\Delta F_1$) reflects how strongly the model depends on that feature. Greater decreases in F$_1$ indicate stronger reliance on that feature. This analysis was applied to four representative models: CatBoost, Gradient Boosting, Random Forest, and L$_2$-regularized Logistic Regression.
+To understand how each classifier made predictions, feature importance was quantified using permutation importance. This analysis was applied to four representative models: CatBoost, Gradient Boosting, Random Forest, and L$_2$-regularized Logistic Regression.
 
-As shown in Figure~\ref{fig:all_models_imp}, the total number of clipped bases consistently provides a strong predictive signal, particularly in Random Forest, Gradient Boosting, and L$_2$-regularized Logistic Regression. CatBoost differs by assigning the highest importance to k-mer divergence metrics such as \texttt{kmer\_js\_divergence}, which capture subtle sequence changes resulting from structural variants or PCR-induced chimeras. Soft-clipping features (\texttt{softclip\_left} and \texttt{softclip\_right}) provide additional context around breakpoints, complementing these primary signals in all models except Gradient Boosting. L$_2$-regularized Logistic Regression relies more on alignment-based split-read metrics when breakpoints are simple, but it is less effective at detecting complex rearrangements that introduce novel sequences. 
+As shown in Figure~\ref{fig:all_models_imp}, the total number of clipped bases consistently provides a strong predictive signal, particularly in Random Forest, Gradient Boosting, and L$_2$-regularized Logistic Regression. CatBoost differs by assigning the highest importance to k-mer divergence metrics such as \texttt{kmer\_js\_divergence}, which capture subtle sequence changes resulting from structural variants or PCR-induced chimeras. Soft-clipping features (\texttt{softclip\_left} and \texttt{softclip\_right}) provide more information around breakpoints, complementing these primary signals in all models except Gradient Boosting. L$_2$-regularized Logistic Regression relies more on alignment-based split-read metrics.
 
 Overall, these results indicate that accurate detection of chimeric reads relies on both alignment-based signals and k-mer compositional information. Explicit microhomology features contribute minimally in this analysis, and combining both alignment-based and sequence-level features enhances model sensitivity and specificity.
 
@@ -129,17 +129,17 @@ Overall, these results indicate that accurate detection of chimeric reads relies
         \label{fig:logreg_imp}
     \end{subfigure}
 
-    \caption{Permutation-based feature importance for four representative classifiers. Clipping and k-mer composition features are generally the strongest predictors, whereas microhomology and other alignment metrics contribute minimally.}
+    \caption{Permutation-based feature importance for four representative classifiers.}
     \label{fig:all_models_imp}
 \end{figure}
 
 \subsection{Feature Family Importance}
 
-To evaluate the contribution of broader biological signals, features were grouped into five families: SA\_structure (supplementary alignment and segment metrics, e.g., \texttt{has\_sa}, \texttt{sa\_count}, \texttt{sa\_min\_delta\_pos}, \texttt{sa\_mean\_nm}), Clipping (\texttt{softclip\_left}, \texttt{softclip\_right}, \texttt{total\_clipped\_bases}, \texttt{breakpoint\_read\_pos}), Kmer\_jump (\texttt{kmer\_cosine\_diff}, \texttt{kmer\_js\_divergence}), Micro\_homology, and Other (e.g., \texttt{mapq}).
+To evaluate the contribution of broader signals, features were grouped into five families: SA\_structure (supplementary alignment and segment metrics, e.g., \texttt{has\_sa}, \texttt{sa\_count}, \texttt{sa\_min\_delta\_pos}, \texttt{sa\_mean\_nm}, etc.), Clipping (\texttt{softclip\_left}, \texttt{softclip\_right}, \texttt{total\_clipped\_bases}, \texttt{breakpoint\_read\_pos}), Kmer\_jump (\texttt{kmer\_cosine\_diff}, \texttt{kmer\_js\_divergence}), Micro\_homology (\texttt{microhomology\_length}, \texttt{microhomology\_gc}), and Other (e.g., \texttt{mapq}).
 
-Aggregated analyses reveal consistent patterns across models. In CatBoost, the Clipping family has the largest cumulative contribution (0.14), followed by Kmer\_jump (0.12), with Other features contributing modestly (0.005) and SA\_structure (0.003) and Micro\_homology (0.003) providing minimal predictive power. Gradient Boosting shows a similar trend, with Clipping (0.13) dominating, Kmer\_jump (0.11) secondary, and the remaining families contributing negligibly. Random Forest integrates both Clipping (0.088) and Kmer\_jump (0.08) effectively, while SA\_structure, Micro\_homology, and Other remain minor contributors. L$_2$-regularized Logistic Regression emphasizes Clipping (0.09) and SA\_structure (0.07), with Kmer\_jump and Micro\_homology having minimal impact.
+Aggregated analyses reveal consistent patterns across models. In CatBoost, the Clipping family has the largest cumulative contribution (0.14), followed by Kmer\_jump (0.12), with Other features contributing minimally (0.005) and SA\_structure (0.003) and Micro\_homology (0.003) providing minimal predictive power. Gradient Boosting shows a similar trend, with Clipping (0.13) dominating, Kmer\_jump (0.11) secondary, and the remaining families contributing negligibly. Random Forest integrates both Clipping (0.088) and Kmer\_jump (0.08) effectively, while SA\_structure, Micro\_homology, and Other remain minor contributors. L$_2$-regularized Logistic Regression emphasizes Clipping (0.09) and SA\_structure (0.07), with Kmer\_jump and Micro\_homology having minimal impact.
 
-Both feature-level and aggregated analyses indicate that detection of chimeric reads in this dataset relies primarily on alignment disruptions (Clipping) and k-mer compositional shifts (Kmer\_jump), which often arise from PCR-induced recombination events, while explicit microhomology features contribute minimally.
+Both feature-level and aggregated analyses indicate that detection of chimeric reads in this dataset relies primarily on alignment irregularities (Clipping) and k-mer compositional shifts (Kmer\_jump), which often arise from PCR-induced template switching events, while explicit microhomology features contribute minimally.
 
 \begin{figure}[H]
     \centering
@@ -173,12 +173,12 @@ Both feature-level and aggregated analyses indicate that detection of chimeric r
         \label{fig:logreg_family}
     \end{subfigure}
 
-    \caption{Aggregated feature family importance across four models. Clipping and k-mer compositional shifts are consistently the dominant contributors, while SA\_structure, Micro\_homology, and other features contribute minimally.}
+    \caption{Aggregated feature family importance across four models.}
     \label{fig:feature_family_all}
 \end{figure}
 
 \section{Summary of Findings}
 
-After removing trivially discriminative metadata, all models performed substantially better than the dummy baseline, with test F1-scores around 0.76 and ROC-AUC values near 0.84. Hyperparameter tuning yielded modest improvements, with boosting methods, particularly CatBoost and gradient boosting, achieving the highest performance. Confusion matrices and precision-recall curves indicate that these models prioritise precision for chimeric reads while accepting lower recall, which a conservative strategy appropriate for scenarios where false positives are costly.
+All models performed substantially better than the dummy baseline, with test F1-scores around 0.76 and ROC-AUC values near 0.84. Hyperparameter tuning yielded modest improvements, with boosting methods, particularly CatBoost and gradient boosting, achieving the highest performance. Confusion matrices and precision-recall curves indicate that the models prioritize precision over recall for chimeric reads, minimizing false positives.
 
-Feature importance analyses revealed that alignment disruptions, such as clipping, and abrupt k-mer composition changes accounted for most predictive power. In contrast, microhomology metrics and supplementary alignment descriptors contributed minimally. These results indicate that features based on read alignment and k-mer composition are sufficient to train classifiers for detecting mitochondrial PCR-induced chimera reads, without needing additional quality-score or positional information in the conditions tested.
+Feature importance analysis highlighted alignment breakpoints, such as clipping, and abrupt shifts in k-mer composition as the main contributors to predictive power. Microhomology metrics and supplementary alignment features had minimal impact. These findings suggest that alignment-based and k-mer–based features alone are sufficient for training classifiers to detect mitochondrial PCR-induced chimeric reads under the conditions tested.

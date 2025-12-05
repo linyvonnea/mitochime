@@ -44,4 +44,5 @@
 \contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{42}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{43}{subsection.4.5.2}%
 \contentsline {section}{\numberline {4.6}Summary of Findings}{45}{section.4.6}%
-\contentsline {chapter}{\numberline {A}Histograms of Key Features}{47}{appendix.A}%
+\contentsline {chapter}{\numberline {A}Exploratory Data Analysis}{47}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Histograms of Key Features}{47}{section.A.1}%
