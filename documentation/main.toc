@@ -25,11 +25,11 @@
 \contentsline {subsection}{\numberline {3.1.2}Feature Extraction Pipeline}{25}{subsection.3.1.2}%
 \contentsline {subsubsection}{Supplementary Alignment Flag}{25}{section*.7}%
 \contentsline {subsubsection}{K-mer Composition Difference}{26}{section*.8}%
-\contentsline {subsubsection}{Microhomology}{27}{section*.9}%
+\contentsline {subsubsection}{Microhomology}{26}{section*.9}%
 \contentsline {subsection}{\numberline {3.1.3}Machine Learning Model Development}{28}{subsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.1.4}Model Benchmarking, Hyperparameter Optimization, and Evaluation}{29}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}Feature Importance and Interpretation}{31}{subsection.3.1.5}%
-\contentsline {subsection}{\numberline {3.1.6}Validation and Testing}{32}{subsection.3.1.6}%
+\contentsline {subsection}{\numberline {3.1.5}Feature Importance and Interpretation}{30}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Validation and Testing}{31}{subsection.3.1.6}%
 \contentsline {subsection}{\numberline {3.1.7}Documentation}{32}{subsection.3.1.7}%
 \contentsline {section}{\numberline {3.2}Calendar of Activities}{33}{section.3.2}%
 \contentsline {chapter}{\numberline {4}Results and Discussion}{34}{chapter.4}%
