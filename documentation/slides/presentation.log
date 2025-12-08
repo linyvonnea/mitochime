@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  8 DEC 2025 21:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  8 DEC 2025 22:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1036,135 +1036,173 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 [17
 
 ]
+<../figures/f1_before_after_tuning.png, id=529, 432.8973pt x 278.9622pt>
+File: ../figures/f1_before_after_tuning.png Graphic file (type png)
+<use ../figures/f1_before_after_tuning.png>
+Package pdftex.def Info: ../figures/f1_before_after_tuning.png  used on input l
+ine 269.
+(pdftex.def)             Requested size: 171.14764pt x 110.28888pt.
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-243.
+269.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-43.
+69.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-243.
+269.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-243.
+269.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 243.
+(Font)              <10.95> on input line 269.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 243.
+(Font)              <8> on input line 269.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 243.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 243
+(Font)              <6> on input line 269.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 269
 .
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 243
+LaTeX Font Info:    Trying to load font information for U+msb on input line 269
 .
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 243.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 269.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 243.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 243.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 243.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 243.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 243.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 243.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 269.
+<../figures/auc_before_after_tuning.png, id=530, 427.8384pt x 279.6849pt>
+File: ../figures/auc_before_after_tuning.png Graphic file (type png)
+<use ../figures/auc_before_after_tuning.png>
+Package pdftex.def Info: ../figures/auc_before_after_tuning.png  used on input 
+line 269.
+(pdftex.def)             Requested size: 171.14764pt x 111.88051pt.
+
+
+! LaTeX Error: Unicode character Δ (U+0394)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.269 \end{frame}
+                 
+? 
+
+! LaTeX Error: Unicode character Δ (U+0394)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.269 \end{frame}
+                 
+? 
 
 
 [18
 
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/loca
-l/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
-
-! LaTeX Error: Unicode character Δ (U+0394)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.269 \end{frame}
-                 
-? 
-
-! LaTeX Error: Unicode character Δ (U+0394)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.269 \end{frame}
-                 
-? 
+l/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc} <../figures/f1_befo
+re_after_tuning.png> <../figures/auc_before_after_tuning.png>]
+<../figures/roc_pr_curves.png, id=562, 714.7503pt x 281.3712pt>
+File: ../figures/roc_pr_curves.png Graphic file (type png)
+<use ../figures/roc_pr_curves.png>
+Package pdftex.def Info: ../figures/roc_pr_curves.png  used on input line 284.
+(pdftex.def)             Requested size: 342.2953pt x 134.7518pt.
 
 
 [19
 
-]
+ <../figures/roc_pr_curves.png>]
+<../figures/cm_catboost.png, id=592, 280.4076pt x 281.3712pt>
+File: ../figures/cm_catboost.png Graphic file (type png)
+<use ../figures/cm_catboost.png>
+Package pdftex.def Info: ../figures/cm_catboost.png  used on input line 314.
+(pdftex.def)             Requested size: 188.26346pt x 188.90842pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 314.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 314.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 314.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 314.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 314.
+
+Overfull \vbox (7.83766pt too high) detected at line 314
+ []
+
+
 
 [20
 
-]
+ <../figures/cm_catboost.png>]
+<../figures/catboost_imp.png, id=622, 426.393pt x 281.853pt>
+File: ../figures/catboost_imp.png Graphic file (type png)
+<use ../figures/catboost_imp.png>
+Package pdftex.def Info: ../figures/catboost_imp.png  used on input line 343.
+(pdftex.def)             Requested size: 188.26346pt x 124.44147pt.
+
+
+! LaTeX Error: Unicode character Δ (U+0394)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.343 \end{frame}
+                 
+? 
+
+! LaTeX Error: Unicode character Δ (U+0394)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.343 \end{frame}
+                 
+? 
+
 
 [21
 
-]
-
-! LaTeX Error: Unicode character Δ (U+0394)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.344 \end{frame}
-                 
-? 
-
-! LaTeX Error: Unicode character Δ (U+0394)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.344 \end{frame}
-                 
-? 
+ <../figures/catboost_imp.png>]
+<../figures/catboost_family.png, id=651, 426.393pt x 281.853pt>
+File: ../figures/catboost_family.png Graphic file (type png)
+<use ../figures/catboost_family.png>
+Package pdftex.def Info: ../figures/catboost_family.png  used on input line 371
+.
+(pdftex.def)             Requested size: 188.26346pt x 124.44147pt.
 
 
 [22
 
-]
+ <../figures/catboost_family.png>]
 
 [23
-
-]
-
-[24
 
 ]
 \tf@nav=\write6
@@ -1185,10 +1223,10 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: 3C9572F776BD323DAEE2E5D76893540F;345.
  ) 
 Here is how much of TeX's memory you used:
- 22452 strings out of 473190
- 434255 string characters out of 5715801
- 794007 words of memory out of 5000000
- 45160 multiletter control sequences out of 15000+600000
+ 22490 strings out of 473190
+ 435810 string characters out of 5715801
+ 793007 words of memory out of 5000000
+ 45200 multiletter control sequences out of 15000+600000
  628372 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,387b,772s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1200,10 +1238,10 @@ ts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1
 /public/lm/lmsso10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/l
 m/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.p
 fb>
-Output written on presentation.pdf (24 pages, 313489 bytes).
+Output written on presentation.pdf (23 pages, 650614 bytes).
 PDF statistics:
- 772 PDF objects out of 1000 (max. 8388607)
- 677 compressed objects within 7 object streams
- 52 named destinations out of 1000 (max. 500000)
- 136 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 757 PDF objects out of 1000 (max. 8388607)
+ 652 compressed objects within 7 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
