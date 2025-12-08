@@ -1,70 +1,432 @@
 % !TEX TS-program = pdflatex
-\documentclass{beamer}
+\documentclass[11pt]{beamer}
 
-% THEME (you can change this)
-\usetheme{Madrid} % Other popular: Berlin, Copenhagen, AnnArbor, Boadilla
+\usetheme{Madrid}
 
-% OPTIONAL: some packages you often need
+% Basic packages
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{booktabs}
 \usepackage{amsmath, amssymb}
+\usepackage{lmodern}
 
-% TITLE INFO
-\title[Short Title]{Full Presentation Title}
-\subtitle{Optional Subtitle}
-\author{Your Name}
-\institute{Your Institution}
-\date{\today} % or a fixed date, e.g. March 2025
+% Title info (edit as you like)
+\title[MitoChime ML Pipeline]{Machine Learning Pipeline for Detecting PCR-Induced Chimeric Reads}
+\subtitle{MitoChime: Organellar Chimera Detection from Per-Read Features}
+\author{Duran, Lin, Pailden}
+\institute[UPV / PGC Visayas]{University of the Philippines Visayas \\ Philippine Genome Center Visayas}
+\date{\today}
 
 \begin{document}
 
-% TITLE SLIDE
+% -------------------------------------------------------------------
 \begin{frame}
   \titlepage
 \end{frame}
 
-% TABLE OF CONTENTS SLIDE (optional)
+% -------------------------------------------------------------------
 \begin{frame}{Outline}
   \tableofcontents
 \end{frame}
 
-% SECTION 1
-\section{Introduction}
+% ===================================================================
+\section{Train--Test Split and Validation}
 
-\begin{frame}{Motivation}
+% -------------------------------------------------------------------
+\begin{frame}{Stratified Train--Test Split}
   \begin{itemize}
-    \item First point
-    \item Second point
-    \item Third point
+    \item First step: \textbf{create a held-out test set} for final evaluation.
+    \item Use \texttt{build\_datasets.py}:
+      \begin{enumerate}
+        \item Combine clean and chimeric feature tables.
+        \item Attach labels (0 = clean, 1 = chimeric) if missing.
+        \item Shuffle and perform \textbf{stratified} split:
+          \[
+            \text{Train} : \text{Test} = 80\% : 20\%
+          \]
+          with the same class proportions in each split.
+      \end{enumerate}
+    \item Output:
+      \begin{itemize}
+        \item \texttt{train.tsv} (used for model selection and cross-validation).
+        \item \texttt{test.tsv} (kept untouched until the very end).
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Key Question}
-  Text, equations, or images here.
+% -------------------------------------------------------------------
+\begin{frame}{5-Fold Stratified Cross-Validation}
+  \begin{itemize}
+    \item On the \textbf{training set only}, we perform:
+      \[
+        \text{5-fold stratified cross-validation}
+      \]
+    \item Procedure:
+      \begin{enumerate}
+        \item Split training data into 5 folds with balanced 0/1 labels.
+        \item For each fold:
+          \begin{itemize}
+            \item Train the model on 4 folds.
+            \item Evaluate on the remaining fold.
+          \end{itemize}
+        \item Average metrics across the 5 folds:
+          \[
+            \text{mean F1} \pm \text{std}, \quad \text{mean accuracy} \pm \text{std}
+          \]
+      \end{enumerate}
+    \item This tells us:
+      \begin{itemize}
+        \item \textbf{Typical performance} on unseen data.
+        \item \textbf{Stability} of each model (via standard deviation).
+        \item Helps guide which algorithms are promising before going to the test set.
+      \end{itemize}
+  \end{itemize}
 \end{frame}
 
-% SECTION 2
-\section{Methods}
+% ===================================================================
+\section{Model Zoo and Training}
 
-\begin{frame}{Methods Overview}
-  \begin{enumerate}
-    \item Step 1
-    \item Step 2
-    \item Step 3
-  \end{enumerate}
+% -------------------------------------------------------------------
+\begin{frame}{Model Zoo: Algorithms Compared}
+  \begin{itemize}
+    \item We implemented a panel of 13 classifiers using scikit-learn and gradient boosting libraries:
+      \begin{itemize}
+        \item \textbf{Baseline}: Dummy (always predicts most frequent class).
+        \item \textbf{Linear models}: Logistic regression (\texttt{logreg\_l2}), linear SVM with calibration.
+        \item \textbf{Tree ensembles}:
+          \begin{itemize}
+            \item Random Forest, Extra Trees.
+            \item Gradient Boosting (sklearn).
+            \item XGBoost, LightGBM, CatBoost.
+            \item Bagging with decision trees.
+          \end{itemize}
+        \item \textbf{Others}: k-NN, Gaussian Naive Bayes, shallow MLP.
+      \end{itemize}
+    \item All models use the same preprocessing pipeline:
+      \[
+        \text{Imputer (median)} \rightarrow \text{StandardScaler} \rightarrow \text{Classifier}
+      \]
+  \end{itemize}
 \end{frame}
 
-% IMAGE EXAMPLE
-\begin{frame}{Example Figure}
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{figures/my_figure.png}
-  \end{center}
+% -------------------------------------------------------------------
+\begin{frame}{Hyperparameter Tuning for Top Models}
+  \begin{itemize}
+    \item For the 10 strongest families, we perform \textbf{RandomizedSearchCV} with 5-fold CV:
+      \begin{itemize}
+        \item Logistic regression, linear SVM (calibrated).
+        \item Random Forest, Extra Trees, Gradient Boosting.
+        \item XGBoost, LightGBM, CatBoost.
+        \item Bagging (trees), MLP.
+      \end{itemize}
+    \item Each search explores combinations of:
+      \begin{itemize}
+        \item Tree depth, number of estimators, learning rate, subsample ratios, etc.
+        \item For MLP: hidden layer sizes, regularization (\(\alpha\)), learning rate.
+      \end{itemize}
+    \item Selection criterion:
+      \begin{itemize}
+        \item Choose the hyperparameters with the best \textbf{cross-validated F1-score}.
+        \item Re-fit the best model on the \textbf{full training set}, then evaluate on the held-out test set.
+      \end{itemize}
+  \end{itemize}
 \end{frame}
 
-% LAST SLIDE
-\begin{frame}{Thank you}
+% ===================================================================
+\section{Metrics and Interpretation}
+
+% -------------------------------------------------------------------
+\begin{frame}{Classification Metrics (Per-Read)}
+  \begin{itemize}
+    \item For each model, on the test set we compute:
+      \begin{itemize}
+        \item \textbf{Accuracy}:
+          \[
+            \frac{\text{\# correct predictions}}{\text{\# all predictions}}
+          \]
+        \item \textbf{Precision} (for chimeras):
+          \[
+            \frac{TP}{TP + FP}
+          \]
+          Of the reads we call ``chimeric'', how many are truly chimeric?
+        \item \textbf{Recall} (for chimeras):
+          \[
+            \frac{TP}{TP + FN}
+          \]
+          Of all true chimeric reads, how many did we detect?
+        \item \textbf{F1-score} (for chimeras):
+          \[
+            F1 = 2 \cdot \frac{\text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}
+          \]
+          Harmonic mean: high only if both precision and recall are high.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{Threshold-Free Metrics: ROC--AUC and PR Curves}
+  \begin{itemize}
+    \item Our models output a \textbf{score} per read (probability of being chimeric).
+    \item By sweeping a threshold on this score, we can draw:
+      \begin{itemize}
+        \item \textbf{ROC curve}:
+          \begin{itemize}
+            \item x-axis: False Positive Rate (FPR).
+            \item y-axis: True Positive Rate (TPR = recall).
+            \item \textbf{ROC--AUC} = area under the curve.
+          \end{itemize}
+        \item \textbf{Precision--Recall (PR) curve}:
+          \begin{itemize}
+            \item x-axis: Recall.
+            \item y-axis: Precision.
+            \item \textbf{Average Precision (AP)} = area under PR curve.
+          \end{itemize}
+      \end{itemize}
+    \item Intuition for ROC--AUC:
+      \[
+        \text{AUC} \approx 0.84 \Rightarrow
+        \text{84\% chance a random chimera is scored higher than a random clean read.}
+      \]
+  \end{itemize}
+\end{frame}
+
+% ===================================================================
+\section{Results}
+
+% -------------------------------------------------------------------
+\begin{frame}{Overall Performance Across Models (Test Set)}
+  \small
+  \begin{table}
+    \centering
+    \begin{tabular}{lccccc}
+      \toprule
+      Model & CV Acc & CV F1 & Test Acc & Test F1 & ROC--AUC \\
+      \midrule
+      Dummy baseline & 0.50 & 0.67 & 0.50 & 0.67 & 0.50 \\
+      Logistic regression & 0.79 & 0.75 & 0.79 & 0.74 & 0.82 \\
+      Linear SVM (cal.)   & 0.79 & 0.75 & 0.79 & 0.74 & 0.82 \\
+      Random Forest       & 0.80 & 0.77 & 0.79 & 0.75 & 0.83 \\
+      Extra Trees         & 0.80 & 0.77 & 0.79 & 0.75 & 0.82 \\
+      Gradient Boosting   & 0.81 & 0.78 & 0.80 & 0.77 & 0.84 \\
+      XGBoost             & 0.81 & 0.77 & 0.80 & 0.76 & 0.84 \\
+      LightGBM            & 0.81 & 0.77 & 0.80 & 0.76 & 0.84 \\
+      CatBoost            & 0.81 & 0.78 & 0.80 & 0.77 & 0.84 \\
+      k-NN                & 0.78 & 0.75 & 0.78 & 0.75 & 0.81 \\
+      Gaussian NB         & 0.75 & 0.66 & 0.74 & 0.65 & 0.82 \\
+      Bagging (trees)     & 0.80 & 0.77 & 0.79 & 0.76 & 0.84 \\
+      MLP                 & 0.79 & 0.75 & 0.79 & 0.75 & 0.82 \\
+      \bottomrule
+    \end{tabular}
+    \caption{Summary of cross-validation and test performance (chimeric class F1).}
+  \end{table}
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{ROC and PR Curves (Placeholder)}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{figures/roc_curves.pdf}\\[0.5em]
+      \small ROC curves (CatBoost, GBM, RF, logreg)
+    \column{0.5\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{figures/pr_curves.pdf}\\[0.5em]
+      \small Precision--Recall curves
+  \end{columns}
+
+  \vspace{0.5em}
+  \small
+  \begin{itemize}
+    \item ROC--AUC for top models: \(\approx 0.84\).
+    \item Curves pushed towards the top-left / top-right illustrate strong separation
+          between clean and chimeric reads across thresholds.
+  \end{itemize}
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{Confusion Matrix and Class-Wise Behaviour (CatBoost)}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{figures/cm_catboost.pdf}\\
+      \tiny Placeholder: confusion matrix for CatBoost on test set
+    \column{0.5\textwidth}
+      \small
+      \begin{block}{CatBoost (test set, illustrative)}
+        \scriptsize
+        clean:\quad precision \(\approx 0.73\), recall \(\approx 0.95\)\\
+        chimeric:\quad precision \(\approx 0.92\), recall \(\approx 0.66\)\\[0.3em]
+        overall accuracy \(\approx 0.80\)
+      \end{block}
+  \end{columns}
+  \vspace{0.3em}
+  \small
+  \begin{itemize}
+    \item \textbf{Clean reads}:
+      \begin{itemize}
+        \item Very high recall: most true clean reads are correctly kept.
+      \end{itemize}
+    \item \textbf{Chimeric reads}:
+      \begin{itemize}
+        \item High precision: when we call a read chimeric, it is usually correct.
+        \item Moderate recall: we detect about two-thirds of all chimeras.
+      \end{itemize}
+    \item Practical behaviour: \textbf{conservative chimera filter} that
+          prioritizes not discarding clean reads.
+  \end{itemize}
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{Effect of Hyperparameter Tuning (F1 and ROC--AUC)}
+  \small
+  \begin{table}
+    \centering
+    \begin{tabular}{lcccc}
+      \toprule
+      Model & F1 (base) & AUC (base) & F1 (tuned) & AUC (tuned) \\
+      \midrule
+      CatBoost          & 0.767 & 0.839 & 0.769 & 0.844 \\
+      Gradient Boosting & 0.766 & 0.840 & 0.767 & 0.843 \\
+      LightGBM          & 0.764 & 0.838 & 0.766 & 0.842 \\
+      XGBoost           & 0.765 & 0.839 & 0.765 & 0.839 \\
+      Random Forest     & 0.755 & 0.834 & 0.763 & 0.842 \\
+      Bagging (trees)   & 0.760 & 0.837 & 0.763 & 0.842 \\
+      Extra Trees       & 0.753 & 0.824 & 0.760 & 0.837 \\
+      MLP               & 0.748 & 0.819 & 0.749 & 0.821 \\
+      Logistic reg.     & 0.744 & 0.821 & 0.743 & 0.818 \\
+      Linear SVM (cal.) & 0.744 & 0.820 & 0.743 & 0.818 \\
+      \bottomrule
+    \end{tabular}
+    \caption{Test F1 and ROC--AUC before vs after hyperparameter tuning.}
+  \end{table}
+
+  \vspace{0.3em}
+  \small
+  \begin{itemize}
+    \item Tuning yields \textbf{modest but consistent gains} in F1 and ROC--AUC.
+    \item Confirms that the initial defaults were already reasonable, but
+          performance can be further refined.
+  \end{itemize}
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{Permutation Feature Importance (Placeholder)}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{figures/perm_importance_catboost.pdf}\\
+      \tiny Placeholder: permutation importance for CatBoost
+    \column{0.5\textwidth}
+      \small
+      \begin{itemize}
+        \item Top features across CatBoost, GBM, RF:
+          \begin{itemize}
+            \item \texttt{total\_clipped\_bases}
+            \item \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}
+            \item \texttt{softclip\_left}, \texttt{softclip\_right}
+            \item \texttt{mapq}
+          \end{itemize}
+        \item Interpretation:
+          \begin{itemize}
+            \item Chimeras are characterized by \textbf{large clipped segments} and
+                  \textbf{abrupt k-mer composition shifts}.
+            \item Aligners are already “seeing” the breakpoint signal; the ML model
+                  learns to combine these signals into a chimera score.
+          \end{itemize}
+      \end{itemize}
+  \end{columns}
+\end{frame}
+
+% ===================================================================
+\section{Discussion and Conclusion}
+
+% -------------------------------------------------------------------
+\begin{frame}{Summary of Findings}
+  \begin{itemize}
+    \item We built a per-read feature table capturing:
+      \begin{itemize}
+        \item Alignment and clipping patterns.
+        \item Supplementary alignments and breakpoint distances.
+        \item Sequence-level k-mer divergence and microhomology.
+      \end{itemize}
+    \item A broad panel of ML models was evaluated:
+      \begin{itemize}
+        \item Tree-based ensembles (CatBoost, Gradient Boosting, Random Forest, LightGBM, XGBoost)
+              achieved the \textbf{best performance}.
+        \item Test F1 for chimeras \(\approx 0.76\text{--}0.77\), ROC--AUC \(\approx 0.84\).
+      \end{itemize}
+    \item Model behaviour:
+      \begin{itemize}
+        \item Conservative on clean reads (high recall).
+        \item High precision on chimeric reads, moderate recall.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{Implications for Mitochondrial Assembly}
+  \begin{itemize}
+    \item The ML classifier can be used as a \textbf{pre-filter} before assembling mitochondrial genomes:
+      \begin{itemize}
+        \item Remove high-confidence chimeric reads to reduce false junctions.
+        \item Retain the majority of clean reads to preserve coverage.
+      \end{itemize}
+    \item Especially useful for:
+      \begin{itemize}
+        \item Small, circular, and repetitive organellar genomes where chimeras are particularly harmful.
+        \item Scenarios without high-quality reference genomes or abundance information.
+      \end{itemize}
+    \item The feature importance analysis provides biological insight:
+      \begin{itemize}
+        \item Confirms the role of soft-clipping, supplementary alignments, and k-mer jumps
+              as core signals of chimeric structure.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{Limitations and Future Work}
+  \begin{itemize}
+    \item Current study uses \textbf{simulated} chimeras and a single species:
+      \begin{itemize}
+        \item Need to validate on real experimental datasets.
+        \item Extend to other organellar genomes and library preparations.
+      \end{itemize}
+    \item Classifier currently treats each read independently:
+      \begin{itemize}
+        \item Future work: incorporate read-pair information, local read depth, or graph features.
+      \end{itemize}
+    \item Integration into practical pipelines:
+      \begin{itemize}
+        \item Wrap as a command-line tool interfacing with standard BAM/FASTQ workflows.
+        \item Benchmark impact on final assembly quality (contiguity, misassemblies).
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{Conclusion}
+  \begin{itemize}
+    \item We developed a \textbf{machine learning pipeline} that:
+      \begin{itemize}
+        \item Learns from alignment- and sequence-based features.
+        \item Achieves strong separation between clean and chimeric reads.
+      \end{itemize}
+    \item Tree-based gradient boosting models (CatBoost, GBM, RF) provide:
+      \begin{itemize}
+        \item High test F1 and ROC--AUC.
+        \item Interpretable feature importance aligned with known chimera mechanisms.
+      \end{itemize}
+    \item This framework is a step towards \textbf{reference-free chimera detection}
+          tailored for organellar genomes and low-resource settings.
+  \end{itemize}
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{Thank You}
   \centering
-  Questions?
+  \Large Questions?
 \end{frame}
 
 \end{document}

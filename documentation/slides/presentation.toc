@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Train--Test Split and Validation}{3}{0}{1}
+\beamer@sectionintoc {2}{Model Zoo and Training}{5}{0}{2}
+\beamer@sectionintoc {3}{Metrics and Interpretation}{7}{0}{3}
+\beamer@sectionintoc {4}{Results}{9}{0}{4}
+\beamer@sectionintoc {5}{Discussion and Conclusion}{14}{0}{5}
