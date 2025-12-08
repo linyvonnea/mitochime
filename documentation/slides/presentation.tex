@@ -151,6 +151,49 @@
   \end{figure}
 \end{frame}
 
+
+\begin{frame}
+  \frametitle{Feature Extraction Pipeline}
+  \begin{itemize}
+        \item BAM files were processed with a Python script to build a TSV feature matrix.
+        \item Used Pysam for parsing alignments and NumPy for computation.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Feature Extraction Pipeline}
+  \begin{itemize}
+    \item  Focused on three features linked to PCR-induced chimeras:
+  \begin{enumerate}
+        \item \textbf{Supplementary Alignment (SA)}: Detects split alignments; counts and metrics extracted from SA tags
+        \item \textbf{K-mer Composition Difference}: Breakpoints inferred; left/right segments compared using cosine and JS metrics.
+        \item \textbf{Microhomology}: Overlap at junction quantified (length + GC content) within a defined window.
+    \end{enumerate}
+    
+    \item Pipeline design and outputs to be validated by experts.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Feature Extraction Pipeline}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{../figures/clean_excel.png}
+    \caption{TSV Dataset showing Clean Reads}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Feature Extraction Pipeline}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{../figures/chimeric_excel.png}
+    \caption{TSV Dataset showing Chimeric Reads}
+  \end{figure}
+\end{frame}
+
 % ===================================================================
 \begin{frame}{Dataset construction and split}
   \begin{itemize}
