@@ -1,3 +1,0 @@
-\beamer@sectionintoc {1}{Objectives}{3}{0}{1}
-\beamer@sectionintoc {2}{Scope and Limitations}{5}{0}{2}
-\beamer@sectionintoc {3}{Methodology}{9}{0}{3}
