@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.26)  8 DEC 2025 21:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.11.26)  8 DEC 2025 21:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1067,105 +1067,119 @@ Package pdftex.def Info: ../figures/clean_sam.png  used on input line 143.
 [13
 
  <../figures/clean_sam.png>]
-<../figures/chimeric_sam.png, id=442, 1088.26575pt x 383.63326pt>
+<../figures/chimeric_sam.png, id=443, 1088.26575pt x 383.63326pt>
 File: ../figures/chimeric_sam.png Graphic file (type png)
 <use ../figures/chimeric_sam.png>
 Package pdftex.def Info: ../figures/chimeric_sam.png  used on input line 152.
 (pdftex.def)             Requested size: 342.2953pt x 120.66364pt.
  [14
 
- <../figures/chimeric_sam.png>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-77.
+ <../figures/chimeric_sam.png>] [15
+
+]
+[16
+
+]
+<../figures/clean_excel.png, id=527, 1094.8905pt x 351.11176pt>
+File: ../figures/clean_excel.png Graphic file (type png)
+<use ../figures/clean_excel.png>
+Package pdftex.def Info: ../figures/clean_excel.png  used on input line 184.
+(pdftex.def)             Requested size: 342.2953pt x 109.765pt.
+ [17
+
+ <../figures/clean_excel.png>]
+<../figures/chimeric_excel.png, id=555, 1137.048pt x 364.9635pt>
+File: ../figures/chimeric_excel.png Graphic file (type png)
+<use ../figures/chimeric_excel.png>
+Package pdftex.def Info: ../figures/chimeric_excel.png  used on input line 194.
+
+(pdftex.def)             Requested size: 342.2953pt x 109.86858pt.
+ [18
+
+ <../figures/chimeric_excel.png>]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
+18.
 
 (C:\Users\Duranne\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-177.
+218.
 
 (C:\Users\Duranne\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-77.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
+18.
 
 (C:\Users\Duranne\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-177.
+218.
 
 (C:\Users\Duranne\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-177.
+218.
 
 (C:\Users\Duranne\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 177.
+(Font)              <10> on input line 218.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 177.
+(Font)              <7> on input line 218.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 177.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 177
+(Font)              <5> on input line 218.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 218
 .
 
 (C:\Users\Duranne\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 177
+LaTeX Font Info:    Trying to load font information for U+msb on input line 218
 .
 
 (C:\Users\Duranne\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 177.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 218.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 177.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 218.
 
-[15
+[19
 
 {C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 206.
+(Font)              <10.95> on input line 247.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 206.
+(Font)              <8> on input line 247.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 206.
+(Font)              <6> on input line 247.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 206.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 247.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 206.
- [16
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 247.
+ [20
 
 {C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
 c}{C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.
-enc}] [17
-
-] [18
-
-] [19
-
-]
-Overfull \hbox (92.1918pt too wide) detected at line 313
-[] \OMS/lmsy/m/n/10.95 ^^Y \T1/lmss/m/n/10.95 0\OML/lmm/m/it/10.95 :\T1/lmss/m/
-n/10.95 84 \OMS/lmsy/m/n/10.95 ) []
- []
-
-[20
-
-] [21
+enc}] [21
 
 ] [22
 
 ] [23
 
-] [24
+]
+Overfull \hbox (92.1918pt too wide) detected at line 354
+[] \OMS/lmsy/m/n/10.95 ^^Y \T1/lmss/m/n/10.95 0\OML/lmm/m/it/10.95 :\T1/lmss/m/
+n/10.95 84 \OMS/lmsy/m/n/10.95 ) []
+ []
+
+[24
 
 ] [25
 
@@ -1178,6 +1192,14 @@ n/10.95 84 \OMS/lmsy/m/n/10.95 ) []
 ] [29
 
 ] [30
+
+] [31
+
+] [32
+
+] [33
+
+] [34
 
 ]
 \tf@nav=\write6
@@ -1198,10 +1220,10 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: 0B55CC4B587D970008326CC6EA6559E0;1148.
  ) 
 Here is how much of TeX's memory you used:
- 22533 strings out of 474486
- 442697 string characters out of 5742810
+ 22563 strings out of 474486
+ 443318 string characters out of 5742810
  1944542 words of memory out of 5000000
- 44249 multiletter control sequences out of 15000+600000
+ 44271 multiletter control sequences out of 15000+600000
  635933 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,389b,860s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1217,9 +1239,9 @@ ic/lm/lmsso10.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/lm/lmsy10.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/lm/lmsy8.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/lm/lmtt10.pfb>
-Output written on presentation.pdf (30 pages, 499308 bytes).
+Output written on presentation.pdf (34 pages, 648261 bytes).
 PDF statistics:
- 988 PDF objects out of 1000 (max. 8388607)
- 69 named destinations out of 1000 (max. 500000)
- 218 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1103 PDF objects out of 1200 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
+ 228 words of extra memory for PDF output out of 10000 (max. 10000000)
 
