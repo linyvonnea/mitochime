@@ -30,6 +30,127 @@
   \tableofcontents
 \end{frame}
 
+\section{Objectives}
+
+\begin{frame}
+  \frametitle{General Objective}
+  \begin{itemize}
+    \item Develop and evaluate a machine-learning pipeline (MitoChime) to detect PCR-induced chimeric reads in \textit{S. lemuru} mitochondrial sequencing data to improve downstream assembly quality.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Specific Objectives}
+  \begin{enumerate}
+    \item Construct simulated \textit{Sardinella lemuru} Illumina paired-end datasets contain ing both clean and PCR-induced chimeric reads.
+    \item Extract alignment-based and sequence-based features such as k-mer composition, junction complexity, and split-alignment counts from both clean and chimeric reads
+    \item Train, validate, and compare supervised machine learning models for classifying reads as clean or chimeric.
+    \item Determine feature importance and identify indicators of PCR-induced chimerism.
+    \item Integrate the optimized classifier into a modular and interpretable pipeline deployable on standard computing environments at PGC Visayas.
+  \end{enumerate}
+\end{frame}
+
+
+
+\section{Scope and Limitations}
+
+\begin{frame}
+\frametitle{Scope of the Study}
+\begin{itemize}
+    \item Focuses on PCR-induced chimeric reads in \textit{Sardinella lemuru} mitochondrial sequencing data to:
+    \begin{itemize}
+        \item to limit interspecific variation in mitochondrial genome size, GC content, and repetitive regions so that differences in read patterns can be attributed more directly to PCR-induced chimerism
+        \item to align the analysis with relevant \textit{S. lemuru} sequencing projects at PGC Visayas
+        \item to take advantage of the availability of \textit{S. lemuru} mitochondrial assemblies and raw datasets in public repositories such as the National Center for Biotechnology Information (NCBI), which facilitates reference selection and benchmarking
+        \item to develop a tool that directly supports local studies on \textit{S. lemuru} population structure and fisheries management produce tools applicable to local population and fisheries studies
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+  \begin{frame}
+    \frametitle{Scope of the Study}
+    \begin{itemize}
+    \item Uses wgsim-based simulations and selected empirical mitochondrial datasets
+
+    \item Analysis targets low-dimensional alignment and sequence features (k-mers, GC content, clipping, split alignments) to maintain interpretability and computational accessibility
+
+    \item Long-read platforms (Nanopore, PacBio) and other taxa are not included
+    \end{itemize}
+  \end{frame}
+
+\begin{frame}
+\frametitle{Key Exclusions}
+\begin{itemize}
+    \item Naturally occurring chimeras
+    \item NUMTs
+    \item Large-scale nuclear genome rearrangements
+    \item High-dimensional deep learning embeddings
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Other Limitations}
+\begin{itemize}
+    \item No simulations with variable sequencing error rates
+    \item No testing of alternative parameter settings (k-mer length, microhomology windows)
+    \item Reliance on supervised machine learning may limit detection of novel/unknown chimeric patterns
+\end{itemize}
+\end{frame}
+
+
+\section{Methodology}
+\begin{frame}
+  \frametitle{Methodology}
+  \begin{figure}
+    \centering
+    \includegraphics[height=0.7\textheight]{../figures/research_activities.png}
+    \caption{Process Diagram of the Special Project}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Collection}
+    The \textit{S. lemuru} mitochondrial reference genome (NCBI: NC\_039553.1) was downloaded in FASTA format and used as the basis for generating simulated reads.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Preprocessing}
+    \begin{itemize}
+        \item A Python script was used to generate the reads.
+        \item Clean reads were produced with wgsim from the reference genome.
+        \item A chimeric reference was created by creating a custom script to combine non-adjacent segments with microhomology
+        \item Chimeric reads were simulated with wgsim.
+        \item All reads were mapped with minimap2 to extract alignment information.
+        \item SAM/BAM files were converted, sorted, and indexed with samtools.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Preprocessing}
+    \begin{itemize}
+        \item Final dataset: ~40k reads, roughly balanced between clean and chimeric (19,984 clean reads and 20,000 chimeric).
+        \item Some of the clean reads failed to align due to the set error rate.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Preprocessing}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{../figures/clean_sam.png}
+    \caption{SAM File of Clean Reads}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Preprocessing}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{../figures/chimeric_sam.png}
+    \caption{SAM File of Chimeric Reads}
+  \end{figure}
+\end{frame}
+
 % ===================================================================
 \section{Train--Test Split and Validation}
 
@@ -227,11 +348,11 @@
   \begin{columns}
     \column{0.5\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{figures/roc_curves.pdf}\\[0.5em]
+      % \includegraphics[width=\linewidth]{figures/roc_curves.pdf}\\[0.5em]
       \small ROC curves (CatBoost, GBM, RF, logreg)
     \column{0.5\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{figures/pr_curves.pdf}\\[0.5em]
+      % \includegraphics[width=\linewidth]{figures/pr_curves.pdf}\\[0.5em]
       \small Precision--Recall curves
   \end{columns}
 
@@ -249,7 +370,7 @@
   \begin{columns}
     \column{0.5\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{figures/cm_catboost.pdf}\\
+      % \includegraphics[width=\linewidth]{figures/cm_catboost.pdf}\\
       \tiny Placeholder: confusion matrix for CatBoost on test set
     \column{0.5\textwidth}
       \small
@@ -259,7 +380,7 @@
         chimeric:\quad precision \(\approx 0.92\), recall \(\approx 0.66\)\\[0.3em]
         overall accuracy \(\approx 0.80\)
       \end{block}
-  \end{columns}
+    \end{columns}
   \vspace{0.3em}
   \small
   \begin{itemize}
@@ -315,7 +436,7 @@
   \begin{columns}
     \column{0.5\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{figures/perm_importance_catboost.pdf}\\
+      % \includegraphics[width=\linewidth]{figures/perm_importance_catboost.pdf}\\
       \tiny Placeholder: permutation importance for CatBoost
     \column{0.5\textwidth}
       \small
