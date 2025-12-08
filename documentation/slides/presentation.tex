@@ -43,7 +43,7 @@
   \frametitle{Specific Objectives}
   \begin{enumerate}
     \item Construct simulated \textit{Sardinella lemuru} Illumina paired-end datasets contain ing both clean and PCR-induced chimeric reads.
-    \item Extract alignment-based and sequence-based features such as k-mer composition, junction complexity, and split-alignment counts from both clean and chimeric reads
+    \item Extract alignment-based and sequence-based features such as k-mer composition, microhomology, and split-alignment counts from both clean and chimeric reads
     \item Train, validate, and compare supervised machine learning models for classifying reads as clean or chimeric.
     \item Determine feature importance and identify indicators of PCR-induced chimerism.
     \item Integrate the optimized classifier into a modular and interpretable pipeline deployable on standard computing environments at PGC Visayas.
@@ -74,7 +74,7 @@
 
     \item Analysis targets low-dimensional alignment and sequence features (k-mers, GC content, clipping, split alignments) to maintain interpretability and computational accessibility
 
-    \item Long-read platforms (Nanopore, PacBio) and other taxa are not included
+    \item Long-read platforms and other taxa are not included
     \end{itemize}
   \end{frame}
 
@@ -155,7 +155,7 @@
 \begin{frame}
   \frametitle{Feature Extraction Pipeline}
   \begin{itemize}
-        \item BAM files were processed with a Python script to build a TSV feature matrix.
+        \item BAM files were processed with a Python script (\texttt{extract\_features.py}) to build a TSV feature matrix.
         \item Used Pysam for parsing alignments and NumPy for computation.
     \end{itemize}
 \end{frame}
