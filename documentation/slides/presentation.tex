@@ -252,38 +252,38 @@
 \end{frame}
 
 
-\begin{frame}{Test-set performance (F1, tuned models)}
-  \begin{columns}
-    \begin{column}{0.55\textwidth}
-      \begin{figure}
-        \centering
-        % TODO: replace with your actual file
-        % \includegraphics[width=\linewidth]{figures/test_f1_tuned_barh.pdf}
-        \caption{Test F1 for tuned models (chimera class).}
-      \end{figure}
-    \end{column}
-    \begin{column}{0.45\textwidth}
-      \begin{itemize}
-        \item Positive class: \textbf{chimeric reads}
-        \item Dummy baseline:
-          \begin{itemize}
-            \item F1 $\approx 0.67$
-          \end{itemize}
-        \item Linear models:
-          \begin{itemize}
-            \item F1 $\approx 0.74$ (logreg, linear SVM)
-          \end{itemize}
-        \item Best ensembles:
-          \begin{itemize}
-            \item CatBoost: F1 $\approx 0.769$
-            \item Gradient Boosting: F1 $\approx 0.767$
-            \item LightGBM: F1 $\approx 0.766$
-          \end{itemize}
-        \item k-NN, MLP: good but slightly below ensembles
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
+% \begin{frame}{Test-set performance (F1, tuned models)}
+%   \begin{columns}
+%     \begin{column}{0.55\textwidth}
+%       \begin{figure}
+%         \centering
+%         % TODO: replace with your actual file
+%         % \includegraphics[width=\linewidth]{figures/test_f1_tuned_barh.pdf}
+%         \caption{Test F1 for tuned models (chimera class).}
+%       \end{figure}
+%     \end{column}
+%     \begin{column}{0.45\textwidth}
+%       \begin{itemize}
+%         \item Positive class: \textbf{chimeric reads}
+%         \item Dummy baseline:
+%           \begin{itemize}
+%             \item F1 $\approx 0.67$
+%           \end{itemize}
+%         \item Linear models:
+%           \begin{itemize}
+%             \item F1 $\approx 0.74$ (logreg, linear SVM)
+%           \end{itemize}
+%         \item Best ensembles:
+%           \begin{itemize}
+%             \item CatBoost: F1 $\approx 0.769$
+%             \item Gradient Boosting: F1 $\approx 0.767$
+%             \item LightGBM: F1 $\approx 0.766$
+%           \end{itemize}
+%         \item k-NN, MLP: good but slightly below ensembles
+%       \end{itemize}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
 
 
 \begin{frame}{Effect of hyperparameter tuning}
@@ -291,14 +291,14 @@
     \begin{column}{0.5\textwidth}
       \begin{figure}
         \centering
-        % \includegraphics[width=\linewidth]{figures/f1_before_after_tuning.pdf}
+        \includegraphics[width=\linewidth]{../figures/f1_before_after_tuning.png}
         \caption{Test F1: baseline vs tuned.}
       \end{figure}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{figure}
         \centering
-        % \includegraphics[width=\linewidth]{figures/auc_before_after_tuning.pdf}
+        \includegraphics[width=\linewidth]{../figures/auc_before_after_tuning.png}
         \caption{Test ROC--AUC: baseline vs tuned.}
       \end{figure}
     \end{column}
@@ -316,14 +316,13 @@
 \begin{frame}{ROC and precision--recall curves}
   \begin{figure}
     \centering
-    % \includegraphics[width=\linewidth]{figures/roc_pr_top_models.pdf}
+    \includegraphics[width=\linewidth]{../figures/roc_pr_curves.png}
     \caption{ROC (left) and PR (right) curves for CatBoost, Gradient Boosting, Random Forest, and logistic regression.}
   \end{figure}
   \begin{itemize}
     \item Ensembles: ROC--AUC $\approx 0.84$; logreg: $\approx 0.82$
     \item Average precision $\approx 0.88$ for ensembles
     \item Precision $> 0.9$ up to recall $\approx 0.5$--$0.6$
-    \item Good trade-off across thresholds
   \end{itemize}
 \end{frame}
 
@@ -332,7 +331,7 @@
     \begin{column}{0.55\textwidth}
       \begin{figure}
         \centering
-        % \includegraphics[width=\linewidth]{figures/confusion_catboost.pdf}
+        \includegraphics[width=\linewidth]{../figures/cm_catboost.png}
         \caption{Confusion matrix heatmap for CatBoost.}
       \end{figure}
     \end{column}
@@ -362,7 +361,7 @@
     \begin{column}{0.55\textwidth}
       \begin{figure}
         \centering
-        % \includegraphics[width=\linewidth]{figures/feature_importance_catboost.pdf}
+        \includegraphics[width=\linewidth]{../figures/catboost_imp.png}
         \caption{Permutation importance (ΔF1) for CatBoost.}
       \end{figure}
     \end{column}
@@ -391,7 +390,7 @@
     \begin{column}{0.55\textwidth}
       \begin{figure}
         \centering
-        % \includegraphics[width=\linewidth]{figures/feature_family_importance_catboost.pdf}
+        \includegraphics[width=\linewidth]{../figures/catboost_family.png}
         \caption{Aggregated feature families for CatBoost.}
       \end{figure}
     \end{column}
