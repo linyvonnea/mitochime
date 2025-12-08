@@ -30,6 +30,121 @@
   \tableofcontents
 \end{frame}
 
+\section{Introduction}
+
+\begin{frame}{Real-World Problem}
+
+\centering
+{\Large \textbf{Next Generation Sequencing (NGS)}}\\[1em]
+
+\begin{figure}
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{../figures/slide1.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{../figures/slide1_1.JPG}
+
+    {\footnotesize \textit{Source: University of the Philippines Visayas, 2022}}
+\end{minipage}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{Illumina Seq Workflow}}\\[0.5em]
+  {\large Step 1. Library Preparation}\\[1em]
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide2merge.JPG}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{Illumina Seq Workflow}}\\[0.5em]
+  {\large Step 2. Library Bridge Amplification (PCR)}\\[1em]
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide3merge.JPG}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{Illumina Seq Workflow}}\\[0.5em]
+  {\large Step 3. Sequencing and Alignment}\\[1em]
+  \begin{figure}
+  \centering
+    \includegraphics[width=0.5\linewidth]{../figures/slide4.JPG}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{PCR-Chimera Formation}}\\[0.5em]
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide5.JPG}\\
+    {\footnotesize \textit{Source: Omelina et al., 2024}}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{The Mitochondrial Genome}}\\[0.5em]
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide6.JPG}\\
+    {\footnotesize \textit{Source: UZ Bruzzel., 2020}}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{Disrupts Genome Assembly}}\\[0.5em]
+  \begin{figure}
+  \centering
+    \includegraphics[width=0.5\linewidth]{../figures/slide4.JPG}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Existing Approaches}
+  \centering
+  \begin{figure}
+  \centering
+    \includegraphics[width=0.8\linewidth]{../figures/slide8.png}
+  \end{figure}
+\end{frame}
+
+
+\section{Problem Statement \& Proposed Solution}
+
+\begin{frame}
+  \frametitle{Problem Statement \& Proposed Solution}
+  \begin{itemize}
+  
+    \item \textbf{Problem Statement:}  
+    Chimeric sequencing reads can disrupt mitochondrial genome assembly, but current assembly pipelines assume artifact-free input and existing chimera detection tools are not designed specifically for organellar, particularly mitochondrial datasets, leaving assemblies vulnerable to undetected artifacts.
+
+    \item \textbf{Proposed Solution:}  
+    A machine-learning pipeline designed to detect PCR-induced chimeric reads using both alignment-based and sequence-derived features to improve the quality and reliability of downstream mitochondrial genome assemblies.
+
+  \end{itemize}
+\end{frame}
+
+
 \section{Objectives}
 
 \begin{frame}
@@ -306,7 +421,7 @@
   \vspace{0.3cm}
   \begin{itemize}
     \item Tuning done with \texttt{RandomizedSearchCV} on training set
-    \item Small but consistent gains (ΔF1, ΔAUC $\approx 0.001$--$0.01$)
+    \item Small but consistent gains ($\Delta$F1, $\Delta$AUC $\approx 0.001$--$0.01$)
     \item Top-ranked models remain the same (CatBoost, Gradient Boosting, LightGBM)
   \end{itemize}
 \end{frame}
@@ -362,7 +477,7 @@
       \begin{figure}
         \centering
         \includegraphics[width=\linewidth]{../figures/catboost_imp.png}
-        \caption{Permutation importance (ΔF1) for CatBoost.}
+        \caption{Permutation importance ($\Delta$F1) for CatBoost.}
       \end{figure}
     \end{column}
     \begin{column}{0.45\textwidth}
@@ -413,25 +528,21 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{ML component: summary and implications}
+\begin{frame}{Take-Home Messages}
   \begin{itemize}
-    \item Per-read classifier for clean vs PCR chimeric reads
-    \item Evaluation:
+    \item Tree-based ensembles (CatBoost, Gradient Boosting, LightGBM) consistently outperform linear baselines.
+    \item Best models reach F1 $\approx 0.77$ and ROC--AUC $\approx 0.84$ on held-out reads.
+    \item Key predictive signals match chimera biology:
       \begin{itemize}
-        \item Stratified 80/20 split, 5-fold CV, held-out test set
+        \item k-mer composition jumps along the read
+        \item extensive soft-clipping and total clipped bases
       \end{itemize}
-    \item Best models: tree-based ensembles
+    \item At the default threshold, the filter is conservative:
       \begin{itemize}
-        \item CatBoost, Gradient Boosting, LightGBM
-        \item Test F1 $\approx 0.77$, ROC--AUC $\approx 0.84$
+        \item preserves most clean reads
+        \item removes a substantial fraction of chimeras
       \end{itemize}
-    \item Default threshold:
-      \begin{itemize}
-        \item Conservative chimera filter (high clean recall, high chimera precision)
-        \item Removes $\sim$2/3 of chimeras
-      \end{itemize}
-    \item Features match PCR chimera biology
-    \item Practical, interpretable pre-filter before mitochondrial assembly
+    \item Overall: our feature set and model ensemble provide a practical pre-filter before mitochondrial assembly.
   \end{itemize}
 \end{frame}
 

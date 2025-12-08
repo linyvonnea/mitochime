@@ -1,3 +1,5 @@
-\beamer@sectionintoc {1}{Objectives}{3}{0}{1}
-\beamer@sectionintoc {2}{Scope and Limitations}{5}{0}{2}
-\beamer@sectionintoc {3}{Methodology}{9}{0}{3}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Problem Statement \& Proposed Solution}{11}{0}{2}
+\beamer@sectionintoc {3}{Objectives}{12}{0}{3}
+\beamer@sectionintoc {4}{Scope and Limitations}{14}{0}{4}
+\beamer@sectionintoc {5}{Methodology}{18}{0}{5}
