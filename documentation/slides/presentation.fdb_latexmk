@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1765234050.56683 "c:/Users/danie/mitochime/documentation/slides/presentation.tex" "presentation.pdf" "presentation" 1765234056.82329 0
+["pdflatex"] 1765238608.51032 "c:/Users/danie/mitochime/documentation/slides/presentation.tex" "presentation.pdf" "presentation" 1765238615.05566 0
   "../figures/auc_before_after_tuning.png" 1765227373 36530 d94a36a45e638d3be8a492509595f064 ""
   "../figures/catboost_family.png" 1765227373 21036 b4360780ec0f06120585a7e4d77bb731 ""
   "../figures/catboost_imp.png" 1765227373 29713 0734b6cf48ba39d281a3bfbdc55dfa1c ""
@@ -235,12 +235,12 @@
   "C:/Users/danie/AppData/Local/Programs/MiKTeX/tex/latex/translator/translator.sty" 1622471510 8765 56d370785f0143111ff9898b5adfe08e ""
   "C:/Users/danie/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/danie/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "c:/Users/danie/mitochime/documentation/slides/presentation.tex" 1765234049 19040 108c518c6ff401d95b33a4506466e194 ""
-  "presentation.aux" 1765234056 6559 5c8f2dca470c9fdbbc5baf27e15c8c08 "pdflatex"
-  "presentation.nav" 1765234056 4374 dc27bfa5b260d52d12999a00f7bb952f "pdflatex"
-  "presentation.out" 1765234056 691 b2ef45e51edb65b2e4cebab5cb0e8842 "pdflatex"
-  "presentation.tex" 1765234049 19040 108c518c6ff401d95b33a4506466e194 ""
-  "presentation.toc" 1765234056 276 3bf95031dee2c1b44d0c3555474c7334 "pdflatex"
+  "c:/Users/danie/mitochime/documentation/slides/presentation.tex" 1765238607 18945 67a13e9cd85e487c6e034a46bbd09c7c ""
+  "presentation.aux" 1765238614 6559 5c8f2dca470c9fdbbc5baf27e15c8c08 "pdflatex"
+  "presentation.nav" 1765238614 4374 dc27bfa5b260d52d12999a00f7bb952f "pdflatex"
+  "presentation.out" 1765238614 691 b2ef45e51edb65b2e4cebab5cb0e8842 "pdflatex"
+  "presentation.tex" 1765238607 18945 67a13e9cd85e487c6e034a46bbd09c7c ""
+  "presentation.toc" 1765238614 276 3bf95031dee2c1b44d0c3555474c7334 "pdflatex"
   (generated)
   "presentation.aux"
   "presentation.log"
