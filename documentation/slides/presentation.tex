@@ -441,7 +441,7 @@ Mitochondrial Illumina Reads}
     \item Precision $> 0.9$ up to recall $\approx 0.5$--$0.6$
   \end{itemize}
 \end{frame}
-
+% --- Confusion matrix slide (revised) ---
 \begin{frame}{Confusion matrix: CatBoost (test set)}
   \begin{columns}
     \begin{column}{0.55\textwidth}
@@ -453,25 +453,50 @@ Mitochondrial Illumina Reads}
     \end{column}
     \begin{column}{0.45\textwidth}
       \begin{itemize}
-        \item Clean reads:
+        \item Clean reads (\textit{negative class}):
           \begin{itemize}
-            \item Recall $\approx 0.95$ (3782 / 3997)
+            \item Specificity $\approx 0.95$ (TN = 3782 / 3997)
+            \item False positive rate $\approx 0.05$ (FP = 215 / 3997)
           \end{itemize}
-        \item Chimeric reads:
+        \item Chimeric reads (\textit{positive class}):
           \begin{itemize}
-            \item Precision $\approx 0.92$
-            \item Recall $\approx 0.66$ (2631 / 4000)
+            \item Precision $\approx 0.92$ (TP = 2631 / (2631 + 215))
+            \item Recall $\approx 0.66$ (TP = 2631 / 4000)
           \end{itemize}
         \item Behaviour at default threshold:
           \begin{itemize}
-            \item \textbf{Conservative chimera filter}
-            \item Protects clean reads, misses some subtle chimeras
+            \item \textbf{Conservative chimera filter:} low FP, higher FN
+            \item Misses $\sim$34\% of chimeras (FN = 1369 / 4000)
           \end{itemize}
       \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
+\begin{frame}{Downstream impact of residual chimeras (GetOrganelle)}
+  \begin{columns}
+    \begin{column}{0.67\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.49\linewidth]{../figures/get_organelle_clean.png}\hfill
+        \includegraphics[width=0.49\linewidth]{../figures/get_organelle_mix.png}
+        \vspace{0.4em}
+        \includegraphics[width=0.70\linewidth]{../figures/get_organelle_chimeric.png}
+        \caption{Clean, 50\% mixed, and chimera-only assemblies.}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \small
+      \begin{itemize}
+        \item \textbf{Clean:} 1 contig (16{,}613 bp)
+        \item \textbf{Mixed 50\%:} 1 contig (16{,}593 bp)
+        \item \textbf{Chimera-only:} 11 contigs ($\sim$39.7\% mapped)
+        \item \textbf{Implication:} missed chimeras can degrade assembly completeness/contiguity.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
 
+% --- Top features slide (revised slightly for wording + consistency) ---
 \begin{frame}{Top features for CatBoost}
   \begin{columns}
     \begin{column}{0.55\textwidth}
@@ -483,39 +508,40 @@ Mitochondrial Illumina Reads}
     \end{column}
     \begin{column}{0.45\textwidth}
       \begin{itemize}
-        \item Strongest signals:
+        \item Strongest predictive signals:
           \begin{itemize}
-            \item \texttt{kmer\_js\_divergence}
-            \item \texttt{total\_clipped\_bases}
-            \item \texttt{kmer\_cosine\_diff}
+            \item \texttt{kmer\_js\_divergence} (within-read composition shift)
+            \item \texttt{total\_clipped\_bases} (junction-like clipping)
+            \item \texttt{kmer\_cosine\_diff} (windowed k-mer change)
           \end{itemize}
-        \item Also important:
+        \item Also informative:
           \begin{itemize}
             \item Left/right soft-clipping
             \item Mapping quality (MAPQ)
             \item SA count (supplementary alignments)
           \end{itemize}
-        \item Consistent with PCR chimera junctions
+        \item Consistent with PCR chimera breakpoints and split mappings
       \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
 
+% --- Feature family importance slide (minor tightening) ---
 \begin{frame}{Feature family importance}
   \begin{columns}
     \begin{column}{0.55\textwidth}
       \begin{figure}
         \centering
         \includegraphics[width=\linewidth]{../figures/catboost_family.png}
-        \caption{Aggregated feature families for CatBoost.}
+        \caption{Aggregated permutation importance by feature family (CatBoost).}
       \end{figure}
     \end{column}
     \begin{column}{0.45\textwidth}
       \begin{itemize}
-        \item Aggregated permutation importance:
+        \item Aggregated importance:
           \begin{itemize}
             \item \textbf{Clipping} features dominate
-            \item \textbf{K-mer jump} features also strong
+            \item \textbf{K-mer jump} features are also strong
           \end{itemize}
         \item Smaller contributions:
           \begin{itemize}
@@ -523,30 +549,40 @@ Mitochondrial Illumina Reads}
             \item Micro-homology
             \item Other alignment context
           \end{itemize}
-        \item Same pattern for Gradient Boosting and Random Forest
+        \item Similar ranking observed for Gradient Boosting and Random Forest
       \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
-
-\begin{frame}{Summary}
+\begin{frame}{Summary of findings}
   \begin{itemize}
-    \item Tree-based ensembles (CatBoost, Gradient Boosting, LightGBM) consistently outperform linear baselines.
-    \item Best models reach F1 $\approx 0.77$ and ROC--AUC $\approx 0.84$ on held-out reads.
-    \item Key predictive signals match chimera biology:
+    \item Tree-based ensembles (CatBoost, Gradient Boosting, LightGBM) outperform linear baselines.
+    \item Best performance on held-out reads:
       \begin{itemize}
-        \item k-mer composition jumps along the read
-        \item extensive soft-clipping and total clipped bases
+        \item F1 $\approx 0.77$
+        \item ROC--AUC $\approx 0.84$
       \end{itemize}
-    \item At the default threshold, the filter is conservative:
+    \item Most predictive signals match chimera junction patterns:
       \begin{itemize}
-        \item preserves most clean reads
-        \item removes a substantial fraction of chimeras
+        \item within-read k-mer composition shifts (\textit{k-mer jump})
+        \item extensive soft-clipping / clipped bases
       \end{itemize}
-    \item Overall: our feature set and model ensemble provide a practical pre-filter before mitochondrial assembly.
+    \item At the default threshold, CatBoost is \textbf{conservative}:
+      \begin{itemize}
+        \item specificity $\approx 0.95$ (keeps clean reads)
+        \item recall $\approx 0.66$ (misses some chimeras)
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Next steps}
+  \begin{itemize}
+    \item \textbf{Error analysis:} characterize FP vs FN cases (focus on false negatives).
+    \item \textbf{Calibration:} adjust threshold / use cost-sensitive objective to increase recall while controlling FP.
+    \item \textbf{Biological validation:} compare assemblies before vs after filtering (contig count, length, coverage).
+    \item \textbf{Exploratory extension:} sequence models (CNN / Transformer / RNN) for subtle breakpoint patterns.
+  \end{itemize}
+\end{frame}
 
 
 \end{document}
