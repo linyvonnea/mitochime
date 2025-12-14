@@ -233,7 +233,7 @@ Mitochondrial Illumina Reads}
   \frametitle{Data Preprocessing}
     \begin{itemize}
         \item A Python script was used to generate the reads.
-        \item Clean reads were produced with wgsim from the reference genome.
+        \item Clean reads were produced with wgsim from the reference genome with error rate set to 5\%.
         \item A chimeric reference was created by creating a custom script to combine non-adjacent segments with microhomology
         \item Chimeric reads were simulated with wgsim.
         \item All reads were mapped with minimap2 to extract alignment information.
@@ -582,6 +582,12 @@ Mitochondrial Illumina Reads}
     \item \textbf{Biological validation:} compare assemblies before vs after filtering (contig count, length, coverage).
     \item \textbf{Exploratory extension:} sequence models (CNN / Transformer / RNN) for subtle breakpoint patterns.
   \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \centering
+  {\Huge Thank you!}
 \end{frame}
 
 
