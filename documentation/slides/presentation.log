@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.24)  14 DEC 2025 20:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.24)  14 DEC 2025 21:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1064,7 +1064,11 @@ Package pdftex.def Info: ../figures/slide5.JPG  used on input line 68.
 File: ../figures/slide6.JPG Graphic file (type jpg)
 <use ../figures/slide6.JPG>
 Package pdftex.def Info: ../figures/slide6.JPG  used on input line 79.
-(pdftex.def)             Requested size: 171.14764pt x 155.91171pt.
+(pdftex.def)             Requested size: 200.15195pt x 182.3353pt.
+
+Overfull \vbox (7.22285pt too high) detected at line 79
+ []
+
 
 
 [6
@@ -1143,68 +1147,28 @@ Package pdftex.def Info: ../figures/slide8.JPG  used on input line 110.
 File: ../figures/slide6.JPG Graphic file (type jpg)
 <use ../figures/slide6.JPG>
 Package pdftex.def Info: ../figures/slide6.JPG  used on input line 120.
-(pdftex.def)             Requested size: 171.14764pt x 155.91171pt.
+(pdftex.def)             Requested size: 214.45126pt x 195.3601pt.
 
 
 [9
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-[]|\T1/lmss/bx/n/8 Reference-based
- []
-
-
-Underfull \hbox (badness 2245) in paragraph at lines 173--173
-\T1/lmss/m/n/8 taxa or miss-ing par-ents; lim-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-[]|\T1/lmss/m/n/8 Alignment-based method that
- []
-
-
-Underfull \hbox (badness 1655) in paragraph at lines 173--173
-\T1/lmss/m/n/8 com-putes a chimera score via
- []
-
-
-Underfull \hbox (badness 2941) in paragraph at lines 173--173
-\T1/lmss/m/n/8 re-lated par-ents ($\OML/lmm/m/it/8 <$\T1/lmss/m/n/8 0.8% di-ver
--
- []
-
-
-Underfull \hbox (badness 6592) in paragraph at lines 173--173
-[]|\T1/lmss/m/n/8 Enhanced UCHIME with im-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-[]|\T1/lmss/m/n/8 Ensemble machine-learning
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-\T1/lmss/m/n/8 ap-proach in-te-grat-ing mul-ti-ple
- []
-
-
-Overfull \vbox (103.42781pt too high) detected at line 173
- []
-
+<../figures/table.JPG, id=318, 384.93813pt x 340.77313pt>
+File: ../figures/table.JPG Graphic file (type jpg)
+<use ../figures/table.JPG>
+Package pdftex.def Info: ../figures/table.JPG  used on input line 130.
+(pdftex.def)             Requested size: 220.67984pt x 195.3601pt.
 
 
 [10
 
-{C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
-]
+ <../figures/table.JPG>]
 
 [11
 
 ]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 200.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 156.
 
 
 [12
@@ -1215,7 +1179,7 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
 
 ]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 228.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 184.
 
 
 [14
@@ -1237,7 +1201,7 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
 File: ../figures/research_activities.png Graphic file (type png)
 <use ../figures/research_activities.png>
 Package pdftex.def Info: ../figures/research_activities.png  used on input line
- 269.
+ 225.
 (pdftex.def)             Requested size: 135.83821pt x 182.3353pt.
 
 
@@ -1259,7 +1223,7 @@ Package pdftex.def Info: ../figures/research_activities.png  used on input line
 <../figures/clean_sam.png, id=649, 521.5485pt x 111.41624pt>
 File: ../figures/clean_sam.png Graphic file (type png)
 <use ../figures/clean_sam.png>
-Package pdftex.def Info: ../figures/clean_sam.png  used on input line 303.
+Package pdftex.def Info: ../figures/clean_sam.png  used on input line 259.
 (pdftex.def)             Requested size: 342.2953pt x 73.12523pt.
 
 
@@ -1269,7 +1233,7 @@ Package pdftex.def Info: ../figures/clean_sam.png  used on input line 303.
 <../figures/chimeric_sam.png, id=678, 532.389pt x 97.5645pt>
 File: ../figures/chimeric_sam.png Graphic file (type png)
 <use ../figures/chimeric_sam.png>
-Package pdftex.def Info: ../figures/chimeric_sam.png  used on input line 312.
+Package pdftex.def Info: ../figures/chimeric_sam.png  used on input line 268.
 (pdftex.def)             Requested size: 342.2953pt x 62.72836pt.
 
 
@@ -1287,7 +1251,7 @@ Package pdftex.def Info: ../figures/chimeric_sam.png  used on input line 312.
 <../figures/clean_excel.png, id=763, 624.53325pt x 87.9285pt>
 File: ../figures/clean_excel.png Graphic file (type png)
 <use ../figures/clean_excel.png>
-Package pdftex.def Info: ../figures/clean_excel.png  used on input line 345.
+Package pdftex.def Info: ../figures/clean_excel.png  used on input line 301.
 (pdftex.def)             Requested size: 342.2953pt x 48.19176pt.
 
 
@@ -1297,7 +1261,7 @@ Package pdftex.def Info: ../figures/clean_excel.png  used on input line 345.
 <../figures/chimeric_excel.png, id=792, 632.96475pt x 124.66576pt>
 File: ../figures/chimeric_excel.png Graphic file (type png)
 <use ../figures/chimeric_excel.png>
-Package pdftex.def Info: ../figures/chimeric_excel.png  used on input line 355.
+Package pdftex.def Info: ../figures/chimeric_excel.png  used on input line 311.
 
 (pdftex.def)             Requested size: 342.2953pt x 67.41931pt.
 
@@ -1321,27 +1285,32 @@ Package pdftex.def Info: ../figures/chimeric_excel.png  used on input line 355.
 File: ../figures/f1_before_after_tuning.png Graphic file (type png)
 <use ../figures/f1_before_after_tuning.png>
 Package pdftex.def Info: ../figures/f1_before_after_tuning.png  used on input l
-ine 472.
+ine 428.
 (pdftex.def)             Requested size: 171.14764pt x 110.28888pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 472.
+(Font)              <10.95> on input line 428.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 428.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 428.
 <../figures/auc_before_after_tuning.png, id=903, 427.8384pt x 279.6849pt>
 File: ../figures/auc_before_after_tuning.png Graphic file (type png)
 <use ../figures/auc_before_after_tuning.png>
 Package pdftex.def Info: ../figures/auc_before_after_tuning.png  used on input 
-line 472.
+line 428.
 (pdftex.def)             Requested size: 171.14764pt x 111.88051pt.
 
 
 [31
 
 {C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/
-Users/danie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <..
+Users/danie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/
+Users/danie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc} <..
 /figures/f1_before_after_tuning.png> <../figures/auc_before_after_tuning.png>]
 <../figures/roc_pr_curves.png, id=937, 714.7503pt x 281.3712pt>
 File: ../figures/roc_pr_curves.png Graphic file (type png)
 <use ../figures/roc_pr_curves.png>
-Package pdftex.def Info: ../figures/roc_pr_curves.png  used on input line 487.
+Package pdftex.def Info: ../figures/roc_pr_curves.png  used on input line 443.
 (pdftex.def)             Requested size: 342.2953pt x 134.7518pt.
 
 
@@ -1351,16 +1320,16 @@ Package pdftex.def Info: ../figures/roc_pr_curves.png  used on input line 487.
 <../figures/cm_catboost.png, id=966, 280.4076pt x 281.3712pt>
 File: ../figures/cm_catboost.png Graphic file (type png)
 <use ../figures/cm_catboost.png>
-Package pdftex.def Info: ../figures/cm_catboost.png  used on input line 518.
+Package pdftex.def Info: ../figures/cm_catboost.png  used on input line 474.
 (pdftex.def)             Requested size: 188.26346pt x 188.90842pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 518.
+(Font)              <10> on input line 474.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 518.
+(Font)              <7> on input line 474.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 518.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 474.
 
-Overfull \vbox (7.83766pt too high) detected at line 518
+Overfull \vbox (7.83766pt too high) detected at line 474
  []
 
 
@@ -1372,22 +1341,22 @@ Overfull \vbox (7.83766pt too high) detected at line 518
 File: ../figures/get_organelle_clean.png Graphic file (type png)
 <use ../figures/get_organelle_clean.png>
 Package pdftex.def Info: ../figures/get_organelle_clean.png  used on input line
- 541.
+ 497.
 (pdftex.def)             Requested size: 112.3765pt x 60.0431pt.
 <../figures/get_organelle_mix.png, id=996, 1435.3625pt x 786.94pt>
 File: ../figures/get_organelle_mix.png Graphic file (type png)
 <use ../figures/get_organelle_mix.png>
-Package pdftex.def Info: ../figures/get_organelle_mix.png  used on input line 5
-41.
+Package pdftex.def Info: ../figures/get_organelle_mix.png  used on input line 4
+97.
 (pdftex.def)             Requested size: 112.3765pt x 61.59961pt.
 <../figures/get_organelle_chimeric.png, id=997, 699.61375pt x 545.03625pt>
 File: ../figures/get_organelle_chimeric.png Graphic file (type png)
 <use ../figures/get_organelle_chimeric.png>
 Package pdftex.def Info: ../figures/get_organelle_chimeric.png  used on input l
-ine 541.
+ine 497.
 (pdftex.def)             Requested size: 160.53534pt x 125.06462pt.
 
-Overfull \vbox (10.9734pt too high) detected at line 541
+Overfull \vbox (10.9734pt too high) detected at line 497
  []
 
 
@@ -1399,7 +1368,7 @@ gures/get_organelle_chimeric.png>]
 <../figures/catboost_imp.png, id=1028, 426.393pt x 281.853pt>
 File: ../figures/catboost_imp.png Graphic file (type png)
 <use ../figures/catboost_imp.png>
-Package pdftex.def Info: ../figures/catboost_imp.png  used on input line 571.
+Package pdftex.def Info: ../figures/catboost_imp.png  used on input line 527.
 (pdftex.def)             Requested size: 188.26346pt x 124.44147pt.
 
 
@@ -1409,7 +1378,7 @@ Package pdftex.def Info: ../figures/catboost_imp.png  used on input line 571.
 <../figures/catboost_family.png, id=1057, 426.393pt x 281.853pt>
 File: ../figures/catboost_family.png Graphic file (type png)
 <use ../figures/catboost_family.png>
-Package pdftex.def Info: ../figures/catboost_family.png  used on input line 600
+Package pdftex.def Info: ../figures/catboost_family.png  used on input line 556
 .
 (pdftex.def)             Requested size: 188.26346pt x 124.44147pt.
 
@@ -1448,28 +1417,27 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  22780 strings out of 468133
- 445067 string characters out of 5430718
- 811217 words of memory out of 5000000
+ 445098 string characters out of 5430718
+ 805217 words of memory out of 5000000
  50813 multiletter control sequences out of 15000+600000
- 707790 words of font info for 97 fonts, out of 8000000 for 9000
+ 705022 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,410b,774s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
-b><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb
-><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb
-><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb
-><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb
-><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb>
-<C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pf
-b><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso10.p
-fb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.p
-fb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.p
-fb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.p
-fb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pf
-b>
-Output written on presentation.pdf (39 pages, 2076774 bytes).
+b><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pf
+b><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pf
+b><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pf
+b><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb
+><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.p
+fb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso10.
+pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.
+pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.
+pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.
+pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.p
+fb>
+Output written on presentation.pdf (39 pages, 2238752 bytes).
 PDF statistics:
- 1244 PDF objects out of 1440 (max. 8388607)
+ 1240 PDF objects out of 1440 (max. 8388607)
  84 named destinations out of 1000 (max. 500000)
- 237 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 242 words of extra memory for PDF output out of 10000 (max. 10000000)
 
