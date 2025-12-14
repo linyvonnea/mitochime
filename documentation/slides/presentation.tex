@@ -1,6 +1,6 @@
 % !TEX TS-program = pdflatex
 \documentclass[11pt]{beamer}
-
+\usepackage{tabularx}
 \usetheme{Madrid}
 
 % Basic packages
@@ -38,20 +38,10 @@ Mitochondrial Illumina Reads}
 \centering
 {\Large \textbf{Next Generation Sequencing (NGS)}}\\[1em]
 
-\begin{figure}
-\centering
-\begin{minipage}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{../figures/slide1.png}
-\end{minipage}
-\hfill
-\begin{minipage}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{../figures/slide1_1.JPG}
-
-    {\footnotesize \textit{Source: University of the Philippines Visayas, 2022}}
-\end{minipage}
-\end{figure}
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide3.JPG}
+  \end{figure}
 
 \end{frame}
 
@@ -62,7 +52,7 @@ Mitochondrial Illumina Reads}
   {\large Step 1. Library Preparation}\\[1em]
   \begin{figure}
   \centering
-    \includegraphics[height=0.5\textheight]{../figures/slide2merge.JPG}
+    \includegraphics[height=0.5\textheight]{../figures/slide4.JPG}
   \end{figure}
 \end{frame}
 
@@ -73,7 +63,7 @@ Mitochondrial Illumina Reads}
   {\large Step 2. Library Bridge Amplification (PCR)}\\[1em]
   \begin{figure}
   \centering
-    \includegraphics[height=0.5\textheight]{../figures/slide3merge.JPG}
+    \includegraphics[height=0.5\textheight]{../figures/slide5.JPG}
   \end{figure}
 \end{frame}
 
@@ -84,7 +74,7 @@ Mitochondrial Illumina Reads}
   {\large Step 3. Sequencing and Alignment}\\[1em]
   \begin{figure}
   \centering
-    \includegraphics[width=0.5\linewidth]{../figures/slide4.JPG}
+    \includegraphics[width=0.5\linewidth]{../figures/slide6.JPG}
   \end{figure}
 \end{frame}
 
@@ -93,9 +83,13 @@ Mitochondrial Illumina Reads}
   \centering
   {\Large \textbf{PCR-Chimera Formation}}\\[0.5em]
   \begin{figure}
-  \centering
-    \includegraphics[height=0.5\textheight]{../figures/slide5.JPG}\\
-    {\footnotesize \textit{Source: Omelina et al., 2024}}
+    \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide7.JPG}\\[-0.3em]
+    {\tiny
+    \setlength{\baselineskip}{0.6\baselineskip}
+    \textit{Source:} Omelina, E., Ivankin, A., Letiagina, A., \& Pindyurin, A. (2019).
+    \textit{Optimized PCR conditions minimizing the formation of chimeric DNA molecules from MPRA plasmid libraries}.
+    \textit{BMC Genomics, 20}, 536. \url{https://doi.org/10.1186/s12864-019-5847-2}}
   \end{figure}
 \end{frame}
 
@@ -104,9 +98,14 @@ Mitochondrial Illumina Reads}
   \centering
   {\Large \textbf{The Mitochondrial Genome}}\\[0.5em]
   \begin{figure}
-  \centering
-    \includegraphics[height=0.5\textheight]{../figures/slide6.JPG}\\
-    {\footnotesize \textit{Source: UZ Bruzzel., 2020}}
+    \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide8.JPG}\\[-0.3em]
+    {\tiny
+    \setlength{\baselineskip}{0.6\baselineskip}
+    \textit{Source:} UZ Brussel. (2020, August 26).
+    \textit{Mitochondrial DNA} [Image].
+    Vrije Universiteit Brussel.
+    \url{https://bit.ly/3XTTSg8}}
   \end{figure}
 \end{frame}
 
@@ -116,18 +115,63 @@ Mitochondrial Illumina Reads}
   {\Large \textbf{Disrupts Genome Assembly}}\\[0.5em]
   \begin{figure}
   \centering
-    \includegraphics[width=0.5\linewidth]{../figures/slide4.JPG}
+    \includegraphics[width=0.5\linewidth]{../figures/slide6.JPG}
   \end{figure}
 \end{frame}
 
 
 \begin{frame}{Existing Approaches}
-  \centering
-  \begin{figure}
-  \centering
-    \includegraphics[width=0.8\linewidth]{../figures/slide8.png}
-  \end{figure}
+\scriptsize
+\renewcommand{\arraystretch}{0.9}
+\centering
+
+  \begin{table}
+  \caption{Comparison of Chimera Detection Approaches and Tools}
+  \begin{tabularx}{\linewidth}{>{\bfseries}p{2.4cm} X X}
+  \toprule
+  Method / Tool & Core Approach & Key Limitations \\
+  \midrule
+
+  Reference-based Detection &
+  Compares each query sequence against curated databases of verified, non-chimeric sequences to identify mosaic similarity patterns. &
+  Dependent on database completeness; poor performance for novel taxa or missing parents; limited sensitivity for low-divergence chimeras. \\
+
+  \addlinespace
+
+  De novo Detection &
+  Detects chimeras using internal dataset structure, abundance hierarchy, and compositional similarity without external references. &
+  Assumes true sequences are more abundant; fails under amplification bias; unreliable when parents have similar abundance or high similarity. \\
+
+  \addlinespace
+
+  UCHIME &
+  Alignment-based method that partitions queries into segments, identifies parent candidates, and computes a chimera score via three-way alignment. &
+  Reduced accuracy for very closely related parents ($<$0.8\% divergence); sensitive to incomplete references; de novo mode requires abundant parents. \\
+
+  \addlinespace
+
+  UCHIME2 &
+  Enhanced UCHIME with improved benchmarking and sensitivity/specificity presets. &
+  Fake models limit theoretical accuracy; genuine variants may resemble chimeras; not ideal as a standalone denoising step. \\
+
+  \addlinespace
+
+  CATCh &
+  Ensemble machine-learning approach integrating multiple chimera detection tools using an SVM. &
+  Performance limited by component tools; struggles with highly novel datasets. \\
+
+  \addlinespace
+
+  ChimPipe &
+  Pipeline for detecting biological chimeras in RNA-seq using discordant paired-end and split-read alignments. &
+  Requires high-quality genome annotation; RNA-seq specific; computationally intensive. \\
+
+  \bottomrule
+  \end{tabularx}
+  \end{table}
+
 \end{frame}
+
 
 
 \section{Problem Statement \& Proposed Solution}
