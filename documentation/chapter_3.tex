@@ -2,16 +2,17 @@
 % \section*{Chapter 3}\label{sec:researchmethod}
 \chapter{Research Methodology}
 
-This chapter outlines the steps involved in completing the study, including data gathering, generating simulated mitochondrial Illumina reads, preprocessing and indexing the data, developing a feature extraction pipeline to extract key features, applying machine learning algorithms for chimera detection, and validating and comparing model performance.
+This chapter outlines the steps involved in completing the study, including data gathering, generating simulated mitochondrial Illumina reads, preprocessing and indexing the data, developing a feature extraction pipeline to obtain read-level features, applying machine learning algorithms for chimera detection, implementing feature selection methods, and validating and comparing model performance.
 
 \section{Research Activities}
 
-As illustrated in \figref{fig:process_diagram}, this study carried out a sequence of procedures to detect PCR-induced chimeric reads in mitochondrial genomes. The process began with collecting a mitochondrial reference sequence of \textit{Sardinella lemuru} from the National Center for Biotechnology Information (NCBI) database, which was used as a reference for generating simulated clean and chimeric reads. These reads were subsequently indexed and mapped. The resulting collections then passed through a feature extraction pipeline that extracted k-mer profiles, supplementary alignment (SA) features, and microhomology information to prepare the data for model construction. The machine learning model was trained using the processed input, and its precision and accuracy were assessed. It underwent tuning until it reached the desired performance threshold, after which it proceeded to validation and will undergo external testing.
+As illustrated in \figref{fig:process_diagram}, this study carried out a sequence of procedures to detect PCR-induced chimeric reads in mitochondrial genomes. The process began with collecting a mitochondrial reference sequence of \textit{Sardinella lemuru} from the National Center for Biotechnology Information (NCBI) database, which was used as a reference for generating simulated clean and chimeric reads. These reads were subsequently indexed and mapped. The resulting collections then passed through a feature extraction pipeline that computed k-mer profiles, supplementary alignment (SA) features, and microhomology information to prepare the data for model construction. The machine learning models were trained using the processed input, evaluated using cross-validation and held-out testing, tuned for improved performance, and then subjected to feature importance and feature selection analyses before final validation.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\linewidth]{figures/research_activities.png}
-  \caption{Process Diagram of Special Project}\label{fig:process_diagram}
+  \caption{Process diagram of the study workflow.}
+  \label{fig:process_diagram}
 \end{figure}
 
 \subsection{Data Collection}
@@ -24,33 +25,29 @@ This step was scheduled to begin in the first week of November~2025 and expected
 
 All steps in the simulation and preprocessing pipeline were executed using a custom script in Python (Version 3.11). The script runs each stage, including read simulation, reference indexing, mapping, and alignment processing, in a fixed sequence.
 
-\texttt{wgsim} (Version 1.13) was used to simulate 10{,}000 paired-end fragments, producing 20,000 reads (10{,}000 forward and 10{,}000 reverse) from the original reference (\texttt{original\_reference.fasta}) and designated as clean reads. The tool was selected because it provides fast generation of Illumina-like reads with controllable error rates, using the following command:
-
+\texttt{wgsim} (Version 1.13) was used to simulate 10{,}000 paired-end fragments, producing 20{,}000 reads (10{,}000 forward and 10{,}000 reverse) from the original reference (\texttt{original\_reference.fasta}) and designated as clean reads. The tool was selected because it provides fast generation of Illumina-like reads with controllable error rates, using the following command:
 \begin{verbatim}
-wgsim -1 150 -2 150 -r 0 -R 0 -X 0 -e 0.001 -N 10000 \
+wgsim -1 150 -2 150 -r 0 -R 0 -X 0 -e 0.05 -N 10000 \
        original_reference.fasta ref1.fastq ref2.fastq
 \end{verbatim}
 
-Chimeric sequences were then generated from the same reference FASTA file using a separate Python script. Two non-adjacent segments were randomly selected such that their midpoint distances fell within specified minimum and maximum thresholds. The script attempts to retain microhomology to mimic PCR-induced template switching. The resulting chimeras were written to \texttt{chimera\_reference.fasta} and was processed with \texttt{wgsim} to simulate 10{,}000 paired-end fragments, generating 20,000 chimeric reads (10,000 forward reads in \texttt{chimeric1.fastq} and 10,000 reverse reads in \texttt{chimeric2.fastq}) using the same command format above.
+Chimeric sequences were then generated from the same reference FASTA file using a separate Python script. Two non-adjacent segments were randomly selected such that their midpoint distances fell within specified minimum and maximum thresholds. The script attempted to retain microhomology to mimic PCR-induced template switching. The resulting chimeras were written to \texttt{chimera\_reference.fasta} and processed with \texttt{wgsim} to simulate 10{,}000 paired-end fragments, generating 20{,}000 chimeric reads (10{,}000 forward reads in \texttt{chimeric1.fastq} and 10{,}000 reverse reads in \texttt{chimeric2.fastq}) using the same command format as above.
 
 Next, a \texttt{minimap2} index of the reference genome was created using:
 \begin{verbatim}
 minimap2 -d ref.mmi original_reference.fasta
 \end{verbatim}
 
-Minimap2 (Version 2.28) was used to map simulated clean and chimeric reads to the original reference. An index (\texttt{ref.mmi}) was first generated to enable efficient alignment, and mapping produced the alignment features used as input for the machine learning model. The reads were mapped using the following command:
-
+Minimap2 (Version 2.28) was used to map simulated clean and chimeric reads to the original reference. An index (\texttt{ref.mmi}) was first generated to enable efficient alignment, and mapping produced the alignment features used as input for the machine learning model. The reads were mapped using the following commands:
 \begin{verbatim}
 minimap2 -ax sr -t 8 ref.mmi ref1.fastq ref2.fastq > clean.sam
 \end{verbatim}
-
 \begin{verbatim}
 minimap2 -ax sr -t 8 ref.mmi \
-chimeric1.fastq chimeric2.fastq > chimeric.sam
+  chimeric1.fastq chimeric2.fastq > chimeric.sam
 \end{verbatim}
 
 The resulting clean and chimeric SAM files contain the alignment positions of each read relative to the original reference genome. These files were then converted to BAM format, sorted, and indexed using \texttt{samtools} (Version 1.20):
-
 \begin{verbatim}
 samtools view -bS clean.sam -o clean.bam
 samtools view -bS chimeric.sam -o chimeric.bam
@@ -62,37 +59,41 @@ samtools sort chimeric.bam -o chimeric.sorted.bam
 samtools index chimeric.sorted.bam
 \end{verbatim}
 
-The total number of simulated reads was expected to be 40{,}000. The final collection of reads contained 19{,}984 clean reads and 20{,}000 chimeric reads (39{,}984 entries in total), providing a roughly balanced distribution between the two classes. After alignment with \texttt{minimap2}, only 19{,}984 clean reads remained because unmapped reads were not included in the BAM file. Some sequences failed to align due to the 5\% error rate defined during \texttt{wgsim} simulation, which produced mismatches that caused certain reads to fall below the aligner’s matching threshold. 
+The total number of simulated reads was expected to be 40{,}000. The final collection of reads contained 19{,}984 clean reads and 20{,}000 chimeric reads (39{,}984 entries in total), providing a roughly balanced distribution between the two classes. After alignment with \texttt{minimap2}, only 19{,}984 clean reads remained because unmapped reads were not included in the BAM file. Some sequences failed to align due to the error rate defined during \texttt{wgsim} simulation, which produced mismatches that caused certain reads to fall below the aligner’s matching threshold.
 
 This whole process was scheduled to start in the second week of November~2025 and was expected to be completed by the last week of November~2025, with a total duration of approximately three (3) weeks.
 
 \subsection{Feature Extraction Pipeline}
 
-This stage directly follows the previous alignment phase, utilizing the resulting BAM files (specifically \texttt{chimeric.sorted.bam} and \texttt{clean.sorted.bam}). A custom Python script was created to efficiently process each primary-mapped read to extract the necessary set of features, which are then compiled into a structured feature matrix in \texttt{TSV} format. The pipeline's core functionality relies on libraries, namely \texttt{Pysam} (Version 0.22) for the robust parsing of BAM structures and \texttt{NumPy} (Version 1.26) for array operations and computations. To ensure correctness and adherence to best practices, bioinformatics experts at the PGC Visayas will be consulted to validate the pipeline design, feature extraction logic, and overall data integrity. 
+This stage directly followed the alignment phase, utilizing the resulting BAM files (specifically \texttt{chimeric.sorted.bam} and \texttt{clean.sorted.bam}). A custom Python script was created to efficiently process each primary-mapped read to extract the necessary set of features, which were then compiled into a structured feature matrix in TSV format. The pipeline's core functionality relied on the \texttt{Pysam} (Version 0.22) library for parsing BAM structures and \texttt{NumPy} (Version 1.26) for array operations and computations. To ensure correctness and adherence to best practices, bioinformatics experts at PGC Visayas were consulted to validate the pipeline design, feature extraction logic, and overall data integrity.
 
-This stage of the study was scheduled to begin in the last week of November 2025 and conclude by the first week of December 2025, with an estimated total duration of approximately two (2) weeks.
+This stage of the study was scheduled to begin in the last week of November~2025 and conclude by the first week of December~2025, with an estimated total duration of approximately two (2) weeks.
 
-The pipeline focuses on three features that collectively capture biological signatures associated with PCR-induced chimeras: (1) supplementary alignment flag (SA), (2) k-mer composition difference, and (3) microhomology.
+The pipeline focused on three feature families that collectively capture biological signatures associated with PCR-induced chimeras: (1) supplementary alignment (SA) and alignment-structure metrics, (2) k-mer composition difference, and (3) microhomology around putative junctions. Additional alignment quality indicators such as mapping quality were also included.
 
-\subsubsection{Supplementary Alignment Flag}
+\subsubsection{Supplementary Alignment and Alignment-Structure Features}
+
 Split-alignment information was derived from the SA tag embedded in each primary read of the BAM file. This tag is typically associated with reads that map to multiple genomic locations, suggesting a chimeric structure. To extract this information, the script first checked whether the read carried an \texttt{SA:Z} tag. If present, the tag string was parsed using the function \texttt{parse\_sa\_tag}, yielding metadata for each alignment containing the reference name, mapped position, strand, mapping quality, and number of mismatches.
 
-After parsing, the function \texttt{sa\_feature\_stats} was applied to establish the fundamental split indicators, \texttt{has\_sa} and \texttt{sa\_count}. Along with these initial counts, the function aggregated the metrics related to the structure and reliability of the split alignments.
+After parsing, the function \texttt{sa\_feature\_stats} was applied to establish the fundamental split indicators, \texttt{has\_sa} and \texttt{sa\_count}. Along with these initial counts, the function aggregated metrics related to the structure and reliability of the split alignments, including the number of alignment segments, strand consistency, minimum, maximum, and mean distance between split segments, and summary statistics of mapping quality and mismatch counts across segments.
 
 \subsubsection{K-mer Composition Difference}
-Comparing k-mer frequency profiles between the left and right halves of a read allows for the detection of abrupt compositional shifts, independent of alignment information. 
 
-The script implemented this by inferring a likely junction breakpoint using the function \texttt{infer\_breakpoints}, prioritizing the boundaries defined by soft-clipping operations. If no clipping was present, the midpoint of the alignment or the read length was utilized as a fallback. The read sequence was then divided into left and right segments at this inferred breakpoint, and k-mer frequency profiles ($k=6$) were generated for both halves, ignoring any k-mers containing ambiguous 'N' bases. The resulting k-mer frequency vectors are then normalized and compared using the functions \texttt{cosine\_difference} and \texttt{js\_divergence}.
+Comparing k-mer frequency profiles between the left and right halves of a read allows for the detection of abrupt compositional shifts, independent of alignment information.
+
+The script implemented this by inferring a likely junction breakpoint using the function \texttt{infer\_breakpoints}, prioritizing the boundaries defined by soft-clipping operations. If no clipping was present, the midpoint of the alignment or the read length was used as a fallback. The read sequence was then divided into left and right segments at this inferred breakpoint, and k-mer frequency profiles ($k = 6$) were generated for both halves, ignoring any k-mers containing ambiguous \texttt{N} bases. The resulting k-mer frequency vectors were normalised and compared using the functions \texttt{cosine\_difference} and \texttt{js\_divergence} to quantify compositional discontinuity across the inferred breakpoint.
 
 \subsubsection{Microhomology}
 
-The process of extracting the microhomology feature started by utilizing the function \texttt{infer\_breakpoints} similar to the k-mer workflow. Once a breakpoint was established, the script scanned a $\pm 40$ base pair window surrounding the breakpoint and used the function \texttt{longest\_suffix\_prefix\_overlap} to identify the longest exact suffix-prefix overlap between the left and right read segments. This overlap, which represents consecutive bases shared at the junction, was recorded as the \texttt{microhomology\_length} in the dataset. The 40-base pair window was chosen to ensure that short shared sequences at or near the breakpoint were captured, without including distant sequences that are unrelated. Additionally, the GC content of the overlapping sequence was calculated using the function \texttt{gc\_content}, which counts guanine (G) and cytosine (C) bases within the detected microhomology and divides by the total length, yielding a proportion between 0 and 1, and was stored under the \texttt{microhomology\_gc} attribute. Microhomology was quantified using a (3--20) bp window, consistent with values reported in prior research on PCR-induced chimeras. Moreover, a k-mer length of 6 was used to capture patterns within the 40-bp window surrounding each breakpoint. This length is long enough to detect informative sequence shifts at junctions.
+The process of extracting the microhomology feature also started by using \texttt{infer\_breakpoints} to identify a candidate junction. Once a breakpoint was established, the script scanned a $\pm 40$ base-pair window surrounding the breakpoint and applied the function \texttt{longest\_suffix\_prefix\_overlap} to identify the longest exact suffix–prefix overlap between the left and right read segments. This overlap, representing consecutive bases shared at the junction, was recorded as \texttt{microhomology\_length} in the dataset. The 40 base-pair window was chosen to ensure that short shared sequences at or near the breakpoint were captured without including distant sequences that are unlikely to be mechanistically related.
+
+Additionally, the GC content of the overlapping sequence was calculated using the function \texttt{gc\_content}, which counts guanine (G) and cytosine (C) bases within the detected microhomology and divides by the total length, yielding a proportion between 0 and 1 that was stored under the \texttt{microhomology\_gc} attribute. Microhomology was quantified using a 3–20 bp window, consistent with values reported in prior research on PCR-induced chimeras. A k-mer length of 6 was used to capture patterns within the 40 bp window surrounding each breakpoint, providing sufficient resolution to detect informative sequence shifts.
 
 \subsection{Machine Learning Model Development}
 
-After feature extraction, the per-read feature matrices for clean and chimeric reads were merged into a single dataset. Each row corresponded to one paired-end read, and columns encoded alignment-structure features (e.g., supplementary alignment count and spacing between segments), CIGAR-derived soft-clipping statistics (e.g., left and right soft-clipped length, total clipped bases), k-mer composition discontinuity between read segments, and microhomology descriptors near candidate junctions. The resulting feature set was restricted to quantities that can be computed from standard BAM/FASTQ files in typical mitochondrial sequencing workflows.
+After feature extraction, the per-read feature matrices for clean and chimeric reads were merged into a single dataset. Each row corresponded to one paired-end read, and columns encoded alignment-structure features (e.g., supplementary alignment count and spacing between segments), CIGAR-derived soft-clipping statistics (e.g., left and right soft-clipped length, total clipped bases), k-mer composition discontinuity between read segments, microhomology descriptors near candidate junctions, and alignment quality (e.g., mapping quality). The resulting feature set comprised 23 numeric features and was restricted to quantities that can be computed from standard BAM/FASTQ files in typical mitochondrial sequencing workflows.
 
-The labelled dataset was randomly partitioned into training (80\%) and test (20\%) subsets using stratified sampling to preserve the 1:1 ratio of clean to chimeric reads. Model development and evaluation were implemented in Python (Version~3.11) using the \texttt{scikit-learn}, \texttt{xgboost}, \texttt{lightgbm}, and \texttt{catboost} libraries. A broad panel of classification algorithms was then benchmarked on the training data to obtain a fair comparison of different model families under identical feature conditions. The panel included: a trivial dummy classifier, $L_2$-regularized logistic regression, a calibrated linear support vector machine (SVM), $k$-nearest neighbours, Gaussian Na\"ive Bayes, decision-tree ensembles (Random Forest, Extremely Randomized Trees, and Bagging with decision trees), gradient boosting methods (Gradient Boosting, XGBoost, LightGBM, and CatBoost), and a shallow multilayer perceptron (MLP).
+The labelled dataset was randomly partitioned into training (80\%) and test (20\%) subsets using stratified sampling to preserve the 1:1 ratio of clean to chimeric reads. Model development and evaluation were implemented in Python (Version~3.11) using the \texttt{scikit-learn}, \texttt{xgboost}, \texttt{lightgbm}, and \texttt{catboost} libraries. A broad panel of classification algorithms was then benchmarked on the training data to obtain a fair comparison of different model families under identical feature conditions. The panel included a trivial dummy classifier, $L_2$-regularized logistic regression, a calibrated linear support vector machine (SVM), $k$-nearest neighbours, Gaussian Na\"ive Bayes, decision-tree ensembles (Random Forest, Extremely Randomized Trees, and Bagging with decision trees), gradient boosting methods (Gradient Boosting, XGBoost, LightGBM, and CatBoost), and a shallow multilayer perceptron (MLP).
 
 For each model, five-fold stratified cross-validation was performed on the training set. In every fold, four-fifths of the data were used for fitting and the remaining one-fifth for validation. Mean cross-validation accuracy, precision, recall, F1-score for the chimeric class, and area under the receiver operating characteristic curve (ROC--AUC) were computed to summarize performance and rank candidate methods. This baseline screen allowed comparison of linear, probabilistic, neural, and ensemble-based approaches and identified tree-based ensemble and boosting models as consistently strong performers relative to simpler baselines.
 
@@ -100,27 +101,37 @@ For each model, five-fold stratified cross-validation was performed on the train
 
 Model selection and refinement proceeded in two stages. First, the cross-validation results from the broad panel were used to identify a subset of competitive models for more detailed optimization. Specifically, ten model families were carried forward: $L_2$-regularized logistic regression, calibrated linear SVM, Random Forest, ExtraTrees, Gradient Boosting, XGBoost, LightGBM, CatBoost, Bagging with decision trees, and a shallow MLP. This subset spans both linear and non-linear decision boundaries, but emphasizes ensemble and boosting methods, which showed superior F1 and ROC--AUC in the initial benchmark.
 
-Second, hyperparameter optimization was conducted for each of the ten selected models using randomized search with five-fold stratified cross-validation (\texttt{RandomizedSearchCV}). For tree-based ensembles, the search space included the number of trees, maximum depth, minimum samples per split and leaf, and the fraction of features considered at each split. For boosting methods, key hyperparameters such as the number of boosting iterations, learning rate, tree depth, subsampling rate, and column subsampling rate were tuned. For the MLP, the number and size of hidden layers, learning rate, and $L_2$-regularization strength were varied. In all cases, the primary optimisation criterion was the F1-score of the chimeric class, averaged across folds.
+Second, hyperparameter optimization was conducted for each of the ten selected models using randomized search with five-fold stratified cross-validation (\texttt{RandomizedSearchCV}). For tree-based ensembles, the search space included the number of trees, maximum depth, minimum samples per split and per leaf, and the fraction of features considered at each split. For boosting methods, key hyperparameters such as the number of boosting iterations, learning rate, tree depth, subsampling rate, and column subsampling rate were tuned. For the MLP, the number and size of hidden layers, learning rate, and $L_2$-regularization strength were varied. In all cases, the primary optimisation criterion was the F1-score of the chimeric class, averaged across folds.
 
-For each model family, the hyperparameter configuration with the highest mean cross-validation F1-score was selected as the best-tuned estimator. These tuned models were then refitted on the full training set and evaluated once on the held-out test set to obtain unbiased estimates of performance. Test-set metrics included accuracy, precision, recall, F1-score for the chimeric class, and ROC--AUC. Confusion matrices and ROC curves were generated for the top-performing models to characterise common error modes, such as false negatives (missed chimeric reads) and false positives (clean reads incorrectly labelled as chimeric). The final model or small set of models for downstream interpretation was chosen based on a combination of test-set F1-score, and ROC--AUC.
+For each model family, the hyperparameter configuration with the highest mean cross-validation F1-score was selected as the best-tuned estimator. These tuned models were then refitted on the full training set and evaluated once on the held-out test set to obtain unbiased estimates of performance. Test-set metrics included accuracy, precision, recall, F1-score for the chimeric class, and ROC--AUC. Confusion matrices and ROC curves were generated for the top-performing models to characterise common error modes, such as false negatives (missed chimeric reads) and false positives (clean reads incorrectly labelled as chimeric). The final model or small set of models for downstream interpretation was chosen based on a combination of test-set F1-score and ROC--AUC.
 
-\subsection{Feature Importance and Interpretation}
+\subsection{Feature Importance, Feature Selection, and Interpretation}
 
 To relate model decisions to biologically meaningful signals, feature-importance analyses were performed on the best-performing tree-based models. Two complementary approaches were used. First, built-in importance measures from ensemble methods (e.g., split-based importances in Random Forest and Gradient Boosting) were examined to obtain an initial ranking of features based on their contribution to reducing impurity. Second, model-agnostic permutation importance was computed on the test set by repeatedly permuting each feature column while keeping all others fixed and measuring the resulting decrease in F1-score. Features whose permutation led to a larger performance drop were interpreted as more influential for chimera detection.
 
-For interpretability, individual features were grouped into four conceptual families: (i) supplementary alignment and alignment-structure features (e.g., SA count, spacing between alignment segments, strand consistency), (ii) soft-clipping features (e.g., left and right soft-clipped length, total clipped bases), (iii) k-mer composition discontinuity features (e.g., cosine distance and Jensen--Shannon divergence between k-mer profiles of read segments), and (iv) microhomology descriptors (e.g., microhomology length and local GC content around putative breakpoints). This analysis provided a basis for interpreting the trained models in terms of known mechanisms of PCR-induced template switching and for identifying which alignment-based and sequence-derived cues are most informative for distinguishing chimeric from clean mitochondrial reads.
+For interpretability, individual features were grouped into conceptual families: (i) supplementary alignment and alignment-structure features (e.g., SA count, spacing between alignment segments, strand consistency), (ii) soft-clipping features (e.g., left and right soft-clipped length, total clipped bases, inferred breakpoint position), (iii) k-mer composition discontinuity features (e.g., cosine distance and Jensen--Shannon divergence between k-mer profiles of read segments), (iv) microhomology descriptors (e.g., microhomology length and local GC content around putative breakpoints), and (v) other alignment quality features (e.g., mapping quality). This analysis provided a basis for interpreting the trained models in terms of known mechanisms of PCR-induced template switching and for identifying which alignment-based and sequence-derived cues are most informative for distinguishing chimeric from clean mitochondrial reads.
+
+Building on these importance results, an explicit feature selection step was implemented using CatBoost as the reference model, since it was among the top-performing classifiers. Permutation importance scores were re-estimated for CatBoost on the held-out test set using the F1-score of the chimeric class as the scoring function. Negative importance scores, which indicate that permuting a feature did not reliably harm performance, were set to zero and interpreted as noise. The remaining non-negative importances were sorted in descending order and converted into a cumulative importance curve by expressing each feature’s importance as a fraction of the total positive importance.
+
+A compact feature subset was then defined by selecting the smallest number of features whose cumulative importance reached at least 95\% of the total positive importance. This procedure yielded a reduced set of four strongly predictive variables dominated by soft-clipping and k-mer divergence metrics (for example, total clipped bases and k-mer divergence between read halves).
+
+To quantify the impact of this reduction, CatBoost was retrained using only the selected feature subset, with the same tuned hyperparameters as the full 23-feature model, and evaluated on the held-out test set. Performance of the reduced model was then compared to that of the full model in terms of F1-score and ROC--AUC to assess whether dimensionality could be reduced without appreciable loss in predictive accuracy.
+
+In addition, an ablation experiment was performed to specifically evaluate the contribution of explicit microhomology features. The microhomology variables (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) were removed from the full feature set to obtain a 21-feature configuration. CatBoost was refitted on this microhomology-ablated feature set, using the same tuned hyperparameters, and evaluated on the held-out test set. Comparing the full, reduced-subset, and microhomology-ablated variants allowed the study to quantify both the degree of redundancy among features and the practical contribution of microhomology to classification accuracy.
+
+Taken together, the feature importance and feature selection analyses provided a more parsimonious model variant and a clearer interpretation of which alignment-based and sequence-derived signals are most informative for detecting PCR-induced chimeras.
 
 \subsection{Validation and Testing}
 
-Validation will involve both internal and external evaluations. Internal validation was achieved through five-fold cross-validation on the training data to verify model generalization and reduce variance due to random sampling. External testing was performed on the 20\% hold-out dataset from the simulated reads, providing an unbiased assessment of model generalization. Feature extraction and preprocessing were applied consistently across all splits.
+Validation involved both internal and external evaluations. Internal validation was achieved through five-fold stratified cross-validation on the training data to verify model generalization and reduce variance due to random sampling. External testing was performed on the 20\% hold-out dataset from the simulated reads, providing an unbiased assessment of model generalization. Feature extraction and preprocessing were applied consistently across all splits.
 
-Comparative evaluation was performed across all candidate algorithms to determine which models demonstrated the highest predictive performance and computational efficiency under identical data conditions. Their metrics were compared to identify which algorithms were most suitable for further refinement.
+Comparative evaluation was performed across all candidate algorithms and CatBoost feature-set variants to determine which models demonstrated the highest predictive performance and computational efficiency under identical data conditions. Their metrics were compared to identify which algorithms and feature configurations were most suitable for further refinement and potential integration into downstream mitochondrial assembly workflows.
 
 \subsection{Documentation}
 
-Comprehensive documentation was maintained throughout the study to ensure transparency and reproducibility. All stages of the research, including data gathering, preprocessing, feature extraction, model training, and validation, were systematically recorded in a \texttt{.README} file in the GitHub repository. For each analytical step, the corresponding parameters, software versions, and command line scripts were documented to enable exact replication of results.
+Comprehensive documentation was maintained throughout the study to ensure transparency and reproducibility. All stages of the research, including data gathering, preprocessing, feature extraction, model training, feature selection, and validation, were systematically recorded in a \texttt{README} file in the GitHub repository. For each analytical step, the corresponding parameters, software versions, and command line scripts were documented to enable exact replication of results.
 
-The repository structure followed standard research data management practices, with clear directories for datasets and scripts. Computational environments were standardized using Conda, with an environment file (\texttt{environment.yml}) specifying dependencies and package versions to maintain consistency across systems.
+The repository structure followed standard research data management practices, with clear directories for datasets and scripts. Computational environments were standardised using Conda, with an environment file (\texttt{environment.yml}) specifying dependencies and package versions to maintain consistency across systems.
 
 For manuscript preparation and supplementary materials, Overleaf (\LaTeX) was used to produce publication-quality formatting and consistent referencing.
 
@@ -130,7 +141,8 @@ Table~\ref{tab:project_timeline} presents the project timeline in the form of a 
 
 \begin{table}[H]
   \centering
-  \caption{Timetable of Activities}\label{tab:project_timeline}
+  \caption{Timetable of activities.}
+  \label{tab:project_timeline}
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|c|c|c|c|c|c|c|}
       \hline
@@ -148,4 +160,5 @@ Table~\ref{tab:project_timeline} presents the project timeline in the form of a 
       \hline
     \end{tabular}%
   }
+
 \end{table}

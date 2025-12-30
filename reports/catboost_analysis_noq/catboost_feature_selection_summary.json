@@ -1,0 +1,33 @@
+{
+  "full": {
+    "n_features": 23,
+    "f1": 0.768624014022787,
+    "roc_auc": 0.843611646234676
+  },
+  "top10": {
+    "n_features": 10,
+    "f1": 0.7674792001167713,
+    "roc_auc": 0.8446566174630974,
+    "features": [
+      "kmer_js_divergence",
+      "total_clipped_bases",
+      "kmer_cosine_diff",
+      "softclip_right",
+      "softclip_left",
+      "mapq",
+      "sa_count",
+      "microhomology_length",
+      "microhomology_gc",
+      "sa_mean_mapq"
+    ]
+  },
+  "no_microhomology": {
+    "n_features": 21,
+    "f1": 0.7678806494076349,
+    "roc_auc": 0.8447196334751064,
+    "dropped_features": [
+      "microhomology_length",
+      "microhomology_gc"
+    ]
+  }
+}

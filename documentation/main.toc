@@ -23,26 +23,26 @@
 \contentsline {subsection}{\numberline {3.1.1}Data Collection}{20}{subsection.3.1.1}%
 \contentsline {subsubsection}{Data Preprocessing}{21}{section*.6}%
 \contentsline {subsection}{\numberline {3.1.2}Feature Extraction Pipeline}{23}{subsection.3.1.2}%
-\contentsline {subsubsection}{Supplementary Alignment Flag}{24}{section*.7}%
-\contentsline {subsubsection}{K-mer Composition Difference}{24}{section*.8}%
+\contentsline {subsubsection}{Supplementary Alignment and Alignment-Structure Features}{24}{section*.7}%
+\contentsline {subsubsection}{K-mer Composition Difference}{25}{section*.8}%
 \contentsline {subsubsection}{Microhomology}{25}{section*.9}%
 \contentsline {subsection}{\numberline {3.1.3}Machine Learning Model Development}{26}{subsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.1.4}Model Benchmarking, Hyperparameter Optimization, and Evaluation}{27}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}Feature Importance and Interpretation}{28}{subsection.3.1.5}%
-\contentsline {subsection}{\numberline {3.1.6}Validation and Testing}{29}{subsection.3.1.6}%
-\contentsline {subsection}{\numberline {3.1.7}Documentation}{30}{subsection.3.1.7}%
-\contentsline {section}{\numberline {3.2}Calendar of Activities}{31}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{32}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Descriptive Analysis of Features}{32}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Exploratory Data Analysis}{33}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{34}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Effect of Hyperparameter Tuning}{36}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Detailed Evaluation of Representative Models}{37}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Confusion Matrices and Error Patterns}{38}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}ROC and Precision--Recall Curves}{39}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Feature Importance}{40}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{40}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{42}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Summary of Findings}{44}{section.4.6}%
-\contentsline {chapter}{\numberline {A}Exploratory Data Analysis}{46}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Histograms of Key Features}{46}{section.A.1}%
+\contentsline {subsection}{\numberline {3.1.5}Feature Importance, Feature Selection, and Interpretation}{29}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Validation and Testing}{31}{subsection.3.1.6}%
+\contentsline {subsection}{\numberline {3.1.7}Documentation}{32}{subsection.3.1.7}%
+\contentsline {section}{\numberline {3.2}Calendar of Activities}{32}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{34}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Descriptive Analysis of Features}{34}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Exploratory Data Analysis}{35}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{36}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Effect of Hyperparameter Tuning}{38}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Detailed Evaluation of Representative Models}{39}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Confusion Matrices and Error Patterns}{40}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}ROC and Precision--Recall Curves}{41}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Feature Importance}{42}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{42}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{44}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Summary of Findings}{46}{section.4.6}%
+\contentsline {chapter}{\numberline {A}Exploratory Data Analysis}{48}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Histograms of Key Features}{48}{section.A.1}%
