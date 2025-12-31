@@ -18,6 +18,126 @@ As shown in Figure \ref{fig:correlation_heatmap}, the feature correlation heatma
     \label{fig:correlation_heatmap}
 \end{figure}
 
+\section{Descriptive Analysis of Features}
+\subsection{Summary Statistics Per Class}
+
+Summary statistics were computed separately for clean reads (class~0) and chimeric reads (class~1) to characterize the distributional behavior of the features. For each feature, the mean, standard deviation, median, first and third quartiles (Q1, Q3), interquartile range (IQR), minimum, maximum, and sample size ($n$) were calculated.
+
+Only a subset of the features is summarized in the main text to highlight key trends, and not all summary statistics columns are shown for brevity. The complete set of per-class summary statistics for all features is provided in Appendix~\ref{app:full_feature_statistics}.
+
+\subsubsection{Alignment and Supplementary Alignment Features}
+
+Features related to supplementary alignments show strong separation between classes. Chimeric reads exhibit supplementary alignments, as reflected by higher values of \texttt{has\_sa}, \texttt{sa\_count}, and \texttt{num\_segments}, whereas clean reads consistently show a single alignment segment with no supplementary mappings. This behavior is consistent with the expected structure of chimeric reads and indicates that alignment-based features are highly informative.
+
+\subsubsection{Clipping-Based Features}
+
+Clipping-related features, including \texttt{softclip\_left}, \texttt{softclip\_right}, and \texttt{total\_clipped\_bases}, display higher means and broader distributions in chimeric reads. Clean reads are dominated by zero or near-zero clipping, while chimeric reads exhibit increased clipping and greater variability, which reflects the presence of split alignments.
+
+\subsubsection{K-mer Distribution Features}
+
+K-mer–based features, such as \texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff}, show only modest differences between clean and chimeric reads. Chimeric reads show slightly higher average divergence, but substantial overlap with clean reads means this feature alone cannot reliably distinguish the classes.
+
+\subsubsection{Microhomology Features}
+
+Microhomology-related features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) exhibit nearly identical summary statistics across both classes. The majority of reads in both classes contain short or zero-length microhomologies, resulting in minimal separation. This means that microhomology serves as a weak standalone indicator and is more appropriately treated as supporting evidence.
+
+Overall, the summary statistics indicate that alignment-based and clipping-based features provide the strongest class separation, k-mer features contribute limited but complementary signal, and microhomology features exhibit minimal discriminative power on their own. These observations motivate the combined multi-feature approach used in subsequent modeling and evaluation.
+
+\begin{table}[H]
+\centering
+\caption{Summary statistics of selected key features by class.}
+\label{tab:key_feature_summary}
+\begin{tabular}{llrrrr}
+\toprule
+Feature & Class & Mean & Std & Median & IQR \\
+\midrule
+has\_sa & chimeric & 0.406 & 0.491 & 0.0 & 1.0 \\
+has\_sa & clean    & 0.000 & 0.000 & 0.0 & 0.0 \\
+
+num\_segments & chimeric & 1.406 & 0.491 & 1.0 & 1.0 \\
+num\_segments & clean    & 1.000 & 0.000 & 1.0 & 0.0 \\
+
+softclip\_left & chimeric & 12.55 & 21.90 & 0.0 & 19.0 \\
+softclip\_left & clean    & 0.23  & 1.54  & 0.0 & 0.0  \\
+
+softclip\_right & chimeric & 12.90 & 22.12 & 0.0 & 19.0 \\
+softclip\_right & clean    & 0.21  & 1.51  & 0.0 & 0.0  \\
+
+total\_clipped\_bases & chimeric & 25.44 & 25.48 & 19.0 & 48.0 \\
+total\_clipped\_bases & clean    & 0.44  & 2.16  & 0.0  & 0.0  \\
+
+kmer\_js\_divergence & chimeric & 0.974 & 0.025 & 0.986 & 0.043 \\
+kmer\_js\_divergence & clean    & 0.976 & 0.025 & 0.986 & 0.040 \\
+
+kmer\_cosine\_diff & chimeric & 0.974 & 0.026 & 0.986 & 0.042 \\
+kmer\_cosine\_diff & clean    & 0.976 & 0.025 & 0.986 & 0.041 \\
+
+microhomology\_length & chimeric & 0.458 & 0.755 & 0.0 & 1.0 \\
+microhomology\_length & clean    & 0.462 & 0.758 & 0.0 & 1.0 \\
+
+microhomology\_gc  & chimeric & 0.172 & 0.361 & 0.0    & 0.0    \\
+microhomology\_gc  & clean    & 0.172 & 0.361 & 0.0    & 0.0    \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Boxplots By Class}
+
+Boxplots were generated for each feature, with the x-axis representing the class clean reads and chimeric reads and the y-axis representing the feature value. Figure~\ref{fig:key_feature_boxplots} presents a panel of selected key features, while boxplots for all numeric features are provided in Appendix~\ref{app:all_boxplots}.
+
+For clipping-related features, chimeric reads exhibit higher medians and longer upper whiskers than clean reads, indicating increased variability and the presence of split alignments. 
+
+Supplementary alignment features show that clean reads are largely zero, whereas chimeric reads display a wider distribution, reflecting frequent supplementary alignments. 
+
+K-mer metrics show a slight upward shift for chimeric reads, but substantial overlap with clean reads indicates modest discriminative power. 
+
+Microhomology features have nearly overlapping distributions for both classes, consistent with their low standalone predictive importance. 
+
+\begin{figure}[H]
+\centering
+
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{../notebooks/figures/boxplots/box_softclip_left.png}
+    \caption{Softclip left}
+    \label{fig:box_softclip_left}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{../notebooks/figures/boxplots/box_softclip_right.png}
+    \caption{Softclip right}
+    \label{fig:box_softclip_right}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{../notebooks/figures/boxplots/box_has_sa.png}
+    \caption{Has SA}
+    \label{fig:box_has_sa}
+\end{subfigure}
+
+\vspace{0.5em}
+
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{../notebooks/figures/boxplots/box_sa_count.png}
+    \caption{SA count}
+    \label{fig:box_sa_count}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{../notebooks/figures/boxplots/box_total_clipped_bases.png}
+    \caption{Total clipped bases}
+    \label{fig:box_total_clipped_bases}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{../notebooks/figures/boxplots/box_kmer_js_divergence.png}
+    \caption{K-mer JS divergence}
+    \label{fig:box_kmer_js_divergence}
+\end{subfigure}
+
+\caption{Boxplots of key features by class}
+\label{fig:key_feature_boxplots}
+\end{figure}
+
 \section{Baseline Classification Performance}
 
 Table~\ref{tab:baseline_models_noq} summarises the performance of eleven classifiers trained on the engineered feature set using five-fold cross-validation and evaluated on the held-out test set. All models were optimised using default hyperparameters, without dedicated tuning.
@@ -62,7 +182,7 @@ Classification reports and confusion matrices for the four models reveal consist
 
 Random forest attained slightly lower accuracy (0.80) and chimeric F1 (0.76), whereas logistic regression achieved the lowest accuracy among the four (0.79) and chimeric F1 (0.74), although it provided the highest chimeric precision (0.95) at the cost of lower recall (0.61).
 
-Across all models, errors were asymmetric. False negatives (chimeric reads predicted as clean) were more frequent than false positives. For example, CatBoost misclassified 1{,}369 chimeric reads as clean but only 215 clean reads as chimeric. This pattern indicates that the models are conservative and prioritise avoiding false chimera calls at the expense of missing some true chimeras.
+Across all models, errors were asymmetric. False negatives (chimeric reads predicted as clean) were more frequent than false positives. For example, CatBoost misclassified 1{,}369 chimeric reads as clean but only 215 clean reads as chimeric. This pattern indicates that the models are conservative and prioritise avoiding false chimera calls at the expense of missing some true chimeras. Consultation with PGC Visayas indicated that this conservative behavior is generally acceptable, though further evaluation and testing will be required to assess its impact on downstream analyses.
 
 \begin{figure}[H]
   \centering
@@ -135,7 +255,15 @@ Overall, these results indicate that accurate detection of chimeric reads relies
 
 \subsection{Feature Family Importance}
 
-To evaluate the contribution of broader signals, features were grouped into five families: SA\_structure (supplementary alignment and segment metrics, e.g., \texttt{has\_sa}, \texttt{sa\_count}, \texttt{sa\_min\_delta\_pos}, \texttt{sa\_mean\_nm}, etc.), Clipping (\texttt{softclip\_left}, \texttt{softclip\_right}, \texttt{total\_clipped\_bases}, \texttt{breakpoint\_read\_pos}), Kmer\_jump (\texttt{kmer\_cosine\_diff}, \texttt{kmer\_js\_divergence}), Micro\_homology (\texttt{microhomology\_length}, \texttt{microhomology\_gc}), and Other (e.g., \texttt{mapq}).
+To evaluate the contribution of broader signals, features were grouped into five families: 
+SA\_structure (supplementary alignment and segment metrics, e.g., 
+\texttt{has\_sa}, \texttt{sa\_count}, \texttt{sa\_min\_delta\_pos}, \texttt{sa\_mean\_nm}, etc.), 
+Clipping (\texttt{softclip\_left}, \texttt{softclip\_right}, \texttt{total\_clipped\_bases}, 
+\texttt{breakpoint\_read\_pos}), 
+Kmer\_jump (\texttt{kmer\_cosine\_diff}, \texttt{kmer\_js\_divergence}), 
+Micro\_homology (
+\texttt{microhomology\_length}, \texttt{microhomology\_gc}), 
+and Other (e.g., \texttt{mapq}).
 
 Aggregated analyses reveal consistent patterns across models. In CatBoost, the Clipping family has the largest cumulative contribution (0.14), followed by Kmer\_jump (0.12), with Other features contributing minimally (0.005) and SA\_structure (0.003) and Micro\_homology (0.003) providing minimal predictive power. Gradient Boosting shows a similar trend, with Clipping (0.13) dominating, Kmer\_jump (0.11) secondary, and the remaining families contributing negligibly. Random Forest integrates both Clipping (0.088) and Kmer\_jump (0.08) effectively, while SA\_structure, Micro\_homology, and Other remain minor contributors. L$_2$-regularized Logistic Regression emphasizes Clipping (0.09) and SA\_structure (0.07), with Kmer\_jump and Micro\_homology having minimal impact.
 
@@ -177,8 +305,56 @@ Both feature-level and aggregated analyses indicate that detection of chimeric r
     \label{fig:feature_family_all}
 \end{figure}
 
+\section{Feature Selection}
+
+Feature selection was performed to identify the smallest subset reaching 95\% cumulative importance. Three models were evaluated as references: the full model with all 23 features, a reduced model with the top-\(k\) features, and an ablation model excluding microhomology features, using a tuned CatBoost classifier to assess feature contributions and overall classification performance.
+
+\subsection{Cumulative Importance Curve}
+
+The cumulative importance curve was computed using the tuned CatBoost classifier. Figure~\ref{fig:cumulative_importance} illustrates the contribution of features sorted by importance. The curve rises steeply for the first few features and then gradually plateaus, indicating that a small number of features capture most of the model's predictive power. A cumulative importance of 95\% is reached at \(k = 4\) features, which are \texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{../notebooks/figures/catboost_cumulative_importance.png}
+\caption{Cumulative importance curve of features sorted by importance.}
+\label{fig:cumulative_importance}
+\end{figure}
+
+\subsection{Performance Comparison Across Feature Sets}
+
+Classification performance was compared across three feature sets using a tuned CatBoost classifier. The full model, incorporating all 23 engineered features, achieved an F1 score of approximately 0.7686 and a ROC--AUC of 0.8436. A reduced model using only the top four features (\texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}) achieved nearly equivalent performance with an F1 of 0.7670 and a ROC--AUC of 0.8353. An ablation model excluding microhomology features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) also performed comparably, with an F1 of 0.7679 and ROC--AUC of 0.8447. These results indicate that clipping and k-mer features capture almost all predictive signal, while microhomology features are largely redundant in this dataset.
+
+\begin{table}[H]
+\centering
+\caption{Test set performance of three feature set variants using tuned CatBoost.}
+\label{tab:catboost_feature_sets}
+\begin{tabular}{lrrr}
+\toprule
+Variant & No. of Features & Test F1 & ROC--AUC \\
+\midrule
+Full CatBoost & 23 & 0.7686 & 0.8436 \\
+Selected (top-4) & 4 & 0.7670 & 0.8353 \\
+No microhomology & 21 & 0.7679 & 0.8447 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Figure~\ref{fig:catboost_three_sets} presents a bar chart comparing F1 and ROC--AUC across the three variants, with the x-axis showing the model variants and two bars per group representing the F1 and ROC--AUC values.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{../notebooks/figures/catboost_three_sets.png}
+\caption{Comparison of F1 and ROC--AUC for the full, top-4 selected, and no-microhomology feature set variants.}
+\label{fig:catboost_three_sets}
+\end{figure}
+
+\subsection{Interpretation and Final Feature Set Choice}
+
+The full 23-feature model is retained as the primary configuration for the remainder of the study, while the four-feature subset serves as a lightweight alternative. Clipping features reflect alignment junctions and mapping disruptions typical of chimeric reads, and k-mer divergence captures changes in sequence composition across breakpoints. Microhomology features appear largely redundant, as their signal is either indirectly represented by clipping and k-mer features or not strongly expressed in the simulation dataset.
+
+
 \section{Summary of Findings}
 
-All models performed substantially better than the dummy baseline, with test F1-scores around 0.76 and ROC-AUC values near 0.84. Hyperparameter tuning yielded modest improvements, with boosting methods, particularly CatBoost and gradient boosting, achieving the highest performance. Confusion matrices and precision-recall curves indicate that the models prioritize precision over recall for chimeric reads, minimizing false positives.
+All models performed substantially better than the dummy baseline, with test F1-scores around 0.76 and ROC--AUC values near 0.84. Hyperparameter tuning yielded modest improvements, with boosting methods, particularly CatBoost and gradient boosting, achieving the highest performance. Confusion matrices and precision-recall curves indicate that the models prioritize precision over recall for chimeric reads, minimizing false positives.
 
 Feature importance analysis highlighted alignment breakpoints, such as clipping, and abrupt shifts in k-mer composition as the main contributors to predictive power. Microhomology metrics and supplementary alignment features had minimal impact. These findings suggest that alignment-based and k-mer–based features alone are sufficient for training classifiers to detect mitochondrial PCR-induced chimeric reads under the conditions tested.
