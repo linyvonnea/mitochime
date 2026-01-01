@@ -13,3 +13,10 @@
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Cumulative importance curve of features sorted by importance.}}{50}{figure.caption.25}%
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Comparison of F1 and ROC--AUC for the full, top-4 selected, and no-microhomology feature set variants.}}{51}{figure.caption.27}%
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Boxplots of SA Structure features by class (1/2).}}{56}{figure.caption.28}%
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Boxplots of SA Structure features by class (2/2).}}{57}{figure.caption.29}%
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Boxplots of clipping-based features by class.}}{58}{figure.caption.30}%
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Boxplots of k-mer features by class.}}{58}{figure.caption.31}%
+\contentsline {figure}{\numberline {B.5}{\ignorespaces Boxplots of microhomology features by class.}}{59}{figure.caption.32}%
+\contentsline {figure}{\numberline {B.6}{\ignorespaces Boxplots of other numeric features by class.}}{59}{figure.caption.33}%
