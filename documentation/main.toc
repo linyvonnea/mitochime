@@ -40,23 +40,24 @@
 \contentsline {subsubsection}{K-mer Distribution Features}{36}{section*.13}%
 \contentsline {subsubsection}{Microhomology Features}{36}{section*.14}%
 \contentsline {subsection}{\numberline {4.1.2}Boxplots By Class}{37}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{39}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Effect of Hyperparameter Tuning}{40}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Detailed Evaluation of Representative Models}{42}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Confusion Matrices and Error Patterns}{42}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}ROC and Precision--Recall Curves}{44}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Feature Importance}{45}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{45}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{47}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Feature Selection}{49}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Cumulative Importance Curve}{50}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Performance Comparison Across Feature Sets}{50}{subsection.4.6.2}%
-\contentsline {subsection}{\numberline {4.6.3}Interpretation and Final Feature Set Choice}{52}{subsection.4.6.3}%
-\contentsline {section}{\numberline {4.7}Summary of Findings}{52}{section.4.7}%
-\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{53}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{56}{appendix.B}%
-\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{56}{subsection.B.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{58}{subsection.B.0.2}%
-\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{58}{subsection.B.0.3}%
-\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{59}{subsection.B.0.4}%
-\contentsline {subsection}{\numberline {B.0.5}Others}{59}{subsection.B.0.5}%
+\contentsline {subsection}{\numberline {4.1.3}Correlation Analysis of Extracted Features}{39}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{40}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Effect of Hyperparameter Tuning}{42}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Detailed Evaluation of Representative Models}{43}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Confusion Matrices and Error Patterns}{44}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}ROC and Precision--Recall Curves}{45}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Feature Importance}{46}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{46}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{48}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Feature Selection}{50}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Cumulative Importance Curve}{51}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Performance Comparison Across Feature Sets}{51}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}Interpretation and Final Feature Set Choice}{53}{subsection.4.6.3}%
+\contentsline {section}{\numberline {4.7}Summary of Findings}{53}{section.4.7}%
+\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{55}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{58}{appendix.B}%
+\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{58}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{60}{subsection.B.0.2}%
+\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{60}{subsection.B.0.3}%
+\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{61}{subsection.B.0.4}%
+\contentsline {subsection}{\numberline {B.0.5}Others}{61}{subsection.B.0.5}%
