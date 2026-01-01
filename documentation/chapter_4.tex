@@ -1,29 +1,16 @@
 % \section*{Chapter 4}\label{sec:results}
 \chapter{Results and Discussion}
-\section{Descriptive Analysis of Features}
 
 This chapter presents the performance of the proposed feature set and machine learning models for detecting PCR-induced chimeric reads in simulated mitochondrial Illumina data. The behaviour of the main features is first described, followed by a comparison of baseline classifiers, an assessment of the effect of hyperparameter tuning, and an analysis of feature importance in terms of individual variables and feature families.
 
 The final dataset contained 31{,}986 reads for training and 7{,}997 reads for testing, with classes balanced (approximately 4{,}000 clean and 4{,}000 chimeric reads in the test split).
-
-\subsection{Exploratory Data Analysis} 
-An exploratory data analysis (EDA) was conducted on the extracted feature matrix to characterize general patterns in the data and gain preliminary insight into which variables might meaningfully contribute to classification. Histograms of key features indicated that alignment-based variables showed clear class separation as chimeric reads have higher frequencies of split alignments and broader long-tailed distribution on soft-clipped regions (\texttt{softclip\_left} and \texttt{softclip\_right}). In contrast, sequence-based variables such a microhomology length and k-mer divergence displayed substantial overlap between classes, suggesting more limited discriminative value. The complete set of histograms is provided in Appendix~\ref{appendix:appendix_A}.
-
-As shown in Figure \ref{fig:correlation_heatmap}, the feature correlation heatmap shows that alignment-derived features form a strongly correlated cluster, whereas sequence-derived features show weak correlations with both the alignment-based features and with one another. This heterogeneity indicates that no single feature family captures all relevant signal sources.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{../notebooks/figures/correlation.png}
-    \caption{Feature correlation heatmap showing relationships among alignment-derived and sequence-derived features.}
-    \label{fig:correlation_heatmap}
-\end{figure}
 
 \section{Descriptive Analysis of Features}
 \subsection{Summary Statistics Per Class}
 
 Summary statistics were computed separately for clean reads (class~0) and chimeric reads (class~1) to characterize the distributional behavior of the features. For each feature, the mean, standard deviation, median, first and third quartiles (Q1, Q3), interquartile range (IQR), minimum, maximum, and sample size ($n$) were calculated.
 
-Only a subset of the features is summarized in the main text to highlight key trends, and not all summary statistics columns are shown for brevity. The complete set of per-class summary statistics for all features is provided in Appendix~\ref{app:full_feature_statistics}.
+Only a subset of the features is summarized in the main text to highlight key trends, and not all summary statistics columns are shown for brevity. The complete set of per-class summary statistics for all features is provided in Appendix~\ref{app:summary_stats} (Table~\ref{tab:feature_summary_full}).
 
 \subsubsection{Alignment and Supplementary Alignment Features}
 

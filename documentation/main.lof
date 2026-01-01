@@ -1,0 +1,15 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Process diagram of the study workflow.}}{20}{figure.caption.5}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Boxplots of key features by class}}{38}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Test F1 of all baseline classifiers, showing that no single model clearly dominates and several achieve comparable performance.}}{40}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models.}}{41}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Confusion matrices for the four representative models on the held-out test set.}}{44}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set.}}{45}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Permutation-based feature importance for four representative classifiers.}}{47}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Aggregated feature family importance across four models.}}{49}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Cumulative importance curve of features sorted by importance.}}{50}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Comparison of F1 and ROC--AUC for the full, top-4 selected, and no-microhomology feature set variants.}}{51}{figure.caption.27}%
+\addvspace {10\p@ }
