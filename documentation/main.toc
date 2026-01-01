@@ -54,3 +54,9 @@
 \contentsline {subsection}{\numberline {4.6.3}Interpretation and Final Feature Set Choice}{52}{subsection.4.6.3}%
 \contentsline {section}{\numberline {4.7}Summary of Findings}{52}{section.4.7}%
 \contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{53}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{56}{appendix.B}%
+\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{56}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{58}{subsection.B.0.2}%
+\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{58}{subsection.B.0.3}%
+\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{59}{subsection.B.0.4}%
+\contentsline {subsection}{\numberline {B.0.5}Others}{59}{subsection.B.0.5}%

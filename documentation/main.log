@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.24)  1 JAN 2026 21:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.24)  2 JAN 2026 00:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -535,7 +535,8 @@ Package caption Info: New subtype `subtable' on input line 238.
 tex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count341
-) (main.aux (title_page.aux) (abstract.aux) (appendix_A.aux))
+) (main.aux (title_page.aux) (abstract.aux) (appendix_A.aux)
+(appendix_B.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -869,7 +870,7 @@ Chapter 3.
 [19
 
 ]
-<figures/research_activities.png, id=569, 337.26pt x 452.69125pt>
+<figures/research_activities.png, id=613, 337.26pt x 452.69125pt>
 File: figures/research_activities.png Graphic file (type png)
 <use figures/research_activities.png>
 Package pdftex.def Info: figures/research_activities.png  used on input line 13
@@ -929,13 +930,8 @@ Overfull \hbox (0.16118pt too wide) in paragraph at lines 29--30
 
 [36]
 
-LaTeX Warning: Reference `app:all_boxplots' on page 37 undefined on input line 
-73.
-
-
-
 [37]
-<../notebooks/figures/boxplots/box_softclip_left.png, id=661, 353.6412pt x 281.
+<../notebooks/figures/boxplots/box_softclip_left.png, id=706, 353.6412pt x 281.
 3712pt>
 File: ../notebooks/figures/boxplots/box_softclip_left.png Graphic file (type pn
 g)
@@ -943,7 +939,7 @@ g)
 Package pdftex.def Info: ../notebooks/figures/boxplots/box_softclip_left.png  u
 sed on input line 87.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<../notebooks/figures/boxplots/box_softclip_right.png, id=662, 353.6412pt x 281
+<../notebooks/figures/boxplots/box_softclip_right.png, id=707, 353.6412pt x 281
 .3712pt>
 File: ../notebooks/figures/boxplots/box_softclip_right.png Graphic file (type p
 ng)
@@ -951,21 +947,21 @@ ng)
 Package pdftex.def Info: ../notebooks/figures/boxplots/box_softclip_right.png  
 used on input line 93.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<../notebooks/figures/boxplots/box_has_sa.png, id=663, 353.6412pt x 281.3712pt>
+<../notebooks/figures/boxplots/box_has_sa.png, id=708, 353.6412pt x 281.3712pt>
 
 File: ../notebooks/figures/boxplots/box_has_sa.png Graphic file (type png)
 <use ../notebooks/figures/boxplots/box_has_sa.png>
 Package pdftex.def Info: ../notebooks/figures/boxplots/box_has_sa.png  used on 
 input line 99.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<../notebooks/figures/boxplots/box_sa_count.png, id=664, 353.4003pt x 281.3712p
+<../notebooks/figures/boxplots/box_sa_count.png, id=709, 353.4003pt x 281.3712p
 t>
 File: ../notebooks/figures/boxplots/box_sa_count.png Graphic file (type png)
 <use ../notebooks/figures/boxplots/box_sa_count.png>
 Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_count.png  used o
 n input line 107.
 (pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
-<../notebooks/figures/boxplots/box_total_clipped_bases.png, id=665, 353.6412pt 
+<../notebooks/figures/boxplots/box_total_clipped_bases.png, id=710, 353.6412pt 
 x 281.3712pt>
 File: ../notebooks/figures/boxplots/box_total_clipped_bases.png Graphic file (t
 ype png)
@@ -973,7 +969,7 @@ ype png)
 Package pdftex.def Info: ../notebooks/figures/boxplots/box_total_clipped_bases.
 png  used on input line 113.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<../notebooks/figures/boxplots/box_kmer_js_divergence.png, id=666, 353.6412pt x
+<../notebooks/figures/boxplots/box_kmer_js_divergence.png, id=711, 353.6412pt x
  281.3712pt>
 File: ../notebooks/figures/boxplots/box_kmer_js_divergence.png Graphic file (ty
 pe png)
@@ -993,7 +989,7 @@ Overfull \hbox (30.4271pt too wide) in paragraph at lines 6--25
  []
 
 )
-<figures/baseline_f1.png, id=679, 498.1812pt x 281.3712pt>
+<figures/baseline_f1.png, id=724, 498.1812pt x 281.3712pt>
 File: figures/baseline_f1.png Graphic file (type png)
 <use figures/baseline_f1.png>
 Package pdftex.def Info: figures/baseline_f1.png  used on input line 140.
@@ -1008,7 +1004,7 @@ Overfull \hbox (61.74414pt too wide) in paragraph at lines 6--22
  []
 
 )
-<figures/f1_auc_tuning.png, id=691, 859.2903pt x 353.8821pt>
+<figures/f1_auc_tuning.png, id=736, 859.2903pt x 353.8821pt>
 File: figures/f1_auc_tuning.png Graphic file (type png)
 <use figures/f1_auc_tuning.png>
 Package pdftex.def Info: figures/f1_auc_tuning.png  used on input line 155.
@@ -1018,23 +1014,23 @@ Package pdftex.def Info: figures/f1_auc_tuning.png  used on input line 155.
 [41 <./figures/f1_auc_tuning.png>]
 
 [42]
-<figures/cm_catboost.png, id=701, 280.4076pt x 281.3712pt>
+<figures/cm_catboost.png, id=746, 280.4076pt x 281.3712pt>
 File: figures/cm_catboost.png Graphic file (type png)
 <use figures/cm_catboost.png>
 Package pdftex.def Info: figures/cm_catboost.png  used on input line 176.
 (pdftex.def)             Requested size: 186.99734pt x 187.63757pt.
-<figures/cm_gradient_boosting.png, id=702, 280.4076pt x 281.3712pt>
+<figures/cm_gradient_boosting.png, id=747, 280.4076pt x 281.3712pt>
 File: figures/cm_gradient_boosting.png Graphic file (type png)
 <use figures/cm_gradient_boosting.png>
 Package pdftex.def Info: figures/cm_gradient_boosting.png  used on input line 1
 77.
 (pdftex.def)             Requested size: 186.99734pt x 187.63757pt.
-<figures/cm_random_forest.png, id=703, 280.4076pt x 281.3712pt>
+<figures/cm_random_forest.png, id=748, 280.4076pt x 281.3712pt>
 File: figures/cm_random_forest.png Graphic file (type png)
 <use figures/cm_random_forest.png>
 Package pdftex.def Info: figures/cm_random_forest.png  used on input line 178.
 (pdftex.def)             Requested size: 186.99734pt x 187.63757pt.
-<figures/cm_logreg_l2.png, id=704, 280.4076pt x 281.3712pt>
+<figures/cm_logreg_l2.png, id=749, 280.4076pt x 281.3712pt>
 File: figures/cm_logreg_l2.png Graphic file (type png)
 <use figures/cm_logreg_l2.png>
 Package pdftex.def Info: figures/cm_logreg_l2.png  used on input line 179.
@@ -1045,7 +1041,7 @@ Package pdftex.def Info: figures/cm_logreg_l2.png  used on input line 179.
 
 [44 <./figures/cm_catboost.png> <./figures/cm_gradient_boosting.png> <./figures
 /cm_random_forest.png> <./figures/cm_logreg_l2.png>]
-<figures/roc_pr_curves.png, id=718, 714.7503pt x 281.3712pt>
+<figures/roc_pr_curves.png, id=763, 714.7503pt x 281.3712pt>
 File: figures/roc_pr_curves.png Graphic file (type png)
 <use figures/roc_pr_curves.png>
 Package pdftex.def Info: figures/roc_pr_curves.png  used on input line 192.
@@ -1053,22 +1049,22 @@ Package pdftex.def Info: figures/roc_pr_curves.png  used on input line 192.
 
 
 [45 <./figures/roc_pr_curves.png>]
-<figures/catboost_imp.png, id=725, 426.393pt x 281.853pt>
+<figures/catboost_imp.png, id=770, 426.393pt x 281.853pt>
 File: figures/catboost_imp.png Graphic file (type png)
 <use figures/catboost_imp.png>
 Package pdftex.def Info: figures/catboost_imp.png  used on input line 211.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/gradient_imp.png, id=726, 426.393pt x 281.853pt>
+<figures/gradient_imp.png, id=771, 426.393pt x 281.853pt>
 File: figures/gradient_imp.png Graphic file (type png)
 <use figures/gradient_imp.png>
 Package pdftex.def Info: figures/gradient_imp.png  used on input line 218.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/randomforest_imp.png, id=727, 425.6703pt x 281.853pt>
+<figures/randomforest_imp.png, id=772, 425.6703pt x 281.853pt>
 File: figures/randomforest_imp.png Graphic file (type png)
 <use figures/randomforest_imp.png>
 Package pdftex.def Info: figures/randomforest_imp.png  used on input line 227.
 (pdftex.def)             Requested size: 186.99734pt x 123.81787pt.
-<figures/logreg_imp.png, id=728, 425.6703pt x 281.853pt>
+<figures/logreg_imp.png, id=773, 425.6703pt x 281.853pt>
 File: figures/logreg_imp.png Graphic file (type png)
 <use figures/logreg_imp.png>
 Package pdftex.def Info: figures/logreg_imp.png  used on input line 234.
@@ -1098,23 +1094,23 @@ Underfull \hbox (badness 5741) in paragraph at lines 245--254
 
 [47 <./figures/catboost_imp.png> <./figures/gradient_imp.png> <./figures/random
 forest_imp.png> <./figures/logreg_imp.png>]
-<figures/catboost_family.png, id=742, 426.393pt x 281.853pt>
+<figures/catboost_family.png, id=787, 426.393pt x 281.853pt>
 File: figures/catboost_family.png Graphic file (type png)
 <use figures/catboost_family.png>
 Package pdftex.def Info: figures/catboost_family.png  used on input line 263.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/gradient_family.png, id=743, 426.393pt x 281.853pt>
+<figures/gradient_family.png, id=788, 426.393pt x 281.853pt>
 File: figures/gradient_family.png Graphic file (type png)
 <use figures/gradient_family.png>
 Package pdftex.def Info: figures/gradient_family.png  used on input line 270.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/randomforest_family.png, id=744, 426.393pt x 281.853pt>
+<figures/randomforest_family.png, id=789, 426.393pt x 281.853pt>
 File: figures/randomforest_family.png Graphic file (type png)
 <use figures/randomforest_family.png>
 Package pdftex.def Info: figures/randomforest_family.png  used on input line 27
 9.
 (pdftex.def)             Requested size: 186.99734pt x 123.60713pt.
-<figures/logreg_family.png, id=745, 426.393pt x 281.853pt>
+<figures/logreg_family.png, id=790, 426.393pt x 281.853pt>
 File: figures/logreg_family.png Graphic file (type png)
 <use figures/logreg_family.png>
 Package pdftex.def Info: figures/logreg_family.png  used on input line 286.
@@ -1125,7 +1121,7 @@ Package pdftex.def Info: figures/logreg_family.png  used on input line 286.
 
 [49 <./figures/catboost_family.png> <./figures/gradient_family.png> <./figures/
 randomforest_family.png> <./figures/logreg_family.png>]
-<../notebooks/figures/catboost_cumulative_importance.png, id=759, 426.393pt x 2
+<../notebooks/figures/catboost_cumulative_importance.png, id=804, 426.393pt x 2
 81.853pt>
 File: ../notebooks/figures/catboost_cumulative_importance.png Graphic file (typ
 e png)
@@ -1136,7 +1132,7 @@ g  used on input line 305.
 
 
 [50 <../notebooks/figures/catboost_cumulative_importance.png>]
-<../notebooks/figures/catboost_three_sets.png, id=766, 426.393pt x 281.853pt>
+<../notebooks/figures/catboost_three_sets.png, id=811, 426.393pt x 281.853pt>
 File: ../notebooks/figures/catboost_three_sets.png Graphic file (type png)
 <use ../notebooks/figures/catboost_three_sets.png>
 Package pdftex.def Info: ../notebooks/figures/catboost_three_sets.png  used on 
@@ -1156,21 +1152,249 @@ Appendix A.
 
 ] [54])
 
-[55] (main.bbl
+[55]
+\openout2 = `appendix_B.aux'.
+
+ (appendix_B.tex
+Appendix B.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 19.
+
+File: ../notebooks/figures/boxplots/box_has_sa.png Graphic file (type png)
+<use ../notebooks/figures/boxplots/box_has_sa.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_has_sa.png  used on 
+input line 25.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_num_segments.png, id=834, 353.4003pt x 281.3
+712pt>
+File: ../notebooks/figures/boxplots/box_num_segments.png Graphic file (type png
+)
+<use ../notebooks/figures/boxplots/box_num_segments.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_num_segments.png  us
+ed on input line 30.
+(pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
+File: ../notebooks/figures/boxplots/box_sa_count.png Graphic file (type png)
+<use ../notebooks/figures/boxplots/box_sa_count.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_count.png  used o
+n input line 35.
+(pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
+<../notebooks/figures/boxplots/box_sa_diff_contig.png, id=835, 353.6412pt x 281
+.3712pt>
+File: ../notebooks/figures/boxplots/box_sa_diff_contig.png Graphic file (type p
+ng)
+<use ../notebooks/figures/boxplots/box_sa_diff_contig.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_diff_contig.png  
+used on input line 50.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_sa_max_delta_pos.png, id=836, 353.6412pt x 2
+81.3712pt>
+File: ../notebooks/figures/boxplots/box_sa_max_delta_pos.png Graphic file (type
+ png)
+<use ../notebooks/figures/boxplots/box_sa_max_delta_pos.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_max_delta_pos.png
+  used on input line 55.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_sa_max_mapq.png, id=837, 353.4003pt x 281.37
+12pt>
+File: ../notebooks/figures/boxplots/box_sa_max_mapq.png Graphic file (type png)
+
+<use ../notebooks/figures/boxplots/box_sa_max_mapq.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_max_mapq.png  use
+d on input line 60.
+(pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
+<../notebooks/figures/boxplots/box_sa_mean_delta_pos.png, id=838, 353.6412pt x 
+281.3712pt>
+File: ../notebooks/figures/boxplots/box_sa_mean_delta_pos.png Graphic file (typ
+e png)
+<use ../notebooks/figures/boxplots/box_sa_mean_delta_pos.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_mean_delta_pos.pn
+g  used on input line 68.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_sa_mean_mapq.png, id=839, 353.4003pt x 281.3
+712pt>
+File: ../notebooks/figures/boxplots/box_sa_mean_mapq.png Graphic file (type png
+)
+<use ../notebooks/figures/boxplots/box_sa_mean_mapq.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_mean_mapq.png  us
+ed on input line 73.
+(pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
+<../notebooks/figures/boxplots/box_sa_mean_nm.png, id=840, 353.4003pt x 281.371
+2pt>
+File: ../notebooks/figures/boxplots/box_sa_mean_nm.png Graphic file (type png)
+<use ../notebooks/figures/boxplots/box_sa_mean_nm.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_mean_nm.png  used
+ on input line 78.
+(pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
+<../notebooks/figures/boxplots/box_sa_min_delta_pos.png, id=841, 353.6412pt x 2
+81.3712pt>
+File: ../notebooks/figures/boxplots/box_sa_min_delta_pos.png Graphic file (type
+ png)
+<use ../notebooks/figures/boxplots/box_sa_min_delta_pos.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_min_delta_pos.png
+  used on input line 86.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_sa_min_nm.png, id=842, 353.6412pt x 281.3712
+pt>
+File: ../notebooks/figures/boxplots/box_sa_min_nm.png Graphic file (type png)
+<use ../notebooks/figures/boxplots/box_sa_min_nm.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_min_nm.png  used 
+on input line 91.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_sa_opp_strand_count.png, id=843, 353.6412pt 
+x 281.3712pt>
+File: ../notebooks/figures/boxplots/box_sa_opp_strand_count.png Graphic file (t
+ype png)
+<use ../notebooks/figures/boxplots/box_sa_opp_strand_count.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_opp_strand_count.
+png  used on input line 96.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_sa_same_strand_count.png, id=844, 353.6412pt
+ x 281.3712pt>
+File: ../notebooks/figures/boxplots/box_sa_same_strand_count.png Graphic file (
+type png)
+<use ../notebooks/figures/boxplots/box_sa_same_strand_count.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_sa_same_strand_count
+.png  used on input line 104.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+
 
 [56
 
 
 
+
+ <../notebooks/figures/boxplots/box_num_segments.png>]
+
+[57 <../notebooks/figures/boxplots/box_sa_diff_contig.png> <../notebooks/figure
+s/boxplots/box_sa_max_delta_pos.png> <../notebooks/figures/boxplots/box_sa_max_
+mapq.png> <../notebooks/figures/boxplots/box_sa_mean_delta_pos.png> <../noteboo
+ks/figures/boxplots/box_sa_mean_mapq.png> <../notebooks/figures/boxplots/box_sa
+_mean_nm.png> <../notebooks/figures/boxplots/box_sa_min_delta_pos.png> <../note
+books/figures/boxplots/box_sa_min_nm.png> <../notebooks/figures/boxplots/box_sa
+_opp_strand_count.png> <../notebooks/figures/boxplots/box_sa_same_strand_count.
+png>]
+File: ../notebooks/figures/boxplots/box_softclip_left.png Graphic file (type pn
+g)
+<use ../notebooks/figures/boxplots/box_softclip_left.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_softclip_left.png  u
+sed on input line 124.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+File: ../notebooks/figures/boxplots/box_softclip_right.png Graphic file (type p
+ng)
+<use ../notebooks/figures/boxplots/box_softclip_right.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_softclip_right.png  
+used on input line 129.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+File: ../notebooks/figures/boxplots/box_total_clipped_bases.png Graphic file (t
+ype png)
+<use ../notebooks/figures/boxplots/box_total_clipped_bases.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_total_clipped_bases.
+png  used on input line 134.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_kmer_cosine_diff.png, id=864, 353.6412pt x 2
+81.3712pt>
+File: ../notebooks/figures/boxplots/box_kmer_cosine_diff.png Graphic file (type
+ png)
+<use ../notebooks/figures/boxplots/box_kmer_cosine_diff.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_kmer_cosine_diff.png
+  used on input line 154.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+File: ../notebooks/figures/boxplots/box_kmer_js_divergence.png Graphic file (ty
+pe png)
+<use ../notebooks/figures/boxplots/box_kmer_js_divergence.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_kmer_js_divergence.p
+ng  used on input line 159.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+
+
+[58
+
+ <../notebooks/figures/boxplots/box_kmer_cosine_diff.png>]
+<../notebooks/figures/boxplots/box_microhomology_length.png, id=871, 353.6412pt
+ x 281.3712pt>
+File: ../notebooks/figures/boxplots/box_microhomology_length.png Graphic file (
+type png)
+<use ../notebooks/figures/boxplots/box_microhomology_length.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_microhomology_length
+.png  used on input line 179.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_microhomology_gc.png, id=872, 353.6412pt x 2
+81.3712pt>
+File: ../notebooks/figures/boxplots/box_microhomology_gc.png Graphic file (type
+ png)
+<use ../notebooks/figures/boxplots/box_microhomology_gc.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_microhomology_gc.png
+  used on input line 184.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_breakpoint_read_pos.png, id=873, 353.6412pt 
+x 281.3712pt>
+File: ../notebooks/figures/boxplots/box_breakpoint_read_pos.png Graphic file (t
+ype png)
+<use ../notebooks/figures/boxplots/box_breakpoint_read_pos.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_breakpoint_read_pos.
+png  used on input line 205.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_mapq.png, id=874, 353.4003pt x 281.3712pt>
+File: ../notebooks/figures/boxplots/box_mapq.png Graphic file (type png)
+<use ../notebooks/figures/boxplots/box_mapq.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_mapq.png  used on in
+put line 210.
+(pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
+<../notebooks/figures/boxplots/box_mean_base_quality.png, id=875, 353.6412pt x 
+281.3712pt>
+File: ../notebooks/figures/boxplots/box_mean_base_quality.png Graphic file (typ
+e png)
+<use ../notebooks/figures/boxplots/box_mean_base_quality.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_mean_base_quality.pn
+g  used on input line 215.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_read_length.png, id=876, 353.6412pt x 281.37
+12pt>
+File: ../notebooks/figures/boxplots/box_read_length.png Graphic file (type png)
+
+<use ../notebooks/figures/boxplots/box_read_length.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_read_length.png  use
+d on input line 223.
+(pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
+<../notebooks/figures/boxplots/box_ref_start_1based.png, id=877, 353.4003pt x 2
+81.3712pt>
+File: ../notebooks/figures/boxplots/box_ref_start_1based.png Graphic file (type
+ png)
+<use ../notebooks/figures/boxplots/box_ref_start_1based.png>
+Package pdftex.def Info: ../notebooks/figures/boxplots/box_ref_start_1based.png
+  used on input line 228.
+(pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 229--229
+[]\OT1/cmr/m/n/10.95 (e) |Ref-er-ence start (1-
+ []
+
+)
+
+[59
+
+ <../notebooks/figures/boxplots/box_microhomology_length.png> <../notebooks/fig
+ures/boxplots/box_microhomology_gc.png> <../notebooks/figures/boxplots/box_brea
+kpoint_read_pos.png> <../notebooks/figures/boxplots/box_mapq.png> <../notebooks
+/figures/boxplots/box_mean_base_quality.png> <../notebooks/figures/boxplots/box
+_read_length.png> <../notebooks/figures/boxplots/box_ref_start_1based.png>]
+(main.bbl
+
+[60
+
+
+
 ]
 
-[57]
+[61]
 
-[58]
+[62]
 
-[59])
+[63])
 
-[60] (main.aux (title_page.aux) (abstract.aux) (appendix_A.aux))
+[64] (main.aux (title_page.aux) (abstract.aux) (appendix_A.aux) (appendix_B.aux
+))
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
@@ -1179,17 +1403,14 @@ L3 programming layer <2025-07-20>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DEAC1FD5E2111002C2B71F2275D593C1;9891.
+(rerunfilecheck)             Checksum: 3A6E5289C26D2B923CE7FD42018C0AB2;11189.
  ) 
 Here is how much of TeX's memory you used:
- 15529 strings out of 468133
- 255146 string characters out of 5430718
- 678224 words of memory out of 5000000
- 43690 multiletter control sequences out of 15000+600000
+ 15770 strings out of 468133
+ 265895 string characters out of 5430718
+ 682100 words of memory out of 5000000
+ 43908 multiletter control sequences out of 15000+600000
  636294 words of font info for 76 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  88i,11n,134p,1214b,672s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1203,9 +1424,9 @@ ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/danie/AppData/Loca
 l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/danie/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/
 danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (69 pages, 1548615 bytes).
+Output written on main.pdf (73 pages, 2496788 bytes).
 PDF statistics:
- 921 PDF objects out of 1000 (max. 8388607)
- 180 named destinations out of 1000 (max. 500000)
- 505 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1026 PDF objects out of 1200 (max. 8388607)
+ 196 named destinations out of 1000 (max. 500000)
+ 648 words of extra memory for PDF output out of 10000 (max. 10000000)
 
