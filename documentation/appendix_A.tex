@@ -1,102 +1,90 @@
 \chapter{Complete Per-Class Summary Statistics}
 \label{app:summary_stats}
 
+% Requires in preamble:
+% \usepackage{longtable,booktabs}
+% \usepackage{lscape} % landscape pages without pdflscape
+
+\begin{landscape}
+\scriptsize
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\LTleft}{0pt plus 1fil}
+\setlength{\LTright}{0pt plus 1fil}
+
 \begin{center}
-\begin{longtable}{llrrrr}
-\caption{Complete per-class summary statistics for all extracted features.}
+\begin{longtable}{llrrrrrrrrr}
+\caption{Complete per-class summary statistics for all extracted features.}\\
 \label{tab:feature_summary_full}\\
 
 \toprule
-Feature & Class & Mean & Std & Median & IQR \\
+Feature & Class & Mean & Std & Median & Q1 & Q3 & IQR & Min & Max & n \\
 \midrule
 \endfirsthead
 
 \toprule
-Feature & Class & Mean & Std & Median & IQR \\
+Feature & Class & Mean & Std & Median & Q1 & Q3 & IQR & Min & Max & n \\
 \midrule
 \endhead
 
 \midrule
-\multicolumn{6}{r}{\textit{Continued on next page}}\\
+\multicolumn{11}{r}{\textit{Continued on next page}}\\
 \endfoot
 
 \bottomrule
 \endlastfoot
 
-breakpoint\_read\_pos & chimeric & 75.000 & 0.000 & 75.000 & 0.000 \\
-breakpoint\_read\_pos & clean    & 75.000 & 0.000 & 75.000 & 0.000 \\
-
-has\_sa & chimeric & 0.406 & 0.491 & 0.000 & 1.000 \\
-has\_sa & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-kmer\_cosine\_diff & chimeric & 0.974 & 0.026 & 0.986 & 0.042 \\
-kmer\_cosine\_diff & clean    & 0.976 & 0.025 & 0.986 & 0.041 \\
-
-kmer\_js\_divergence & chimeric & 0.974 & 0.025 & 0.986 & 0.043 \\
-kmer\_js\_divergence & clean    & 0.976 & 0.025 & 0.986 & 0.040 \\
-
-mapq & chimeric & 59.987 & 0.355 & 60.000 & 0.000 \\
-mapq & clean    & 59.663 & 2.036 & 60.000 & 0.000 \\
-
-mean\_base\_quality & chimeric & 40.000 & 0.000 & 40.000 & 0.000 \\
-mean\_base\_quality & clean    & 13.000 & 0.000 & 13.000 & 0.000 \\
-
-microhomology\_gc & chimeric & 0.172 & 0.361 & 0.000 & 0.000 \\
-microhomology\_gc & clean    & 0.172 & 0.361 & 0.000 & 0.000 \\
-
-microhomology\_length & chimeric & 0.458 & 0.755 & 0.000 & 1.000 \\
-microhomology\_length & clean    & 0.462 & 0.758 & 0.000 & 1.000 \\
-
-num\_segments & chimeric & 1.406 & 0.491 & 1.000 & 1.000 \\
-num\_segments & clean    & 1.000 & 0.000 & 1.000 & 0.000 \\
-
-read\_length & chimeric & 150.000 & 0.000 & 150.000 & 0.000 \\
-read\_length & clean    & 150.000 & 0.000 & 150.000 & 0.000 \\
-
-ref\_start\_1based & chimeric & 8428.635 & 4248.348 & 8433.000 & 6773.250 \\
-ref\_start\_1based & clean    & 8200.121 & 4626.918 & 8240.000 & 7926.000 \\
-
-sa\_count & chimeric & 0.406 & 0.491 & 0.000 & 1.000 \\
-sa\_count & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_diff\_contig & chimeric & 0.000 & 0.000 & 0.000 & 0.000 \\
-sa\_diff\_contig & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_max\_delta\_pos & chimeric & 1573.531 & 2364.996 & 0.000 & 2826.250 \\
-sa\_max\_delta\_pos & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_max\_mapq & chimeric & 14.104 & 21.424 & 0.000 & 27.000 \\
-sa\_max\_mapq & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_mean\_delta\_pos & chimeric & 1573.531 & 2364.996 & 0.000 & 2826.250 \\
-sa\_mean\_delta\_pos & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_mean\_mapq & chimeric & 14.104 & 21.424 & 0.000 & 27.000 \\
-sa\_mean\_mapq & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_mean\_nm & chimeric & 0.022 & 0.319 & 0.000 & 0.000 \\
-sa\_mean\_nm & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_min\_delta\_pos & chimeric & 1573.531 & 2364.996 & 0.000 & 2826.250 \\
-sa\_min\_delta\_pos & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_min\_nm & chimeric & 0.022 & 0.319 & 0.000 & 0.000 \\
-sa\_min\_nm & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_opp\_strand\_count & chimeric & 0.000 & 0.000 & 0.000 & 0.000 \\
-sa\_opp\_strand\_count & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-sa\_same\_strand\_count & chimeric & 0.406 & 0.491 & 0.000 & 1.000 \\
-sa\_same\_strand\_count & clean    & 0.000 & 0.000 & 0.000 & 0.000 \\
-
-softclip\_left & chimeric & 12.546 & 21.898 & 0.000 & 19.000 \\
-softclip\_left & clean    & 0.225 & 1.543 & 0.000 & 0.000 \\
-
-softclip\_right & chimeric & 12.896 & 22.123 & 0.000 & 19.000 \\
-softclip\_right & clean    & 0.212 & 1.513 & 0.000 & 0.000 \\
-
-total\_clipped\_bases & chimeric & 25.442 & 25.481 & 19.000 & 48.000 \\
-total\_clipped\_bases & clean    & 0.437 & 2.157 & 0.000 & 0.000 \\
+breakpoint\_read\_pos & chimeric & 75.000 & 0.000 & 75.000 & 75.000 & 75.000 & 0.000 & 75.000 & 75.000 & 20000 \\
+breakpoint\_read\_pos & clean & 75.000 & 0.000 & 75.000 & 75.000 & 75.000 & 0.000 & 75.000 & 75.000 & 19983 \\
+has\_sa & chimeric & 0.406 & 0.491 & 0.000 & 0.000 & 1.000 & 1.000 & 0.000 & 1.000 & 20000 \\
+has\_sa & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+kmer\_cosine\_diff & chimeric & 0.974 & 0.026 & 0.986 & 0.958 & 1.000 & 0.042 & 0.817 & 1.000 & 20000 \\
+kmer\_cosine\_diff & clean & 0.976 & 0.025 & 0.986 & 0.959 & 1.000 & 0.041 & 0.814 & 1.000 & 19983 \\
+kmer\_js\_divergence & chimeric & 0.974 & 0.025 & 0.986 & 0.957 & 1.000 & 0.043 & 0.811 & 1.000 & 20000 \\
+kmer\_js\_divergence & clean & 0.976 & 0.025 & 0.986 & 0.959 & 1.000 & 0.040 & 0.817 & 1.000 & 19983 \\
+mapq & chimeric & 59.987 & 0.355 & 60.000 & 60.000 & 60.000 & 0.000 & 43.000 & 60.000 & 20000 \\
+mapq & clean & 59.663 & 2.036 & 60.000 & 60.000 & 60.000 & 0.000 & 0.000 & 60.000 & 19983 \\
+mean\_base\_quality & chimeric & 40.000 & 0.000 & 40.000 & 40.000 & 40.000 & 0.000 & 40.000 & 40.000 & 20000 \\
+mean\_base\_quality & clean & 13.000 & 0.000 & 13.000 & 13.000 & 13.000 & 0.000 & 13.000 & 13.000 & 19983 \\
+microhomology\_gc & chimeric & 0.172 & 0.361 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 & 20000 \\
+microhomology\_gc & clean & 0.172 & 0.361 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 & 19983 \\
+microhomology\_length & chimeric & 0.458 & 0.755 & 0.000 & 0.000 & 1.000 & 1.000 & 0.000 & 5.000 & 20000 \\
+microhomology\_length & clean & 0.462 & 0.758 & 0.000 & 0.000 & 1.000 & 1.000 & 0.000 & 5.000 & 19983 \\
+num\_segments & chimeric & 1.406 & 0.491 & 1.000 & 1.000 & 2.000 & 1.000 & 1.000 & 2.000 & 20000 \\
+num\_segments & clean & 1.000 & 0.000 & 1.000 & 1.000 & 1.000 & 0.000 & 1.000 & 1.000 & 19983 \\
+read\_length & chimeric & 150.000 & 0.000 & 150.000 & 150.000 & 150.000 & 0.000 & 150.000 & 150.000 & 20000 \\
+read\_length & clean & 150.000 & 0.000 & 150.000 & 150.000 & 150.000 & 0.000 & 150.000 & 150.000 & 19983 \\
+ref\_start\_1based & chimeric & 8428.635 & 4248.348 & 8433.000 & 5013.000 & 11786.250 & 6773.250 & 1.000 & 16521.000 & 20000 \\
+ref\_start\_1based & clean & 8200.121 & 4626.918 & 8240.000 & 3639.000 & 11565.000 & 7926.000 & 1.000 & 16521.000 & 19983 \\
+sa\_count & chimeric & 0.406 & 0.491 & 0.000 & 0.000 & 1.000 & 1.000 & 0.000 & 1.000 & 20000 \\
+sa\_count & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_diff\_contig & chimeric & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 20000 \\
+sa\_diff\_contig & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_max\_delta\_pos & chimeric & 1573.531 & 2364.996 & 0.000 & 0.000 & 2826.250 & 2826.250 & 0.000 & 16519.000 & 20000 \\
+sa\_max\_delta\_pos & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_max\_mapq & chimeric & 14.104 & 21.424 & 0.000 & 0.000 & 27.000 & 27.000 & 0.000 & 60.000 & 20000 \\
+sa\_max\_mapq & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_mean\_delta\_pos & chimeric & 1573.531 & 2364.996 & 0.000 & 0.000 & 2826.250 & 2826.250 & 0.000 & 16519.000 & 20000 \\
+sa\_mean\_delta\_pos & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_mean\_mapq & chimeric & 14.104 & 21.424 & 0.000 & 0.000 & 27.000 & 27.000 & 0.000 & 60.000 & 20000 \\
+sa\_mean\_mapq & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_mean\_nm & chimeric & 0.022 & 0.319 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 6.000 & 20000 \\
+sa\_mean\_nm & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_min\_delta\_pos & chimeric & 1573.531 & 2364.996 & 0.000 & 0.000 & 2826.250 & 2826.250 & 0.000 & 16519.000 & 20000 \\
+sa\_min\_delta\_pos & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_min\_nm & chimeric & 0.022 & 0.319 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 6.000 & 20000 \\
+sa\_min\_nm & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_opp\_strand\_count & chimeric & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 20000 \\
+sa\_opp\_strand\_count & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+sa\_same\_strand\_count & chimeric & 0.406 & 0.491 & 0.000 & 0.000 & 1.000 & 1.000 & 0.000 & 1.000 & 20000 \\
+sa\_same\_strand\_count & clean & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 19983 \\
+softclip\_left & chimeric & 12.546 & 21.898 & 0.000 & 0.000 & 19.000 & 19.000 & 0.000 & 150.000 & 20000 \\
+softclip\_left & clean & 0.225 & 1.543 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 56.000 & 19983 \\
+softclip\_right & chimeric & 12.896 & 22.123 & 0.000 & 0.000 & 19.000 & 19.000 & 0.000 & 150.000 & 20000 \\
+softclip\_right & clean & 0.212 & 1.513 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 55.000 & 19983 \\
+total\_clipped\_bases & chimeric & 25.442 & 25.481 & 19.000 & 0.000 & 48.000 & 48.000 & 0.000 & 150.000 & 20000 \\
+total\_clipped\_bases & clean & 0.437 & 2.157 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 110.000 & 19983 \\
 
 \end{longtable}
 \end{center}
+\end{landscape}
