@@ -55,9 +55,9 @@
 \contentsline {subsection}{\numberline {4.6.3}Interpretation and Final Feature Set Choice}{53}{subsection.4.6.3}%
 \contentsline {section}{\numberline {4.7}Summary of Findings}{53}{section.4.7}%
 \contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{55}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{58}{appendix.B}%
-\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{58}{subsection.B.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{60}{subsection.B.0.2}%
-\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{60}{subsection.B.0.3}%
-\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{61}{subsection.B.0.4}%
-\contentsline {subsection}{\numberline {B.0.5}Others}{61}{subsection.B.0.5}%
+\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{59}{appendix.B}%
+\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{59}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{61}{subsection.B.0.2}%
+\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{61}{subsection.B.0.3}%
+\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{62}{subsection.B.0.4}%
+\contentsline {subsection}{\numberline {B.0.5}Others}{62}{subsection.B.0.5}%
