@@ -14,19 +14,18 @@ Only a subset of the features is summarized in the main text to highlight key tr
 
 \subsubsection{Alignment and Supplementary Alignment Features}
 
-Features related to supplementary alignments show strong separation between classes. Chimeric reads exhibit supplementary alignments, as reflected by higher values of \texttt{has\_sa}, \texttt{sa\_count}, and \texttt{num\_segments}, whereas clean reads consistently show a single alignment segment with no supplementary mappings. This behavior is consistent with the expected structure of chimeric reads and indicates that alignment-based features are highly informative.
+Features related to supplementary alignments show strong separation between classes. Chimeric reads frequently exhibit supplementary alignments, reflected by higher values of \texttt{has\_sa}, \texttt{sa\_count}, and \texttt{num\_segments}, whereas clean reads consistently show a single alignment segment with no supplementary mappings. Table~\ref{tab:key_feature_summary} shows that \texttt{has\_sa} is present in chimeric reads (mean = 0.406) but absent in clean reads (mean = 0.000), while \texttt{num\_segments} increases from a constant value of 1.000 in clean reads to a mean of 1.406 in chimeric reads. These patterns align with the expected structure of chimeric reads and indicate that alignment-based features are highly informative.
 
 \subsubsection{Clipping-Based Features}
 
-Clipping-related features, including \texttt{softclip\_left}, \texttt{softclip\_right}, and \texttt{total\_clipped\_bases}, display higher means and broader distributions in chimeric reads. Clean reads are dominated by zero or near-zero clipping, while chimeric reads exhibit increased clipping and greater variability, which reflects the presence of split alignments.
-
+Clipping-related features, including \texttt{softclip\_left}, \texttt{softclip\_right}, and \texttt{total\_clipped\_bases}, display higher values and broader distributions in chimeric reads. In chimeric reads, \texttt{total\_clipped\_bases} reaches 25.44 on average, with a median of 19.0 and an IQR of 48.0, while \texttt{softclip\_left} and \texttt{softclip\_right} have averages of 12.55 and 12.90, medians of 0.0, and IQRs of 19.0. Clean reads maintain values near zero across all these metrics. These patterns indicate substantial clipping and increased variability in chimeric reads, reflecting junction-like alignment fragmentation, whereas clean reads remain unaltered.
 \subsubsection{K-mer Distribution Features}
 
-K-mer–based features, such as \texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff}, show only modest differences between clean and chimeric reads. Chimeric reads show slightly higher average divergence, but substantial overlap with clean reads means this feature alone cannot reliably distinguish the classes.
+K-mer–based features, including \texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff}, show only minor differences between clean and chimeric reads. In chimeric reads, \texttt{kmer\_js\_divergence} has a mean of 0.974 with a median of 0.986, and \texttt{kmer\_cosine\_diff} has a mean of 0.974 with a median of 0.986. Clean reads show similar values, with \texttt{kmer\_js\_divergence} at 0.976 with a median of 0.986, and \texttt{kmer\_cosine\_diff} at 0.976 with a median of 0.986. The close similarity of the means, medians, and overall ranges of values indicates that these features alone provide limited ability to distinguish clean from chimeric reads.
 
 \subsubsection{Microhomology Features}
 
-Microhomology-related features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) exhibit nearly identical summary statistics across both classes. The majority of reads in both classes contain short or zero-length microhomologies, resulting in minimal separation. This means that microhomology serves as a weak standalone indicator and is more appropriately treated as supporting evidence.
+Microhomology-related features, including \texttt{microhomology\_length} and \linebreak \texttt{microhomology\_gc}, exhibit nearly identical summary statistics between clean and chimeric reads. Most reads in both classes have short or zero-length microhomologies. Table~\ref{tab:key_feature_summary} shows that \texttt{microhomology\_gc} has a mean of 0.172 and a median of 0.0 in both clean and chimeric reads, while \texttt{microhomology\_length} averages 0.458 with a median of 0.0 in chimeric reads and 0.462 with a median of 0.0 in clean reads. These values indicate that microhomology features alone provide limited discriminatory power and are more appropriately considered as supporting evidence.
 
 Overall, the summary statistics indicate that alignment-based and clipping-based features provide the strongest class separation, k-mer features contribute limited but complementary signal, and microhomology features exhibit minimal discriminative power on their own. These observations motivate the combined multi-feature approach used in subsequent modeling and evaluation.
 
@@ -68,17 +67,15 @@ microhomology\_gc  & clean    & 0.172 & 0.361 & 0.0    & 0.0    \\
 \end{tabular}
 \end{table}
 
-\subsection{Boxplots By Class}
+Boxplots were generated for each feature, with the x-axis representing the class (clean reads and chimeric reads) and the y-axis representing the feature value. Figure~\ref{fig:boxplots_all_features} presents a panel of selected key features, while boxplots for all numeric features are provided in Appendix~\ref{app:boxplots_by_family}.
 
-Boxplots were generated for each feature, with the x-axis representing the class clean reads and chimeric reads and the y-axis representing the feature value. Figure~\ref{fig:key_feature_boxplots} presents a panel of selected key features, while boxplots for all numeric features are provided in Appendix~\ref{app:boxplots_by_family}.
+For clipping-related features (\texttt{softclip\_left}, \texttt{softclip\_right},\linebreak and \texttt{total\_clipped\_bases}), chimeric reads exhibit higher medians and longer upper whiskers than clean reads, indicating increased variability and the presence of split alignments.
 
-For clipping-related features, chimeric reads exhibit higher medians and longer upper whiskers than clean reads, indicating increased variability and the presence of split alignments. 
+Supplementary alignment features (\texttt{has\_sa} and \texttt{sa\_count}), show that clean reads are largely zero, whereas chimeric reads display a wider distribution, reflecting frequent supplementary alignments.
 
-Supplementary alignment features show that clean reads are largely zero, whereas chimeric reads display a wider distribution, reflecting frequent supplementary alignments. 
+K-mer metrics (\texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff}) show a slight upward shift for chimeric reads, but substantial overlap with clean reads indicates low discriminative power.
 
-K-mer metrics show a slight upward shift for chimeric reads, but substantial overlap with clean reads indicates modest discriminative power. 
-
-Microhomology features have nearly overlapping distributions for both classes, consistent with their low standalone predictive importance. 
+Microhomology features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) have nearly overlapping distributions for both classes, consistent with their low standalone predictive importance.
 
 \begin{figure}[H]
 \centering
@@ -121,13 +118,34 @@ Microhomology features have nearly overlapping distributions for both classes, c
     \label{fig:box_kmer_js_divergence}
 \end{subfigure}
 
-\caption{Boxplots of key features by class}
-\label{fig:key_feature_boxplots}
+\vspace{0.5em}
+
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{../notebooks/figures/boxplots/box_kmer_cosine_diff.png}
+    \caption{K-mer cosine difference}
+    \label{fig:box_kmer_cosine_diff}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{../notebooks/figures/boxplots/box_microhomology_length.png}
+    \caption{Microhomology length}
+    \label{fig:box_microhomology_length}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{../notebooks/figures/boxplots/box_microhomology_gc.png}
+    \caption{Microhomology GC}
+    \label{fig:box_microhomology_gc}
+\end{subfigure}
+
+\caption{Boxplots of selected features for clean and chimeric reads.}
+\label{fig:boxplots_all_features}
 \end{figure}
+
 
 \subsection{Correlation Analysis of Extracted Features}
 
-A feature correlation heatmap (Figure~\ref{fig:correlation_heatmap}) was generated to examine relationships among the extracted variables and to identify patterns of redundancy and independence within the feature set. The analysis shows that alignment- and clipping-related features form a strongly correlated cluster, including indicators of supplementary alignments, alignment segment counts, positional differences, and soft-clipping measures. These features capture related aspects of alignment fragmentation, which is a known characteristic of chimeric reads, and several show moderate correlations with the class label, supporting their relevance for distinguishing chimeric from clean reads. In contrast, general read- and alignment-quality metrics, such as read length, base quality, and mapping quality, exhibit weak correlations with most split-alignment features, indicating that they provide distinct information rather than overlapping with alignment-derived signals. Sequence-based features display a similar pattern of independence, as k-mer divergence metrics show weak correlations with other feature groups, while microhomology features exhibit generally low correlations with both alignment- and k-mer-based features. Overall, the correlation structure highlights intentional redundancy within alignment-derived features and clear separation between feature families, supporting the use of features that capture different aspects of chimeric read characteristics to improve chimera classification.
+A feature correlation heatmap (Figure~\ref{fig:correlation_heatmap}) was generated to examine relationships among the extracted variables and to identify patterns of redundancy and independence within the feature set. The analysis shows that alignment-related and clipping-related features form a strongly correlated cluster, including indicators of supplementary alignments, alignment segment counts, positional differences, and soft-clipping measures. These features capture related aspects of alignment fragmentation, which is a known characteristic of chimeric reads, and several show moderate correlations with the class label, supporting their relevance for distinguishing chimeric from clean reads. In contrast, general read-quality and alignment-quality metrics, such as read length, base quality, and mapping quality, exhibit weak correlations with most split-alignment features, indicating that they provide distinct information rather than overlapping with alignment-derived signals. Sequence-based features display a similar pattern of independence, as k-mer divergence metrics show weak correlations with other feature groups, while microhomology features exhibit generally low correlations with both alignment-based and k-mer-based features. Overall, the correlation structure highlights intentional redundancy within alignment-derived features and clear separation between feature families, supporting the use of features that capture different aspects of chimeric read characteristics to improve chimera classification.
 
 \begin{figure}[H]
     \centering
@@ -321,7 +339,7 @@ The cumulative importance curve was computed using the tuned CatBoost classifier
 
 \subsection{Performance Comparison Across Feature Sets}
 
-Classification performance was compared across three feature sets using a tuned CatBoost classifier. The full model, incorporating all 23 engineered features, achieved an F1 score of approximately 0.7686 and a ROC--AUC of 0.8436. A reduced model using only the top four features (\texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}) achieved nearly equivalent performance with an F1 of 0.7670 and a ROC--AUC of 0.8353. An ablation model excluding microhomology features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) also performed comparably, with an F1 of 0.7679 and ROC--AUC of 0.8447. These results indicate that clipping and k-mer features capture almost all predictive signal, while microhomology features are largely redundant in this dataset.
+Classification performance was compared across three feature sets using a tuned CatBoost classifier. The full model, incorporating all 23 engineered features, achieved an F1 score of 0.769 and a ROC--AUC of 0.844. A reduced model using only the top four features (\texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}) achieved nearly equivalent performance with an F1 of 0.767 and a ROC--AUC of 0.835. An ablation model excluding microhomology features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) also performed comparably, with an F1 of 0.768 and ROC--AUC of 0.845. These results indicate that clipping and k-mer features capture almost all predictive signal, while microhomology features are largely redundant in this dataset.
 
 \begin{table}[H]
 \centering
@@ -331,9 +349,9 @@ Classification performance was compared across three feature sets using a tuned 
 \toprule
 Variant & No. of Features & Test F1 & ROC--AUC \\
 \midrule
-Full CatBoost & 23 & 0.7686 & 0.8436 \\
-Selected (top-4) & 4 & 0.7670 & 0.8353 \\
-No microhomology & 21 & 0.7679 & 0.8447 \\
+Full CatBoost & 23 & 0.769 & 0.844 \\
+Selected (top-4) & 4 & 0.767 & 0.835 \\
+No microhomology & 21 & 0.768 & 0.845 \\
 \bottomrule
 \end{tabular}
 \end{table}
