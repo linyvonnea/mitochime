@@ -18,12 +18,11 @@ We tune 10 model families:
 Usage
 -----
 
-# On ablated (no-quality / no-metadata) features
-python3 -m mitochime.hyperparam_search_top \
-  --train data/processed/train_noq.tsv \
-  --test  data/processed/test_noq.tsv \
-  --models-dir models_noq_tuned \
-  --reports-dir reports/hparam_tuning_noq
+# PYTHONPATH=src python3 -m mitochime.hyperparam_search_top \
+  --train data/processed/PAIR_train_noq.tsv \
+  --test  data/processed/PAIR_test_noq.tsv \
+  --models-dir models_PAIR_noq_tuned \
+  --reports-dir reports/hparam_tuning_PAIR_noq
 """
 
 from __future__ import annotations
@@ -69,29 +68,46 @@ RANDOM_STATE = 42
 # ============================================================
 # DATA LOADER
 # ============================================================
-
 def load_dataset(path: str):
     """
-    Load TSV dataset and return:
-        X: numeric feature matrix (np.ndarray, float)
-        y: labels (np.ndarray, int)
-        feature_names: list of feature column names
+    Load TSV and return X (float, no NaNs), y (int), feature_names.
 
-    We deliberately:
-      - keep ONLY numeric columns
-      - drop 'label' from features
-      - ignore string / categorical cols like 'read_id', 'ref_name', 'cigar', 'strand'
+    - Drops non-feature text columns
+    - Encodes strand (+/-) -> 1/0 if present
+    - Forces numeric conversion
+    - Median-imputes remaining NaNs
     """
-    df = pd.read_csv(path, sep="\t")
+    import pandas as pd
+    import numpy as np
+    from sklearn.impute import SimpleImputer
 
+    df = pd.read_csv(path, sep="\t")
     if "label" not in df.columns:
         raise ValueError("Expected a 'label' column in the dataset.")
 
-    numeric_cols = df.select_dtypes(include=["number"]).columns.tolist()
-    feature_cols = [c for c in numeric_cols if c != "label"]
+    # Encode strand if present
+    if "strand" in df.columns:
+        # your file uses '+' and '-'
+        df["strand"] = df["strand"].map({"+": 1, "-": 0})
 
+    # Drop known non-numeric/non-feature columns
+    drop_cols = ["read_id", "ref_name", "cigar"]
+    df = df.drop(columns=[c for c in drop_cols if c in df.columns], errors="ignore")
+
+    # Force numeric for all features (anything weird -> NaN)
+    for c in df.columns:
+        if c != "label":
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+
+    df["label"] = df["label"].astype(int)
+
+    feature_cols = [c for c in df.columns if c != "label"]
     X = df[feature_cols].to_numpy(dtype=float)
     y = df["label"].to_numpy(dtype=int)
+
+    # Impute NaNs safely
+    imp = SimpleImputer(strategy="median")
+    X = imp.fit_transform(X)
 
     return X, y, feature_cols
 

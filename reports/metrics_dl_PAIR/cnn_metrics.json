@@ -1,0 +1,41 @@
+{
+  "accuracy": 0.8925,
+  "precision": 0.8470380194518126,
+  "recall": 0.958,
+  "f1": 0.8991083998122947,
+  "roc_auc": 0.9558041250000001,
+  "confusion_matrix": [
+    [
+      3308,
+      692
+    ],
+    [
+      168,
+      3832
+    ]
+  ],
+  "n": 8000,
+  "n_pos": 4000,
+  "n_neg": 4000,
+  "classification_report": "              precision    recall  f1-score   support\n\n       clean     0.9517    0.8270    0.8850      4000\n    chimeric     0.8470    0.9580    0.8991      4000\n\n    accuracy                         0.8925      8000\n   macro avg     0.8994    0.8925    0.8920      8000\nweighted avg     0.8994    0.8925    0.8920      8000\n",
+  "test_loss": 0.29281093513965606,
+  "mode": "cnn",
+  "args": {
+    "mode": "cnn",
+    "train_tsv": "data/processed/PAIR_train_seq_L300.tsv",
+    "test_tsv": "data/processed/PAIR_test_seq_L300.tsv",
+    "out_dir": "models_dl_PAIR",
+    "reports_dir": "reports/metrics_dl_PAIR",
+    "L": 300,
+    "use_qual": false,
+    "k": 6,
+    "L_kmers": 256,
+    "d_model": 128,
+    "layers": 4,
+    "heads": 4,
+    "batch": 128,
+    "epochs": 15,
+    "lr": 0.001,
+    "save_predictions": false
+  }
+}
