@@ -1,0 +1,14 @@
+{
+  "model": "gradient_boosting",
+  "cv_accuracy_mean": 0.8088226971037876,
+  "cv_accuracy_std": 0.0036840904556034904,
+  "cv_f1_mean": 0.7755253229438777,
+  "cv_f1_std": 0.005515758001248034,
+  "test_accuracy": 0.8090533950231337,
+  "test_precision": 0.9475208107129931,
+  "test_recall": 0.6545,
+  "test_f1": 0.7742126275321602,
+  "test_roc_auc": 0.8448443520140103,
+  "n_train": 31986,
+  "n_test": 7997
+}

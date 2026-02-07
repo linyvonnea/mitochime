@@ -21,6 +21,15 @@ python3 -m mitochime.train_all_models \
   --test  data/processed/test_noq.tsv \
   --models-dir  models_noq \
   --reports-dir reports/metrics_noq
+
+  ORRRR FOR PAIR
+
+
+  PYTHONPATH=src python3 -m mitochime.train_all_models \
+  --train data/processed/PAIR_train_noq.tsv \
+  --test  data/processed/PAIR_test_noq.tsv \
+  --models-dir  models_PAIR \
+  --reports-dir reports/metrics_PAIR
 """
 
 from __future__ import annotations

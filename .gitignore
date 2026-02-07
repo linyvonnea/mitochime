@@ -16,3 +16,7 @@ results/*
 .DS_Store
 models_noq/
 models_noq_tuned/ # if you also have this
+models*/
+*.joblib
+*.pkl
+*.cbm

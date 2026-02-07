@@ -1,0 +1,23 @@
+\begin{table}
+\caption{Performance of baseline classifiers on the held-out test set.}
+\label{tab:baseline_models_pair_noq}
+\begin{tabular}{lrrrrr}
+\toprule
+model & test_accuracy & test_precision & test_recall & test_f1 & test_roc_auc \\
+\midrule
+dummy_baseline & 0.500000 & 0.500000 & 1.000000 & 0.667000 & 0.500000 \\
+logreg_l2 & 0.791000 & 0.946000 & 0.617000 & 0.747000 & 0.830000 \\
+linear_svm_calibrated & 0.791000 & 0.948000 & 0.617000 & 0.747000 & 0.830000 \\
+random_forest & 0.800000 & 0.910000 & 0.666000 & 0.769000 & 0.833000 \\
+extra_trees & 0.798000 & 0.919000 & 0.654000 & 0.764000 & 0.827000 \\
+gradient_boosting & 0.809000 & 0.948000 & 0.654000 & 0.774000 & 0.845000 \\
+xgboost & 0.807000 & 0.942000 & 0.655000 & 0.773000 & 0.841000 \\
+lightgbm & 0.806000 & 0.936000 & 0.657000 & 0.772000 & 0.842000 \\
+catboost & 0.809000 & 0.941000 & 0.659000 & 0.775000 & 0.843000 \\
+knn & 0.790000 & 0.903000 & 0.649000 & 0.755000 & 0.821000 \\
+gaussian_nb & 0.746000 & 0.998000 & 0.493000 & 0.660000 & 0.827000 \\
+bagging_trees & 0.801000 & 0.911000 & 0.666000 & 0.770000 & 0.837000 \\
+mlp & 0.793000 & 0.949000 & 0.620000 & 0.750000 & 0.830000 \\
+\bottomrule
+\end{tabular}
+\end{table}

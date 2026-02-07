@@ -1,0 +1,14 @@
+{
+  "model": "logreg_l2",
+  "cv_accuracy_mean": 0.7927844127075236,
+  "cv_accuracy_std": 0.004660008781187981,
+  "cv_f1_mean": 0.7508340470776711,
+  "cv_f1_std": 0.006726253250060109,
+  "test_accuracy": 0.7907965487057647,
+  "test_precision": 0.9459563050977386,
+  "test_recall": 0.617,
+  "test_f1": 0.7468603419579362,
+  "test_roc_auc": 0.8298072616962723,
+  "n_train": 31986,
+  "n_test": 7997
+}

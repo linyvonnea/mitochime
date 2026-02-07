@@ -1,0 +1,5 @@
+total_clipped_bases
+kmer_js_divergence
+softclip_right
+softclip_left
+kmer_cosine_diff
