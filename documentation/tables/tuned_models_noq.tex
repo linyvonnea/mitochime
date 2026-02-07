@@ -3,20 +3,24 @@
   \small
   \caption{Performance of tuned classifiers on the held-out test set.}
   \label{tab:tuned_models_noq}
-  \begin{tabular}{lrrrrr}
+  \begin{tabular}{lrrrr}
     \toprule
-    model & test\_accuracy & test\_precision & test\_recall & test\_f1 & test\_roc\_auc \\
+    model\_name &
+    test\_f1\_base &
+    test\_roc\_auc\_base &
+    test\_f1\_tuned &
+    test\_roc\_auc\_tuned \\
     \midrule
-    logreg\_l2\_tuned              & 0.788000 & 0.946000 & 0.612000 & 0.743000 & 0.818000 \\
-    linear\_svm\_calibrated\_tuned & 0.788000 & 0.944000 & 0.612000 & 0.743000 & 0.818000 \\
-    random\_forest\_tuned          & 0.797000 & 0.915000 & 0.655000 & 0.763000 & 0.842000 \\
-    extra\_trees\_tuned            & 0.794000 & 0.910000 & 0.652000 & 0.760000 & 0.837000 \\
-    gradient\_boosting\_tuned      & 0.802000 & 0.928000 & 0.654000 & 0.767000 & 0.843000 \\
-    xgboost\_tuned                 & 0.799000 & 0.922000 & 0.653000 & 0.765000 & 0.839000 \\
-    lightgbm\_tuned                & 0.801000 & 0.930000 & 0.651000 & 0.766000 & 0.842000 \\
-    catboost\_tuned                & 0.802000 & 0.924000 & 0.658000 & 0.769000 & 0.844000 \\
-    bagging\_trees\_tuned          & 0.798000 & 0.922000 & 0.650000 & 0.763000 & 0.842000 \\
-    mlp\_tuned                     & 0.790000 & 0.934000 & 0.625000 & 0.749000 & 0.821000 \\
+    gradient\_boosting & 0.774213 & 0.844844 & 0.776460 & 0.845858 \\
+    catboost & 0.775114 & 0.843362 & 0.775289 & 0.842918 \\
+    lightgbm & 0.772146 & 0.841671 & 0.773802 & 0.843451 \\
+    bagging\_trees & 0.769742 & 0.837357 & 0.772422 & 0.841870 \\
+    random\_forest & 0.769097 & 0.832766 & 0.772376 & 0.838799 \\
+    xgboost & 0.772747 & 0.841042 & 0.770118 & 0.843225 \\
+    extra\_trees & 0.763950 & 0.826517 & 0.769878 & 0.834912 \\
+    mlp & 0.749660 & 0.829611 & 0.749167 & 0.828506 \\
+    logreg\_l2 & 0.746860 & 0.829807 & 0.745187 & 0.825632 \\
+    linear\_svm\_calibrated & 0.747426 & 0.829602 & 0.744848 & 0.825147 \\
     \bottomrule
   \end{tabular}
 \end{table}
