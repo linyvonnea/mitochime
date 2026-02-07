@@ -1,0 +1,62 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Overview}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Problem Statement}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Research Objectives}{3}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}General Objective}{3}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Specific Objectives}{4}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Scope and Limitations of the Research}{4}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Significance of the Research}{6}{section.1.5}%
+\contentsline {chapter}{\numberline {2}Review of Related Literature}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}The Mitochondrial Genome}{7}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Mitochondrial Genome Assembly}{8}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}PCR Amplification and Chimera Formation}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Existing Traditional Approaches for Chimera Detection}{10}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}UCHIME}{11}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}UCHIME2}{12}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}CATch}{13}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}ChimPipe}{14}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Machine Learning Approaches for Chimera and Sequence Quality Detection}{15}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Feature-Based Representations of Genomic Sequences}{15}{subsection.2.4.1}%
+\contentsline {section}{\numberline {2.5}Synthesis of Chimera Detection Approaches}{16}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Research Methodology}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Research Activities}{19}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Data Collection}{20}{subsection.3.1.1}%
+\contentsline {subsubsection}{Data Preprocessing}{21}{section*.6}%
+\contentsline {subsection}{\numberline {3.1.2}Feature Extraction Pipeline}{23}{subsection.3.1.2}%
+\contentsline {subsubsection}{Supplementary Alignment and Alignment-Structure Features}{24}{section*.7}%
+\contentsline {subsubsection}{K-mer Composition Difference}{25}{section*.8}%
+\contentsline {subsubsection}{Microhomology}{25}{section*.9}%
+\contentsline {subsection}{\numberline {3.1.3}Machine Learning Model Development}{26}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Model Benchmarking, Hyperparameter Optimization, and Evaluation}{27}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Feature Importance, Feature Selection, and Interpretation}{29}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Validation and Testing}{31}{subsection.3.1.6}%
+\contentsline {subsection}{\numberline {3.1.7}Documentation}{32}{subsection.3.1.7}%
+\contentsline {section}{\numberline {3.2}Calendar of Activities}{32}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{34}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Descriptive Analysis of Features}{35}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Summary Statistics Per Class}{35}{subsection.4.1.1}%
+\contentsline {subsubsection}{Alignment and Supplementary Alignment Features}{35}{section*.11}%
+\contentsline {subsubsection}{Clipping-Based Features}{36}{section*.12}%
+\contentsline {subsubsection}{K-mer Distribution Features}{36}{section*.13}%
+\contentsline {subsubsection}{Microhomology Features}{36}{section*.14}%
+\contentsline {subsection}{\numberline {4.1.2}Correlation Analysis of Extracted Features}{40}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{41}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Effect of Hyperparameter Tuning}{43}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Detailed Evaluation of Representative Models}{45}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Confusion Matrices and Error Patterns}{45}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}ROC and Precision--Recall Curves}{47}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Feature Importance}{48}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Permutation Importance of Individual Features}{48}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Feature Family Importance}{50}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Feature Selection}{52}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Cumulative Importance Curve}{53}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Performance Comparison Across Feature Sets}{53}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}Interpretation and Final Feature Set Choice}{55}{subsection.4.6.3}%
+\contentsline {section}{\numberline {4.7}Summary of Findings}{55}{section.4.7}%
+\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{57}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{61}{appendix.B}%
+\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{61}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{63}{subsection.B.0.2}%
+\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{63}{subsection.B.0.3}%
+\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{64}{subsection.B.0.4}%
+\contentsline {subsection}{\numberline {B.0.5}Others}{64}{subsection.B.0.5}%
