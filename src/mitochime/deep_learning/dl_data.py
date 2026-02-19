@@ -79,24 +79,15 @@ def load_seq_tsv(path: str, L: int) -> pd.DataFrame:
 # Encoding for CNN (5 channels)
 # ----------------------------
 
-_BASE_TO_CH = {
-    "A": 0,
-    "C": 1,
-    "G": 2,
-    "T": 3,
-    "N": 4,  # catch-all
-}
+_BASE_TO_CH = {"A": 0, "C": 1, "G": 2, "T": 3}
 
-def one_hot_5ch(seq: str) -> np.ndarray:
-    """
-    Returns (5, L) float32 one-hot for A,C,G,T,N.
-    Unknown bases map to N.
-    """
+def one_hot_4ch(seq: str) -> np.ndarray:
     L = len(seq)
-    x = np.zeros((5, L), dtype=np.float32)
+    x = np.zeros((4, L), dtype=np.float32)
     for i, b in enumerate(seq):
-        ch = _BASE_TO_CH.get(b, 4)
-        x[ch, i] = 1.0
+        if b in _BASE_TO_CH:
+            x[_BASE_TO_CH[b], i] = 1.0
+        # else: ignore (N/other -> all zeros at that position)
     return x
 
 
@@ -182,7 +173,7 @@ class ReadSeqDataset(Dataset):
         seq = self.seqs[idx]
 
         if self.mode == "cnn":
-            x_np = one_hot_5ch(seq)              # (5, L)
+            x_np = one_hot_4ch(seq)  # (4, L)
             x = torch.from_numpy(x_np)           # float32
             return x, y
 

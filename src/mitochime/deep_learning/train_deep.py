@@ -217,7 +217,7 @@ def train_main():
     test_ds = ReadSeqDataset(args.test_tsv, mode=args.mode, cfg=cfg)
 
     if args.mode == "cnn":
-        in_ch = 5  # A,C,G,T,N
+        in_ch = 4
         model = CNN1D(in_ch=in_ch).to(device)
     else:
         vocab = (4 ** args.k) + 1  # UNK=0, kmers=1..4^k
