@@ -52,11 +52,12 @@
 \contentsline {subsection}{\numberline {4.6.1}Cumulative Importance Curve}{53}{subsection.4.6.1}%
 \contentsline {subsection}{\numberline {4.6.2}Performance Comparison Across Feature Sets}{53}{subsection.4.6.2}%
 \contentsline {subsection}{\numberline {4.6.3}Interpretation and Final Feature Set Choice}{55}{subsection.4.6.3}%
-\contentsline {section}{\numberline {4.7}Summary of Findings}{55}{section.4.7}%
-\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{57}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{61}{appendix.B}%
-\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{61}{subsection.B.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{63}{subsection.B.0.2}%
-\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{63}{subsection.B.0.3}%
-\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{64}{subsection.B.0.4}%
-\contentsline {subsection}{\numberline {B.0.5}Others}{64}{subsection.B.0.5}%
+\contentsline {section}{\numberline {4.7}Convolutional Neural Network (CNN) Performance and Classification Results}{55}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Summary of Findings}{57}{section.4.8}%
+\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{59}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{63}{appendix.B}%
+\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{63}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{65}{subsection.B.0.2}%
+\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{65}{subsection.B.0.3}%
+\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{66}{subsection.B.0.4}%
+\contentsline {subsection}{\numberline {B.0.5}Others}{66}{subsection.B.0.5}%
