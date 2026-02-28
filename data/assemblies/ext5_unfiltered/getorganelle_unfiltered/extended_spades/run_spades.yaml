@@ -1,0 +1,174 @@
+- STAGE: Before start
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Before_start_3XTPTK2EOCFYDSATG7JM6QRMCXGD8DDX
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: before_start
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Read_error_correction_JTI2O8HGJG015OBUPOS2YCR8ZF4FWPTT
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: ec_start
+- STAGE: Read error correction
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/corrected/configs/config.info
+  config_dir: corrected
+  del_after:
+  - tmp/hammer_vuv0ki8a
+  job_uuid: SPAdes_Read_error_correction_KXFD5IU1Z5RJAUQSMOMVMRU6J289QZ4T
+  mpi_support: false
+  output_files:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/corrected/corrected.yaml
+  path: /Users/yvonnelin/miniforge3/envs/getorganelle/bin/spades-hammer
+  short_name: ec_runtool
+- STAGE: corrected reads compression
+  args:
+  - /Users/yvonnelin/miniforge3/envs/getorganelle/share/spades/spades_pipeline/scripts/compress_all.py
+  - --input_file
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/corrected/corrected.yaml
+  - --ext_python_modules_home
+  - /Users/yvonnelin/miniforge3/envs/getorganelle/share/spades
+  - --max_threads
+  - '8'
+  - --output_dir
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/corrected
+  - --gzip_output
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_corrected_reads_compression_9RJDU7A3QI8EBNY9D3CG8EYZQLX1LS4B
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniforge3/envs/getorganelle/bin/python3
+  short_name: ec_compress
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Read_error_correction_LPAEIWMHDQCBC3WN7L4FTF59RWBJLWO3
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: ec_finish
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Assembling_8JTO27LUC0599ADYBGD2YT5XELJBVM71
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: as_start
+- STAGE: K21
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K21/configs/config.info
+  config_dir: K21
+  del_after: []
+  job_uuid: hpcSPAdes_K21_85K7PT0N43J2KAJRS4CSHVY5SM95AUH6
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniforge3/envs/getorganelle/bin/{spades_core}
+  short_name: k21
+- STAGE: K55
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K55/configs/config.info
+  config_dir: K55
+  del_after: []
+  job_uuid: hpcSPAdes_K55_MZC9ZPZ55EKGEBOZA1YR3F4JSPWCB0S8
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniforge3/envs/getorganelle/bin/{spades_core}
+  short_name: k55
+- STAGE: K85
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K85/configs/config.info
+  config_dir: K85
+  del_after: []
+  job_uuid: hpcSPAdes_K85_256ZAZCN6F7EQGG991CR7E0NVVL06QP8
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniforge3/envs/getorganelle/bin/{spades_core}
+  short_name: k85
+- STAGE: K115
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/configs/config.info
+  config_dir: K115
+  del_after: []
+  job_uuid: hpcSPAdes_K115_VSQ9X7TYBFB9X2GODKKAL1DAAP424A2G
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniforge3/envs/getorganelle/bin/{spades_core}
+  short_name: k115
+- STAGE: Copy files
+  args:
+  - /Users/yvonnelin/miniforge3/envs/getorganelle/share/spades/spades_pipeline/scripts/copy_files.py
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/before_rr.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/before_rr.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/assembly_graph_after_simplification.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/assembly_graph_after_simplification.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/final_contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/first_pe_contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/first_pe_contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/strain_graph.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/strain_graph.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/scaffolds.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/scaffolds.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/scaffolds.paths
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/scaffolds.paths
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/assembly_graph_with_scaffolds.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/assembly_graph_with_scaffolds.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/assembly_graph.fastg
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/assembly_graph.fastg
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/K115/final_contigs.paths
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/contigs.paths
+  config_dir: ''
+  del_after:
+  - .bin_reads
+  - tmp/spades_jce0lg28
+  job_uuid: SPAdes_Copy_files_QG69IMRHBHRHBZ9M9G9WVCJ9SH9U3B8D
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniforge3/envs/getorganelle/bin/python3
+  short_name: copy_files
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Assembling_DLR4W8LWR7VJPG2JEOIP64V3JZJ1PG1G
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: as_finish
+- STAGE: Breaking scaffolds
+  args:
+  - /Users/yvonnelin/miniforge3/envs/getorganelle/share/spades/spades_pipeline/scripts/breaking_scaffolds_script.py
+  - --result_scaffolds_filename
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/scaffolds.fasta
+  - --misc_dir
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/ext5_unfiltered/getorganelle_unfiltered/extended_spades/misc
+  - --threshold_for_breaking_scaffolds
+  - '3'
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Breaking_scaffolds_V0FCRAGL8B6V8T2FP3Q3XR7GHACFFXIR
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniforge3/envs/getorganelle/bin/python3
+  short_name: bs
+- STAGE: Terminate
+  args: []
+  config_dir: ''
+  del_after:
+  - configs
+  job_uuid: SPAdes_Terminate_CW9LPI88GPDXALQ1E0W9UQV0IDB550TB
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: terminate
