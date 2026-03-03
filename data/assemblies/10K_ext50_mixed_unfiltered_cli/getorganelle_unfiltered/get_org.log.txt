@@ -1,0 +1,110 @@
+
+GetOrganelle v1.7.7.1
+
+get_organelle_from_reads.py assembles organelle genomes from genome skimming data.
+Find updates in https://github.com/Kinggerm/GetOrganelle and see README.md for more information.
+
+Python 3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:52:34) [Clang 18.1.8 ]
+PLATFORM: Darwin MacBook-Air-2.local 24.6.0 Darwin Kernel Version 24.6.0: Mon Jul 14 11:30:34 PDT 2025; root:xnu-11417.140.69~1/RELEASE_ARM64_T8103 arm64 arm
+PYTHON LIBS: GetOrganelleLib 1.7.7.1; numpy 1.26.4; sympy 1.14.0; scipy 1.16.2; psutil 7.1.0
+DEPENDENCIES: Bowtie2 2.5.5; SPAdes 4.2.0; Blast 2.16.0
+GETORG_PATH=/Users/yvonnelin/.GetOrganelle
+SEED  DB: animal_mt 0.0.1
+LABEL DB: animal_mt 0.0.1
+WORKING_DIR=/Users/yvonnelin/Desktop/mitochime
+/Users/yvonnelin/miniconda3/envs/mitochime/bin/get_organelle_from_reads.py -1 /Users/yvonnelin/Desktop/mitochime/data/external_test/10K_ext50_mixed_R1.fastq.gz -2 /Users/yvonnelin/Desktop/mitochime/data/external_test/10K_ext50_mixed_R2.fastq.gz -o data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered -F animal_mt -t 8 --overwrite
+
+2026-03-03 19:20:07,037 - INFO: Pre-reading fastq ...
+2026-03-03 19:20:07,037 - INFO: Estimating reads to use ... (to use all reads, set '--reduce-reads-for-coverage inf --max-reads inf')
+2026-03-03 19:20:07,095 - INFO: Estimating reads to use finished.
+2026-03-03 19:20:07,095 - INFO: Unzipping reads file: /Users/yvonnelin/Desktop/mitochime/data/external_test/10K_ext50_mixed_R1.fastq.gz (605453 bytes)
+2026-03-03 19:20:07,111 - INFO: Unzipping reads file: /Users/yvonnelin/Desktop/mitochime/data/external_test/10K_ext50_mixed_R2.fastq.gz (605893 bytes)
+2026-03-03 19:20:07,126 - INFO: Counting read qualities ...
+2026-03-03 19:20:07,207 - INFO: Identified quality encoding format = Sanger
+2026-03-03 19:20:07,207 - INFO: Phred offset = 33
+2026-03-03 19:20:07,208 - INFO: Trimming bases with qualities (0.00%): 33..33  !
+2026-03-03 19:20:07,237 - INFO: Mean error rate = 0.0251
+2026-03-03 19:20:07,237 - INFO: Counting read lengths ...
+2026-03-03 19:20:07,249 - INFO: Mean = 149.9 bp, maximum = 150 bp.
+2026-03-03 19:20:07,249 - INFO: Reads used = 10000+10000
+2026-03-03 19:20:07,249 - INFO: Pre-reading fastq finished.
+
+2026-03-03 19:20:07,249 - INFO: Making seed reads ...
+2026-03-03 19:20:07,249 - INFO: Seed bowtie2 index existed!
+2026-03-03 19:20:07,249 - INFO: Mapping reads to seed bowtie2 index ...
+2026-03-03 19:20:07,747 - INFO: Mapping finished.
+2026-03-03 19:20:07,748 - INFO: Seed reads made: data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/seed/animal_mt.initial.fq (5198624 bytes)
+2026-03-03 19:20:07,748 - INFO: Making seed reads finished.
+
+2026-03-03 19:20:07,748 - INFO: Checking seed reads and parameters ...
+2026-03-03 19:20:07,748 - INFO: The automatically-estimated parameter(s) do not ensure the best choice(s).
+2026-03-03 19:20:07,748 - INFO: If the result graph is not a circular organelle genome, 
+2026-03-03 19:20:07,748 - INFO:   you could adjust the value(s) of '-w'/'-R' for another new run.
+2026-03-03 19:20:08,826 - INFO: Pre-assembling mapped reads ...
+2026-03-03 19:20:12,212 - INFO: Pre-assembling mapped reads finished.
+2026-03-03 19:20:12,212 - INFO: Estimated animal_mt-hitting base-coverage = 61.91
+2026-03-03 19:20:12,325 - INFO: Estimated word size(s): 68
+2026-03-03 19:20:12,326 - INFO: Setting '-w 68'
+2026-03-03 19:20:12,326 - INFO: Setting '--max-extending-len inf'
+2026-03-03 19:20:12,415 - INFO: Checking seed reads and parameters finished.
+
+2026-03-03 19:20:12,416 - INFO: Making read index ...
+2026-03-03 19:20:12,480 - INFO: Mem 0.378 G, 19346 candidates in all 20000 reads
+2026-03-03 19:20:12,480 - INFO: Pre-grouping reads ...
+2026-03-03 19:20:12,480 - INFO: Setting '--pre-w 68'
+2026-03-03 19:20:12,480 - INFO: Mem 0.378 G, 592/592 used/duplicated
+2026-03-03 19:20:12,504 - INFO: Mem 0.38 G, 26 groups made.
+2026-03-03 19:20:12,504 - INFO: Making read index finished.
+
+2026-03-03 19:20:12,504 - INFO: Extending ...
+2026-03-03 19:20:12,504 - INFO: Adding initial words ...
+2026-03-03 19:20:13,083 - INFO: AW 1443028
+2026-03-03 19:20:13,400 - INFO: Round 1: 19346/19346 AI 17871 AW 1503364 Mem 0.585
+2026-03-03 19:20:13,417 - INFO: Round 2: 19346/19346 AI 17871 AW 1503364 Mem 0.584
+2026-03-03 19:20:13,417 - INFO: No more reads found and terminated ...
+2026-03-03 19:20:13,488 - INFO: Extending finished.
+
+2026-03-03 19:20:13,489 - INFO: Separating extended fastq file ... 
+2026-03-03 19:20:13,511 - INFO: Setting '-k 21,55,85,115'
+2026-03-03 19:20:13,511 - INFO: Assembling using SPAdes ...
+2026-03-03 19:20:13,524 - INFO: spades.py -t 8  --phred-offset 33 -1 data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_1_paired.fq -2 data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_2_paired.fq --s1 data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_1_unpaired.fq --s2 data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_2_unpaired.fq -k 21,55,85,115 -o data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_spades
+2026-03-03 19:20:18,005 - INFO: Insert size = 499.516, deviation = 55.0064, left quantile = 434, right quantile = 567
+2026-03-03 19:20:18,006 - INFO: Assembling finished.
+
+2026-03-03 19:20:19,076 - INFO: Slimming data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_spades/K115/assembly_graph.fastg finished!
+2026-03-03 19:20:19,076 - INFO: Slimming assembly graphs finished.
+
+2026-03-03 19:20:19,076 - INFO: Extracting animal_mt from the assemblies ...
+2026-03-03 19:20:19,077 - INFO: Disentangling data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_spades/K115/assembly_graph.fastg.extend-animal_mt.fastg as a circular genome ... 
+2026-03-03 19:20:19,099 - WARNING: Self-loop contig detected: Vertex_289
+2026-03-03 19:20:19,099 - WARNING: Self-loop contig detected: Vertex_315
+2026-03-03 19:20:19,132 - INFO: Average animal_mt kmer-coverage = 27.5
+2026-03-03 19:20:19,132 - INFO: Average animal_mt base-coverage = 114.9
+2026-03-03 19:20:19,132 - INFO: Writing output ...
+2026-03-03 19:20:19,136 - INFO: Disentangling unsuccessful: 'Detecting path(s) from remaining graph failed!'
+2026-03-03 19:20:19,137 - INFO: Scaffolding disconnected contigs using SPAdes scaffolds ... 
+2026-03-03 19:20:19,137 - WARNING: Assembly based on scaffolding may not be as accurate as the ones directly exported from the assembly graph.
+2026-03-03 19:20:19,137 - INFO: Disentangling data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_spades/K115/assembly_graph.fastg.extend-animal_mt.fastg as a circular genome ... 
+2026-03-03 19:20:19,137 - INFO: Disentangling unsuccessful: 'No new connections.'
+2026-03-03 19:20:19,137 - INFO: Disentangling data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_spades/K115/assembly_graph.fastg.extend-animal_mt.fastg as a/an animal_mt-insufficient graph ... 
+2026-03-03 19:20:19,138 - WARNING: Self-loop contig detected: Vertex_289
+2026-03-03 19:20:19,139 - WARNING: Self-loop contig detected: Vertex_315
+2026-03-03 19:20:19,163 - INFO: Average animal_mt kmer-coverage = 27.5
+2026-03-03 19:20:19,163 - INFO: Average animal_mt base-coverage = 114.9
+2026-03-03 19:20:19,163 - INFO: Writing output ...
+2026-03-03 19:20:19,167 - INFO: Writing PATH1 of animal_mt scaffold(s) to data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/animal_mt.K115.scaffolds.graph1.1.path_sequence.fasta
+2026-03-03 19:20:19,167 - INFO: Writing GRAPH to data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/animal_mt.K115.contigs.graph1.selected_graph.gfa
+2026-03-03 19:20:19,168 - INFO: Result status of animal_mt: 2 scaffold(s)
+2026-03-03 19:20:19,184 - INFO: Writing output finished.
+2026-03-03 19:20:19,184 - INFO: Please ...
+2026-03-03 19:20:19,184 - INFO: load the graph file 'assembly_graph.fastg.extend-animal_mt.fastg' in K115
+2026-03-03 19:20:19,184 - INFO: load the CSV file 'assembly_graph.fastg.extend-animal_mt.csv' in K115
+2026-03-03 19:20:19,184 - INFO: visualize and confirm the incomplete result in Bandage.
+2026-03-03 19:20:19,184 - INFO: If the result is nearly complete, 
+2026-03-03 19:20:19,184 - INFO: you can also adjust the arguments according to https://github.com/Kinggerm/GetOrganelle/wiki/FAQ#what-should-i-do-with-incomplete-resultbroken-assembly-graph
+2026-03-03 19:20:19,184 - INFO: If you have questions for us, please provide us with the get_org.log.txt file and the post-slimming graph in the format you like!
+2026-03-03 19:20:19,184 - INFO: Extracting animal_mt from the assemblies finished.
+
+
+Total cost 13.01 s
+Thank you!

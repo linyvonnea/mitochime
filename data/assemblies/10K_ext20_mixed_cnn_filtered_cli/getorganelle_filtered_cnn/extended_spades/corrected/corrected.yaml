@@ -1,0 +1,17 @@
+- "left reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended_1_paired00.0_0.cor.fastq.gz"
+  "number": !!int "1"
+  "orientation": "fr"
+  "right reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended_2_paired00.0_0.cor.fastq.gz"
+  "single reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended__unpaired00.0_0.cor.fastq.gz"
+  "type": "paired-end"
+- "number": !!int "1"
+  "single reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended_1_unpaired00.1_0.cor.fastq.gz"
+  "type": "single"
+- "number": !!int "2"
+  "single reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended_2_unpaired00.2_0.cor.fastq.gz"
+  "type": "single"

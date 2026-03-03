@@ -1,9 +1,9 @@
 # src/mitochime/deep_learning/dl_data.py
 '''PYTHONPATH=src python3 -m mitochime.deep_learning.train_deep \
   --mode cnn \
-  --train-tsv data/processed/PAIR_train_seq_L300.tsv \
-  --test-tsv  data/processed/PAIR_test_seq_L300.tsv \
-  --L 300 \
+  --train-tsv data/processed/PAIR_train_seq_L150.tsv \
+  --test-tsv  data/processed/PAIR_test_seq_L150.tsv \
+  --L 150 \
   --epochs 15 \
   --batch 128
 '''
@@ -24,7 +24,7 @@ from torch.utils.data import Dataset
 
 @dataclass
 class SeqConfig:
-    L: int = 300              # length for CNN
+    L: int = 150              # length for CNN
     use_qual: bool = False    # kept for compatibility; not used in seq-tsv mode
     k: int = 6                # k for transformer k-mers
     L_kmers: int = 256        # max k-mer tokens length

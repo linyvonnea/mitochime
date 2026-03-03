@@ -3,14 +3,14 @@
 PYTHONPATH=src python3 -m mitochime.deep_learning.make_seq_tsv \
   --split-tsv data/processed/PAIR_train.tsv \
   --fastq data/raw/ref1.fastq data/raw/ref2.fastq data/raw/chime1.fastq data/raw/chime2.fastq \
-  --L 300 \
-  --out data/processed/PAIR_train_seq_L300.tsv
+  --L 150 \
+  --out data/processed/PAIR_train_seq_L150.tsv
 
 PYTHONPATH=src python3 -m mitochime.deep_learning.make_seq_tsv \
   --split-tsv data/processed/PAIR_test.tsv \
   --fastq data/raw/ref1.fastq data/raw/ref2.fastq data/raw/chime1.fastq data/raw/chime2.fastq \
-  --L 300 \
-  --out data/processed/PAIR_test_seq_L300.tsv
+  --L 150 \
+  --out data/processed/PAIR_test_seq_L150.tsv
   
 Build sequence TSVs for deep learning from a split TSV + FASTQ files.
 
@@ -28,8 +28,8 @@ Example:
 PYTHONPATH=src python3 -m mitochime.deep_learning.make_seq_tsv \
   --split-tsv data/processed/PAIR_train.tsv \
   --fastq data/raw/ref1.fastq data/raw/ref2.fastq data/raw/chime1.fastq data/raw/chime2.fastq \
-  --L 300 \
-  --out data/processed/PAIR_train_seq_L300.tsv
+  --L 150 \
+  --out data/processed/PAIR_train_seq_L150.tsv
 """
 
 from __future__ import annotations

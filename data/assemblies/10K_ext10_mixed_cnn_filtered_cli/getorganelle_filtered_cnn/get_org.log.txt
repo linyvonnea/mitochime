@@ -1,0 +1,104 @@
+
+GetOrganelle v1.7.7.1
+
+get_organelle_from_reads.py assembles organelle genomes from genome skimming data.
+Find updates in https://github.com/Kinggerm/GetOrganelle and see README.md for more information.
+
+Python 3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:52:34) [Clang 18.1.8 ]
+PLATFORM: Darwin MacBook-Air-2.local 24.6.0 Darwin Kernel Version 24.6.0: Mon Jul 14 11:30:34 PDT 2025; root:xnu-11417.140.69~1/RELEASE_ARM64_T8103 arm64 arm
+PYTHON LIBS: GetOrganelleLib 1.7.7.1; numpy 1.26.4; sympy 1.14.0; scipy 1.16.2; psutil 7.1.0
+DEPENDENCIES: Bowtie2 2.5.5; SPAdes 4.2.0; Blast 2.16.0
+GETORG_PATH=/Users/yvonnelin/.GetOrganelle
+SEED  DB: animal_mt 0.0.1
+LABEL DB: animal_mt 0.0.1
+WORKING_DIR=/Users/yvonnelin/Desktop/mitochime
+/Users/yvonnelin/miniconda3/envs/mitochime/bin/get_organelle_from_reads.py -1 data/filtered_reads/10K_ext10_mixed_cnn/10K_ext10_mixed_cnn.cnn.filtered_R1.fastq.gz -2 data/filtered_reads/10K_ext10_mixed_cnn/10K_ext10_mixed_cnn.cnn.filtered_R2.fastq.gz -o data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn -F animal_mt -t 8 --overwrite
+
+2026-03-03 19:41:34,962 - INFO: Pre-reading fastq ...
+2026-03-03 19:41:34,963 - INFO: Estimating reads to use ... (to use all reads, set '--reduce-reads-for-coverage inf --max-reads inf')
+2026-03-03 19:41:35,024 - INFO: Estimating reads to use finished.
+2026-03-03 19:41:35,024 - INFO: Unzipping reads file: data/filtered_reads/10K_ext10_mixed_cnn/10K_ext10_mixed_cnn.cnn.filtered_R1.fastq.gz (496939 bytes)
+2026-03-03 19:41:35,040 - INFO: Unzipping reads file: data/filtered_reads/10K_ext10_mixed_cnn/10K_ext10_mixed_cnn.cnn.filtered_R2.fastq.gz (494362 bytes)
+2026-03-03 19:41:35,054 - INFO: Counting read qualities ...
+2026-03-03 19:41:35,119 - INFO: Identified quality encoding format = Sanger
+2026-03-03 19:41:35,119 - INFO: Phred offset = 33
+2026-03-03 19:41:35,120 - INFO: Trimming bases with qualities (0.00%): 33..33  !
+2026-03-03 19:41:35,141 - INFO: Mean error rate = 0.0493
+2026-03-03 19:41:35,142 - INFO: Counting read lengths ...
+2026-03-03 19:41:35,150 - INFO: Mean = 150.0 bp, maximum = 150 bp.
+2026-03-03 19:41:35,151 - INFO: Reads used = 7734+7734
+2026-03-03 19:41:35,151 - INFO: Pre-reading fastq finished.
+
+2026-03-03 19:41:35,151 - INFO: Making seed reads ...
+2026-03-03 19:41:35,151 - INFO: Seed bowtie2 index existed!
+2026-03-03 19:41:35,151 - INFO: Mapping reads to seed bowtie2 index ...
+2026-03-03 19:41:35,562 - INFO: Mapping finished.
+2026-03-03 19:41:35,562 - INFO: Seed reads made: data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/seed/animal_mt.initial.fq (4492983 bytes)
+2026-03-03 19:41:35,563 - INFO: Making seed reads finished.
+
+2026-03-03 19:41:35,563 - INFO: Checking seed reads and parameters ...
+2026-03-03 19:41:35,563 - INFO: The automatically-estimated parameter(s) do not ensure the best choice(s).
+2026-03-03 19:41:35,563 - INFO: If the result graph is not a circular organelle genome, 
+2026-03-03 19:41:35,563 - INFO:   you could adjust the value(s) of '-w'/'-R' for another new run.
+2026-03-03 19:41:36,635 - INFO: Pre-assembling mapped reads ...
+2026-03-03 19:41:40,818 - INFO: Pre-assembling mapped reads finished.
+2026-03-03 19:41:40,818 - INFO: Estimated animal_mt-hitting base-coverage = 23.01
+2026-03-03 19:41:40,942 - INFO: Estimated word size(s): 41
+2026-03-03 19:41:40,942 - INFO: Setting '-w 41'
+2026-03-03 19:41:40,943 - INFO: Setting '--max-extending-len inf'
+2026-03-03 19:41:41,043 - INFO: Checking seed reads and parameters finished.
+
+2026-03-03 19:41:41,043 - INFO: Making read index ...
+2026-03-03 19:41:41,092 - INFO: Mem 0.315 G, 15467 candidates in all 15468 reads
+2026-03-03 19:41:41,092 - INFO: Pre-grouping reads ...
+2026-03-03 19:41:41,092 - INFO: Setting '--pre-w 41'
+2026-03-03 19:41:41,092 - INFO: Mem 0.316 G, 1/1 used/duplicated
+2026-03-03 19:41:41,095 - INFO: Mem 0.316 G, 0 groups made.
+2026-03-03 19:41:41,095 - INFO: Making read index finished.
+
+2026-03-03 19:41:41,095 - INFO: Extending ...
+2026-03-03 19:41:41,095 - INFO: Adding initial words ...
+2026-03-03 19:41:41,869 - INFO: AW 2382758
+2026-03-03 19:41:42,237 - INFO: Round 1: 15467/15467 AI 14293 AW 2506918 Mem 0.477
+2026-03-03 19:41:42,257 - INFO: Round 2: 15467/15467 AI 14312 AW 2508932 Mem 0.477
+2026-03-03 19:41:42,275 - INFO: Round 3: 15467/15467 AI 14312 AW 2508932 Mem 0.475
+2026-03-03 19:41:42,275 - INFO: No more reads found and terminated ...
+2026-03-03 19:41:42,370 - INFO: Extending finished.
+
+2026-03-03 19:41:42,370 - INFO: Separating extended fastq file ... 
+2026-03-03 19:41:42,389 - INFO: Setting '-k 21,55,85,115'
+2026-03-03 19:41:42,389 - INFO: Assembling using SPAdes ...
+2026-03-03 19:41:42,401 - INFO: spades.py -t 8  --phred-offset 33 -1 data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_1_paired.fq -2 data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_2_paired.fq --s1 data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_1_unpaired.fq --s2 data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_2_unpaired.fq -k 21,55,85,115 -o data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades
+2026-03-03 19:41:46,960 - INFO: Insert size = 500.454, deviation = 50.2893, left quantile = 436, right quantile = 565
+2026-03-03 19:41:46,961 - INFO: Assembling finished.
+
+2026-03-03 19:41:47,858 - INFO: Slimming data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/K115/assembly_graph.fastg finished!
+2026-03-03 19:41:47,858 - INFO: Slimming assembly graphs finished.
+
+2026-03-03 19:41:47,858 - INFO: Extracting animal_mt from the assemblies ...
+2026-03-03 19:41:47,859 - INFO: Disentangling data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/K115/assembly_graph.fastg.extend-animal_mt.fastg as a circular genome ... 
+2026-03-03 19:41:47,861 - INFO: Disentangling unsuccessful: 'Incomplete/Complicated graph: please check around EDGE_863!'
+2026-03-03 19:41:47,861 - INFO: Scaffolding disconnected contigs using SPAdes scaffolds ... 
+2026-03-03 19:41:47,861 - WARNING: Assembly based on scaffolding may not be as accurate as the ones directly exported from the assembly graph.
+2026-03-03 19:41:47,861 - INFO: Disentangling data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/K115/assembly_graph.fastg.extend-animal_mt.fastg as a circular genome ... 
+2026-03-03 19:41:47,862 - INFO: Disentangling unsuccessful: 'No new connections.'
+2026-03-03 19:41:47,862 - INFO: Disentangling data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/K115/assembly_graph.fastg.extend-animal_mt.fastg as a/an animal_mt-insufficient graph ... 
+2026-03-03 19:41:47,865 - INFO: Average animal_mt coverage = 29.8
+2026-03-03 19:41:47,865 - INFO: Average animal_mt base-coverage = 124.3
+2026-03-03 19:41:47,865 - INFO: Writing output ...
+2026-03-03 19:41:47,869 - INFO: Writing PATH1 of animal_mt scaffold(s) to data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/animal_mt.K115.scaffolds.graph1.1.path_sequence.fasta
+2026-03-03 19:41:47,869 - INFO: Writing GRAPH to data/assemblies/10K_ext10_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/animal_mt.K115.contigs.graph1.selected_graph.gfa
+2026-03-03 19:41:47,869 - INFO: Result status of animal_mt: 1 scaffold(s)
+2026-03-03 19:41:47,885 - INFO: Writing output finished.
+2026-03-03 19:41:47,885 - INFO: Please ...
+2026-03-03 19:41:47,885 - INFO: load the graph file 'assembly_graph.fastg.extend-animal_mt.fastg' in K115
+2026-03-03 19:41:47,885 - INFO: load the CSV file 'assembly_graph.fastg.extend-animal_mt.csv' in K115
+2026-03-03 19:41:47,885 - INFO: visualize and confirm the incomplete result in Bandage.
+2026-03-03 19:41:47,885 - INFO: If the result is nearly complete, 
+2026-03-03 19:41:47,886 - INFO: you can also adjust the arguments according to https://github.com/Kinggerm/GetOrganelle/wiki/FAQ#what-should-i-do-with-incomplete-resultbroken-assembly-graph
+2026-03-03 19:41:47,886 - INFO: If you have questions for us, please provide us with the get_org.log.txt file and the post-slimming graph in the format you like!
+2026-03-03 19:41:47,886 - INFO: Extracting animal_mt from the assemblies finished.
+
+
+Total cost 13.57 s
+Thank you!
