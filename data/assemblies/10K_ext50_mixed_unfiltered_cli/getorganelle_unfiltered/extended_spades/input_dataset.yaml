@@ -1,0 +1,15 @@
+- "left reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_1_paired.fq"
+  "number": !!int "1"
+  "orientation": "fr"
+  "right reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_2_paired.fq"
+  "type": "paired-end"
+- "number": !!int "1"
+  "single reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_1_unpaired.fq"
+  "type": "single"
+- "number": !!int "2"
+  "single reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext50_mixed_unfiltered_cli/getorganelle_unfiltered/extended_2_unpaired.fq"
+  "type": "single"

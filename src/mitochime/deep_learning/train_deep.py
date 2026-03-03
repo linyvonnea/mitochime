@@ -1,9 +1,9 @@
 # src/mitochime/deep_learning/train_deep.py
 '''PYTHONPATH=src python3 -m mitochime.deep_learning.train_deep \
   --mode cnn \
-  --train-tsv data/processed/PAIR_train_seq_L300.tsv \
-  --test-tsv  data/processed/PAIR_test_seq_L300.tsv \
-  --L 300 \
+  --train-tsv data/processed/PAIR_train_seq_L150.tsv \
+  --test-tsv  data/processed/PAIR_test_seq_L150.tsv \
+  --L 150 \
   --epochs 15 \
   --batch 128 \
   --lr 1e-3 \
@@ -13,9 +13,9 @@
   
   PYTHONPATH=src python3 -m mitochime.deep_learning.train_deep \
   --mode transformer \
-  --train-tsv data/processed/PAIR_train_seq_L300.tsv \
-  --test-tsv  data/processed/PAIR_test_seq_L300.tsv \
-  --L 300 \
+  --train-tsv data/processed/PAIR_train_seq_L150.tsv \
+  --test-tsv  data/processed/PAIR_test_seq_L150.tsv \
+  --L 150 \
   --k 6 \
   --L-kmers 256 \
   --d-model 128 \
