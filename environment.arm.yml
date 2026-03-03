@@ -12,6 +12,7 @@ dependencies:
   - wgsim = 1.13
   - samtools=1.20
   - seqtk=1.4
+  - seqkit
   - fastp=0.23.4
   - fastqc=0.12.1
   # Python libs
