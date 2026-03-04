@@ -20,7 +20,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 cd "$ROOT_DIR"
 
-MODEL="models_dl_PAIR_L150/cnn_best.pt"
+MODEL="models/deep/cnn_final_L150_seed42/cnn_best.pt"
 
 OUT_ENC="data/dl/${RUN}"
 OUT_PRED="data/predictions/${RUN}"

@@ -1,0 +1,6 @@
+
+=== Error correction and assembling warnings:
+ * 0:00:00.000     1M / 12M   WARN    General                 (memory_limit.cpp          :  53)   Failed to limit memory to 250 Gb, setrlimit(2) call failed, errno = 22 (Invalid argument). Watch your memory consumption!
+ * 0:00:00.480     1M / 56M   WARN    General                 (kmer_coverage_model.cpp   : 328)   Valley value was estimated improperly, reset to 3
+ * 0:00:00.507     1M / 70M   WARN    General                 (simplification.cpp        : 517)   The determined erroneous connection coverage threshold may be determined improperly
+======= Warnings saved to /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa50_gb_filtered/warnings.log
