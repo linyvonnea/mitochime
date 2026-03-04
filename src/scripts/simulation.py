@@ -216,19 +216,19 @@ def main():
     run_cmd(
         f"wgsim -1 150 -2 150 -r 0 -R 0 -X 0 -e 0.05 -N {NUM_READS} "
         f"{original_ref} ref1.fastq ref2.fastq",
-        env_name="wgsim",
+        env_name="mitochime_sim",
     )
     run_cmd(
         f"wgsim -1 150 -2 150 -r 0 -R 0 -X 0 -e 0 -N {NUM_READS} "
         f"{chimera_ref} chime1.fastq chime2.fastq",
-        env_name="wgsim",
+        env_name="mitochime_sim",
     )
 
     # --------------------------
     # Build minimap2 index
     # --------------------------
     print("\n=== Building minimap2 index ===")
-    run_cmd(f"minimap2 -d ref.mmi {original_ref}", env_name="minimap2")
+    run_cmd(f"minimap2 -d ref.mmi {original_ref}", env_name="mitochime_sim")
 
     # --------------------------
     # Map reads sequentially
@@ -236,13 +236,13 @@ def main():
     print("\n=== Mapping CLEAN reads ===")
     run_cmd(
         "minimap2 -ax sr -t 8 ref.mmi ref1.fastq ref2.fastq > clean.sam",
-        env_name="minimap2",
+        env_name="mitochime_sim",
     )
 
     print("\n=== Mapping CHIMERIC reads ===")
     run_cmd(
         "minimap2 -ax sr -t 8 ref.mmi chime1.fastq chime2.fastq > chimeric.sam",
-        env_name="minimap2",
+        env_name="mitochime_sim",
     )
 
     # --------------------------
@@ -250,20 +250,20 @@ def main():
     # --------------------------
     print("\n=== Processing CLEAN alignments ===")
     print("Converting clean.sam to BAM safely...")
-    sam_to_bam_safe("clean.sam", "clean.bam", env_name="samtools")
+    sam_to_bam_safe("clean.sam", "clean.bam", env_name="mitochime_sim")
     print("Sorting clean.bam...")
-    run_cmd("samtools sort clean.bam -o clean.sorted.bam", env_name="samtools")
+    run_cmd("samtools sort clean.bam -o clean.sorted.bam", env_name="mitochime_sim")
 
     print("\n=== Processing CHIMERIC alignments ===")
     print("Converting chimeric.sam to BAM safely...")
-    sam_to_bam_safe("chimeric.sam", "chimeric.bam", env_name="samtools")
+    sam_to_bam_safe("chimeric.sam", "chimeric.bam", env_name="mitochime_sim")
     print("Sorting chimeric.bam...")
-    run_cmd("samtools sort chimeric.bam -o chimeric.sorted.bam", env_name="samtools")
+    run_cmd("samtools sort chimeric.bam -o chimeric.sorted.bam", env_name="mitochime_sim")
 
     # Export SAM from sorted BAM (for inspection)
     run_cmd(
         "samtools view chimeric.sorted.bam -o chimeric.sorted.sam",
-        env_name="samtools",
+        env_name="mitochime_sim",
     )
 
     print("\nPipeline complete! All FASTQ, SAM, and BAM files are ready.\n")

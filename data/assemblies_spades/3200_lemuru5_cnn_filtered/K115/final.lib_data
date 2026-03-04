@@ -1,0 +1,74 @@
+¬#---
+max read length: 150
+nomerge max read length: 150
+average read length: 149.998
+average coverage: 8.50253
+libraries:
+  - type:            paired-end
+    number:          1
+    orientation:     fr
+    left reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_lemuru5_cnn_filtered/corrected/3200_lemuru5_cnn.cnn.filtered_R1.fastq00.0_0.cor.fastq.gz'
+    right reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_lemuru5_cnn_filtered/corrected/3200_lemuru5_cnn.cnn.filtered_R2.fastq00.0_0.cor.fastq.gz'
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_lemuru5_cnn_filtered/corrected/3200_lemuru5_cnn.cnn.filtered_R_unpaired00.0_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 488.709
+      insert size deviation: 51.6068
+      insert size left quantile: 421
+      insert size right quantile: 558
+      insert size median: 486
+      insert size mad: 41
+      insert size distribution: { 347: 1, 360: 1, 365: 1, 368: 1, 374: 1, 
+                                  376: 1, 385: 2, 389: 1, 390: 1, 391: 1, 
+                                  394: 1, 397: 1, 399: 1, 401: 2, 402: 2, 
+                                  403: 3, 404: 1, 405: 2, 407: 1, 408: 2, 
+                                  412: 1, 414: 2, 415: 1, 416: 1, 418: 3, 
+                                  419: 1, 420: 1, 421: 4, 422: 2, 424: 2, 
+                                  425: 1, 426: 1, 427: 2, 428: 2, 429: 1, 
+                                  430: 1, 431: 2, 432: 3, 433: 2, 434: 1, 
+                                  435: 3, 436: 2, 437: 3, 438: 3, 439: 1, 
+                                  441: 4, 442: 3, 443: 5, 444: 1, 445: 4, 
+                                  446: 1, 448: 1, 449: 2, 451: 2, 452: 3, 
+                                  454: 2, 455: 3, 456: 2, 457: 1, 458: 3, 
+                                  459: 1, 461: 2, 462: 7, 463: 4, 464: 7, 
+                                  465: 2, 466: 5, 467: 2, 468: 5, 470: 4, 
+                                  471: 3, 472: 3, 473: 5, 474: 4, 475: 4, 
+                                  476: 4, 477: 2, 478: 2, 479: 1, 480: 4, 
+                                  481: 2, 482: 2, 483: 4, 484: 2, 485: 3, 
+                                  486: 5, 487: 3, 488: 1, 489: 6, 490: 2, 
+                                  491: 1, 492: 1, 493: 1, 494: 4, 495: 1, 
+                                  496: 2, 497: 4, 498: 3, 499: 2, 500: 4, 
+                                  501: 2, 502: 3, 503: 1, 504: 1, 505: 2, 
+                                  506: 2, 507: 5, 508: 3, 509: 5, 510: 3, 
+                                  511: 2, 512: 1, 513: 4, 514: 2, 516: 3, 
+                                  517: 3, 518: 4, 519: 2, 520: 2, 521: 1, 
+                                  522: 1, 523: 6, 524: 3, 525: 5, 526: 2, 
+                                  527: 2, 528: 3, 529: 2, 531: 2, 532: 1, 
+                                  533: 2, 534: 1, 535: 6, 536: 2, 537: 4, 
+                                  538: 1, 539: 1, 541: 2, 542: 2, 543: 1, 
+                                  544: 1, 545: 4, 546: 1, 547: 5, 548: 1, 
+                                  549: 2, 550: 2, 551: 2, 552: 1, 553: 1, 
+                                  554: 2, 557: 2, 558: 1, 559: 1, 560: 2, 
+                                  561: 1, 563: 1, 564: 2, 566: 2, 567: 2, 
+                                  569: 1, 570: 1, 571: 2, 572: 2, 573: 1, 
+                                  574: 1, 575: 2, 576: 1, 578: 2, 579: 2, 
+                                  582: 1, 583: 1, 584: 1, 586: 2, 587: 1, 
+                                  588: 1, 590: 1, 593: 1, 595: 1, 612: 1, 
+                                  616: 1, 636: 1 }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_lemuru5_cnn_filtered/.bin_reads/INFO_0'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_lemuru5_cnn_filtered/.bin_reads/paired_0'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_lemuru5_cnn_filtered/.bin_reads/merged_0'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_lemuru5_cnn_filtered/.bin_reads/single_0'
+        chunk num:       8
+      single reads mapped: false
+      library index:   0
+      number of reads: 5270
+      total nucleotides: 790487
+...

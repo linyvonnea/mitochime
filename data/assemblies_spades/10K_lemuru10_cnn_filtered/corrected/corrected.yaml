@@ -1,0 +1,9 @@
+- "left reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_lemuru10_cnn_filtered/corrected/10K_lemuru10_cnn.cnn.filtered_R1.fastq00.0_0.cor.fastq.gz"
+  "number": !!int "1"
+  "orientation": "fr"
+  "right reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_lemuru10_cnn_filtered/corrected/10K_lemuru10_cnn.cnn.filtered_R2.fastq00.0_0.cor.fastq.gz"
+  "single reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_lemuru10_cnn_filtered/corrected/10K_lemuru10_cnn.cnn.filtered_R_unpaired00.0_0.cor.fastq.gz"
+  "type": "paired-end"

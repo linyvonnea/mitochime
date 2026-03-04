@@ -32,21 +32,38 @@ to_abs() {
   python3 -c 'import os,sys; print(os.path.abspath(sys.argv[1]))' "$1"
 }
 
-run_getorganelle() {
+# -------- FASTQ gzip helper (optional) --------
+is_gz() { [[ "$1" =~ \.gz$ ]]; }
+
+ensure_gz_fastq() {
+  local in="$1"
+  require_file "$in"
+  if is_gz "$in"; then
+    echo "$in"
+    return 0
+  fi
+  echo "[INFO] Input is not .gz, compressing: $in"
+  local out="${in}.gz"
+  gzip -c "$in" > "$out"
+  echo "$out"
+}
+
+# -------- Assembly (SPAdes) --------
+run_spades() {
   local r1="$1"
   local r2="$2"
   local outdir="$3"
   local threads="$4"
-  local env_getorg="${5:-}"
+  local klist="$5"   # e.g. "21,33,55,77" or "115"
+  local env_spades="${6:-}"
 
-  mkdir -p "$(dirname "$outdir")"
+  mkdir -p "$outdir"
 
-  if [[ -n "$env_getorg" ]]; then
-    conda run -n "$env_getorg" get_organelle_from_reads.py \
-      -1 "$r1" -2 "$r2" -o "$outdir" -F animal_mt -t "$threads" --overwrite
+  if [[ -n "$env_spades" ]]; then
+    conda run -n "$env_spades" spades.py \
+      -1 "$r1" -2 "$r2" -o "$outdir" -t "$threads" -k "$klist"
   else
-    get_organelle_from_reads.py \
-      -1 "$r1" -2 "$r2" -o "$outdir" -F animal_mt -t "$threads" --overwrite
+    spades.py -1 "$r1" -2 "$r2" -o "$outdir" -t "$threads" -k "$klist"
   fi
 }
 
@@ -62,46 +79,67 @@ R2="$(to_abs "$R2")"
 require_file "$R1"
 require_file "$R2"
 
+prompt AUTO_GZ "If inputs are not .gz, auto-gzip them? (y/n)" "y"
+if [[ "$AUTO_GZ" =~ ^[Yy]$ ]]; then
+  R1="$(ensure_gz_fastq "$R1")"
+  R2="$(ensure_gz_fastq "$R2")"
+fi
+
 prompt RUN "Run name (used for output folders)" "run1"
 prompt THRESH "Chimera threshold (0-1; higher = stricter removal)" "0.5"
 prompt THREADS "Threads" "8"
 
 echo ""
-echo "Choose filter model:"
+echo "Choose filtering mode:"
 echo "  1) GB only"
 echo "  2) CNN only"
-echo "  3) Transformer only"
-echo "  4) ALL independent (GB, CNN, Transformer) on original reads"
-echo "  5) GB -> CNN sequential (CNN runs on GB-filtered reads)"
-echo "  6) GB -> Transformer sequential (Transformer runs on GB-filtered reads)"
-prompt CHOICE "Enter 1/2/3/4/5/6" "1"
+echo "  3) BOTH independent (GB + CNN on original reads)"
+echo "  4) GB -> CNN sequential (CNN runs on GB-filtered reads)"
+prompt CHOICE "Enter 1/2/3/4" "1"
 
-prompt DO_ASSEMBLY "Run GetOrganelle assemblies too? (y/n)" "y"
-prompt GO_ENV "If GetOrganelle is in a separate conda env, enter env name; else leave blank" ""
-
-# label used for naming filtered assembly folders in single-mode runs
-FILTER_LABEL="filtered"
-case "$CHOICE" in
-  1) FILTER_LABEL="gb" ;;
-  2) FILTER_LABEL="cnn" ;;
-  3) FILTER_LABEL="trf" ;;
-  5) FILTER_LABEL="gbcnn" ;;
-  6) FILTER_LABEL="gbtrf" ;;
-  4) FILTER_LABEL="multi" ;;
-esac
+prompt DO_ASSEMBLY "Run SPAdes assemblies too? (y/n)" "y"
+prompt SPADES_K "SPAdes k list (comma-separated). Example: 21,33,55,77 or single like 115" "115"
+prompt SPADES_ENV "If SPAdes is in a separate conda env, enter env name; else leave blank" ""
 
 # =========================
-# Scripts + expected outputs
+# Reference selection (only needed when GB is involved)
+# =========================
+DEFAULT_REF="data/refs/original.fasta"
+REF="$DEFAULT_REF"
+
+needs_gb="n"
+case "$CHOICE" in
+  1|3|4) needs_gb="y" ;;
+esac
+
+if [[ "$needs_gb" == "y" ]]; then
+  echo ""
+  echo "GB model requires mapping to a reference genome (minimap2)."
+  echo "Default reference (trained/validated): $DEFAULT_REF"
+  echo ""
+  echo "[WARNING] Using a different reference/species can shift alignment/SA/clipping features"
+  echo "and may degrade performance. Ideally retrain/validate per reference/species."
+  echo ""
+
+  prompt USE_DEFAULT_REF "Use default Sardinella lemuru reference? (y/n)" "y"
+  if [[ "$USE_DEFAULT_REF" =~ ^[Yy]$ ]]; then
+    REF="$DEFAULT_REF"
+  else
+    prompt REF_IN "Enter path/to/ref.fasta"
+    REF="$(to_abs "$REF_IN")"
+  fi
+  require_file "$REF"
+fi
+
+# =========================
+# Scripts
 # =========================
 GB_SCRIPT="src/scripts/run_pipeline_gb.sh"
 CNN_SCRIPT="src/scripts/run_pipeline_cnn.sh"
-TRF_SCRIPT="src/scripts/run_pipeline_transformer.sh"
 
 GB_OUTDIR="data/filtered_reads/${RUN}_gb"
 CNN_OUTDIR="data/filtered_reads/${RUN}_cnn"
-TRF_OUTDIR="data/filtered_reads/${RUN}_trf"
 GBCNN_OUTDIR="data/filtered_reads/${RUN}_gbcnn"
-GBTRF_OUTDIR="data/filtered_reads/${RUN}_gbtrf"
 
 GB_R1_OUT="${GB_OUTDIR}/${RUN}_gb.gb.filtered_R1.fastq.gz"
 GB_R2_OUT="${GB_OUTDIR}/${RUN}_gb.gb.filtered_R2.fastq.gz"
@@ -109,14 +147,8 @@ GB_R2_OUT="${GB_OUTDIR}/${RUN}_gb.gb.filtered_R2.fastq.gz"
 CNN_R1_OUT="${CNN_OUTDIR}/${RUN}_cnn.cnn.filtered_R1.fastq.gz"
 CNN_R2_OUT="${CNN_OUTDIR}/${RUN}_cnn.cnn.filtered_R2.fastq.gz"
 
-TRF_R1_OUT="${TRF_OUTDIR}/${RUN}_trf.trf.filtered_R1.fastq.gz"
-TRF_R2_OUT="${TRF_OUTDIR}/${RUN}_trf.trf.filtered_R2.fastq.gz"
-
 GBCNN_R1_OUT="${GBCNN_OUTDIR}/${RUN}_gbcnn.cnn.filtered_R1.fastq.gz"
 GBCNN_R2_OUT="${GBCNN_OUTDIR}/${RUN}_gbcnn.cnn.filtered_R2.fastq.gz"
-
-GBTRF_R1_OUT="${GBTRF_OUTDIR}/${RUN}_gbtrf.trf.filtered_R1.fastq.gz"
-GBTRF_R2_OUT="${GBTRF_OUTDIR}/${RUN}_gbtrf.trf.filtered_R2.fastq.gz"
 
 run_gb() {
   local in1="$1"
@@ -126,7 +158,8 @@ run_gb() {
   chmod +x "$GB_SCRIPT" >/dev/null 2>&1 || true
   echo ""
   echo "[STEP] Running GB filter..."
-  bash "$GB_SCRIPT" "$in1" "$in2" "$runname" "$THRESH"
+  # args: R1 R2 RUN THRESH THREADS REF
+  bash "$GB_SCRIPT" "$in1" "$in2" "$runname" "$THRESH" "$THREADS" "$REF"
 }
 
 run_cnn() {
@@ -140,26 +173,11 @@ run_cnn() {
   bash "$CNN_SCRIPT" "$in1" "$in2" "$runname" "$THRESH"
 }
 
-run_trf() {
-  local in1="$1"
-  local in2="$2"
-  local runname="$3"
-  require_file "$TRF_SCRIPT"
-  chmod +x "$TRF_SCRIPT" >/dev/null 2>&1 || true
-  echo ""
-  echo "[STEP] Running Transformer filter..."
-  bash "$TRF_SCRIPT" "$in1" "$in2" "$runname" "$THRESH"
-}
-
 # =========================
 # Run filtering
 # =========================
 FINAL_R1=""
 FINAL_R2=""
-
-ASSEMBLE_GB="n"
-ASSEMBLE_CNN="n"
-ASSEMBLE_TRF="n"
 
 case "$CHOICE" in
   1)
@@ -175,21 +193,12 @@ case "$CHOICE" in
     ;;
 
   3)
-    run_trf "$R1" "$R2" "${RUN}_trf"
-    require_file "$TRF_R1_OUT"; require_file "$TRF_R2_OUT"
-    FINAL_R1="$TRF_R1_OUT"; FINAL_R2="$TRF_R2_OUT"
-    ;;
-
-  4)
-    # ALL independent
+    # BOTH independent
     run_gb "$R1" "$R2" "$RUN"
     require_file "$GB_R1_OUT"; require_file "$GB_R2_OUT"
 
     run_cnn "$R1" "$R2" "${RUN}_cnn"
     require_file "$CNN_R1_OUT"; require_file "$CNN_R2_OUT"
-
-    run_trf "$R1" "$R2" "${RUN}_trf"
-    require_file "$TRF_R1_OUT"; require_file "$TRF_R2_OUT"
 
     echo ""
     echo "[DONE] Independent filtered outputs created:"
@@ -197,33 +206,12 @@ case "$CHOICE" in
     echo "  GB   R2: $GB_R2_OUT"
     echo "  CNN  R1: $CNN_R1_OUT"
     echo "  CNN  R2: $CNN_R2_OUT"
-    echo "  TRF  R1: $TRF_R1_OUT"
-    echo "  TRF  R2: $TRF_R2_OUT"
 
-    echo ""
-    echo "For the FILTERED assembly step, what do you want?"
-    echo "  1) assemble GB filtered only"
-    echo "  2) assemble CNN filtered only"
-    echo "  3) assemble Transformer filtered only"
-    echo "  4) assemble ALL (GB + CNN + TRF)"
-    prompt ASSEMBLE_PICK "Enter 1/2/3/4" "4"
-
-    if [[ "$ASSEMBLE_PICK" == "1" ]]; then
-      FINAL_R1="$GB_R1_OUT"; FINAL_R2="$GB_R2_OUT"
-      ASSEMBLE_GB="y"
-    elif [[ "$ASSEMBLE_PICK" == "2" ]]; then
-      FINAL_R1="$CNN_R1_OUT"; FINAL_R2="$CNN_R2_OUT"
-      ASSEMBLE_CNN="y"
-    elif [[ "$ASSEMBLE_PICK" == "3" ]]; then
-      FINAL_R1="$TRF_R1_OUT"; FINAL_R2="$TRF_R2_OUT"
-      ASSEMBLE_TRF="y"
-    else
-      ASSEMBLE_GB="y"; ASSEMBLE_CNN="y"; ASSEMBLE_TRF="y"
-      FINAL_R1="$GB_R1_OUT"; FINAL_R2="$GB_R2_OUT"
-    fi
+    # FINAL is not meaningful here; keep GB for display only
+    FINAL_R1="$GB_R1_OUT"; FINAL_R2="$GB_R2_OUT"
     ;;
 
-  5)
+  4)
     # sequential GB -> CNN
     run_gb "$R1" "$R2" "$RUN"
     require_file "$GB_R1_OUT"; require_file "$GB_R2_OUT"
@@ -234,17 +222,6 @@ case "$CHOICE" in
     FINAL_R1="$GBCNN_R1_OUT"; FINAL_R2="$GBCNN_R2_OUT"
     ;;
 
-  6)
-    # sequential GB -> Transformer
-    run_gb "$R1" "$R2" "$RUN"
-    require_file "$GB_R1_OUT"; require_file "$GB_R2_OUT"
-
-    run_trf "$GB_R1_OUT" "$GB_R2_OUT" "${RUN}_gbtrf"
-    require_file "$GBTRF_R1_OUT"; require_file "$GBTRF_R2_OUT"
-
-    FINAL_R1="$GBTRF_R1_OUT"; FINAL_R2="$GBTRF_R2_OUT"
-    ;;
-
   *)
     echo "[ERROR] Invalid choice: $CHOICE" >&2
     exit 1
@@ -252,80 +229,59 @@ case "$CHOICE" in
 esac
 
 echo ""
-echo "[FINAL] Filtered FASTQs (for a single filtered assembly target):"
+echo "[FINAL] Filtered FASTQs (single target shown):"
 echo "  R1: $FINAL_R1"
 echo "  R2: $FINAL_R2"
 
 # =========================
-# Assembly
+# Assembly (SPAdes)
 # =========================
 if [[ "$DO_ASSEMBLY" =~ ^[Yy]$ ]]; then
-  require_cmd python3
-  require_cmd bash
+  require_cmd spades.py
 
   echo ""
-  echo "[ASSEMBLY] GetOrganelle UNFILTERED..."
-  UNF_OUT="data/assemblies/${RUN}_unfiltered_cli/getorganelle_unfiltered"
-  run_getorganelle "$R1" "$R2" "$UNF_OUT" "$THREADS" "$GO_ENV"
+  echo "[ASSEMBLY] SPAdes UNFILTERED..."
+  UNF_OUT="data/assemblies_spades/${RUN}_unfiltered"
+  run_spades "$R1" "$R2" "$UNF_OUT" "$THREADS" "$SPADES_K" "$SPADES_ENV"
 
-  if [[ "$CHOICE" == "4" ]]; then
-    if [[ "$ASSEMBLE_GB" == "y" ]]; then
-      echo ""
-      echo "[ASSEMBLY] GetOrganelle FILTERED (GB)..."
-      GB_ASM_OUT="data/assemblies/${RUN}_gb_filtered_cli/getorganelle_filtered_gb"
-      run_getorganelle "$GB_R1_OUT" "$GB_R2_OUT" "$GB_ASM_OUT" "$THREADS" "$GO_ENV"
-    fi
-
-    if [[ "$ASSEMBLE_CNN" == "y" ]]; then
-      echo ""
-      echo "[ASSEMBLY] GetOrganelle FILTERED (CNN)..."
-      CNN_ASM_OUT="data/assemblies/${RUN}_cnn_filtered_cli/getorganelle_filtered_cnn"
-      run_getorganelle "$CNN_R1_OUT" "$CNN_R2_OUT" "$CNN_ASM_OUT" "$THREADS" "$GO_ENV"
-    fi
-
-    if [[ "$ASSEMBLE_TRF" == "y" ]]; then
-      echo ""
-      echo "[ASSEMBLY] GetOrganelle FILTERED (Transformer)..."
-      TRF_ASM_OUT="data/assemblies/${RUN}_trf_filtered_cli/getorganelle_filtered_trf"
-      run_getorganelle "$TRF_R1_OUT" "$TRF_R2_OUT" "$TRF_ASM_OUT" "$THREADS" "$GO_ENV"
-    fi
+  if [[ "$CHOICE" == "3" ]]; then
+    # ✅ ALWAYS assemble BOTH GB and CNN filtered
+    echo ""
+    echo "[ASSEMBLY] SPAdes FILTERED (GB)..."
+    GB_ASM_OUT="data/assemblies_spades/${RUN}_gb_filtered"
+    run_spades "$GB_R1_OUT" "$GB_R2_OUT" "$GB_ASM_OUT" "$THREADS" "$SPADES_K" "$SPADES_ENV"
 
     echo ""
-    echo "[Bandage files]"
+    echo "[ASSEMBLY] SPAdes FILTERED (CNN)..."
+    CNN_ASM_OUT="data/assemblies_spades/${RUN}_cnn_filtered"
+    run_spades "$CNN_R1_OUT" "$CNN_R2_OUT" "$CNN_ASM_OUT" "$THREADS" "$SPADES_K" "$SPADES_ENV"
+
+    echo ""
+    echo "[SPAdes outputs]"
     echo "UNFILTERED:"
-    echo "  ${UNF_OUT}/extended_spades/K*/assembly_graph.fastg.extend-animal_mt.fastg"
-    echo "  ${UNF_OUT}/animal_mt.K*.contigs.graph1.selected_graph.gfa"
-    if [[ "$ASSEMBLE_GB" == "y" ]]; then
-      echo "GB FILTERED:"
-      echo "  ${GB_ASM_OUT}/extended_spades/K*/assembly_graph.fastg.extend-animal_mt.fastg"
-      echo "  ${GB_ASM_OUT}/animal_mt.K*.contigs.graph1.selected_graph.gfa"
-    fi
-    if [[ "$ASSEMBLE_CNN" == "y" ]]; then
-      echo "CNN FILTERED:"
-      echo "  ${CNN_ASM_OUT}/extended_spades/K*/assembly_graph.fastg.extend-animal_mt.fastg"
-      echo "  ${CNN_ASM_OUT}/animal_mt.K*.contigs.graph1.selected_graph.gfa"
-    fi
-    if [[ "$ASSEMBLE_TRF" == "y" ]]; then
-      echo "TRF FILTERED:"
-      echo "  ${TRF_ASM_OUT}/extended_spades/K*/assembly_graph.fastg.extend-animal_mt.fastg"
-      echo "  ${TRF_ASM_OUT}/animal_mt.K*.contigs.graph1.selected_graph.gfa"
-    fi
+    echo "  ${UNF_OUT}/contigs.fasta"
+    echo "  ${UNF_OUT}/scaffolds.fasta"
+    echo "GB FILTERED:"
+    echo "  ${GB_ASM_OUT}/contigs.fasta"
+    echo "  ${GB_ASM_OUT}/scaffolds.fasta"
+    echo "CNN FILTERED:"
+    echo "  ${CNN_ASM_OUT}/contigs.fasta"
+    echo "  ${CNN_ASM_OUT}/scaffolds.fasta"
 
   else
-    # SINGLE filtered output: make folder model-specific
     echo ""
-    echo "[ASSEMBLY] GetOrganelle FILTERED (${FILTER_LABEL})..."
-    FIL_OUT="data/assemblies/${RUN}_${FILTER_LABEL}_filtered_cli/getorganelle_filtered_${FILTER_LABEL}"
-    run_getorganelle "$FINAL_R1" "$FINAL_R2" "$FIL_OUT" "$THREADS" "$GO_ENV"
+    echo "[ASSEMBLY] SPAdes FILTERED..."
+    FIL_OUT="data/assemblies_spades/${RUN}_filtered"
+    run_spades "$FINAL_R1" "$FINAL_R2" "$FIL_OUT" "$THREADS" "$SPADES_K" "$SPADES_ENV"
 
     echo ""
-    echo "[Bandage files]"
+    echo "[SPAdes outputs]"
     echo "UNFILTERED:"
-    echo "  ${UNF_OUT}/extended_spades/K*/assembly_graph.fastg.extend-animal_mt.fastg"
-    echo "  ${UNF_OUT}/animal_mt.K*.contigs.graph1.selected_graph.gfa"
-    echo "FILTERED (${FILTER_LABEL}):"
-    echo "  ${FIL_OUT}/extended_spades/K*/assembly_graph.fastg.extend-animal_mt.fastg"
-    echo "  ${FIL_OUT}/animal_mt.K*.contigs.graph1.selected_graph.gfa"
+    echo "  ${UNF_OUT}/contigs.fasta"
+    echo "  ${UNF_OUT}/scaffolds.fasta"
+    echo "FILTERED:"
+    echo "  ${FIL_OUT}/contigs.fasta"
+    echo "  ${FIL_OUT}/scaffolds.fasta"
   fi
 fi
 
