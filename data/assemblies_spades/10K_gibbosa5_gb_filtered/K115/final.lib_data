@@ -1,0 +1,46 @@
+ñ---
+max read length: 150
+nomerge max read length: 150
+average read length: 149.97
+average coverage: 11.416
+libraries:
+  - type:            paired-end
+    number:          1
+    orientation:     fr
+    left reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa5_gb_filtered/corrected/10K_gibbosa5_gb.gb.filtered_R1.fastq00.0_0.cor.fastq.gz'
+    right reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa5_gb_filtered/corrected/10K_gibbosa5_gb.gb.filtered_R2.fastq00.0_0.cor.fastq.gz'
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa5_gb_filtered/corrected/10K_gibbosa5_gb.gb.filtered_R_unpaired00.0_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 469.173
+      insert size deviation: 51.6552
+      insert size left quantile: 401
+      insert size right quantile: 545
+      insert size median: 464
+      insert size mad: 35
+      insert size distribution: { 370: 1, 381: 1, 391: 1, 395: 1, 398: 1, 
+                                  401: 1, 406: 1, 421: 1, 424: 1, 428: 1, 
+                                  432: 1, 434: 2, 436: 1, 441: 1, 442: 1, 
+                                  444: 1, 445: 3, 446: 1, 448: 2, 451: 1, 
+                                  461: 1, 464: 3, 466: 1, 475: 1, 479: 1, 
+                                  480: 1, 481: 1, 482: 1, 483: 1, 484: 1, 
+                                  490: 2, 499: 1, 504: 1, 514: 2, 516: 1, 
+                                  526: 1, 528: 1, 545: 2, 551: 1, 552: 1, 
+                                  553: 1, 573: 1, 608: 1 }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa5_gb_filtered/.bin_reads/INFO_0'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa5_gb_filtered/.bin_reads/paired_0'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa5_gb_filtered/.bin_reads/merged_0'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa5_gb_filtered/.bin_reads/single_0'
+        chunk num:       8
+      single reads mapped: false
+      library index:   0
+      number of reads: 1688
+      total nucleotides: 253150
+...

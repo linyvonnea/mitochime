@@ -1,0 +1,55 @@
+˜---
+max read length: 150
+nomerge max read length: 150
+average read length: 149.978
+average coverage: 10.7592
+libraries:
+  - type:            paired-end
+    number:          1
+    orientation:     fr
+    left reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa10_gb_filtered/corrected/10K_gibbosa10_gb.gb.filtered_R1.fastq00.0_0.cor.fastq.gz'
+    right reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa10_gb_filtered/corrected/10K_gibbosa10_gb.gb.filtered_R2.fastq00.0_0.cor.fastq.gz'
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa10_gb_filtered/corrected/10K_gibbosa10_gb.gb.filtered_R_unpaired00.0_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 482.209
+      insert size deviation: 49.0623
+      insert size left quantile: 415
+      insert size right quantile: 553
+      insert size median: 479
+      insert size mad: 36
+      insert size distribution: { 382: 2, 385: 1, 387: 1, 388: 1, 389: 1, 
+                                  405: 1, 407: 1, 411: 1, 413: 1, 415: 1, 
+                                  417: 1, 419: 1, 421: 1, 422: 1, 424: 1, 
+                                  425: 1, 426: 1, 429: 1, 433: 1, 436: 1, 
+                                  437: 1, 439: 1, 443: 2, 447: 1, 451: 1, 
+                                  452: 1, 453: 1, 457: 1, 458: 1, 460: 4, 
+                                  462: 1, 463: 2, 464: 2, 466: 2, 467: 1, 
+                                  468: 2, 470: 2, 471: 1, 474: 2, 476: 2, 
+                                  477: 1, 479: 2, 481: 1, 483: 2, 484: 1, 
+                                  485: 1, 487: 1, 488: 1, 489: 1, 490: 1, 
+                                  492: 1, 496: 2, 498: 3, 499: 2, 502: 1, 
+                                  505: 1, 508: 2, 509: 1, 511: 3, 514: 2, 
+                                  518: 1, 520: 1, 521: 1, 522: 1, 524: 1, 
+                                  526: 1, 528: 1, 529: 1, 531: 1, 532: 1, 
+                                  534: 1, 535: 2, 540: 1, 544: 1, 546: 1, 
+                                  551: 1, 553: 1, 554: 1, 560: 1, 561: 1, 
+                                  565: 1, 566: 1, 569: 1, 572: 1, 573: 1, 
+                                  575: 1, 587: 1 }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa10_gb_filtered/.bin_reads/INFO_0'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa10_gb_filtered/.bin_reads/paired_0'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa10_gb_filtered/.bin_reads/merged_0'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_gibbosa10_gb_filtered/.bin_reads/single_0'
+        chunk num:       8
+      single reads mapped: false
+      library index:   0
+      number of reads: 1793
+      total nucleotides: 268911
+...
