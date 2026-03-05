@@ -15,7 +15,7 @@ def load_model(path: str):
     # IMPORTANT: import your trained architecture
     from mitochime.deep_learning.dl_cnn import CNN1D
 
-    # checkpoint indicates in_ch=4 for L150 model
+    # Your L150 model uses 4 channels
     model = CNN1D(in_ch=4, dropout=0.2)
     model.load_state_dict(ckpt["model_state"], strict=True)
     model.eval()
@@ -32,10 +32,13 @@ def main():
     ap.add_argument("--batch-size", type=int, default=512)
     args = ap.parse_args()
 
-    X = np.load(args.npz)["X"]  # expects (N,4,150)
+    X = np.load(args.npz)["X"]  # (N,4,150)
+    if X.ndim != 3 or X.shape[1] != 4:
+        raise ValueError(f"Expected X shape (N,4,L), got {X.shape}")
 
     with open(args.ids) as f:
         ids = [line.strip() for line in f if line.strip()]
+
     if len(ids) != X.shape[0]:
         raise ValueError(f"IDs ({len(ids)}) != samples ({X.shape[0]})")
 

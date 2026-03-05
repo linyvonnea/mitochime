@@ -1,0 +1,38 @@
+Command line: /Users/yvonnelin/miniconda3/envs/mitochime/bin/spades.py	-1	/Users/yvonnelin/Desktop/mitochime/data/external_test/10K_final_15_R1.fastq.gz	-2	/Users/yvonnelin/Desktop/mitochime/data/external_test/10K_final_15_R2.fastq.gz	-o	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_15_unfiltered/spades	-t	8	--careful	-k	21,33,55,77,99,115	
+
+System information:
+  SPAdes version: 4.2.0
+  Python version: 3.11.13
+  OS: macOS-15.6.1-arm64-arm-64bit
+
+Output dir: /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_15_unfiltered/spades
+Mode: read error correction and assembling
+Debug mode is turned OFF
+
+Dataset parameters:
+  Standard mode
+  For multi-cell/isolate data we recommend to use '--isolate' option; for single-cell MDA data use '--sc'; for metagenomic data use '--meta'; for RNA-Seq use '--rna'.
+  Reads:
+    Library number: 1, library type: paired-end
+      orientation: fr
+      left reads: ['/Users/yvonnelin/Desktop/mitochime/data/external_test/10K_final_15_R1.fastq.gz']
+      right reads: ['/Users/yvonnelin/Desktop/mitochime/data/external_test/10K_final_15_R2.fastq.gz']
+      interlaced reads: not specified
+      single reads: not specified
+      merged reads: not specified
+Read error correction parameters:
+  Iterations: 1
+  PHRED offset will be auto-detected
+  Corrected reads will be compressed
+Assembly parameters:
+  k: [21, 33, 55, 77, 99, 115]
+  Repeat resolution is enabled
+  Mismatch careful mode is turned ON
+  MismatchCorrector will be used
+  Coverage cutoff is turned OFF
+  Assembly graph output will use GFA v1.2 format
+Other parameters:
+  Dir for temp files: /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_15_unfiltered/spades/tmp
+  Threads: 8
+  Memory limit (in Gb): 250
+

@@ -8,7 +8,6 @@
 \contentsline {table}{\numberline {4.2}{\ignorespaces Performance of baseline classifiers on the held-out test set.}}{42}{table.caption.18}%
 \contentsline {table}{\numberline {4.3}{\ignorespaces Performance of tuned classifiers on the held-out test set.}}{44}{table.caption.20}%
 \contentsline {table}{\numberline {4.4}{\ignorespaces Test set performance of three feature set variants using tuned Gradient Boosting.}}{54}{table.caption.27}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces External assembly testing results}}{58}{table.caption.31}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Complete per-class summary statistics for all extracted features.}}{62}{table.A.1}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Complete per-class summary statistics for all extracted features.}}{60}{table.A.1}%
 \addvspace {10\p@ }
