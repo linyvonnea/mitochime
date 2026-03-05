@@ -1,0 +1,53 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{hyperref}
+
+% ---------- Double-blind toggle ----------
+\newif\ifanonymized
+\anonymizedtrue % set to \anonymizedfalse for camera-ready
+
+\ifanonymized
+  \title{X X X X X}
+  \author{X X X X X}
+  \authorrunning{X}
+  \institute{X}
+\else
+  \title{Your Real Title Here}
+  \titlerunning{Short Running Title} % optional
+
+  \author{Author One\inst{1} \and Author Two\inst{1,2}}
+  \authorrunning{A. One et al.}
+
+  \institute{
+  Affiliation 1\\
+  \email{email@domain.com}
+  \and
+  Affiliation 2\\
+  \email{email@domain.com}
+  }
+\fi
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+% 150–250 words
+\keywords{Keyword1 \and Keyword2 \and Keyword3}
+\end{abstract}
+
+\input{../sections/01_introduction}
+\input{../sections/02_related_work}
+\input{../sections/03_methodology}
+\input{../sections/04_experiments}
+\input{../sections/05_results}
+\input{../sections/06_discussion}
+\input{../sections/07_conclusion}
+
+\bibliographystyle{splncs04}
+\bibliography{../bib/references}
+
+\end{document}
