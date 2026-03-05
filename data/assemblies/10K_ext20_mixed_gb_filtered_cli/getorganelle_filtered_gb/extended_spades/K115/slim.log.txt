@@ -1,0 +1,15 @@
+2026-03-03 19:43:25,204 - INFO: Slimming file 1/1: data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/K115/assembly_graph.fastg
+2026-03-03 19:43:25,206 - INFO: Parsing input finished.
+2026-03-03 19:43:25,207 - INFO: Preparing fasta file finished.
+2026-03-03 19:43:25,207 - INFO: Executing BLAST to /Users/yvonnelin/.GetOrganelle/LabelDatabase/animal_mt ...
+2026-03-03 19:43:25,208 - INFO: Executing BLAST ...
+2026-03-03 19:43:25,434 - INFO: Executing BLAST finished.
+2026-03-03 19:43:25,435 - INFO: Executing BLAST to /Users/yvonnelin/.GetOrganelle/LabelDatabase/animal_mt finished.
+2026-03-03 19:43:25,438 - INFO: Parsing blast result finished.
+2026-03-03 19:43:25,439 - INFO: No enough coverage information found.
+2026-03-03 19:43:25,440 - INFO: Mapping names ...
+2026-03-03 19:43:25,440 - INFO: Mapping names finished.
+2026-03-03 19:43:25,440 - INFO: Generating slimmed file to /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/K115/assembly_graph.fastg.extend-animal_mt.fastg
+2026-03-03 19:43:25,442 - INFO: Generating notation table to /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/K115/assembly_graph.fastg.extend-animal_mt.csv
+2026-03-03 19:43:25,442 - INFO: Slimming file 1/1: data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/K115/assembly_graph.fastg finished!
+

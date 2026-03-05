@@ -1,0 +1,4 @@
+variant	n_features	f1	roc_auc
+full	23	0.7686	0.8436
+selected_subset	4	0.7666	0.8355
+no_microhomology	21	0.7679	0.8447

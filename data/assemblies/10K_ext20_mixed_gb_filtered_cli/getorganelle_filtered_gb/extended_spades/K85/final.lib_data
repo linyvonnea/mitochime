@@ -1,0 +1,90 @@
+Á&---
+max read length: 150
+nomerge max read length: 150
+average read length: 149.965
+average coverage: 60.3289
+libraries:
+  - type:            paired-end
+    number:          1
+    orientation:     fr
+    left reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/corrected/extended_1_paired00.0_0.cor.fastq.gz'
+    right reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/corrected/extended_2_paired00.0_0.cor.fastq.gz'
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/corrected/extended__unpaired00.0_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 0
+      insert size deviation: 0
+      insert size left quantile: 0
+      insert size right quantile: 0
+      insert size median: 0
+      insert size mad: 0
+      insert size distribution: {  }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/INFO_0'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/paired_0'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/merged_0'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/single_0'
+        chunk num:       8
+      single reads mapped: false
+      library index:   0
+      number of reads: 14188
+      total nucleotides: 2127640
+  - type:            single
+    number:          1
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/corrected/extended_1_unpaired00.1_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 0
+      insert size deviation: 0
+      insert size left quantile: 0
+      insert size right quantile: 0
+      insert size median: 0
+      insert size mad: 0
+      insert size distribution: {  }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/INFO_1'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/paired_1'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/merged_1'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/single_1'
+        chunk num:       8
+      single reads mapped: false
+      library index:   1
+      number of reads: 923
+      total nucleotides: 138450
+  - type:            single
+    number:          2
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/corrected/extended_2_unpaired00.2_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 0
+      insert size deviation: 0
+      insert size left quantile: 0
+      insert size right quantile: 0
+      insert size median: 0
+      insert size mad: 0
+      insert size distribution: {  }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/INFO_2'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/paired_2'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/merged_2'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_gb_filtered_cli/getorganelle_filtered_gb/extended_spades/.bin_reads/single_2'
+        chunk num:       8
+      single reads mapped: false
+      library index:   2
+      number of reads: 969
+      total nucleotides: 145350
+...

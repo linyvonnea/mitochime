@@ -1,0 +1,83 @@
+{
+  "paths": {
+    "train_tsv": "../data/processed/PAIR_train_noq.tsv",
+    "test_tsv": "../data/processed/PAIR_test_noq.tsv",
+    "model_path": "../models_PAIR_noq_tuned/catboost_tuned.joblib"
+  },
+  "full": {
+    "n_features": 24,
+    "f1": 0.77528912311521,
+    "roc_auc": 0.8429180322742057,
+    "features": [
+      "read_length",
+      "strand",
+      "mapq",
+      "has_sa",
+      "sa_count",
+      "num_segments",
+      "sa_diff_contig",
+      "sa_min_delta_pos",
+      "sa_max_delta_pos",
+      "sa_mean_delta_pos",
+      "sa_same_strand_count",
+      "sa_opp_strand_count",
+      "sa_max_mapq",
+      "sa_mean_mapq",
+      "sa_min_nm",
+      "sa_mean_nm",
+      "softclip_left",
+      "softclip_right",
+      "total_clipped_bases",
+      "breakpoint_read_pos",
+      "kmer_cosine_diff",
+      "kmer_js_divergence",
+      "microhomology_length",
+      "microhomology_gc"
+    ]
+  },
+  "selected": {
+    "n_features": 5,
+    "f1": 0.7760141093474426,
+    "roc_auc": 0.8367468726544909,
+    "features": [
+      "total_clipped_bases",
+      "kmer_js_divergence",
+      "softclip_right",
+      "softclip_left",
+      "kmer_cosine_diff"
+    ]
+  },
+  "no_microhomology": {
+    "n_features": 22,
+    "f1": 0.7778429073856975,
+    "roc_auc": 0.845323992994746,
+    "dropped_features": [
+      "microhomology_length",
+      "microhomology_gc"
+    ],
+    "kept_features": [
+      "read_length",
+      "strand",
+      "mapq",
+      "has_sa",
+      "sa_count",
+      "num_segments",
+      "sa_diff_contig",
+      "sa_min_delta_pos",
+      "sa_max_delta_pos",
+      "sa_mean_delta_pos",
+      "sa_same_strand_count",
+      "sa_opp_strand_count",
+      "sa_max_mapq",
+      "sa_mean_mapq",
+      "sa_min_nm",
+      "sa_mean_nm",
+      "softclip_left",
+      "softclip_right",
+      "total_clipped_bases",
+      "breakpoint_read_pos",
+      "kmer_cosine_diff",
+      "kmer_js_divergence"
+    ]
+  }
+}

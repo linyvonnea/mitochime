@@ -1,0 +1,44 @@
+{
+  "accuracy": 0.86859375,
+  "precision": 0.8225321301613344,
+  "recall": 0.94,
+  "f1": 0.8773516114919061,
+  "roc_auc": 0.938872607421875,
+  "confusion_matrix": [
+    [
+      2551,
+      649
+    ],
+    [
+      192,
+      3008
+    ]
+  ],
+  "n": 6400,
+  "n_pos": 3200,
+  "n_neg": 3200,
+  "classification_report": "              precision    recall  f1-score   support\n\n       clean     0.9300    0.7972    0.8585      3200\n    chimeric     0.8225    0.9400    0.8774      3200\n\n    accuracy                         0.8686      6400\n   macro avg     0.8763    0.8686    0.8679      6400\nweighted avg     0.8763    0.8686    0.8679      6400\n",
+  "test_loss": 0.44748341605067254,
+  "mode": "cnn",
+  "args": {
+    "mode": "cnn",
+    "train_tsv": "data/processed/cv_seq_L150_seed42/fold1_train_seq.tsv",
+    "test_tsv": "data/processed/cv_seq_L150_seed42/fold1_val_seq.tsv",
+    "out_dir": "models/deep/cnn_cv30_L150_seed42/fold1",
+    "reports_dir": "reports/deep/cnn_cv30_L150_seed42/fold1",
+    "L": 150,
+    "use_qual": false,
+    "k": 6,
+    "L_kmers": 256,
+    "d_model": 128,
+    "layers": 4,
+    "heads": 4,
+    "batch": 128,
+    "epochs": 30,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "select_best_by": "f1",
+    "save_predictions": true
+  }
+}

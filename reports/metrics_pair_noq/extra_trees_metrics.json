@@ -1,0 +1,14 @@
+{
+  "model": "extra_trees",
+  "cv_accuracy_mean": 0.7951603554788377,
+  "cv_accuracy_std": 0.003251701633322194,
+  "cv_f1_mean": 0.7628959694960165,
+  "cv_f1_std": 0.0054457862329043245,
+  "test_accuracy": 0.7979242215830936,
+  "test_precision": 0.9188334504567814,
+  "test_recall": 0.65375,
+  "test_f1": 0.763949751679813,
+  "test_roc_auc": 0.8265168563922941,
+  "n_train": 31986,
+  "n_test": 7997
+}

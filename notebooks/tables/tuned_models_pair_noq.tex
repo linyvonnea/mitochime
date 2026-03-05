@@ -1,0 +1,20 @@
+\begin{table}
+\caption{Performance of tuned classifiers on the held-out test set.}
+\label{tab:tuned_models_pair_noq}
+\begin{tabular}{lrrrrr}
+\toprule
+model & test_accuracy & test_precision & test_recall & test_f1 & test_roc_auc \\
+\midrule
+logreg_l2_tuned & 0.790000 & 0.946000 & 0.614000 & 0.745000 & 0.826000 \\
+linear_svm_calibrated_tuned & 0.789000 & 0.945000 & 0.614000 & 0.745000 & 0.825000 \\
+random_forest_tuned & 0.805000 & 0.928000 & 0.661000 & 0.772000 & 0.839000 \\
+extra_trees_tuned & 0.802000 & 0.917000 & 0.663000 & 0.770000 & 0.835000 \\
+gradient_boosting_tuned & 0.809000 & 0.937000 & 0.663000 & 0.776000 & 0.846000 \\
+xgboost_tuned & 0.806000 & 0.943000 & 0.651000 & 0.770000 & 0.843000 \\
+lightgbm_tuned & 0.809000 & 0.947000 & 0.654000 & 0.774000 & 0.843000 \\
+catboost_tuned & 0.808000 & 0.935000 & 0.662000 & 0.775000 & 0.843000 \\
+bagging_trees_tuned & 0.805000 & 0.929000 & 0.661000 & 0.772000 & 0.842000 \\
+mlp_tuned & 0.793000 & 0.950000 & 0.618000 & 0.749000 & 0.829000 \\
+\bottomrule
+\end{tabular}
+\end{table}

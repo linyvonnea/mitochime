@@ -1,0 +1,174 @@
+- STAGE: Before start
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Before_start_KTHOHARL0PUS5KGMGOEQAUOS6T6FTRP0
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: before_start
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Read_error_correction_LRF9QAMLT3JZTJHEVSE5V0DGZUM4L710
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: ec_start
+- STAGE: Read error correction
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/corrected/configs/config.info
+  config_dir: corrected
+  del_after:
+  - tmp/hammer_prrc1noq
+  job_uuid: SPAdes_Read_error_correction_K57ZDHU3K8J9MPPQOWG842YBBZFM3IVA
+  mpi_support: false
+  output_files:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/corrected/corrected.yaml
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/spades-hammer
+  short_name: ec_runtool
+- STAGE: corrected reads compression
+  args:
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades/spades_pipeline/scripts/compress_all.py
+  - --input_file
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/corrected/corrected.yaml
+  - --ext_python_modules_home
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades
+  - --max_threads
+  - '8'
+  - --output_dir
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/corrected
+  - --gzip_output
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_corrected_reads_compression_B5XU8PV44U48U60IC77PGBBBM1PKPIB9
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
+  short_name: ec_compress
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Read_error_correction_Z41YVUYOOLTGL522N3ZSVGK134R46NAP
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: ec_finish
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Assembling_QGCRK9Z6W8EKKX0NM10KCA14CEVW0B88
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: as_start
+- STAGE: K21
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K21/configs/config.info
+  config_dir: K21
+  del_after: []
+  job_uuid: hpcSPAdes_K21_7YPTCA6P7H1V79REURHH64YBR0WVK5QR
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k21
+- STAGE: K55
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K55/configs/config.info
+  config_dir: K55
+  del_after: []
+  job_uuid: hpcSPAdes_K55_CW4X732SI1BDE8O6ZM7YFFTAHZXAL6Z1
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k55
+- STAGE: K85
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K85/configs/config.info
+  config_dir: K85
+  del_after: []
+  job_uuid: hpcSPAdes_K85_55CNNETL3HPUOK8VD16ZWZCIFDE66GXE
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k85
+- STAGE: K115
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/configs/config.info
+  config_dir: K115
+  del_after: []
+  job_uuid: hpcSPAdes_K115_9AEDT7HXH3UNLVXF0B60OIDT00BWCLA9
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k115
+- STAGE: Copy files
+  args:
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades/spades_pipeline/scripts/copy_files.py
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/before_rr.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/before_rr.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/assembly_graph_after_simplification.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/assembly_graph_after_simplification.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/final_contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/first_pe_contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/first_pe_contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/strain_graph.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/strain_graph.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/scaffolds.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/scaffolds.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/scaffolds.paths
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/scaffolds.paths
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/assembly_graph_with_scaffolds.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/assembly_graph_with_scaffolds.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/assembly_graph.fastg
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/assembly_graph.fastg
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/K115/final_contigs.paths
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/contigs.paths
+  config_dir: ''
+  del_after:
+  - .bin_reads
+  - tmp/spades_456iz_t8
+  job_uuid: SPAdes_Copy_files_2PRYFKPME6FUSILY4RNK3JCZ4Y6SFDSE
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
+  short_name: copy_files
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Assembling_VKLS1LI6GR87H8BUHQX73INSPV83XRQA
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: as_finish
+- STAGE: Breaking scaffolds
+  args:
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades/spades_pipeline/scripts/breaking_scaffolds_script.py
+  - --result_scaffolds_filename
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/scaffolds.fasta
+  - --misc_dir
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext10_mixed_trf_filtered_cli/getorganelle_filtered_trf/extended_spades/misc
+  - --threshold_for_breaking_scaffolds
+  - '3'
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Breaking_scaffolds_SSFNPSF7XL4QZSC2N1VZ240MDOEYVKJB
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
+  short_name: bs
+- STAGE: Terminate
+  args: []
+  config_dir: ''
+  del_after:
+  - configs
+  job_uuid: SPAdes_Terminate_PL2U5QQDLOTSFHV409C9QURKEU9WPF66
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: terminate

@@ -1,0 +1,594 @@
+% !TEX TS-program = pdflatex
+\documentclass[11pt]{beamer}
+\usepackage{tabularx}
+\usetheme{Madrid}
+
+% Basic packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath, amssymb}
+\usepackage{lmodern}
+
+% Title info (edit as you like)
+\title[MitoChime ML Pipeline]{MitoChime: A Machine Learning Pipeline for
+Detecting PCR-Induced Chimeras in
+Mitochondrial Illumina Reads}
+\author{Duran, Lin, Pailden}
+\institute[UPV]{University of the Philippines Visayas}
+\date{\today}
+
+\begin{document}
+
+% -------------------------------------------------------------------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Real-World Problem}
+
+\centering
+{\Large \textbf{Next Generation Sequencing (NGS)}}\\[1em]
+
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide3.JPG}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{Illumina Seq Workflow}}\\[0.5em]
+  {\large Step 1. Library Preparation}\\[1em]
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide4.JPG}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{Illumina Seq Workflow}}\\[0.5em]
+  {\large Step 2. Library Bridge Amplification (PCR)}\\[1em]
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide5.JPG}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{Illumina Seq Workflow}}\\[0.5em]
+  {\large Step 3. Sequencing and Alignment}\\[1em]
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.7\textheight]{../figures/slide6.JPG}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{PCR-Chimera Formation}}\\[0.5em]
+  \begin{figure}
+    \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide7.JPG}\\[-0.3em]
+    {\tiny
+    \setlength{\baselineskip}{0.6\baselineskip}
+    \textit{Source:} Omelina, E., Ivankin, A., Letiagina, A., \& Pindyurin, A. (2019).
+    \textit{Optimized PCR conditions minimizing the formation of chimeric DNA molecules from MPRA plasmid libraries}.
+    \textit{BMC Genomics, 20}, 536. \url{https://doi.org/10.1186/s12864-019-5847-2}}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{The Mitochondrial Genome}}\\[0.5em]
+  \begin{figure}
+    \centering
+    \includegraphics[height=0.5\textheight]{../figures/slide8.JPG}\\[-0.3em]
+    {\tiny
+    \setlength{\baselineskip}{0.6\baselineskip}
+    \textit{Source:} UZ Brussel. (2020, August 26).
+    \textit{Mitochondrial DNA} [Image].
+    Vrije Universiteit Brussel.
+    \url{https://bit.ly/3XTTSg8}}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Real-World Problem}
+  \centering
+  {\Large \textbf{Disrupts Genome Assembly}}\\[0.5em]
+  \begin{figure}
+  \centering
+    \includegraphics[height=0.75\textheight]{../figures/slide6.JPG}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Existing Approaches}
+  \centering
+  {\small {Table: Summary of Chimera Detection Approaches and Tools}}\\[0.3em]
+  \begin{figure}
+    \centering
+    \includegraphics[height=0.75\textheight]{../figures/table.JPG}
+  \end{figure}
+\end{frame}
+
+
+\section{Problem Statement \& Proposed Solution}
+
+\begin{frame}
+  \frametitle{Problem Statement \& Proposed Solution}
+  \begin{itemize}
+  
+    \item \textbf{Problem Statement:}  
+    Chimeric sequencing reads can disrupt mitochondrial genome assembly, but current assembly pipelines assume artifact-free input and existing chimera detection tools are not designed specifically for organellar, particularly mitochondrial datasets, leaving assemblies vulnerable to undetected artifacts.
+
+    \item \textbf{Proposed Solution:}  
+    A machine-learning pipeline designed to detect PCR-induced chimeric reads using both alignment-based and sequence-derived features to improve the quality and reliability of downstream mitochondrial genome assemblies.
+
+  \end{itemize}
+\end{frame}
+
+
+\section{Objectives}
+
+\begin{frame}
+  \frametitle{General Objective}
+  \begin{itemize}
+    \item Develop and evaluate a machine-learning pipeline (MitoChime) to detect PCR-induced chimeric reads in \textit{S. lemuru} mitochondrial sequencing data to improve downstream assembly quality.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Specific Objectives}
+  \begin{enumerate}
+    \item Construct simulated \textit{Sardinella lemuru} Illumina paired-end datasets contain ing both clean and PCR-induced chimeric reads.
+    \item Extract alignment-based and sequence-based features such as k-mer composition, microhomology, and split-alignment counts from both clean and chimeric reads
+    \item Train, validate, and compare supervised machine learning models for classifying reads as clean or chimeric.
+    \item Determine feature importance and identify indicators of PCR-induced chimerism.
+    \item Integrate the optimized classifier into a modular and interpretable pipeline deployable on standard computing environments at PGC Visayas.
+  \end{enumerate}
+\end{frame}
+
+
+
+\section{Scope and Limitations}
+
+\begin{frame}
+\frametitle{Scope of the Study}
+\begin{itemize}
+    \item Focuses on PCR-induced chimeric reads in \textit{Sardinella lemuru} mitochondrial sequencing data to:
+    \begin{itemize}
+        \item to limit interspecific variation in mitochondrial genome size, GC content, and repetitive regions so that differences in read patterns can be attributed more directly to PCR-induced chimerism
+        \item to align the analysis with relevant \textit{S. lemuru} sequencing projects at PGC Visayas
+        \item to take advantage of the availability of \textit{S. lemuru} mitochondrial assemblies and raw datasets in public repositories such as the National Center for Biotechnology Information (NCBI), which facilitates reference selection and benchmarking
+        \item to develop a tool that directly supports local studies on \textit{S. lemuru} population structure and fisheries management produce tools applicable to local population and fisheries studies
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+  \begin{frame}
+    \frametitle{Scope of the Study}
+    \begin{itemize}
+    \item Uses wgsim-based simulations and selected empirical mitochondrial datasets
+
+    \item Analysis targets low-dimensional alignment and sequence features (k-mers, GC content, clipping, split alignments) to maintain interpretability and computational accessibility
+
+    \item Long-read platforms and other taxa are not included
+    \end{itemize}
+  \end{frame}
+
+\begin{frame}
+\frametitle{Key Exclusions}
+\begin{itemize}
+    \item Naturally occurring chimeras
+    \item NUMTs
+    \item Large-scale nuclear genome rearrangements
+    \item High-dimensional deep learning embeddings
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Other Limitations}
+\begin{itemize}
+    \item No simulations with variable sequencing error rates
+    \item No testing of alternative parameter settings (k-mer length, microhomology windows)
+    \item Reliance on supervised machine learning may limit detection of novel/unknown chimeric patterns
+\end{itemize}
+\end{frame}
+
+
+\section{Methodology}
+\begin{frame}
+  \frametitle{Methodology}
+  \begin{figure}
+    \centering
+    \includegraphics[height=0.7\textheight]{../figures/research_activities.png}
+    \caption{Process Diagram of the Special Project}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Collection}
+    The \textit{S. lemuru} mitochondrial reference genome (NCBI: NC\_039553.1) was downloaded in FASTA format and used as the basis for generating simulated reads.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Preprocessing}
+    \begin{itemize}
+        \item A Python script was used to generate the reads.
+        \item Clean reads were produced with wgsim from the reference genome with error rate set to 5\%.
+        \item A chimeric reference was created by creating a custom script to combine non-adjacent segments with microhomology
+        \item Chimeric reads were simulated with wgsim.
+        \item All reads were mapped with minimap2 to extract alignment information.
+        \item SAM/BAM files were converted, sorted, and indexed with samtools.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Preprocessing}
+    \begin{itemize}
+        \item Final dataset: ~40k reads, roughly balanced between clean and chimeric (19,984 clean reads and 20,000 chimeric).
+        \item Some of the clean reads failed to align due to the set error rate.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Preprocessing}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{../figures/clean_sam.png}
+    \caption{SAM File of Clean Reads}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Data Preprocessing}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{../figures/chimeric_sam.png}
+    \caption{SAM File of Chimeric Reads}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Feature Extraction Pipeline}
+  \begin{itemize}
+        \item BAM files were processed with a Python script (\texttt{extract\_features.py}) to build a TSV feature matrix.
+        \item Used Pysam for parsing alignments and NumPy for computation.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Feature Extraction Pipeline}
+  \begin{itemize}
+    \item  Focused on three features linked to PCR-induced chimeras:
+  \begin{enumerate}
+        \item \textbf{Supplementary Alignment (SA)}: Detects split alignments; counts and metrics extracted from SA tags
+        \item \textbf{K-mer Composition Difference}: Breakpoints inferred; left/right segments compared using cosine and JS metrics.
+        \item \textbf{Microhomology}: Overlap at junction quantified (length + GC content) within a defined window.
+    \end{enumerate}
+    
+    \item Pipeline design and outputs to be validated by experts.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Feature Extraction Pipeline}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{../figures/clean_excel.png}
+    \caption{TSV Dataset showing Clean Reads}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Feature Extraction Pipeline}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{../figures/chimeric_excel.png}
+    \caption{TSV Dataset showing Chimeric Reads}
+  \end{figure}
+\end{frame}
+
+% ===================================================================
+\begin{frame}{Dataset construction and split}
+  \begin{itemize}
+    \item Simulated feature tables:
+      \begin{itemize}
+        \item Clean reads (label 0)
+        \item PCR-induced chimeras (label 1)
+      \end{itemize}
+    \item \texttt{build\_datasets.py}:
+      \begin{itemize}
+        \item Concatenate tables
+        \item Shuffle rows (avoid file-order artefacts)
+      \end{itemize}
+    \item 80/20 \textbf{stratified} train--test split
+    \item Test set held out and used \textbf{only once} at the end
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Validation strategy}
+  \begin{itemize}
+    \item Layer 1: 80/20 stratified train--test split
+    \item Layer 2: 5-fold stratified cross-validation on training set
+      \begin{itemize}
+        \item Train on 4 folds, validate on 1
+        \item Rotate so each fold is validation once
+      \end{itemize}
+    \item Layer 3: Final evaluation on held-out test set
+    \item Hyperparameter tuning:
+      \begin{itemize}
+        \item \texttt{RandomizedSearchCV} inside CV for top models
+      \end{itemize}
+    \item Goal: stable estimates and \textbf{unbiased} test performance
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Model zoo and preprocessing pipeline}
+  \begin{itemize}
+    \item \textbf{Baseline:} dummy majority-class classifier
+    \item \textbf{Linear models:} logistic regression, calibrated linear SVM
+    \item \textbf{Tree ensembles:}
+      \begin{itemize}
+        \item Random Forest, Extra Trees
+        \item Gradient Boosting, XGBoost, LightGBM, CatBoost
+      \end{itemize}
+    \item \textbf{Others:} bagging trees, k-NN, Gaussian NB, shallow MLP
+    \item Common scikit-learn pipeline:
+      \begin{itemize}
+        \item Median imputation (numeric missing values)
+        \item Standardisation (zero mean, unit variance)
+      \end{itemize}
+    \item Ensures a \textbf{fair comparison} across models
+  \end{itemize}
+\end{frame}
+
+
+% \begin{frame}{Test-set performance (F1, tuned models)}
+%   \begin{columns}
+%     \begin{column}{0.55\textwidth}
+%       \begin{figure}
+%         \centering
+%         % TODO: replace with your actual file
+%         % \includegraphics[width=\linewidth]{figures/test_f1_tuned_barh.pdf}
+%         \caption{Test F1 for tuned models (chimera class).}
+%       \end{figure}
+%     \end{column}
+%     \begin{column}{0.45\textwidth}
+%       \begin{itemize}
+%         \item Positive class: \textbf{chimeric reads}
+%         \item Dummy baseline:
+%           \begin{itemize}
+%             \item F1 $\approx 0.67$
+%           \end{itemize}
+%         \item Linear models:
+%           \begin{itemize}
+%             \item F1 $\approx 0.74$ (logreg, linear SVM)
+%           \end{itemize}
+%         \item Best ensembles:
+%           \begin{itemize}
+%             \item CatBoost: F1 $\approx 0.769$
+%             \item Gradient Boosting: F1 $\approx 0.767$
+%             \item LightGBM: F1 $\approx 0.766$
+%           \end{itemize}
+%         \item k-NN, MLP: good but slightly below ensembles
+%       \end{itemize}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+
+\begin{frame}{Effect of hyperparameter tuning}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{../figures/f1_before_after_tuning.png}
+        \caption{Test F1: baseline vs tuned.}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{../figures/auc_before_after_tuning.png}
+        \caption{Test ROC--AUC: baseline vs tuned.}
+      \end{figure}
+    \end{column}
+  \end{columns}
+  \vspace{0.3cm}
+  \begin{itemize}
+    \item Tuning done with \texttt{RandomizedSearchCV} on training set
+    \item Small but consistent gains ($\Delta$F1, $\Delta$AUC $\approx 0.001$--$0.01$)
+    \item Top-ranked models remain the same (CatBoost, Gradient Boosting, LightGBM)
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{ROC and precision--recall curves}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../figures/roc_pr_curves.png}
+    \caption{ROC (left) and PR (right) curves for CatBoost, Gradient Boosting, Random Forest, and logistic regression.}
+  \end{figure}
+  \begin{itemize}
+    \item Ensembles: ROC--AUC $\approx 0.84$; logreg: $\approx 0.82$
+    \item Average precision $\approx 0.88$ for ensembles
+    \item Precision $> 0.9$ up to recall $\approx 0.5$--$0.6$
+  \end{itemize}
+\end{frame}
+% --- Confusion matrix slide (revised) ---
+\begin{frame}{Confusion matrix: CatBoost (test set)}
+  \begin{columns}
+    \begin{column}{0.55\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{../figures/cm_catboost.png}
+        \caption{Confusion matrix heatmap for CatBoost.}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{itemize}
+        \item Clean reads (\textit{negative class}):
+          \begin{itemize}
+            \item Specificity $\approx 0.95$ (TN = 3782 / 3997)
+            \item False positive rate $\approx 0.05$ (FP = 215 / 3997)
+          \end{itemize}
+        \item Chimeric reads (\textit{positive class}):
+          \begin{itemize}
+            \item Precision $\approx 0.92$ (TP = 2631 / (2631 + 215))
+            \item Recall $\approx 0.66$ (TP = 2631 / 4000)
+          \end{itemize}
+        \item Behaviour at default threshold:
+          \begin{itemize}
+            \item \textbf{Conservative chimera filter:} low FP, higher FN
+            \item Misses $\sim$34\% of chimeras (FN = 1369 / 4000)
+          \end{itemize}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{Downstream impact of residual chimeras (GetOrganelle)}
+  \begin{columns}
+    \begin{column}{0.67\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.49\linewidth]{../figures/get_organelle_clean.png}\hfill
+        \includegraphics[width=0.49\linewidth]{../figures/get_organelle_mix.png}
+        \vspace{0.4em}
+        \includegraphics[width=0.70\linewidth]{../figures/get_organelle_chimeric.png}
+        \caption{Clean, 50\% mixed, and chimera-only assemblies.}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \small
+      \begin{itemize}
+        \item \textbf{Clean:} 1 contig (16{,}613 bp)
+        \item \textbf{Mixed 50\%:} 1 contig (16{,}593 bp)
+        \item \textbf{Chimera-only:} 11 contigs ($\sim$39.7\% mapped)
+        \item \textbf{Implication:} missed chimeras can degrade assembly completeness/contiguity.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% --- Top features slide (revised slightly for wording + consistency) ---
+\begin{frame}{Top features for CatBoost}
+  \begin{columns}
+    \begin{column}{0.55\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{../figures/catboost_imp.png}
+        \caption{Permutation importance ($\Delta$F1) for CatBoost.}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{itemize}
+        \item Strongest predictive signals:
+          \begin{itemize}
+            \item \texttt{kmer\_js\_divergence} (within-read composition shift)
+            \item \texttt{total\_clipped\_bases} (junction-like clipping)
+            \item \texttt{kmer\_cosine\_diff} (windowed k-mer change)
+          \end{itemize}
+        \item Also informative:
+          \begin{itemize}
+            \item Left/right soft-clipping
+            \item Mapping quality (MAPQ)
+            \item SA count (supplementary alignments)
+          \end{itemize}
+        \item Consistent with PCR chimera breakpoints and split mappings
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% --- Feature family importance slide (minor tightening) ---
+\begin{frame}{Feature family importance}
+  \begin{columns}
+    \begin{column}{0.55\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{../figures/catboost_family.png}
+        \caption{Aggregated permutation importance by feature family (CatBoost).}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{itemize}
+        \item Aggregated importance:
+          \begin{itemize}
+            \item \textbf{Clipping} features dominate
+            \item \textbf{K-mer jump} features are also strong
+          \end{itemize}
+        \item Smaller contributions:
+          \begin{itemize}
+            \item SA structure
+            \item Micro-homology
+            \item Other alignment context
+          \end{itemize}
+        \item Similar ranking observed for Gradient Boosting and Random Forest
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{Summary of findings}
+  \begin{itemize}
+    \item Tree-based ensembles (CatBoost, Gradient Boosting, LightGBM) outperform linear baselines.
+    \item Best performance on held-out reads:
+      \begin{itemize}
+        \item F1 $\approx 0.77$
+        \item ROC--AUC $\approx 0.84$
+      \end{itemize}
+    \item Most predictive signals match chimera junction patterns:
+      \begin{itemize}
+        \item within-read k-mer composition shifts (\textit{k-mer jump})
+        \item extensive soft-clipping / clipped bases
+      \end{itemize}
+    \item At the default threshold, CatBoost is \textbf{conservative}:
+      \begin{itemize}
+        \item specificity $\approx 0.95$ (keeps clean reads)
+        \item recall $\approx 0.66$ (misses some chimeras)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Next steps}
+  \begin{itemize}
+    \item \textbf{Error analysis:} characterize FP vs FN cases (focus on false negatives).
+    \item \textbf{Calibration:} adjust threshold / use cost-sensitive objective to increase recall while controlling FP.
+    \item \textbf{Biological validation:} compare assemblies before vs after filtering (contig count, length, coverage).
+    \item \textbf{Exploratory extension:} sequence models (CNN / Transformer / RNN) for subtle breakpoint patterns.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \centering
+  {\Huge Thank you!}
+\end{frame}
+
+
+\end{document}

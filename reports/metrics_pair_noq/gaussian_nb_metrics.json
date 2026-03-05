@@ -1,0 +1,14 @@
+{
+  "model": "gaussian_nb",
+  "cv_accuracy_mean": 0.7442944032015631,
+  "cv_accuracy_std": 0.004801026147635278,
+  "cv_f1_mean": 0.6573073177873046,
+  "cv_f1_std": 0.00879339643129796,
+  "test_accuracy": 0.7457796673752657,
+  "test_precision": 0.9979746835443037,
+  "test_recall": 0.49275,
+  "test_f1": 0.6597489539748954,
+  "test_roc_auc": 0.8269184075556666,
+  "n_train": 31986,
+  "n_test": 7997
+}

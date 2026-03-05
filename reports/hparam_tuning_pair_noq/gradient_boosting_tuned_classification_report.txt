@@ -1,0 +1,8 @@
+              precision    recall  f1-score   support
+
+       clean     0.7391    0.9552    0.8334      3997
+    chimeric     0.9368    0.6630    0.7765      4000
+
+    accuracy                         0.8091      7997
+   macro avg     0.8379    0.8091    0.8049      7997
+weighted avg     0.8380    0.8091    0.8049      7997

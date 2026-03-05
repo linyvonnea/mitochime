@@ -1,0 +1,14 @@
+{
+  "model": "linear_svm_calibrated",
+  "cv_accuracy_mean": 0.7927844175941531,
+  "cv_accuracy_std": 0.0047860354482982745,
+  "cv_f1_mean": 0.7508713667801162,
+  "cv_f1_std": 0.006860302525256284,
+  "test_accuracy": 0.7914217831686883,
+  "test_precision": 0.9477726574500768,
+  "test_recall": 0.617,
+  "test_f1": 0.7474258025439128,
+  "test_roc_auc": 0.8296017950963221,
+  "n_train": 31986,
+  "n_test": 7997
+}

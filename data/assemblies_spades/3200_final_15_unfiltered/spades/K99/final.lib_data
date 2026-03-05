@@ -1,0 +1,38 @@
+ù---
+max read length: 150
+nomerge max read length: 150
+average read length: 149.968
+average coverage: 18.1201
+libraries:
+  - type:            paired-end
+    number:          1
+    orientation:     fr
+    left reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_15_unfiltered/spades/corrected/3200_final_15_R1.fastq00.0_0.cor.fastq.gz'
+    right reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_15_unfiltered/spades/corrected/3200_final_15_R2.fastq00.0_0.cor.fastq.gz'
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_15_unfiltered/spades/corrected/3200_final_15_R_unpaired00.0_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 0
+      insert size deviation: 0
+      insert size left quantile: 0
+      insert size right quantile: 0
+      insert size median: 0
+      insert size mad: 0
+      insert size distribution: {  }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_15_unfiltered/spades/.bin_reads/INFO_0'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_15_unfiltered/spades/.bin_reads/paired_0'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_15_unfiltered/spades/.bin_reads/merged_0'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_15_unfiltered/spades/.bin_reads/single_0'
+        chunk num:       8
+      single reads mapped: false
+      library index:   0
+      number of reads: 6383
+      total nucleotides: 957248
+...

@@ -1,0 +1,4 @@
+model	test_accuracy	test_precision	test_recall	test_f1	test_roc_auc
+random_forest_tuned	1.0	1.0	1.0	1.0	1.0
+xgboost_tuned	1.0	1.0	1.0	1.0	1.0
+lightgbm_tuned	1.0	1.0	1.0	1.0	0.9999999999999999

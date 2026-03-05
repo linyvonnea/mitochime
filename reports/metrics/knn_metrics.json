@@ -1,0 +1,14 @@
+{
+  "model": "knn",
+  "cv_accuracy_mean": 0.9996873681068166,
+  "cv_accuracy_std": 0.00019772345423630183,
+  "cv_f1_mean": 0.9996873925338547,
+  "cv_f1_std": 0.00019771959920350946,
+  "test_accuracy": 0.9997499062148305,
+  "test_precision": 1.0,
+  "test_recall": 0.9995,
+  "test_f1": 0.9997499374843711,
+  "test_roc_auc": 1.0,
+  "n_train": 31986,
+  "n_test": 7997
+}

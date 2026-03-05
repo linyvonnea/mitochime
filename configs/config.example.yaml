@@ -1,0 +1,32 @@
+paths:
+  refs_mito: "data/refs/mito/LC_Mito.fa"
+  refs_nuclear: null
+  reads_r1: "data/raw/sample_R1.fastq.gz"
+  reads_r2: "data/raw/sample_R2.fastq.gz"
+  outdir: "results/run01"
+
+alignment:
+  tool: "minimap2"     # or "bwa"
+  preset: "sr"         # minimap2 preset; "map-ont" for ONT
+  extra: ""            # extra CLI flags if needed
+
+features:
+  kmer_k: 5
+  gc_window: 100
+  cov_window: 200
+  use_graph_features: false
+
+model:
+  type: "xgboost"
+  threshold: 0.9
+  params:
+    n_estimators: 400
+    max_depth: 6
+    subsample: 0.8
+    colsample_bytree: 0.8
+    learning_rate: 0.05
+    reg_lambda: 1.0
+
+runtime:
+  threads: 8
+  tmpdir: "/tmp"

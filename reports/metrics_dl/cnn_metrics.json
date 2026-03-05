@@ -1,0 +1,25 @@
+{
+  "accuracy": 0.9361790878754171,
+  "precision": 0.9326496674057649,
+  "recall": 0.9396816531695057,
+  "f1": 0.936152455139797,
+  "roc_auc": 0.9786466481957957,
+  "confusion_matrix": [
+    [
+      3368,
+      243
+    ],
+    [
+      216,
+      3365
+    ]
+  ],
+  "n": 7192,
+  "n_pos": 3581,
+  "n_neg": 3611,
+  "classification_report": "              precision    recall  f1-score   support\n\n           0     0.9397    0.9327    0.9362      3611\n           1     0.9326    0.9397    0.9362      3581\n\n    accuracy                         0.9362      7192\n   macro avg     0.9362    0.9362    0.9362      7192\nweighted avg     0.9362    0.9362    0.9362      7192\n",
+  "test_loss": 0.18463391800710435,
+  "mode": "cnn",
+  "train_tsv": "data/processed/train_seq_L300.tsv",
+  "test_tsv": "data/processed/test_seq_L300.tsv"
+}

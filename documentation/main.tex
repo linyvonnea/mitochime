@@ -1,0 +1,46 @@
+% !TEX TS-program = pdflatex
+% !TEX root = ./main.tex
+\input{preamble}   % loads the preamble above
+
+\begin{document}
+\linenumbers
+
+\include{title_page}
+\include{abstract}
+
+\pagenumbering{roman}
+\setcounter{page}{2}
+\tableofcontents%
+\newpage%
+\listoffigures%
+\newpage%
+\listoftables%
+\newpage%
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{chapter_1}
+\newpage
+\input{chapter_2}
+\newpage
+\input{chapter_3}
+\newpage
+\input{chapter_4}
+\newpage
+% \input{chapter_5}
+% \newpage
+
+\appendix
+\include{appendix_A}
+\include{appendix_B}
+
+\bibliographystyle{apacite}
+\bibliography{myreferences}
+
+
+%\appendix
+% \include{appendix_A}
+% \include{appendix_B}
+
+\end{document}

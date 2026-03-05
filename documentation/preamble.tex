@@ -1,0 +1,55 @@
+% chktex-file 1
+% !TEX root = ./main.tex
+% Filename   : preamble.tex
+% Description: Preamble only (class + packages + settings). No \begin{document} here.
+
+\documentclass[12pt,titlepage,letterpaper]{report}
+
+% ---- Packages
+\usepackage[natbibapa]{apacite}   % APA style + natbib commands
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage{lineno}
+\usepackage{setspace}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{url}                  % robust URL breaks
+\usepackage[hidelinks]{hyperref}  % load after apacite/url
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{adjustbox}
+\usepackage{longtable}  
+\usepackage{pdflscape}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{booktabs}   % For professional looking tables 
+\usepackage{ragged2e}   % For better text wrapping (\RaggedRight)
+\usepackage{subcaption}
+
+% ---- Layout (use \setlength to avoid chktex warnings)
+\setlength{\topmargin}{-0.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\voffset}{0in}
+\setlength{\hoffset}{0.5625in}
+\setlength{\textwidth}{5.75in}
+\setlength{\textheight}{8.5in}
+
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0.25in}
+\emergencystretch=2em
+
+% ---- Global formatting
+\setlistdepth{9}
+\doublespacing
+\graphicspath{{figures/}}
+
+\hyphenation{ana-lysis know-ledge}
+\newcommand{\degree}{^{\circ}}
+\newcommand{\etal}{et al.}
+\newcommand{\figref}[1]{Figure~\ref{#1}}
+\newcommand{\appref}[1]{Appendix~\ref{#1}}
+\newcommand{\thestitle}[1]{\LARGE\textsc{#1}\par}
+

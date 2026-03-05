@@ -1,0 +1,148 @@
+¦J---
+max read length: 150
+nomerge max read length: 150
+average read length: 149.994
+average coverage: 26.6879
+libraries:
+  - type:            paired-end
+    number:          1
+    orientation:     fr
+    left reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended_1_paired00.0_0.cor.fastq.gz'
+    right reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended_2_paired00.0_0.cor.fastq.gz'
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended__unpaired00.0_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 501.33
+      insert size deviation: 49.8531
+      insert size left quantile: 437
+      insert size right quantile: 566
+      insert size median: 502
+      insert size mad: 32
+      insert size distribution: { 290: 1, 328: 1, 337: 1, 339: 1, 346: 1, 
+                                  351: 1, 352: 1, 353: 3, 355: 1, 356: 3, 
+                                  357: 2, 369: 1, 370: 2, 371: 3, 372: 3, 
+                                  374: 2, 375: 2, 376: 5, 377: 2, 378: 2, 
+                                  379: 2, 380: 3, 381: 5, 382: 2, 383: 2, 
+                                  384: 5, 385: 5, 386: 1, 387: 1, 388: 5, 
+                                  389: 5, 390: 2, 391: 3, 392: 3, 393: 2, 
+                                  394: 4, 395: 4, 396: 5, 397: 4, 398: 5, 
+                                  399: 6, 400: 5, 401: 9, 402: 5, 403: 2, 
+                                  404: 13, 405: 11, 406: 9, 407: 11, 408: 9, 
+                                  409: 13, 410: 13, 411: 11, 412: 7, 413: 6, 
+                                  414: 8, 415: 8, 416: 9, 417: 9, 418: 15, 
+                                  419: 9, 420: 6, 421: 14, 422: 10, 423: 15, 
+                                  424: 11, 425: 15, 426: 10, 427: 12, 428: 21, 
+                                  429: 18, 430: 9, 431: 17, 432: 23, 433: 20, 
+                                  434: 18, 435: 14, 436: 15, 437: 29, 438: 27, 
+                                  439: 20, 440: 19, 441: 21, 442: 19, 443: 15, 
+                                  444: 21, 445: 25, 446: 33, 447: 29, 448: 21, 
+                                  449: 20, 450: 24, 451: 30, 452: 37, 453: 31, 
+                                  454: 30, 455: 29, 456: 32, 457: 31, 458: 36, 
+                                  459: 34, 460: 30, 461: 27, 462: 29, 463: 41, 
+                                  464: 27, 465: 31, 466: 38, 467: 39, 468: 37, 
+                                  469: 29, 470: 38, 471: 36, 472: 36, 473: 46, 
+                                  474: 44, 475: 38, 476: 43, 477: 27, 478: 36, 
+                                  479: 42, 480: 35, 481: 37, 482: 40, 483: 47, 
+                                  484: 45, 485: 43, 486: 54, 487: 38, 488: 44, 
+                                  489: 32, 490: 53, 491: 50, 492: 37, 493: 42, 
+                                  494: 52, 495: 47, 496: 51, 497: 40, 498: 52, 
+                                  499: 39, 500: 39, 501: 49, 502: 49, 503: 42, 
+                                  504: 52, 505: 43, 506: 49, 507: 53, 508: 39, 
+                                  509: 51, 510: 43, 511: 51, 512: 37, 513: 42, 
+                                  514: 52, 515: 43, 516: 46, 517: 48, 518: 37, 
+                                  519: 40, 520: 41, 521: 39, 522: 34, 523: 42, 
+                                  524: 41, 525: 51, 526: 39, 527: 54, 528: 48, 
+                                  529: 38, 530: 42, 531: 47, 532: 38, 533: 31, 
+                                  534: 35, 535: 46, 536: 25, 537: 45, 538: 26, 
+                                  539: 35, 540: 27, 541: 24, 542: 30, 543: 33, 
+                                  544: 35, 545: 34, 546: 25, 547: 37, 548: 20, 
+                                  549: 22, 550: 30, 551: 29, 552: 19, 553: 25, 
+                                  554: 25, 555: 22, 556: 26, 557: 27, 558: 27, 
+                                  559: 18, 560: 14, 561: 24, 562: 23, 563: 16, 
+                                  564: 22, 565: 18, 566: 19, 567: 20, 568: 21, 
+                                  569: 21, 570: 13, 571: 16, 572: 19, 573: 21, 
+                                  574: 15, 575: 18, 576: 21, 577: 13, 578: 14, 
+                                  579: 13, 580: 16, 581: 11, 582: 13, 583: 14, 
+                                  584: 9, 585: 11, 586: 14, 587: 7, 588: 12, 
+                                  589: 10, 590: 12, 591: 10, 592: 8, 593: 12, 
+                                  594: 10, 595: 6, 596: 4, 597: 8, 598: 9, 
+                                  599: 7, 600: 7, 601: 9, 602: 9, 603: 1, 
+                                  604: 3, 605: 5, 606: 4, 607: 2, 608: 1, 
+                                  609: 4, 610: 7, 611: 3, 612: 7, 613: 4, 
+                                  614: 3, 615: 5, 616: 6, 617: 4, 618: 5, 
+                                  619: 3, 620: 2, 621: 2, 623: 1, 624: 3, 
+                                  625: 4, 626: 2, 627: 2, 629: 1, 630: 1, 
+                                  631: 1, 632: 2, 633: 1, 636: 1, 637: 1, 
+                                  638: 1, 640: 2, 641: 1, 645: 1, 646: 1, 
+                                  647: 1, 648: 2, 649: 1, 650: 2, 651: 1, 
+                                  653: 1, 657: 1, 660: 1, 662: 1, 674: 1, 
+                                  686: 1 }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/INFO_0'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/paired_0'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/merged_0'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/single_0'
+        chunk num:       8
+      single reads mapped: false
+      library index:   0
+      number of reads: 12025
+      total nucleotides: 1803671
+  - type:            single
+    number:          1
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended_1_unpaired00.1_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 0
+      insert size deviation: 0
+      insert size left quantile: 0
+      insert size right quantile: 0
+      insert size median: 0
+      insert size mad: 0
+      insert size distribution: {  }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/INFO_1'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/paired_1'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/merged_1'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/single_1'
+        chunk num:       8
+      single reads mapped: true
+      library index:   1
+      number of reads: 454
+      total nucleotides: 68100
+  - type:            single
+    number:          2
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/corrected/extended_2_unpaired00.2_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 0
+      insert size deviation: 0
+      insert size left quantile: 0
+      insert size right quantile: 0
+      insert size median: 0
+      insert size mad: 0
+      insert size distribution: {  }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/INFO_2'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/paired_2'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/merged_2'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies/10K_ext20_mixed_cnn_filtered_cli/getorganelle_filtered_cnn/extended_spades/.bin_reads/single_2'
+        chunk num:       8
+      single reads mapped: true
+      library index:   2
+      number of reads: 542
+      total nucleotides: 81300
+...

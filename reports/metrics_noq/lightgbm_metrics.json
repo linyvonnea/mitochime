@@ -1,0 +1,14 @@
+{
+  "model": "lightgbm",
+  "cv_accuracy_mean": 0.8071344692433831,
+  "cv_accuracy_std": 0.0032180674798979246,
+  "cv_f1_mean": 0.7749791637708529,
+  "cv_f1_std": 0.0051045704567512125,
+  "test_accuracy": 0.7987995498311867,
+  "test_precision": 0.9258995368721055,
+  "test_recall": 0.64975,
+  "test_f1": 0.7636256794476275,
+  "test_roc_auc": 0.8384149674756067,
+  "n_train": 31986,
+  "n_test": 7997
+}
