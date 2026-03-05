@@ -376,25 +376,75 @@ Figure~\ref{fig:gradient_boost_three_sets} presents a bar chart comparing F1 and
 The full 23-feature model is retained as the primary configuration for the remainder of the study, while the four-feature subset serves as a lightweight alternative. Clipping features reflect alignment junctions and mapping disruptions typical of chimeric reads, and k-mer divergence captures changes in sequence composition across breakpoints. Microhomology features appear largely redundant, as their signal is either indirectly represented by clipping and k-mer features or not strongly expressed in the simulation dataset.
 
 
-\section{Convolutional Neural Network (CNN) Performance and Classification Results}
+\section{Convolutional Neural Network (CNN) Classification Performance}
 
-As shown in Figure~\ref{fig:cnn_training}, the CNN demonstrates stable convergence and strong generalization performance on the balanced test set ($n = 8000$; 4000 clean and 4000 chimeric). Training loss decreases consistently from 0.693 at epoch 1 to 0.110 at epoch 15, while test accuracy improves from 0.500 to 0.893, indicating effective feature extraction and progressive learning of sequence patterns. Test loss declines in parallel with training loss and reaches its minimum of 0.307 at epoch 12, followed by a temporary increase at epochs 13--14 despite continued reductions in training loss, suggesting mild overfitting. However, performance stabilizes by epoch 15, which yields the highest test accuracy of 0.893 with a test loss of 0.310, indicating that generalization remains strong overall. In addition, the model achieves a ROC--AUC of 0.9508, demonstrating strong discrimination between clean and chimeric reads across decision thresholds.
+The performance of the 1D Convolutional Neural Network (CNN) was evaluated on a held-out test set to determine its efficacy in classifying sequences as clean or chimeric. As shown in Figure~\ref{fig:cnn_train_test_loss}, the optimal model state was reached at epoch 25, where the test loss was minimized at 0.304. At this best epoch, the model achieved a test accuracy of 0.905 and a high Area Under the ROC Curve (AUC) of 0.958, indicating excellent separability between clean and chimeric reads across thresholds.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{figures/cnn_training.png}
-  \caption{Training and Test Performance of the CNN Model Across 15 Epochs}
-  \label{fig:cnn_training}
+  \includegraphics[width=0.6\textwidth]{figures/cnn_train_test_loss.png} 
+  \caption{Training and held-out test loss curves for the CNN model across epochs.}
+  \label{fig:cnn_train_test_loss}
 \end{figure}
 
-Class-wise performance indicates that the model is strongly biased toward correctly identifying chimeric reads. Specifically, it achieved a recall of 0.9495 for the chimeric class, correctly detecting 3798 out of 4000 chimeric sequences, while recall for the clean class was lower at 0.8370, with 3348 out of 4000 clean reads correctly classified. The confusion matrix (Figure~\ref{fig:cnn_confusion}) reveals that only 202 chimeric reads were misclassified as clean, whereas a larger number of clean reads (652) were incorrectly labeled as chimeric. This asymmetry results in a chimeric precision of 0.8535 and an F1-score of 0.8989. These findings indicate that the model prioritizes minimizing false negatives for chimeric reads, thereby maximizing detection sensitivity, at the cost of a higher false-positive rate among clean reads. However, the high F1-score shows that the model maintains a strong balance between sensitivity and predictive reliability for the chimeric class, suggesting that the high detection rate is not achieved at the expense of excessive false-positive predictions.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/cnn_test_f1_auc.png} 
+  \caption{Test-set F1-score and ROC--AUC per epoch for the CNN model}
+  \label{fig:cnn_test_f1_auc}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{CNN performance on the test set at the best epoch.}
+  \label{tab:cnn_metrics}
+  \begin{tabular}{lrrrrrr}
+    \toprule
+    epoch & loss & acc & prec & rec & f1 & auc \\
+    \midrule
+    25 & 0.304093 & 0.904750 & 0.877918 & 0.940250 & 0.908015 & 0.957945 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Class-wise performance indicates that the model is highly sensitive in correctly identifying chimeric reads, recording a recall of 0.940. This is further evidenced by the confusion matrix in Figure~\ref{fig:cnn_confusion_matrix}, which shows that the model correctly identified 3{,}761 chimeric sequences while only missing 239 (false negatives). While the precision was recorded at 0.878 due to 523 clean sequences being misclassified as chimeric (false positives), the resulting F1-score of 0.908 confirms that the model maintains a good balance between precision and recall. As illustrated in Figure~\ref{fig:cnn_test_f1_auc}, both the F1 and AUC scores stabilized early in training and remained consistently high through the final epochs.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{figures/cnn_confusion.png}
+  \includegraphics[width=0.6\textwidth]{figures/cnn_confusion_matrix.png}
   \caption{Confusion Matrix of CNN Classification Performance on Clean and Chimeric Reads}
-  \label{fig:cnn_confusion}
+  \label{fig:cnn_confusion_matrix}
 \end{figure}
+
+The stability of the CNN architecture was verified using five-fold cross-validation, as summarized in Figure~\ref{fig:cnn_cv}. The mean cross-validation scores---specifically an F1-score of $0.875 \pm 0.011$ and an AUC of $0.936 \pm 0.008$---align closely with the results obtained from the held-out test set. The low standard deviation across all folds suggests that the model is not overly sensitive to specific data partitions and possesses strong generalization capabilities for genomic sequence classification. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/cnn_cv.png}
+  \caption{Cross-Validation Results of CNN Classification Performance}
+  \label{fig:cnn_cv}
+\end{figure}
+
+\section{Comparison of Model Performance}
+
+To situate the result within the objective of the paper, the CNN's performance was compared against the best-performing traditional machine learning model, a tuned Gradient Boosting (GB) classifier. Table~\ref{tab:cnn_vs_gb} summarizes the results and shows that the CNN outperformed Gradient Boosting across all reported metrics, improving accuracy from 0.809 to 0.905, F1 from 0.777 to 0.908, and ROC--AUC from 0.846 to 0.958. Notably, while the Gradient Boosting model exhibited higher precision (0.937), its recall was substantially lower (0.663), indicating a conservative decision strategy that reduced false positives at the expense of missed chimeric reads. In contrast, the CNN maintained high recall (0.940) while preserving strong precision (0.878), yielding a more favorable balance for detecting chimeric reads.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Performance comparison between the tuned Gradient Boosting classifier and the 1D CNN on the test set.}
+  \label{tab:cnn_vs_gb}
+  \begin{tabular}{lrrrrr}
+    \toprule
+    model & acc & prec & rec & f1 & auc \\
+    \midrule
+    GradientBoosting (tuned) & 0.809053 & 0.936771 & 0.663000 & 0.776460 & 0.845858 \\
+    CNN1D (final held-out test) & 0.904750 & 0.877918 & 0.940250 & 0.908015 & 0.957945 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 
 \subsection{External Assembly Testing}
 
