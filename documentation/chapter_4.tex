@@ -157,7 +157,7 @@ A feature correlation heatmap (Figure~\ref{fig:correlation_heatmap}) was generat
 
 \section{Baseline Classification Performance}
 
-Table~\ref{tab:baseline_models_test_metrics} summarises the performance of thirteen baseline classifiers trained on the engineered feature set and evaluated on a held-out test set. All models were trained using default hyperparameters, without dedicated tuning.
+Table~\ref{tab:baseline_models_noq} summarises the performance of thirteen baseline classifiers trained on the engineered feature set and evaluated on a held-out test set. All models were trained using default hyperparameters, without dedicated tuning.
 
 The dummy baseline, which always predicts the same class regardless of the input features, achieved a test accuracy of approximately 0.50 and an F1-score of 0.67. This reflects the balanced class distribution and serves as a lower bound for meaningful model performance.
 
@@ -395,6 +395,42 @@ Class-wise performance indicates that the model is strongly biased toward correc
   \caption{Confusion Matrix of CNN Classification Performance on Clean and Chimeric Reads}
   \label{fig:cnn_confusion}
 \end{figure}
+
+\subsection{External Assembly Testing}
+
+Table~\ref{tab:external_results} shows the external assembly testing evaluated whether filtering removed simulated chimeric reads while preserving assembly capability. Assemblies were generated from datasets with 10\%, 20\%, and 50\% chimera rates. For the 10\% and 20\% datasets, all filters produced complete assemblies with a single scaffold and one graph node, and assembly sizes remained stable at 16,612--16,615~bp, matching the unfiltered baseline.  
+
+Read retention varied by filtering strategy but remained sufficient for successful assembly. Gradient Boosting retained 95.47\% of reads in the 10\% chimera rate dataset and 91.26\% in the 20\% dataset. CNN filtering retained 77.34\% (10\%) and 70.59\% (20\%), while the transformer filter retained 81.89\% and 75.61\% in the 10\% and 20\% datasets respectively. Despite these reductions, assemblies remained structurally simple with a single scaffold and one graph node, indicating that the remaining reads were adequate for mitochondrial sequence reconstruction. 
+
+The 50\% dataset required greater filtering because of the high proportion of chimeric reads. Unfiltered assemblies showed fragmentation with up to two scaffolds and three graph nodes. After filtering, assemblies were simplified, having one scaffold and one node, and sequence recovery remained complete (16,543--16,763~bp depending on the filter). These results demonstrate that filtering removes chimeric reads while preserving mitochondrial assembly capability.
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccc}
+\toprule
+Filter & Chimera\% & Reads retained\% & Scaffolds & Graph nodes & Assembly bp \\
+\midrule
+CNN & 10\% & 77.34\% & 1 & 1 & 16612 \\
+Gradient Boosting & 10\% & 95.47\% & 1 & 1 & 16612 \\
+Transformer & 10\% & 81.89\% & 1 & 1 & 16612 \\
+Unfiltered & 10\% & 100\% & 1 & 1 & 16612 \\
+\midrule
+CNN & 20\% & 70.59\% & 1 & 1 & 16615 \\
+Gradient Boosting & 20\% & 91.26\% & 1 & 1 & 16597 \\
+Transformer & 20\% & 75.61\% & 1 & 1 & 16615 \\
+Unfiltered & 20\% & 100\% & 1 & 1 & 16669 \\
+\midrule
+CNN & 50\% & 48.57\% & 1 & 1 & 16543 \\
+Gradient Boosting & 50\% & 79.75\% & 2 & 2 & 16763 \\
+Transformer & 50\% & 56.48\% & 1 & 1 & 16623 \\
+Unfiltered & 50\% & 100\% & 2 & 3 & 16680 \\
+\bottomrule
+\end{tabular}%
+}
+\caption{External assembly testing results}
+\label{tab:external_results}
+\end{table}
 
 \section{Summary of Findings}
 
