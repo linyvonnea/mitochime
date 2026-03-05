@@ -1,0 +1,7 @@
+"bwa": "/Users/yvonnelin/miniconda3/envs/mitochime/bin/spades-bwa"
+"dataset": "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_10_cnn_t0p5/spades/input_dataset.yaml"
+"log_filename": "log.properties"
+"max_nthreads": !!int "8"
+"output_dir": "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_10_cnn_t0p5/spades/mismatch_corrector/scaffolds"
+"strategy": "mapped_squared"
+"work_dir": "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/3200_final_10_cnn_t0p5/spades/tmp/corrector_0648nz4_"

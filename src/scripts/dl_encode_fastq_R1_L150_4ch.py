@@ -1,70 +1,86 @@
 #!/usr/bin/env python3
-import argparse
-import gzip
+import argparse, gzip
 import numpy as np
 
-MAP = {"A":0,"C":1,"G":2,"T":3,"a":0,"c":1,"g":2,"t":3}
-
-def open_maybe_gz(path):
-    return gzip.open(path, "rt") if path.endswith(".gz") else open(path, "r")
-
-def fastq_iter(path):
-    with open_maybe_gz(path) as f:
-        while True:
-            h = f.readline().rstrip()
-            if not h:
-                break
-            seq = f.readline().rstrip()
-            _ = f.readline()
-            _ = f.readline()
-            yield h, seq
+def open_text(path: str, mode: str = "rt"):
+    if path.endswith(".gz"):
+        return gzip.open(path, mode)
+    return open(path, mode)
 
 def norm_id(h: str) -> str:
-    if h.startswith("@"):
-        h = h[1:]
-    return h.split()[0]  # keep /1 if present
+    s = h.strip().split()[0]
+    if s.startswith("@"):
+        s = s[1:]
+    if s.endswith("/1") or s.endswith("/2"):
+        s = s[:-2]
+    return s
 
-def base_id(rid: str) -> str:
-    return rid[:-2] if rid.endswith("/1") or rid.endswith("/2") else rid
+def iter_fastq(path: str):
+    with open_text(path, "rt") as f:
+        while True:
+            h = f.readline()
+            if not h:
+                break
+            seq = f.readline().strip()
+            plus = f.readline()
+            qual = f.readline()
+            if not qual:
+                break
+            yield h, seq
 
-def encode_seq_4ch(seq: str, L: int) -> np.ndarray:
-    x = np.zeros((4, L), dtype=np.float32)
-    for i, ch in enumerate(seq[:L]):
-        idx = MAP.get(ch, None)
-        if idx is not None:
-            x[idx, i] = 1.0
-    return x
+def onehot_4ch(seq: str, L: int) -> np.ndarray:
+    # shape (4, L)
+    arr = np.zeros((4, L), dtype=np.float32)
+    seq = seq.upper()
+    # pad/truncate
+    if len(seq) < L:
+        seq = seq + ("N" * (L - len(seq)))
+    else:
+        seq = seq[:L]
+
+    # A,C,G,T mapping
+    for i, b in enumerate(seq):
+        if b == "A":
+            arr[0, i] = 1.0
+        elif b == "C":
+            arr[1, i] = 1.0
+        elif b == "G":
+            arr[2, i] = 1.0
+        elif b == "T":
+            arr[3, i] = 1.0
+        # else: N/others remain 0
+    return arr
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--r1", required=True)
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--out-ids", required=True)
+    ap.add_argument("--out", required=True, help="output .npz")
+    ap.add_argument("--out-ids", required=True, help="output ids.txt")
     ap.add_argument("--read-len", type=int, default=150)
-    ap.add_argument("--max-reads", type=int, default=0)
     args = ap.parse_args()
 
-    X_list, ids = [], []
-    n = 0
+    L = args.read_len
 
-    for h, s in fastq_iter(args.r1):
-        rid = norm_id(h)     # e.g. chimera_.../1
-        bid = base_id(rid)   # e.g. chimera_...
-        X_list.append(encode_seq_4ch(s, args.read_len))
-        ids.append(bid)
-        n += 1
-        if args.max_reads and n >= args.max_reads:
-            break
+    ids = []
+    X_list = []
 
-    X = np.stack(X_list, axis=0)  # (N,4,150)
+    for h, seq in iter_fastq(args.r1):
+        rid = norm_id(h)
+        ids.append(rid)
+        X_list.append(onehot_4ch(seq, L))
+
+    if not X_list:
+        raise SystemExit("[ERROR] No reads found in R1")
+
+    X = np.stack(X_list, axis=0)  # (N, 4, L)
     np.savez_compressed(args.out, X=X)
 
-    with open(args.out_ids, "w") as f:
-        for bid in ids:
-            f.write(bid + "\n")
+    with open(args.out_ids, "wt") as f:
+        for rid in ids:
+            f.write(rid + "\n")
 
-    print(f"[OK] Encoded reads: {X.shape} -> {args.out}")
-    print(f"[OK] IDs: {len(ids)} -> {args.out_ids}")
+    print(f"[OK] Encoded {X.shape[0]} reads -> {args.out}  shape={X.shape}")
+    print(f"[OK] IDs -> {args.out_ids}")
 
 if __name__ == "__main__":
     main()

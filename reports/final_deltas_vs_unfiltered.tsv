@@ -1,0 +1,25 @@
+read_level	chimera_pct	dataset	model	thresh	pct_kept	delta_components	delta_nodes	delta_contigs	delta_max_len	delta_total_len
+3200	5	3200_final_5	CNN	0.5	84.0			0	-247	-247
+3200	5	3200_final_5	GB	0.5	97.406			0	-22	-22
+3200	10	3200_final_10	CNN	0.5	79.938			0	-7	-7
+3200	10	3200_final_10	GB	0.5	95.219			0	24	24
+3200	15	3200_final_15	CNN	0.5	75.812			1	-1739	-207
+3200	15	3200_final_15	GB	0.5	93.375			0	-39	-39
+3200	50	3200_final_50	CNN	0.5	50.719			1	-309	-22
+3200	50	3200_final_50	GB	0.5	77.875			0	-90	-90
+10K	5	10K_final_5	CNN	0.5	83.14			0	-16	-16
+10K	5	10K_final_5	GB	0.5	97.32			0	0	0
+10K	10	10K_final_10	CNN	0.5	79.85			0	-90	-90
+10K	10	10K_final_10	GB	0.5	95.3			0	-90	-90
+10K	15	10K_final_15	CNN	0.5	76.02			0	-124	-124
+10K	15	10K_final_15	GB	0.5	93.33			0	-93	-93
+10K	50	10K_final_50	CNN	0.5	50.46			0	-64	-64
+10K	50	10K_final_50	GB	0.5	78.94			0	72	72
+20K	5	20K_final_5	CNN	0.5	83.685			0	0	0
+20K	5	20K_final_5	GB	0.5	97.49			0	-50	-50
+20K	10	20K_final_10	CNN	0.5	79.94			0	-29	-29
+20K	10	20K_final_10	GB	0.5	95.135			0	-183	-183
+20K	15	20K_final_15	CNN	0.5	75.58			0	-81	-81
+20K	15	20K_final_15	GB	0.5	93.345			0	144	144
+20K	50	20K_final_50	CNN	0.5	50.88			-965	16286	-147213
+20K	50	20K_final_50	GB	0.5	78.485			-965	16392	-147107

@@ -1,0 +1,25 @@
+dataset	model	thresh	pct_kept	spades_contigs	spades_max_len	spades_total_len	gfa_nodes	gfa_components	delta_contigs	delta_max_len	delta_total_len	delta_nodes	delta_components
+10K_lemuru15	CNN	0.3	73.57	1	16611	16611			0	-124	-124		
+10K_lemuru15	CNN	0.5	76.02	1	16611	16611			0	-124	-124		
+10K_lemuru15	CNN	0.7	78.63	1	16618	16618			0	-117	-117		
+10K_lemuru15	GB	0.3	88.88	1	16611	16611			0	-124	-124		
+10K_lemuru15	GB	0.5	93.33	1	16642	16642			0	-93	-93		
+10K_lemuru15	UNFILTERED	NA	100.0	1	16735	16735			0	0	0		
+10K_lemuru50	CNN	0.3	47.74	1	16651	16651			0	-64	-64		
+10K_lemuru50	CNN	0.5	50.46	1	16651	16651			0	-64	-64		
+10K_lemuru50	CNN	0.7	53.88	1	16685	16685			0	-30	-30		
+10K_lemuru50	GB	0.3	71.22	1	16774	16774			0	59	59		
+10K_lemuru50	GB	0.5	78.94	1	16787	16787			0	72	72		
+10K_lemuru50	UNFILTERED	NA	100.0	1	16715	16715			0	0	0		
+3200_lemuru15	CNN	0.3	73.469	1	16598	16598			0	-47	-47		
+3200_lemuru15	CNN	0.5	75.812	2	14906	16438			1	-1739	-207		
+3200_lemuru15	CNN	0.7	78.719	2	14906	16472			1	-1739	-173		
+3200_lemuru15	GB	0.3	89.0	1	16606	16606			0	-39	-39		
+3200_lemuru15	GB	0.5	93.375	1	16606	16606			0	-39	-39		
+3200_lemuru15	UNFILTERED	NA	100.0	1	16645	16645			0	0	0		
+3200_lemuru50	CNN	0.3	48.156	2	16427	16698			1	-309	-38		
+3200_lemuru50	CNN	0.5	50.719	2	16427	16714			1	-309	-22		
+3200_lemuru50	CNN	0.7	53.719	2	16427	16714			1	-309	-22		
+3200_lemuru50	GB	0.3	70.125	1	16646	16646			0	-90	-90		
+3200_lemuru50	GB	0.5	77.875	1	16646	16646			0	-90	-90		
+3200_lemuru50	UNFILTERED	NA	100.0	1	16736	16736			0	0	0		
