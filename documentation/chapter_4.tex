@@ -376,111 +376,42 @@ Figure~\ref{fig:gradient_boost_three_sets} presents a bar chart comparing F1 and
 The full 23-feature model is retained as the primary configuration for the remainder of the study, while the four-feature subset serves as a lightweight alternative. Clipping features reflect alignment junctions and mapping disruptions typical of chimeric reads, and k-mer divergence captures changes in sequence composition across breakpoints. Microhomology features appear largely redundant, as their signal is either indirectly represented by clipping and k-mer features or not strongly expressed in the simulation dataset.
 
 
-\section{Convolutional Neural Network (CNN) Classification Performance}
+\section{Convolutional Neural Network (CNN) Performance and Classification Results}
 
-The performance of the 1D Convolutional Neural Network (CNN) was evaluated on a held-out test set to determine its efficacy in classifying sequences as clean or chimeric. As shown in Figure~\ref{fig:cnn_train_test_loss}, the optimal model state was reached at epoch 25, where the test loss was minimized at 0.304. At this best epoch, the model achieved a test accuracy of 0.905 and a high Area Under the ROC Curve (AUC) of 0.958, indicating excellent separability between clean and chimeric reads across thresholds.
+As shown in Figure~\ref{fig:cnn_training}, the CNN demonstrates stable convergence and strong generalization performance on the balanced test set ($n = 8000$; 4000 clean and 4000 chimeric). Training loss decreases consistently from 0.693 at epoch 1 to 0.110 at epoch 15, while test accuracy improves from 0.500 to 0.893, indicating effective feature extraction and progressive learning of sequence patterns. Test loss declines in parallel with training loss and reaches its minimum of 0.307 at epoch 12, followed by a temporary increase at epochs 13--14 despite continued reductions in training loss, suggesting mild overfitting. However, performance stabilizes by epoch 15, which yields the highest test accuracy of 0.893 with a test loss of 0.310, indicating that generalization remains strong overall. In addition, the model achieves a ROC--AUC of 0.9508, demonstrating strong discrimination between clean and chimeric reads across decision thresholds.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{figures/cnn_train_test_loss.png} 
-  \caption{Training and held-out test loss curves for the CNN model across epochs.}
-  \label{fig:cnn_train_test_loss}
+  \includegraphics[width=\linewidth]{figures/cnn_training.png}
+  \caption{Training and Test Performance of the CNN Model Across 15 Epochs}
+  \label{fig:cnn_training}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\textwidth]{figures/cnn_test_f1_auc.png} 
-  \caption{Test-set F1-score and ROC--AUC per epoch for the CNN model}
-  \label{fig:cnn_test_f1_auc}
-\end{figure}
-
-\begin{table}[htbp]
-  \centering
-  \small
-  \caption{CNN performance on the test set at the best epoch.}
-  \label{tab:cnn_metrics}
-  \begin{tabular}{lrrrrrr}
-    \toprule
-    epoch & loss & acc & prec & rec & f1 & auc \\
-    \midrule
-    25 & 0.304093 & 0.904750 & 0.877918 & 0.940250 & 0.908015 & 0.957945 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-Class-wise performance indicates that the model is highly sensitive in correctly identifying chimeric reads, recording a recall of 0.940. This is further evidenced by the confusion matrix in Figure~\ref{fig:cnn_confusion_matrix}, which shows that the model correctly identified 3{,}761 chimeric sequences while only missing 239 (false negatives). While the precision was recorded at 0.878 due to 523 clean sequences being misclassified as chimeric (false positives), the resulting F1-score of 0.908 confirms that the model maintains a good balance between precision and recall. As illustrated in Figure~\ref{fig:cnn_test_f1_auc}, both the F1 and AUC scores stabilized early in training and remained consistently high through the final epochs.
+Class-wise performance indicates that the model is strongly biased toward correctly identifying chimeric reads. Specifically, it achieved a recall of 0.9495 for the chimeric class, correctly detecting 3798 out of 4000 chimeric sequences, while recall for the clean class was lower at 0.8370, with 3348 out of 4000 clean reads correctly classified. The confusion matrix (Figure~\ref{fig:cnn_confusion}) reveals that only 202 chimeric reads were misclassified as clean, whereas a larger number of clean reads (652) were incorrectly labeled as chimeric. This asymmetry results in a chimeric precision of 0.8535 and an F1-score of 0.8989. These findings indicate that the model prioritizes minimizing false negatives for chimeric reads, thereby maximizing detection sensitivity, at the cost of a higher false-positive rate among clean reads. However, the high F1-score shows that the model maintains a strong balance between sensitivity and predictive reliability for the chimeric class, suggesting that the high detection rate is not achieved at the expense of excessive false-positive predictions.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{figures/cnn_confusion_matrix.png}
+  \includegraphics[width=0.6\textwidth]{figures/cnn_confusion.png}
   \caption{Confusion Matrix of CNN Classification Performance on Clean and Chimeric Reads}
-  \label{fig:cnn_confusion_matrix}
+  \label{fig:cnn_confusion}
 \end{figure}
-
-The stability of the CNN architecture was verified using five-fold cross-validation, as summarized in Figure~\ref{fig:cnn_cv}. The mean cross-validation scores---specifically an F1-score of $0.875 \pm 0.011$ and an AUC of $0.936 \pm 0.008$---align closely with the results obtained from the held-out test set. The low standard deviation across all folds suggests that the model is not overly sensitive to specific data partitions and possesses strong generalization capabilities for genomic sequence classification. 
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\textwidth]{figures/cnn_cv.png}
-  \caption{Cross-Validation Results of CNN Classification Performance}
-  \label{fig:cnn_cv}
-\end{figure}
-
-\section{Comparison of Model Performance}
-
-To situate the result within the objective of the paper, the CNN's performance was compared against the best-performing traditional machine learning model, a tuned Gradient Boosting (GB) classifier. Table~\ref{tab:cnn_vs_gb} summarizes the results and shows that the CNN outperformed Gradient Boosting across all reported metrics, improving accuracy from 0.809 to 0.905, F1 from 0.777 to 0.908, and ROC--AUC from 0.846 to 0.958. Notably, while the Gradient Boosting model exhibited higher precision (0.937), its recall was substantially lower (0.663), indicating a conservative decision strategy that reduced false positives at the expense of missed chimeric reads. In contrast, the CNN maintained high recall (0.940) while preserving strong precision (0.878), yielding a more favorable balance for detecting chimeric reads.
-
-\begin{table}[htbp]
-  \centering
-  \small
-  \caption{Performance comparison between the tuned Gradient Boosting classifier and the 1D CNN on the test set.}
-  \label{tab:cnn_vs_gb}
-  \begin{tabular}{lrrrrr}
-    \toprule
-    model & acc & prec & rec & f1 & auc \\
-    \midrule
-    GradientBoosting (tuned) & 0.809053 & 0.936771 & 0.663000 & 0.776460 & 0.845858 \\
-    CNN1D (final held-out test) & 0.904750 & 0.877918 & 0.940250 & 0.908015 & 0.957945 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
 
 \subsection{External Assembly Testing}
 
-Table~\ref{tab:external_results} shows the external assembly testing evaluated whether filtering removed simulated chimeric reads while preserving assembly capability. Assemblies were generated from datasets with 10\%, 20\%, and 50\% chimera rates. For the 10\% and 20\% datasets, all filters produced complete assemblies with a single scaffold and one graph node, and assembly sizes remained stable at 16,612--16,615~bp, matching the unfiltered baseline.  
+\subsubsection{3200 Paired-end Reads}
+At the minimum read depth (3200), assembly outcomes depended strongly on how many reads were retained after filtering. At 5\% chimeras, both filters resolved minor branching by reducing the graph from 2 nodes (unfiltered) to 1 node. However, at higher chimera rates (15--50\%), the CNN filter produced fragmentation (2 nodes). This fragmentation is consistent with aggressive read removal, where CNN retained only 50.72--75.81\% of reads, leaving insufficient support for a fully contiguous assembly. In contrast, GB maintained a 1-node graph by retaining more reads (77.88--93.38\%).
 
-Read retention varied by filtering strategy but remained sufficient for successful assembly. Gradient Boosting retained 95.47\% of reads in the 10\% chimera rate dataset and 91.26\% in the 20\% dataset. CNN filtering retained 77.34\% (10\%) and 70.59\% (20\%), while the transformer filter retained 81.89\% and 75.61\% in the 10\% and 20\% datasets respectively. Despite these reductions, assemblies remained structurally simple with a single scaffold and one graph node, indicating that the remaining reads were adequate for mitochondrial sequence reconstruction. 
+\subsubsection{10K Paired-end Reads}
+At 10K reads and 5--15\% chimeras, all assemblies produced a clean 1-node graph, indicating that filtering mainly affected read retention rather than assembly structure. At 50\% chimeras, the unfiltered graph branched into 3 nodes. Filtering reduced this complexity: GB produced 2 nodes while retaining 78.94\% of reads, whereas CNN achieved a fully simplified 1-node graph while retaining 50.46\%. The residual node under GB suggests that its more conservative filtering retained some ambiguous reads that sustained a minor branch, while the stronger filtering under CNN removed these links and yielded a cleaner graph.
 
-The 50\% dataset required greater filtering because of the high proportion of chimeric reads. Unfiltered assemblies showed fragmentation with up to two scaffolds and three graph nodes. After filtering, assemblies were simplified, having one scaffold and one node, and sequence recovery remained complete (16,543--16,763~bp depending on the filter). These results demonstrate that filtering removes chimeric reads while preserving mitochondrial assembly capability.
+\subsubsection{20K Paired-end Reads}
+At 20K reads, unfiltered assemblies showed increased branching at 10--15\% chimeras (3 nodes) and extreme fragmentation at 50\% (966 nodes). Both filters restored contiguity. At 50\% chimeras, CNN produced a simpler graph (2 nodes) than GB (3 nodes), consistent with more aggressive read removal (CNN: 50.88\% retention vs.\ GB: 78.49\%). These results indicate that at higher coverage, stronger filtering can reduce chimera-driven graph complexity without inducing the fragmentation observed for CNN at the minimum-depth setting.
 
-\begin{table}[H]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lcccccc}
-\toprule
-Filter & Chimera\% & Reads retained\% & Scaffolds & Graph nodes & Assembly bp \\
-\midrule
-CNN & 10\% & 77.34\% & 1 & 1 & 16612 \\
-Gradient Boosting & 10\% & 95.47\% & 1 & 1 & 16612 \\
-Transformer & 10\% & 81.89\% & 1 & 1 & 16612 \\
-Unfiltered & 10\% & 100\% & 1 & 1 & 16612 \\
-\midrule
-CNN & 20\% & 70.59\% & 1 & 1 & 16615 \\
-Gradient Boosting & 20\% & 91.26\% & 1 & 1 & 16597 \\
-Transformer & 20\% & 75.61\% & 1 & 1 & 16615 \\
-Unfiltered & 20\% & 100\% & 1 & 1 & 16669 \\
-\midrule
-CNN & 50\% & 48.57\% & 1 & 1 & 16543 \\
-Gradient Boosting & 50\% & 79.75\% & 2 & 2 & 16763 \\
-Transformer & 50\% & 56.48\% & 1 & 1 & 16623 \\
-Unfiltered & 50\% & 100\% & 2 & 3 & 16680 \\
-\bottomrule
-\end{tabular}%
-}
-\caption{External assembly testing results}
-\label{tab:external_results}
-\end{table}
+Across read depths, GB consistently retained more reads and generally preserved contiguous assemblies, making it reliable at low depth (3200). CNN reduced graph complexity more strongly at high chimera percentage (notably 10K/50\% and 20K/50\%) but became risky at the minimum depth when chimera rates increased (3200/15--50\%), where filtering likely removed enough reads to cause fragmentation. Overall, assembly outcomes depended on both read depth and chimera percentage: at higher coverage, stronger filtering can simplify graphs without harming assembly, but at minimum coverage it can reduce read support and split the assembly into multiple nodes. In some unfiltered conditions, Bandage still showed a single-node graph. This does not imply the absence of chimeric reads; rather, SPAdes outputs a simplified assembly graph after trimming tips, and removing erroneous (including chimeric) connections. If chimeric reads do not generate an alternative path with sufficient support to persist through simplification, the assembly collapses to one dominant segment and appears as a single node in Bandage. 
+
+///insert cite {Bankevich2012SPAdes,Antipov2016SPAdesHybrid,Wick2015Bandage}
+
+
 
 \section{Summary of Findings}
 
