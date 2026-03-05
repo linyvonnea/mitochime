@@ -433,11 +433,15 @@ def extract_features(
             cigar = read.cigarstring if read.cigarstring is not None else "*"
 
             # SA features
+            strand = 1 if read.is_reverse else 0
+            primary_strand_sign = "-" if read.is_reverse else "+"
+
+            # SA features
             sa_segments = parse_sa_tag(read)
             sa_feats = sa_feature_stats(
                 primary_rname=ref_name,
                 primary_pos=ref_start_1based,
-                primary_strand=strand,
+                primary_strand=primary_strand_sign,   # <-- '+' / '-'
                 sa_segments=sa_segments,
             )
 
