@@ -1,0 +1,14 @@
+cat > documentation/nids2026/.gitignore <<'EOF'
+build/
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+EOF
