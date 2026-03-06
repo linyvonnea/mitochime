@@ -1,0 +1,53 @@
+% =========================
+% File: 03_methods.tex
+% =========================
+
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Overview}
+Figure~\ref{fig:pipeline_modeling} summarizes the end-to-end MitoChime workflow: paired-end read simulation, alignment to a mitochondrial reference, (i) tabular feature extraction for classical machine learning and (ii) sequence dataset preparation for deep learning, followed by model inference, read filtering, and downstream assembly evaluation.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{pipeline_modeling.png}
+  \caption{MitoChime workflow from simulated reads to filtering and assembly evaluation.}
+  \label{fig:pipeline_modeling}
+\end{figure}
+
+\subsection{Data simulation and alignment}
+Paired-end Illumina reads were simulated from the \textit{Sardinella lemuru} mitochondrial reference (NC\_039553.1). Clean reads were generated with wgsim (150\,bp) using an error rate of 0.05. Chimeric templates were constructed by concatenating two non-adjacent reference segments, optionally retaining short overlaps to approximate PCR template switching, and were simulated with the same read-length configuration but with error rate set to 0 to preserve junction signals. Reads were aligned to the reference using minimap2 in short-read mode (\texttt{-ax sr}) and processed with samtools to produce sorted and indexed BAM files.
+
+\subsection{Feature and sequence extraction}
+Two complementary input representations were prepared from the same labeled read pairs to support both classical machine learning and deep learning.
+
+\paragraph{Tabular feature matrix (classical machine learning).}
+For each primary-mapped read, a fixed-length feature vector was computed using pysam and NumPy. Feature families included: (i) supplementary-alignment and alignment-structure summaries derived from SA tags (e.g., presence/count of supplementary alignments, segment distances, strand consistency, and MAPQ/NM aggregates); (ii) CIGAR-derived clipping statistics (e.g., left/right soft clipping, total clipped bases, and an inferred breakpoint position); (iii) k-mer composition discontinuity between read segments ($k=6$), quantified via cosine distance and Jensen--Shannon divergence between left/right k-mer profiles; and (iv) microhomology descriptors around the inferred breakpoint (longest exact suffix--prefix overlap within a $\pm40$\,bp window and its GC fraction), together with basic alignment-quality indicators.
+
+\paragraph{Sequence-only dataset (deep learning).}
+In parallel, the raw nucleotide sequence (length $L=150$) was retained as a separate input for the CNN. Sequences were one-hot encoded at training and inference time, with ambiguous bases mapped to an all-zero channel.
+
+\subsection{Modeling and evaluation protocol}
+The labeled dataset was split into training and test partitions (80/20) with stratification. Model selection and tuning were performed on the training partition, and final performance was reported on the held-out test set using accuracy, precision, recall, F1, and ROC--AUC (precision/recall/F1 for the chimeric class).
+
+\paragraph{Classical machine learning.}
+Multiple classifiers were benchmarked using five-fold stratified cross-validation. A subset of competitive models was tuned via randomized search using chimeric-class F1 as the optimization target.
+
+\paragraph{CNN1D model.}
+A one-dimensional convolutional neural network (CNN1D) was trained on one-hot encoded sequences of length $L=150$. The network comprised three convolutional blocks with 64, 128, and 256 filters (kernel sizes 7, 5, and 3; ReLU activations; max-pooling after the first two blocks), followed by adaptive max pooling and a two-layer MLP head ($256\rightarrow128\rightarrow2$) with dropout (0.2). Training used mini-batches of 128 for up to 30 epochs with learning rate 0.001 and weight decay $10^{-4}$; the best checkpoint was selected by held-out F1.
+
+\subsection{Filtering strategy}
+Predicted chimeric reads were removed using a decision threshold on model scores, and filtered read sets were produced for downstream assembly. The same filtering procedure was applied to each simulated condition to enable paired comparisons between unfiltered and filtered assemblies.
+
+\subsection{Assembly and downstream evaluation}
+Assemblies were generated from filtered and unfiltered reads and evaluated using SPAdes assembly graphs summarized with Bandage statistics. Assembly graph complexity was quantified using graph-level metrics (e.g., node and edge counts, and total assembled length) across simulated read depths and chimera rates.
+
+\subsection{CLI workflow}
+A command-line interface automates preprocessing, model inference, filtering, and optional assembly evaluation (Fig.~\ref{fig:pipeline_cli}) to support reproducible use in mitochondrial assembly workflows.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.62\textwidth]{pipeline_cli.png}
+  \caption{MitoChime CLI workflow for model selection, filtering, and optional assembly evaluation.}
+  \label{fig:pipeline_cli}
+\end{figure}
