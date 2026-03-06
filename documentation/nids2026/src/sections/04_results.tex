@@ -1,7 +1,7 @@
 \section{Results}
 
 \subsection{Held-out test performance}
-Table~\ref{tab:perf_gb_cnn} summarizes held-out test performance for the tuned Gradient Boosting (feature-based) classifier and the final CNN1D (sequence-based) model. Precision/recall/F1 are reported for the chimeric class. The tuned Gradient Boosting model exhibits high precision (0.937) but lower recall (0.663), indicating a conservative decision strategy that reduced false positives at the expense of missed chimeric reads. In contrast, the CNN1D substantially increases recall (0.940) and overall discrimination (ROC--AUC 0.958), at the cost of reduced precision (0.878), resulting in more clean reads flagged as chimeric.
+Table~\ref{tab:perf_gb_cnn} summarizes held-out test performance for the tuned Gradient Boosting (feature-based) classifier and the final CNN1D (sequence-based) model. Precision/recall/F1 are reported for the chimeric class. The tuned Gradient Boosting model exhibits high precision (0.937) but lower recall (0.663), indicating a conservative decision strategy that reduced false positives at the expense of missed chimeric reads. In contrast, the CNN1D substantially increases recall (0.959) and overall discrimination (ROC--AUC 0.961), at the cost of reduced precision (0.872), resulting in more clean reads flagged as chimeric.
 
 \begin{table}[htbp]
 \centering
@@ -12,13 +12,13 @@ Table~\ref{tab:perf_gb_cnn} summarizes held-out test performance for the tuned G
 Model & Accuracy & Precision & Recall & F1 & ROC--AUC \\
 \midrule
 Gradient Boosting (tuned) & 0.8091 & 0.9368 & 0.6630 & 0.7765 & 0.8459 \\
-CNN1D (final)             & 0.9048 & 0.8779 & 0.9403 & 0.9080 & 0.9579 \\
+CNN1D (final)             & 0.9093 & 0.8724 & 0.9588 & 0.9135 & 0.9607 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Error profiles}
-The trade-off between the two models is visible in Fig.~\ref{fig:confmats}. Gradient Boosting produces relatively few false positives (179 clean reads predicted as chimeric) but many false negatives (1,348 chimeric reads predicted as clean). CNN1D reverses this pattern, with markedly fewer false negatives (239) but more false positives (523). These complementary error profiles motivate evaluating both models in terms of downstream assembly outcomes rather than classification metrics alone.
+The trade-off between the two models is visible in Fig.~\ref{fig:confmats}. Gradient Boosting produces relatively few false positives (179 clean reads predicted as chimeric) but many false negatives (1,348 chimeric reads predicted as clean). CNN1D reverses this pattern, with markedly fewer false negatives (165) but more false positives (561). These complementary error profiles motivate evaluating both models in terms of downstream assembly outcomes rather than classification metrics alone.
 
 \begin{figure}[H]
   \centering
