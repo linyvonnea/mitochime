@@ -9,7 +9,6 @@
 \usepackage{xurl}
 \usepackage[hidelinks]{hyperref} % removes red boxes around Figure refs/links
 
-% If you truly need subfigures, prefer subfig with LLNCS.
 % \usepackage{subfig}
 
 % ---------- Double-blind toggle ----------
@@ -35,17 +34,17 @@
   \authorrunning{Y. Lin et al.}
 
   \institute{University of the Philippines Visayas, Miagao, Iloilo, Philippines\\
-  \email{your.email@domain.com}}
+  \email{linyvonnea@gmail.com}}
 \fi
 
 \maketitle
 
+
 % ---------- Abstract ----------
 \begin{abstract}
-PCR amplification during Illumina library preparation can introduce chimeric reads that degrade mitochondrial genome assembly by creating spurious junctions and fragmented assembly graphs. Existing chimera detection tools are largely optimized for amplicon-based microbial workflows and often rely on reference databases or abundance assumptions that do not fit single-species organellar sequencing. \textbf{MitoChime} is introduced as a pipeline for detecting PCR-induced chimeric reads in \textit{Sardinella lemuru} mitochondrial paired-end data using alignment-derived features and a sequence-based convolutional model. Using simulated clean and chimeric reads, alignment-structure and clipping metrics are extracted alongside k-mer discontinuity and microhomology descriptors, and supervised classifiers are benchmarked against a CNN. On a held-out test set, a tuned Gradient Boosting classifier achieves F1=0.776 and ROC--AUC=0.846 for chimeric-read detection, while a CNN1D model achieves F1=0.908 and ROC--AUC=0.958 with higher recall. 
-Assembly evaluation using SPAdes-generated assembly graphs, summarized with Bandage statistics, shows that filtering reduces graph complexity under high chimera rates, with coverage-dependent trade-offs at low read depth.
-These results support MitoChime as a practical pre-assembly quality-control step for mitochondrial genome assembly pipelines.
-\keywords{chimera detection \and mitochondrial genome assembly \and Illumina reads \and machine learning \and deep learning}
+PCR amplification during Illumina library preparation can introduce chimeric reads that degrade mitochondrial genome assembly by creating spurious junctions and fragmented assembly graphs. Existing chimera detection tools are largely optimized for amplicon-based microbial workflows and often rely on reference databases or abundance assumptions that do not fit single-species organellar sequencing. \textbf{MitoChime} is presented as a pipeline for detecting PCR-induced chimeric reads in \textit{Sardinella lemuru} mitochondrial paired-end data using alignment-derived features and a sequence-based convolutional model. Using simulated clean and chimeric reads, alignment-structure and clipping metrics are extracted alongside k-mer discontinuity and microhomology descriptors, and supervised classifiers are benchmarked against a CNN. On a held-out test set, a tuned Gradient Boosting classifier achieves F1=0.776 and ROC--AUC=0.846 for chimeric-read detection, while a CNN1D model achieves F1=0.908 and ROC--AUC=0.958 with higher recall. Assembly evaluation using SPAdes-generated assembly graphs summarized with Bandage statistics shows that 
+filtering reduced assembly graph complexity at high chimera rates, with performance depending on read depth. These results support MitoChime as a practical pre-assembly quality-control step for mitochondrial genome assembly pipelines.
+\keywords{Chimera detection \and Mitochondrial genome assembly \and Illumina reads \and Machine learning \and Deep learning}
 \end{abstract}
 
 % from documentation/nids2026/src/main.tex
