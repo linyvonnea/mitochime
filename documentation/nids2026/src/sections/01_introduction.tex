@@ -1,0 +1,10 @@
+\section{Introduction}
+PCR amplification during next-generation sequencing (NGS) library preparation can introduce chimeric reads: artificial recombinants formed when incomplete extension products anneal to non-adjacent templates and are extended in subsequent cycles. While Illumina sequencing offers high throughput and accuracy, PCR-induced chimeras remain a persistent artifact that can distort downstream analyses and compromise genome assembly.
+
+Mitochondrial genomes are especially vulnerable because they are small, circular, and often contain repetitive regions. Even a modest fraction of junction-supporting artifacts can produce branching structures and fragmentation in assembly graphs, reducing contiguity and introducing false junctions. Organelle assembly tools commonly assume that input reads are largely free of such artifacts, leaving chimera-driven failure modes insufficiently addressed.
+
+Many established chimera detectors were developed for amplicon-based microbial community sequencing and rely on reference databases or abundance-driven assumptions that are poorly matched to single-species organellar sequencing. This motivates a specialized, feature-driven pipeline that operates directly on read-level alignment irregularities and sequence discontinuities and can be integrated as a pre-assembly filtering step.
+
+We present \textbf{MitoChime}, a pipeline for detecting PCR-induced chimeric reads in \textit{Sardinella lemuru} mitochondrial Illumina paired-end data. MitoChime extracts lightweight, interpretable features from standard BAM/FASTQ artifacts, benchmarks supervised machine learning models and a sequence-based CNN, and evaluates the impact of filtering on downstream assembly graphs.
+
+\textbf{Contributions.} (i) We design a read-level feature set combining alignment-structure, clipping, k-mer discontinuity, and microhomology descriptors relevant to PCR-induced chimerism. (ii) We benchmark and tune multiple classifiers and analyze feature contributions to interpret dominant predictors. (iii) We evaluate filtering effects on assembly graph complexity across read depths and chimera rates to quantify practical trade-offs.

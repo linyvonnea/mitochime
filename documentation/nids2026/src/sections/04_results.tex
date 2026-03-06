@@ -1,0 +1,94 @@
+% \section{Results}
+
+% \subsection{Held-out test performance}
+% Table~\ref{tab:perf_gb_cnn} summarizes held-out test performance for the tuned Gradient Boosting (feature-based) classifier and the final CNN1D (sequence-based) model. Precision/recall/F1 are reported for the chimeric class. The tuned Gradient Boosting model exhibits high precision (0.9368) but lower recall (0.6630), reflecting conservative filtering behavior that misses a larger fraction of chimeric reads. In contrast, the CNN1D substantially increases recall (0.9403) and overall discrimination (ROC--AUC 0.9579), at the cost of reduced precision (0.8779), i.e., more clean reads flagged as chimeric.
+
+% \begin{table}[t]
+% \centering
+% \caption{Held-out test performance of the tuned Gradient Boosting model and CNN1D. Precision/recall/F1 are reported for the chimeric (positive) class.}
+% \label{tab:perf_gb_cnn}
+% \begin{tabular}{lccccc}
+% \toprule
+% Model & Acc. & Prec. & Rec. & F1 & ROC--AUC \\
+% \midrule
+% Gradient Boosting (tuned) & 0.8091 & 0.9368 & 0.6630 & 0.7765 & 0.8459 \\
+% CNN1D (final)             & 0.9048 & 0.8779 & 0.9403 & 0.9080 & 0.9579 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+
+% \subsection{Error profiles}
+% The trade-off between the two models is visible in Fig.~\ref{fig:confmats}. Gradient Boosting produces relatively few false positives (179 clean reads predicted as chimeric) but many false negatives (1,348 chimeric reads predicted as clean). CNN1D reverses this pattern, with markedly fewer false negatives (239) but more false positives (523). These complementary error profiles motivate evaluating both models in terms of downstream assembly outcomes rather than classification metrics alone.
+
+% \begin{figure}[t]
+% \centering
+% \begin{subfigure}{0.48\textwidth}
+%   \centering
+%   \includegraphics[width=\textwidth]{../figures/confmat_gb.png}
+%   \caption{Tuned Gradient Boosting.}
+% \end{subfigure}\hfill
+% \begin{subfigure}{0.48\textwidth}
+%   \centering
+%   \includegraphics[width=\textwidth]{../figures/confmat_cnn.png}
+%   \caption{CNN1D.}
+% \end{subfigure}
+% \caption{Confusion matrices on the held-out test set (positive class: chimeric).}
+% \label{fig:confmats}
+% \end{figure}
+
+% \subsection{Downstream assembly impact}
+% Table~\ref{tab:assembly_bandage} reports Bandage graph statistics for unfiltered and filtered assemblies across read depths and chimera rates. Filtering substantially reduces graph complexity under high chimera burdens. At 20k reads and 50\% chimeras, the unfiltered assembly becomes extremely fragmented (966 nodes), whereas both GB and CNN restore near-contiguity (3 and 2 nodes, respectively). At 10k reads and 50\% chimeras, CNN collapses the graph to a single node, while GB reduces complexity to 2 nodes, consistent with CNN’s higher chimera recall and more aggressive removal of ambiguous read links. However, at low depth (3.2k), CNN occasionally increases fragmentation at higher chimera rates (e.g., 15--50\%), suggesting that over-filtering can remove critical read support when coverage is marginal. Overall, GB provides a conservative default for low-depth inputs, while CNN is most beneficial at moderate-to-high coverage and high chimera prevalence.
+
+% \begin{table*}[t]
+% \centering
+% \caption{Assembly graph statistics (Bandage) for unfiltered vs.\ filtered reads across read depths and chimera rates. Nodes summarize graph complexity (lower is simpler).}
+% \label{tab:assembly_bandage}
+% \scriptsize
+% \begin{tabular}{ll l r r r}
+% \toprule
+% Depth & Chimera\% & Condition & Nodes & Edges & Total length \\
+% \midrule
+% \multirow{12}{*}{3.2k}
+% & 5  & Unfiltered & 2 & 0 & 16{,}714 \\
+% & 5  & GB         & 1 & 0 & 16{,}577 \\
+% & 5  & CNN        & 1 & 0 & 16{,}352 \\
+% & 10 & Unfiltered & 1 & 0 & 16{,}591 \\
+% & 10 & GB         & 1 & 0 & 16{,}615 \\
+% & 10 & CNN        & 1 & 0 & 16{,}584 \\
+% & 15 & Unfiltered & 1 & 0 & 16{,}645 \\
+% & 15 & GB         & 1 & 0 & 16{,}607 \\
+% & 15 & CNN        & 2 & 0 & 16{,}438 \\
+% & 50 & Unfiltered & 1 & 0 & 16{,}736 \\
+% & 50 & GB         & 1 & 0 & 16{,}646 \\
+% & 50 & CNN        & 2 & 0 & 16{,}714 \\
+% \midrule
+% \multirow{12}{*}{10k}
+% & 5  & Unfiltered & 1 & 0 & 16{,}615 \\
+% & 5  & GB         & 1 & 0 & 16{,}615 \\
+% & 5  & CNN        & 1 & 0 & 16{,}599 \\
+% & 10 & Unfiltered & 1 & 0 & 16{,}704 \\
+% & 10 & GB         & 1 & 0 & 16{,}614 \\
+% & 10 & CNN        & 1 & 0 & 16{,}614 \\
+% & 15 & Unfiltered & 1 & 0 & 16{,}735 \\
+% & 15 & GB         & 1 & 0 & 16{,}642 \\
+% & 15 & CNN        & 1 & 0 & 16{,}611 \\
+% & 50 & Unfiltered & 3 & 4 & 16{,}945 \\
+% & 50 & GB         & 2 & 2 & 16{,}902 \\
+% & 50 & CNN        & 1 & 0 & 16{,}651 \\
+% \midrule
+% \multirow{12}{*}{20k}
+% & 5  & Unfiltered & 1 & 0 & 16{,}669 \\
+% & 5  & GB         & 2 & 2 & 16{,}734 \\
+% & 5  & CNN        & 1 & 0 & 16{,}669 \\
+% & 10 & Unfiltered & 3 & 4 & 17{,}029 \\
+% & 10 & GB         & 1 & 0 & 16{,}616 \\
+% & 10 & CNN        & 1 & 0 & 16{,}770 \\
+% & 15 & Unfiltered & 3 & 4 & 16{,}977 \\
+% & 15 & GB         & 1 & 0 & 16{,}891 \\
+% & 15 & CNN        & 1 & 0 & 16{,}666 \\
+% & 50 & Unfiltered & 966 & 1{,}297 & 163{,}906 \\
+% & 50 & GB         & 3 & 4 & 17{,}029 \\
+% & 50 & CNN        & 2 & 2 & 16{,}808 \\
+% \bottomrule
+% \end{tabular}
+% \end{table*}
