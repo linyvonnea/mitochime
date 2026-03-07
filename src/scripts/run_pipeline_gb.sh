@@ -32,8 +32,9 @@ if [[ "$R2" =~ \.gz$ ]] && ! gzip -t "$R2" >/dev/null 2>&1; then
   exit 1
 fi
 
-MODEL="models_noq_tuned/gradient_boosting_tuned.joblib"
-FEATURE_COLS="models_noq_tuned/feature_cols.json"
+# CORRECT RETRAINED PAIR-SAFE MODEL
+MODEL="models_pair_noq_tuned/gradient_boosting_tuned.joblib"
+FEATURE_COLS="models_pair_noq_tuned/feature_cols_24.json"
 
 [[ -f "$MODEL" ]] || { echo "[ERROR] Model not found: $MODEL" >&2; exit 1; }
 [[ -f "$FEATURE_COLS" ]] || { echo "[ERROR] Feature cols not found: $FEATURE_COLS" >&2; exit 1; }
@@ -48,6 +49,8 @@ TSV="${OUTDIR}/${RUN}.features.tsv"
 echo "[INFO] GB pipeline"
 echo "[INFO] RUN=$RUN THRESH=$THRESH THREADS=$THREADS"
 echo "[INFO] REF=$REF"
+echo "[INFO] MODEL=$MODEL"
+echo "[INFO] FEATURE_COLS=$FEATURE_COLS"
 echo "[INFO] OUTDIR=$OUTDIR"
 echo "[INFO] FILTDIR=$FILTDIR"
 

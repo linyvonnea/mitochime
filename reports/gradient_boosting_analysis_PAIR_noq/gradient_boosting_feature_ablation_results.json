@@ -2,7 +2,7 @@
   "paths": {
     "train_tsv": "../data/processed/PAIR_train_noq.tsv",
     "test_tsv": "../data/processed/PAIR_test_noq.tsv",
-    "model_path": "../models_PAIR_noq_tuned/gradient_boosting_tuned.joblib"
+    "model_path": "../models_pair_noq_tuned/gradient_boosting_tuned.joblib"
   },
   "full": {
     "n_features": 24,
