@@ -1,0 +1,106 @@
+à8---
+max read length: 150
+nomerge max read length: 150
+average read length: 149.996
+average coverage: 65.4836
+libraries:
+  - type:            paired-end
+    number:          1
+    orientation:     fr
+    left reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_cnn_fixedep25_t0p5/spades/corrected/20K_final_10_cnn_fixedep25_t0p5.cnn.filtered_R1.fastq00.0_0.cor.fastq.gz'
+    right reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_cnn_fixedep25_t0p5/spades/corrected/20K_final_10_cnn_fixedep25_t0p5.cnn.filtered_R2.fastq00.0_0.cor.fastq.gz'
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_cnn_fixedep25_t0p5/spades/corrected/20K_final_10_cnn_fixedep25_t0p5.cnn.filtered_R_unpaired00.0_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 500.332
+      insert size deviation: 50.1449
+      insert size left quantile: 436
+      insert size right quantile: 564
+      insert size median: 501
+      insert size mad: 33
+      insert size distribution: { 284: 1, 313: 1, 315: 1, 321: 1, 322: 1, 
+                                  324: 1, 325: 2, 326: 2, 327: 1, 329: 2, 
+                                  336: 2, 343: 2, 345: 3, 346: 4, 347: 1, 
+                                  348: 2, 349: 2, 351: 2, 352: 2, 354: 1, 
+                                  356: 1, 358: 2, 359: 2, 360: 2, 361: 1, 
+                                  362: 2, 363: 2, 364: 2, 365: 4, 366: 6, 
+                                  367: 5, 368: 5, 369: 2, 370: 5, 371: 1, 
+                                  372: 3, 373: 8, 374: 3, 375: 6, 376: 3, 
+                                  377: 2, 378: 6, 379: 8, 380: 9, 381: 9, 
+                                  382: 6, 383: 11, 384: 9, 385: 7, 386: 7, 
+                                  387: 7, 388: 4, 389: 10, 390: 9, 391: 6, 
+                                  392: 13, 393: 11, 394: 11, 395: 20, 396: 14, 
+                                  397: 19, 398: 11, 399: 19, 400: 13, 401: 9, 
+                                  402: 14, 403: 16, 404: 14, 405: 24, 406: 23, 
+                                  407: 18, 408: 25, 409: 19, 410: 25, 411: 28, 
+                                  412: 22, 413: 31, 414: 38, 415: 28, 416: 27, 
+                                  417: 41, 418: 32, 419: 30, 420: 33, 421: 41, 
+                                  422: 29, 423: 41, 424: 49, 425: 40, 426: 48, 
+                                  427: 36, 428: 43, 429: 48, 430: 41, 431: 57, 
+                                  432: 60, 433: 42, 434: 54, 435: 54, 436: 63, 
+                                  437: 45, 438: 66, 439: 52, 440: 72, 441: 58, 
+                                  442: 64, 443: 59, 444: 75, 445: 71, 446: 74, 
+                                  447: 72, 448: 59, 449: 70, 450: 73, 451: 82, 
+                                  452: 70, 453: 78, 454: 79, 455: 78, 456: 96, 
+                                  457: 87, 458: 74, 459: 80, 460: 85, 461: 74, 
+                                  462: 95, 463: 90, 464: 97, 465: 94, 466: 82, 
+                                  467: 121, 468: 97, 469: 99, 470: 97, 
+                                  471: 98, 472: 95, 473: 104, 474: 77, 
+                                  475: 105, 476: 92, 477: 126, 478: 107, 
+                                  479: 127, 480: 125, 481: 104, 482: 123, 
+                                  483: 109, 484: 132, 485: 105, 486: 134, 
+                                  487: 135, 488: 106, 489: 99, 490: 132, 
+                                  491: 115, 492: 107, 493: 107, 494: 114, 
+                                  495: 103, 496: 127, 497: 115, 498: 111, 
+                                  499: 115, 500: 112, 501: 110, 502: 113, 
+                                  503: 126, 504: 119, 505: 129, 506: 100, 
+                                  507: 119, 508: 105, 509: 122, 510: 122, 
+                                  511: 133, 512: 141, 513: 119, 514: 110, 
+                                  515: 106, 516: 111, 517: 129, 518: 125, 
+                                  519: 129, 520: 105, 521: 112, 522: 119, 
+                                  523: 95, 524: 112, 525: 124, 526: 115, 
+                                  527: 118, 528: 115, 529: 99, 530: 114, 
+                                  531: 124, 532: 106, 533: 91, 534: 99, 
+                                  535: 100, 536: 105, 537: 83, 538: 78, 
+                                  539: 93, 540: 79, 541: 100, 542: 87, 
+                                  543: 107, 544: 71, 545: 87, 546: 83, 
+                                  547: 82, 548: 80, 549: 85, 550: 66, 551: 69, 
+                                  552: 70, 553: 79, 554: 65, 555: 61, 556: 58, 
+                                  557: 68, 558: 57, 559: 49, 560: 55, 561: 60, 
+                                  562: 62, 563: 60, 564: 52, 565: 65, 566: 40, 
+                                  567: 48, 568: 38, 569: 55, 570: 45, 571: 40, 
+                                  572: 42, 573: 42, 574: 36, 575: 47, 576: 34, 
+                                  577: 31, 578: 28, 579: 28, 580: 30, 581: 32, 
+                                  582: 29, 583: 43, 584: 28, 585: 33, 586: 27, 
+                                  587: 32, 588: 28, 589: 31, 590: 28, 591: 22, 
+                                  592: 21, 593: 28, 594: 25, 595: 12, 596: 24, 
+                                  597: 20, 598: 17, 599: 17, 600: 19, 601: 16, 
+                                  602: 11, 603: 13, 604: 13, 605: 19, 606: 15, 
+                                  607: 16, 608: 19, 609: 13, 610: 6, 611: 10, 
+                                  612: 5, 613: 1, 614: 13, 615: 14, 616: 8, 
+                                  617: 13, 618: 6, 619: 5, 620: 14, 621: 6, 
+                                  622: 6, 623: 6, 624: 2, 625: 3, 626: 6, 
+                                  627: 6, 628: 4, 629: 6, 630: 1, 631: 7, 
+                                  632: 3, 633: 6, 634: 3, 635: 6, 636: 2, 
+                                  637: 2, 638: 2, 640: 2, 641: 1, 642: 2, 
+                                  643: 7, 644: 1, 645: 2, 646: 2, 647: 2, 
+                                  648: 4, 649: 1, 650: 2, 654: 1, 655: 3, 
+                                  660: 3, 662: 1, 664: 2, 665: 1, 667: 1, 
+                                  670: 1, 671: 1, 672: 1 }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_cnn_fixedep25_t0p5/spades/.bin_reads/INFO_0'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_cnn_fixedep25_t0p5/spades/.bin_reads/paired_0'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_cnn_fixedep25_t0p5/spades/.bin_reads/merged_0'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_cnn_fixedep25_t0p5/spades/.bin_reads/single_0'
+        chunk num:       8
+      single reads mapped: false
+      library index:   0
+      number of reads: 31468
+      total nucleotides: 4720072
+...
