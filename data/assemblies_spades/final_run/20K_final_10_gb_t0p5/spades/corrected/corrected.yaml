@@ -1,0 +1,9 @@
+- "left reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_gb_t0p5/spades/corrected/20K_final_10_gb_t0p5.gb.filtered_R1.fastq00.0_0.cor.fastq.gz"
+  "number": !!int "1"
+  "orientation": "fr"
+  "right reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_gb_t0p5/spades/corrected/20K_final_10_gb_t0p5.gb.filtered_R2.fastq00.0_0.cor.fastq.gz"
+  "single reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_10_gb_t0p5/spades/corrected/20K_final_10_gb_t0p5.gb.filtered_R_unpaired00.0_0.cor.fastq.gz"
+  "type": "paired-end"

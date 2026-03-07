@@ -1,0 +1,262 @@
+- STAGE: Before start
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Before_start_FY24Y2Y7O31AW5HEZJSSA6M3V5CGOZMI
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: before_start
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Read_error_correction_G4EP886H8W59NBEVTZ713D9B2F52QMU4
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: ec_start
+- STAGE: Read error correction
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/corrected/configs/config.info
+  config_dir: corrected
+  del_after:
+  - tmp/hammer_7hv3bazt
+  job_uuid: SPAdes_Read_error_correction_MNTM23Q5JR235B11M2EZ0R4SNL79F0ZD
+  mpi_support: false
+  output_files:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/corrected/corrected.yaml
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/spades-hammer
+  short_name: ec_runtool
+- STAGE: corrected reads compression
+  args:
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades/spades_pipeline/scripts/compress_all.py
+  - --input_file
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/corrected/corrected.yaml
+  - --ext_python_modules_home
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades
+  - --max_threads
+  - '8'
+  - --output_dir
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/corrected
+  - --gzip_output
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_corrected_reads_compression_84VJ6W2G6P23BHJZLOFBF0OVO7951HAE
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
+  short_name: ec_compress
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Read_error_correction_1VLHULZ0J09GY4O9SHTMEC8W9R48ONS6
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: ec_finish
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Assembling_WGL8NDLUJNKGN73BEMLC5TT3P3GMJ61T
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: as_start
+- STAGE: K21
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K21/configs/config.info
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K21/configs/careful_mode.info
+  config_dir: K21
+  del_after: []
+  job_uuid: hpcSPAdes_K21_YQZSKCZ2KBKR7BC8X0M0BTYKCEW9S1PL
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k21
+- STAGE: K33
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K33/configs/config.info
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K33/configs/careful_mode.info
+  config_dir: K33
+  del_after: []
+  job_uuid: hpcSPAdes_K33_VIPDBV3PXUBJ09IKIUZ3RKLM98XEEO60
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k33
+- STAGE: K55
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K55/configs/config.info
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K55/configs/careful_mode.info
+  config_dir: K55
+  del_after: []
+  job_uuid: hpcSPAdes_K55_O4X91QAVHC4HPV2F8Y6ML6CW90VOBLX9
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k55
+- STAGE: K77
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K77/configs/config.info
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K77/configs/careful_mode.info
+  config_dir: K77
+  del_after: []
+  job_uuid: hpcSPAdes_K77_YWXAIV5L7DXLTVQOJR4B2ZHXFPQ069QM
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k77
+- STAGE: K99
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K99/configs/config.info
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K99/configs/careful_mode.info
+  config_dir: K99
+  del_after: []
+  job_uuid: hpcSPAdes_K99_OABHUMY9SD4IB93FLDCX2W6NJ0TU3F63
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k99
+- STAGE: K115
+  args:
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/configs/config.info
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/configs/careful_mode.info
+  config_dir: K115
+  del_after: []
+  job_uuid: hpcSPAdes_K115_VBPLEHDUYXNOKH3M7VE9MGGEYYLIW2JK
+  mpi_support: true
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
+  short_name: k115
+- STAGE: Copy files
+  args:
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades/spades_pipeline/scripts/copy_files.py
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/before_rr.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/before_rr.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/assembly_graph_after_simplification.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/assembly_graph_after_simplification.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/final_contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/first_pe_contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/first_pe_contigs.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/strain_graph.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/strain_graph.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/scaffolds.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/scaffolds.fasta
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/scaffolds.paths
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/scaffolds.paths
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/assembly_graph_with_scaffolds.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/assembly_graph_with_scaffolds.gfa
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/assembly_graph.fastg
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/assembly_graph.fastg
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/K115/final_contigs.paths
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/contigs.paths
+  config_dir: ''
+  del_after:
+  - .bin_reads
+  - tmp/spades_bdad1ngm
+  job_uuid: SPAdes_Copy_files_EE337V9K5HCI9QFKW9Y3DJJWNCVM8TPI
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
+  short_name: copy_files
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Assembling_C2N52ZKWLYLRUCW6QMW1VQZ3PTF99CSR
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: as_finish
+- STAGE: Mismatch correction
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Mismatch_correction_M4HPJGGJNNMY81MZK31VKRTUBQK0OWC7
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: mc_start
+- STAGE: Mismatch correction contigs
+  args:
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades/spades_pipeline/scripts/correction_iteration_script.py
+  - --corrected
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/contigs.fasta
+  - --assembled
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/misc/assembled_contigs.fasta
+  - --assembly_type
+  - contigs
+  - --output_dir
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades
+  - --bin_home
+  - /Users/yvonnelin/miniconda3/envs/mitochime/bin
+  config_dir: mismatch_corrector/contigs
+  del_after:
+  - mismatch_corrector/contigs/tmp
+  - tmp/corrector_fdkt6h67
+  job_uuid: SPAdes_Mismatch_correction_contigs_U6IKS4SJP3IDDZKATY66SMDQ1UPZGR6J
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
+  short_name: mc_contigs
+- STAGE: Mismatch correction scaffolds
+  args:
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades/spades_pipeline/scripts/correction_iteration_script.py
+  - --corrected
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/scaffolds.fasta
+  - --assembled
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/misc/assembled_scaffolds.fasta
+  - --assembly_type
+  - scaffolds
+  - --output_dir
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades
+  - --bin_home
+  - /Users/yvonnelin/miniconda3/envs/mitochime/bin
+  config_dir: mismatch_corrector/scaffolds
+  del_after:
+  - mismatch_corrector/scaffolds/tmp
+  - tmp/corrector_uqwv4n6c
+  job_uuid: SPAdes_Mismatch_correction_scaffolds_MTCD6TK5E685SMOJ1IH8CUWBSWYYQYWZ
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
+  short_name: mc_scaffolds
+- STAGE: Mismatch correction
+  args: []
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Mismatch_correction_5D5RJBTR7GSZV2GYAS4RBEKX7IE3ZXOE
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: mc_finish
+- STAGE: Breaking scaffolds
+  args:
+  - /Users/yvonnelin/miniconda3/envs/mitochime/share/spades/spades_pipeline/scripts/breaking_scaffolds_script.py
+  - --result_scaffolds_filename
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/scaffolds.fasta
+  - --misc_dir
+  - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_unfiltered/spades/misc
+  - --threshold_for_breaking_scaffolds
+  - '3'
+  config_dir: ''
+  del_after: []
+  job_uuid: SPAdes_Breaking_scaffolds_5H803GRVLMO9HU1U9Z4I5QM88USQCARL
+  mpi_support: false
+  output_files: []
+  path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
+  short_name: bs
+- STAGE: Terminate
+  args: []
+  config_dir: ''
+  del_after:
+  - configs
+  job_uuid: SPAdes_Terminate_89Q7XCDEC1JY8W8600CBSAT8M4KS91GN
+  mpi_support: false
+  output_files: []
+  path: 'true'
+  short_name: terminate
