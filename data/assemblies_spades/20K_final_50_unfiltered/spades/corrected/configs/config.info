@@ -1,7 +1,7 @@
 ; = HAMMER =
 ; input options: working dir, input files, offset, and possibly kmers
 dataset /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_50_unfiltered/spades/input_dataset.yaml
-input_working_dir /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_50_unfiltered/spades/tmp/hammer_mmju8x3j
+input_working_dir /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_50_unfiltered/spades/tmp/hammer_fg_p2dd2
 input_trim_quality			4
 input_qvoffset				
 output_dir /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_50_unfiltered/spades/corrected

@@ -4,4 +4,4 @@
 "max_nthreads": !!int "8"
 "output_dir": "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/mismatch_corrector/scaffolds"
 "strategy": "mapped_squared"
-"work_dir": "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/tmp/corrector_6kldoe68"
+"work_dir": "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/tmp/corrector__4reibfk"

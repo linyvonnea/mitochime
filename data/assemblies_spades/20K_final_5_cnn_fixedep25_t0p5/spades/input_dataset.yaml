@@ -1,0 +1,7 @@
+- "left reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/filtered_reads/20K_final_5_cnn_fixedep25_t0p5/20K_final_5_cnn_fixedep25_t0p5.cnn.filtered_R1.fastq.gz"
+  "number": !!int "1"
+  "orientation": "fr"
+  "right reads":
+  - "/Users/yvonnelin/Desktop/mitochime/data/filtered_reads/20K_final_5_cnn_fixedep25_t0p5/20K_final_5_cnn_fixedep25_t0p5.cnn.filtered_R2.fastq.gz"
+  "type": "paired-end"

@@ -14,7 +14,7 @@ dataset /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_10_g
 log_filename    log.properties
 
 output_base /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_10_gb_t0p5/spades
-tmp_dir /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_10_gb_t0p5/spades/tmp/spades_vnhyy866
+tmp_dir /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_10_gb_t0p5/spades/tmp/spades_mu5wil2d
 
 main_iteration true
 ; iterative mode switcher, activates additional contigs usage

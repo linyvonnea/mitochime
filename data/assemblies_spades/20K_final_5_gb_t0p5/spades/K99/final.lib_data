@@ -2,7 +2,7 @@
 max read length: 150
 nomerge max read length: 150
 average read length: 149.994
-average coverage: 117.864
+average coverage: 117.923
 libraries:
   - type:            paired-end
     number:          1
@@ -33,6 +33,6 @@ libraries:
         chunk num:       8
       single reads mapped: false
       library index:   0
-      number of reads: 38872
-      total nucleotides: 5830554
+      number of reads: 38889
+      total nucleotides: 5833117
 ...
