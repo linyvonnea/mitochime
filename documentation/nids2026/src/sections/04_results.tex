@@ -20,21 +20,10 @@ CNN1D (final)             & 0.9093 & 0.8724 & 0.9588 & 0.9135 & 0.9607 \\
 \subsection{Error profiles}
 The trade-off between the two models is visible in Fig.~\ref{fig:confmats}. Gradient Boosting produces relatively few false positives (179 clean reads predicted as chimeric) but many false negatives (1,348 chimeric reads predicted as clean). CNN1D reverses this pattern, with markedly fewer false negatives (165) but more false positives (561). These complementary error profiles motivate evaluating both models in terms of downstream assembly outcomes rather than classification metrics alone.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \begin{minipage}{0.4\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/confmat_gb.png}
-    \caption*{(a) Gradient Boosting}
-    \label{fig:confmat_gb}
-  \end{minipage}\hfill
-  \begin{minipage}{0.4\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{../figures/confmat_cnn.png}
-    \caption*{(b) CNN1D}
-    \label{fig:confmat_cnn}
-  \end{minipage}
-  \caption{Confusion matrices for the tuned Gradient Boosting and CNN1D models.}
+  \includegraphics[width=0.85\textwidth]{../figures/confusion_matrices.pdf}
+  \caption{Confusion matrices for the Gradient Boosting and CNN1D models on the held-out test.}
   \label{fig:confmats}
 \end{figure}
 
