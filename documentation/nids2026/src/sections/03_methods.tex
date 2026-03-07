@@ -15,20 +15,33 @@ Figure~\ref{fig:pipeline_modeling} summarizes the MitoChime workflow: paired-end
   \label{fig:pipeline_modeling}
 \end{figure}
 
-\subsection{Data simulation and alignment}
-Paired-end Illumina reads were simulated from the \textit{Sardinella lemuru} mitochondrial reference (NC\_039553.1). Clean read pairs were generated with \texttt{wgsim} (150\,bp) using an error rate of 0.05. Chimeric templates were constructed by concatenating two non-adjacent reference segments, optionally retaining short overlaps to approximate PCR template switching, and were simulated with the same read-length configuration but with error rate set to 0 to preserve junction signals. Reads were aligned to the reference using \texttt{minimap2} in short-read mode (\texttt{-ax sr}) and processed with \texttt{samtools} to produce sorted and indexed BAM files.
+\subsection{Data generation and alignment}
+Paired-end Illumina reads were simulated from the \textit{Sardinella lemuru} mitochondrial reference (NC\_039553.1). A total of 40{,}000 paired-end reads were generated, comprising 20{,}000 chimeric and 20{,}000 clean read pairs. Clean read pairs were generated with \texttt{wgsim} (v1.20) at 150\,bp using an error rate of 0.05. Chimeric templates were constructed by concatenating two non-adjacent reference segments, optionally retaining short overlaps to approximate PCR template switching, and were simulated with the same read-length configuration but with the error rate set to 0 to preserve junction signals. Reads were aligned to the reference using \texttt{minimap2} (v2.30-r1287) in short-read mode (\texttt{-ax sr}) and processed with \texttt{samtools} (v1.20) to produce sorted and indexed BAM files. An illustrative example of one read from the dataset is shown in Figure~\ref{fig:dataset_example}.
+
+\begin{figure}[H]
+\centering
+\fbox{
+\parbox{0.92\textwidth}{
+\small
+\textbf{Example data point from the dataset}\\[4pt]
+\texttt{read\_id: NC\_039553.1\_10001\_10492\_5:0:0\_8:0:0\_b77/1}\\
+\texttt{label: 0}\\
+\texttt{seq: GTAAGGCATAGTAAGGCAATGGTGAGGCTGTGTGTGATTGCAGCAGTTCAAATTCACT...}
+}
+}
+\caption{Illustrative example of one record from the simulated dataset. The sequence is truncated for readability.}
+\label{fig:dataset_example}
+\end{figure}
 
 \subsection{Feature and sequence extraction}
 Two complementary input representations were prepared from the same labeled read pairs to support both classical machine learning and deep learning.
 
-\paragraph{Tabular feature matrix (classical machine learning).}
-For each primary-mapped read, a fixed-length feature vector was computed using \texttt{pysam} and NumPy. Feature families included: (i) supplementary-alignment and alignment-structure summaries derived from SA tags (e.g., presence/count of supplementary alignments, segment distances, strand consistency, and MAPQ/NM aggregates); (ii) CIGAR-derived clipping statistics (e.g., left/right soft clipping, total clipped bases, and an inferred breakpoint position); (iii) k-mer composition discontinuity between read segments ($k=6$), quantified via cosine distance and Jensen--Shannon divergence between left/right k-mer profiles; and (iv) microhomology descriptors around the inferred breakpoint (longest exact suffix--prefix overlap within a $\pm40$\,bp window and its GC fraction), together with basic alignment-quality indicators.
+For classical machine learning, a tabular feature matrix was constructed where for each primary-mapped read, a fixed-length feature vector was computed using \texttt{pysam} and NumPy. Feature families included: (i) supplementary-alignment and alignment-structure summaries derived from SA tags (e.g., presence/count of supplementary alignments, segment distances, strand consistency, and MAPQ/NM aggregates); (ii) CIGAR-derived clipping statistics (e.g., left/right soft clipping, total clipped bases, and an inferred breakpoint position); (iii) k-mer composition discontinuity between read segments ($k=6$), quantified via cosine distance and Jensen--Shannon divergence between left/right k-mer profiles; and (iv) microhomology descriptors around the inferred breakpoint (longest exact suffix--prefix overlap within a $\pm40$\,bp window and its GC fraction), together with basic alignment-quality indicators.
 
-\paragraph{Sequence-only dataset (deep learning).}
-In parallel, the raw nucleotide sequence (length $L=150$) was retained as a separate input for the CNN. Sequences were one-hot encoded at training and inference time, with four base channels (A, C, G, T). Ambiguous bases were represented as all zeros.
+In parallel, for deep learning, the raw nucleotide sequence (length $L=150$) was retained as a separate input for the CNN. Sequences were one-hot encoded at training and inference time, with four base channels (A, C, G, T). Ambiguous bases were represented as all zeros.
 
 \subsection{Modeling and evaluation protocol}
-The labeled dataset was partitioned into training and test splits (80/20) using stratification to preserve the balanced class ratio. Model selection and tuning were performed on the training split only. Final performance was reported on the held-out test split using accuracy, precision, recall, F1, and ROC--AUC (precision/recall/F1 for the chimeric class).
+The labeled dataset was partitioned into training and test splits (80/20) using stratification to preserve the balanced class ratio. Model selection, tuning, and five-fold cross validation were performed on the training split only. Final performance was reported on the held-out test split using accuracy, precision, recall, F1, and ROC--AUC (precision/recall/F1 for the chimeric class).
 
 \paragraph{Classical machine learning (feature-based).}
 Feature-based models were implemented in Python using \texttt{scikit-learn}, \texttt{xgboost}, \texttt{lightgbm}, and \texttt{catboost}. An initial benchmark evaluated a panel of classifiers under five-fold stratified cross-validation on the training split, including a dummy baseline, L2-regularized logistic regression, a calibrated linear SVM, k-nearest neighbours, Gaussian Na\"ive Bayes, tree ensembles (Random Forest, ExtraTrees, and bagging with decision trees), and gradient boosting methods (Gradient Boosting, XGBoost, LightGBM, and CatBoost). Based on cross-validation ranking, a subset of competitive model families was carried forward for hyperparameter optimization. Hyperparameters were tuned using randomized search with five-fold stratified cross-validation (\texttt{RandomizedSearchCV}), optimizing chimeric-class F1. Among the feature-based models, a tuned \texttt{GradientBoostingClassifier} (\texttt{sklearn.ensemble}) achieved the best validation ranking and was used as the primary classical model. The hyperparameter search included the number of estimators, \texttt{learning\_rate} (selected value 0.2), and tree-structure constraints; the selected model was refit on the full training split and evaluated once on the held-out test split.
@@ -41,12 +54,14 @@ Filtering was performed using model scores for the chimeric class and a user-spe
 \subsection{Assembly and downstream evaluation}
 Assemblies were generated from unfiltered and filtered read sets using SPAdes. Assembly graphs were summarized using Bandage graph statistics. Graph complexity was quantified using graph-level metrics including node and edge counts, together with total assembled length, across simulated read depths and chimera rates.
 
-\subsection{CLI workflow}
+\subsection{Chimeric Detection Pipeline}
 A command-line interface automates preprocessing, model inference, pair-safe filtering, and optional assembly evaluation (Fig.~\ref{fig:pipeline_cli}) to support reproducible use in mitochondrial assembly workflows.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.62\textwidth]{pipeline_cli.png}
-  \caption{MitoChime CLI workflow for model selection, filtering, and optional assembly evaluation.}
+  \includegraphics[width=0.70\textwidth]{pipeline_cli.png}
+  \caption{MitoChime pipeline for model selection, filtering, and optional assembly evaluation.}
   \label{fig:pipeline_cli}
 \end{figure}
+
+\FloatBarrier
