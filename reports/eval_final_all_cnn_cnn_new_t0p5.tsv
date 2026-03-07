@@ -1,0 +1,2 @@
+dataset	model	cnn_tag	thresh	reads_in	reads_out	pct_kept	spades_contigs	spades_total_len	spades_max_len	contigs_path
+10K_final_5	UNFILTERED	NA	NA	10000	10000	100.000	1	16615	16615	data/assemblies_spades/10K_final_5_unfiltered/spades/contigs.fasta

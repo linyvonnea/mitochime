@@ -51,7 +51,7 @@ def main():
     ap.add_argument("--r2", required=True)
     ap.add_argument("--features", required=True, help="TSV from extract_features.py (FULL 24-feature capable)")
     ap.add_argument("--model", required=True)
-    ap.add_argument("--feature-cols", required=True, help="models_pair_noq_tuned/feature_cols.json")
+    ap.add_argument("--feature-cols", required=True, help="notebooks/PAIR_feature_cols.json")
     ap.add_argument("--thresh", type=float, required=True)
     ap.add_argument("--out-r1", required=True)
     ap.add_argument("--out-r2", required=True)

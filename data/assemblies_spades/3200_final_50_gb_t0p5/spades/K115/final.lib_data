@@ -1,8 +1,8 @@
-ç.---
+Ý.---
 max read length: 150
 nomerge max read length: 150
-average read length: 149.895
-average coverage: 9.23967
+average read length: 149.91
+average coverage: 9.19757
 libraries:
   - type:            paired-end
     number:          1
@@ -16,8 +16,8 @@ libraries:
     data:
       unmerged read length: 150
       merged read length: 0
-      insert size mean: 502.008
-      insert size deviation: 54.8911
+      insert size mean: 501.808
+      insert size deviation: 54.3988
       insert size left quantile: 435
       insert size right quantile: 569
       insert size median: 502
@@ -53,7 +53,7 @@ libraries:
                                   499: 13, 500: 13, 501: 14, 502: 10, 503: 11, 
                                   504: 14, 505: 9, 506: 11, 507: 11, 508: 15, 
                                   509: 12, 510: 13, 511: 6, 512: 11, 513: 13, 
-                                  514: 10, 515: 8, 516: 16, 517: 17, 518: 10, 
+                                  514: 10, 515: 8, 516: 16, 517: 17, 518: 9, 
                                   519: 14, 520: 4, 521: 11, 522: 6, 523: 10, 
                                   524: 12, 525: 12, 526: 10, 527: 17, 528: 14, 
                                   529: 15, 530: 13, 531: 12, 532: 8, 533: 11, 
@@ -76,7 +76,7 @@ libraries:
                                   631: 1, 634: 2, 638: 1, 647: 1, 649: 1, 
                                   651: 1, 652: 1, 659: 1, 687: 1, 696: 1, 
                                   714: 1, 793: 1, 797: 1, 804: 1, 829: 1, 
-                                  830: 1, 837: 1, 841: 1, 859: 1 }
+                                  830: 1, 841: 1, 859: 1 }
       pi threshold:    0
       binary reads info:
         binary converted: true
@@ -87,6 +87,6 @@ libraries:
         chunk num:       8
       single reads mapped: false
       library index:   0
-      number of reads: 4976
-      total nucleotides: 745878
+      number of reads: 4949
+      total nucleotides: 741903
 ...

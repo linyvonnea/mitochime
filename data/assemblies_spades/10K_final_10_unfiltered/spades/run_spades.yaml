@@ -2,7 +2,7 @@
   args: []
   config_dir: ''
   del_after: []
-  job_uuid: SPAdes_Before_start_Z2549Z5P30CLIZ71PPLW8464VK9VR1BG
+  job_uuid: SPAdes_Before_start_733RA2IIYF5ISGP6KR7VN42T4QYS0WOA
   mpi_support: false
   output_files: []
   path: 'true'
@@ -11,7 +11,7 @@
   args: []
   config_dir: ''
   del_after: []
-  job_uuid: SPAdes_Read_error_correction_K9AE1TTHPMRCMCRAKP1T30LGCQPD771Q
+  job_uuid: SPAdes_Read_error_correction_BNTTFJOWYZ2ZGNLL0WWEUNWI10C3X0X0
   mpi_support: false
   output_files: []
   path: 'true'
@@ -21,8 +21,8 @@
   - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/corrected/configs/config.info
   config_dir: corrected
   del_after:
-  - tmp/hammer_e6tqlq2u
-  job_uuid: SPAdes_Read_error_correction_Y9SUMHUE04M7PWN0ZDV5N5LSW8OXWB5Q
+  - tmp/hammer_dt5okzq4
+  job_uuid: SPAdes_Read_error_correction_PFFKACWSGLUJGR3E34SFCAI7UJPXIAJM
   mpi_support: false
   output_files:
   - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/corrected/corrected.yaml
@@ -42,7 +42,7 @@
   - --gzip_output
   config_dir: ''
   del_after: []
-  job_uuid: SPAdes_corrected_reads_compression_U4KSLJ3Q4TX68RPXXR8UZI9U3HVRLVSA
+  job_uuid: SPAdes_corrected_reads_compression_NCDKWDGCOUO63L8CGDEC6Y5APCW3BK8Z
   mpi_support: false
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
@@ -51,7 +51,7 @@
   args: []
   config_dir: ''
   del_after: []
-  job_uuid: SPAdes_Read_error_correction_T2O2Y2UBRDOERP0959WKCHHXE3Y3MVHP
+  job_uuid: SPAdes_Read_error_correction_4UVSSSRFKOWD8SE52BYOXLRM2814C2CS
   mpi_support: false
   output_files: []
   path: 'true'
@@ -60,7 +60,7 @@
   args: []
   config_dir: ''
   del_after: []
-  job_uuid: SPAdes_Assembling_X9E22MB8KLMP647KKVA4603L3VMYXQJD
+  job_uuid: SPAdes_Assembling_AB2VC1GIFCZD6FW8X37N8FOL5OD11K2O
   mpi_support: false
   output_files: []
   path: 'true'
@@ -71,7 +71,7 @@
   - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/K21/configs/careful_mode.info
   config_dir: K21
   del_after: []
-  job_uuid: hpcSPAdes_K21_1MYYRNY9HTT7EGTTFQJQM8BFPNZDR06Q
+  job_uuid: hpcSPAdes_K21_72YSRHJGYMB01W467TXC9S0G0YN6BYSA
   mpi_support: true
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
@@ -82,7 +82,7 @@
   - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/K33/configs/careful_mode.info
   config_dir: K33
   del_after: []
-  job_uuid: hpcSPAdes_K33_0OO6YQVX4EB2AURVP9W4VJWOVQOIE11X
+  job_uuid: hpcSPAdes_K33_OPD6RVLPWJP6TJB7YO78GLMER9XFL9HZ
   mpi_support: true
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
@@ -93,7 +93,7 @@
   - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/K55/configs/careful_mode.info
   config_dir: K55
   del_after: []
-  job_uuid: hpcSPAdes_K55_PXYMTL18831UR0NUCQGOL192W2WPNVE5
+  job_uuid: hpcSPAdes_K55_V0YQFLKWIVMFP734LNZIAMRC37GSWJEW
   mpi_support: true
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
@@ -104,7 +104,7 @@
   - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/K77/configs/careful_mode.info
   config_dir: K77
   del_after: []
-  job_uuid: hpcSPAdes_K77_OW27S20FFL6YXN5ZCPS5JQKDPN7BQTK5
+  job_uuid: hpcSPAdes_K77_87XAXNB310W042C6JXYNSFTR3WJ23YF3
   mpi_support: true
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
@@ -115,7 +115,7 @@
   - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/K99/configs/careful_mode.info
   config_dir: K99
   del_after: []
-  job_uuid: hpcSPAdes_K99_Z0JHEFWW4L44GK42FH676X59V7ZWQA8L
+  job_uuid: hpcSPAdes_K99_9MGPR49GKOP4QS3DX0RRPYAGFW0LX8BB
   mpi_support: true
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
@@ -126,7 +126,7 @@
   - /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/10K_final_10_unfiltered/spades/K115/configs/careful_mode.info
   config_dir: K115
   del_after: []
-  job_uuid: hpcSPAdes_K115_3GXZLGZIWARAKJ2I7SKVT7I0FVTGUAJR
+  job_uuid: hpcSPAdes_K115_D80N49DA3N2Z69QXECFFCHBJ21B5D080
   mpi_support: true
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/{spades_core}
@@ -157,8 +157,8 @@
   config_dir: ''
   del_after:
   - .bin_reads
-  - tmp/spades_x01d3psr
-  job_uuid: SPAdes_Copy_files_H8RAF486CJHXF5PYE0XMOGUQHLPAJEBX
+  - tmp/spades_cljnw2dz
+  job_uuid: SPAdes_Copy_files_JJ4F7UTX37VAIT1DCI2L27V9QMZ8K3E2
   mpi_support: false
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
@@ -167,7 +167,7 @@
   args: []
   config_dir: ''
   del_after: []
-  job_uuid: SPAdes_Assembling_4OO9SO3XKMPXK4C2C7HQBQKMFQ9P9501
+  job_uuid: SPAdes_Assembling_TILB7WLRSNTTWF7QVLCI27G87C6Q4Z61
   mpi_support: false
   output_files: []
   path: 'true'
@@ -176,7 +176,7 @@
   args: []
   config_dir: ''
   del_after: []
-  job_uuid: SPAdes_Mismatch_correction_S87HNL08SJ8DF2RBEPUT6FZ2K4QX0QUE
+  job_uuid: SPAdes_Mismatch_correction_M6WPKP5OGZRJKXKOYOIQRFW8RIJNLCJG
   mpi_support: false
   output_files: []
   path: 'true'
@@ -197,8 +197,8 @@
   config_dir: mismatch_corrector/contigs
   del_after:
   - mismatch_corrector/contigs/tmp
-  - tmp/corrector_bl40pe4l
-  job_uuid: SPAdes_Mismatch_correction_contigs_Y2C0U9XAK1HFYTKCR5E52L81YPUXR6HI
+  - tmp/corrector_g9otyzqv
+  job_uuid: SPAdes_Mismatch_correction_contigs_MCM4G1TEJXNS6307NK8ER1DCLPU3ZLGS
   mpi_support: false
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
@@ -219,8 +219,8 @@
   config_dir: mismatch_corrector/scaffolds
   del_after:
   - mismatch_corrector/scaffolds/tmp
-  - tmp/corrector_6kldoe68
-  job_uuid: SPAdes_Mismatch_correction_scaffolds_MSDOFUW4MVV3NN9WC0ARUWOPXS4C5O19
+  - tmp/corrector__4reibfk
+  job_uuid: SPAdes_Mismatch_correction_scaffolds_IPL9J1DNNC2TWZA78SMN2RA1C1HLPUZT
   mpi_support: false
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
@@ -229,7 +229,7 @@
   args: []
   config_dir: ''
   del_after: []
-  job_uuid: SPAdes_Mismatch_correction_QZK5V199Y0VT5SWSJIMLEGR1IGC8RBYA
+  job_uuid: SPAdes_Mismatch_correction_8NU02D9E61VPRX4A22GHK5YWOHYK00M4
   mpi_support: false
   output_files: []
   path: 'true'
@@ -245,7 +245,7 @@
   - '3'
   config_dir: ''
   del_after: []
-  job_uuid: SPAdes_Breaking_scaffolds_7US3AQM3BYGKRQZG0BLE3WSS714J6PGA
+  job_uuid: SPAdes_Breaking_scaffolds_BM48SXYYI15Q3GQA9UCGKIOSCBKWH11L
   mpi_support: false
   output_files: []
   path: /Users/yvonnelin/miniconda3/envs/mitochime/bin/python3
@@ -255,7 +255,7 @@
   config_dir: ''
   del_after:
   - configs
-  job_uuid: SPAdes_Terminate_Q64F2SBFPN0M84L6P1GBCWWZSTJY2ESV
+  job_uuid: SPAdes_Terminate_61VSXA40A3ACM0T5O7MT6BQA3PHVCMC5
   mpi_support: false
   output_files: []
   path: 'true'

@@ -1,8 +1,8 @@
-º----
+»----
 max read length: 150
 nomerge max read length: 150
-average read length: 149.98
-average coverage: 12.0283
+average read length: 149.981
+average coverage: 12.0376
 libraries:
   - type:            paired-end
     number:          1
@@ -16,8 +16,8 @@ libraries:
     data:
       unmerged read length: 150
       merged read length: 0
-      insert size mean: 500.841
-      insert size deviation: 50.0857
+      insert size mean: 500.853
+      insert size deviation: 50.0822
       insert size left quantile: 435
       insert size right quantile: 565
       insert size median: 500
@@ -44,9 +44,9 @@ libraries:
                                   471: 12, 472: 22, 473: 14, 474: 17, 475: 22, 
                                   476: 20, 477: 33, 478: 18, 479: 12, 480: 14, 
                                   481: 24, 482: 23, 483: 16, 484: 23, 485: 20, 
-                                  486: 21, 487: 16, 488: 27, 489: 24, 490: 22, 
+                                  486: 21, 487: 16, 488: 27, 489: 25, 490: 22, 
                                   491: 36, 492: 20, 493: 21, 494: 17, 495: 13, 
-                                  496: 13, 497: 18, 498: 21, 499: 28, 500: 13, 
+                                  496: 13, 497: 17, 498: 21, 499: 28, 500: 13, 
                                   501: 17, 502: 14, 503: 24, 504: 16, 505: 16, 
                                   506: 15, 507: 16, 508: 20, 509: 20, 510: 23, 
                                   511: 28, 512: 26, 513: 23, 514: 16, 515: 25, 
@@ -54,7 +54,7 @@ libraries:
                                   521: 16, 522: 21, 523: 24, 524: 28, 525: 16, 
                                   526: 13, 527: 17, 528: 15, 529: 16, 530: 21, 
                                   531: 16, 532: 21, 533: 22, 534: 16, 535: 16, 
-                                  536: 17, 537: 18, 538: 18, 539: 22, 540: 14, 
+                                  536: 17, 537: 18, 538: 18, 539: 23, 540: 14, 
                                   541: 19, 542: 8, 543: 12, 544: 17, 545: 17, 
                                   546: 21, 547: 18, 548: 16, 549: 14, 550: 14, 
                                   551: 14, 552: 14, 553: 10, 554: 7, 555: 8, 
@@ -84,6 +84,6 @@ libraries:
         chunk num:       8
       single reads mapped: false
       library index:   0
-      number of reads: 6080
-      total nucleotides: 911880
+      number of reads: 6084
+      total nucleotides: 912483
 ...

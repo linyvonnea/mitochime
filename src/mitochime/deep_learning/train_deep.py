@@ -1,15 +1,3 @@
-'''PYTHONPATH=src python3 -m mitochime.deep_learning.train_deep \ 
-  --mode cnn \
-  --train-tsv data/processed/PAIR_train_seq_L150.tsv \
-  --test-tsv  data/processed/PAIR_test_seq_L150.tsv \
-  --L 150 --epochs 30 --batch 128 --lr 0.001 \
-  --seed 42 \
-  --select-best-by f1 \
-  --weight-decay 1e-4 \
-  --out-dir models/deep/cnn_final_L150_seed42 \
-  --reports-dir reports/deep/cnn_final_L150_seed42 \
-  --save-predictions'''
-# src/mitochime/deep_learning/train_deep.py
 from __future__ import annotations
 
 import argparse
@@ -38,7 +26,6 @@ from .dl_transformer import KmerTransformer
 
 
 def set_seed(seed: int) -> None:
-    """Best-effort reproducibility for CPU/GPU."""
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -47,14 +34,9 @@ def set_seed(seed: int) -> None:
 
 
 def eval_full(model, loader, device):
-    """
-    Full evaluation:
-      returns avg_loss, y_true, y_pred, y_prob (P(class=1))
-    """
     model.eval()
     loss_fn = nn.CrossEntropyLoss()
     total_loss = 0.0
-
     ys, preds, probs = [], [], []
 
     with torch.no_grad():
@@ -64,7 +46,7 @@ def eval_full(model, loader, device):
             loss = loss_fn(logits, y)
             total_loss += float(loss.item()) * y.size(0)
 
-            p = torch.softmax(logits, dim=1)[:, 1]  # P(class=1)
+            p = torch.softmax(logits, dim=1)[:, 1]
             pred = torch.argmax(logits, dim=1)
 
             ys.append(y.cpu().numpy())
@@ -85,7 +67,6 @@ def compute_metrics(y_true, y_pred, y_prob):
     rec = float(recall_score(y_true, y_pred, zero_division=0))
     f1 = float(f1_score(y_true, y_pred, zero_division=0))
 
-    # ROC-AUC needs both classes present
     try:
         auc = float(roc_auc_score(y_true, y_prob))
     except Exception:
@@ -137,8 +118,7 @@ def save_reports(
     (out_dir / f"{mode}_metrics.json").write_text(json.dumps(payload, indent=2))
 
     cm = np.array(report["confusion_matrix"])
-    cm_path = out_dir / f"{mode}_confusion_matrix.tsv"
-    with cm_path.open("w") as f:
+    with (out_dir / f"{mode}_confusion_matrix.tsv").open("w") as f:
         f.write(" \tpred_0\tpred_1\n")
         f.write(f"true_0\t{cm[0,0]}\t{cm[0,1]}\n")
         f.write(f"true_1\t{cm[1,0]}\t{cm[1,1]}\n")
@@ -172,38 +152,24 @@ def train_main():
     ap.add_argument("--out-dir", default="models_dl")
     ap.add_argument("--reports-dir", default="reports/metrics_dl")
 
-    # cnn params
     ap.add_argument("--L", type=int, default=300)
-    ap.add_argument("--use-qual", action="store_true")  # unused in dl_data.py
+    ap.add_argument("--use-qual", action="store_true")
 
-    # transformer params
     ap.add_argument("--k", type=int, default=6)
     ap.add_argument("--L-kmers", type=int, default=256)
     ap.add_argument("--d-model", type=int, default=128)
     ap.add_argument("--layers", type=int, default=4)
     ap.add_argument("--heads", type=int, default=4)
 
-    # training params
     ap.add_argument("--batch", type=int, default=128)
     ap.add_argument("--epochs", type=int, default=10)
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--weight-decay", type=float, default=0.0)
     ap.add_argument("--seed", type=int, default=42)
 
-    # checkpoint selection
-    ap.add_argument(
-        "--select-best-by",
-        choices=["acc", "f1", "auc"],
-        default="acc",
-        help="Metric used to pick best checkpoint on the eval set.",
-    )
-
-    # reporting extras
     ap.add_argument("--save-predictions", action="store_true")
 
     args = ap.parse_args()
-
-    # reproducibility
     set_seed(args.seed)
 
     out_dir = Path(args.out_dir)
@@ -218,7 +184,7 @@ def train_main():
     test_ds = ReadSeqDataset(args.test_tsv, mode=args.mode, cfg=cfg)
 
     if args.mode == "cnn":
-        model = CNN1D(in_ch=4).to(device)  # one_hot_4ch => 4 channels
+        model = CNN1D(in_ch=4).to(device)
     else:
         vocab = (4 ** args.k) + 1
         model = KmerTransformer(
@@ -235,13 +201,8 @@ def train_main():
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     loss_fn = nn.CrossEntropyLoss()
 
-    # best checkpoint tracking
-    best_score = -1.0
-    best_path = out_dir / f"{args.mode}_best.pt"
-
-    # richer log (helps notebook)
     log_path = rep_dir / f"{args.mode}_training_log.tsv"
-    log_path.write_text("epoch\ttrain_loss\ttest_loss\ttest_acc\ttest_f1\ttest_auc\n")
+    log_path.write_text("epoch\ttrain_loss\n")
 
     for epoch in range(1, args.epochs + 1):
         model.train()
@@ -257,47 +218,17 @@ def train_main():
             total += float(loss.item()) * y.size(0)
 
         tr_loss = total / len(train_loader.dataset)
-
-        te_loss, y_true, y_pred, y_prob = eval_full(model, test_loader, device)
-        te_acc = float((y_true == y_pred).mean())
-        te_f1 = float(f1_score(y_true, y_pred, zero_division=0))
-        try:
-            te_auc = float(roc_auc_score(y_true, y_prob))
-        except Exception:
-            te_auc = float("nan")
-
-        print(
-            f"epoch={epoch:02d} train_loss={tr_loss:.4f} "
-            f"test_loss={te_loss:.4f} test_acc={te_acc:.4f} "
-            f"test_f1={te_f1:.4f} test_auc={te_auc:.4f}"
-        )
+        print(f"epoch={epoch:02d} train_loss={tr_loss:.4f}")
 
         with log_path.open("a") as f:
-            f.write(f"{epoch}\t{tr_loss:.6f}\t{te_loss:.6f}\t{te_acc:.6f}\t{te_f1:.6f}\t{te_auc:.6f}\n")
+            f.write(f"{epoch}\t{tr_loss:.6f}\n")
 
-        if args.select_best_by == "acc":
-            score = te_acc
-        elif args.select_best_by == "f1":
-            score = te_f1
-        else:
-            score = te_auc if not np.isnan(te_auc) else -1.0
-
-        if score > best_score:
-            best_score = score
-            torch.save({"model_state": model.state_dict(), "args": vars(args)}, best_path)
-
-    print(f"Saved best checkpoint: {best_path} (best_{args.select_best_by}={best_score:.4f})")
-
-    # -----------------------
-    # Final report using BEST
-    # -----------------------
-    ckpt = torch.load(best_path, map_location=device)
-    model.load_state_dict(ckpt["model_state"])
-    model.eval()
+    final_model_path = out_dir / f"{args.mode}_final.pt"
+    torch.save({"model_state": model.state_dict(), "args": vars(args)}, final_model_path)
+    print(f"Saved final model: {final_model_path}")
 
     te_loss, y_true, y_pred, y_prob = eval_full(model, test_loader, device)
     report = compute_metrics(y_true, y_pred, y_prob)
-
     read_ids = getattr(test_ds, "read_ids", None)
 
     save_reports(
@@ -313,7 +244,7 @@ def train_main():
         save_predictions=args.save_predictions,
     )
 
-    print("\nFINAL TEST METRICS (best checkpoint):")
+    print("\nFINAL TEST METRICS:")
     print(
         f"loss={float(te_loss):.4f} acc={report['accuracy']:.4f} "
         f"prec={report['precision']:.4f} rec={report['recall']:.4f} "

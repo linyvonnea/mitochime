@@ -2,7 +2,7 @@
 max read length: 150
 nomerge max read length: 150
 average read length: 149.994
-average coverage: 26.5261
+average coverage: 26.5284
 libraries:
   - type:            paired-end
     number:          1
