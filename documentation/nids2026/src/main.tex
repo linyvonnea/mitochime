@@ -4,22 +4,21 @@
 \makeatother
 \raggedbottom
 
+
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{svg}
 \usepackage{booktabs}
 \usepackage{xurl}
-<<<<<<< HEAD
-\usepackage{hyperref} % removes red boxes around Figure refs/links
-
-% \usepackage{subfig}
-=======
 \usepackage[justification=centering]{caption}
 \usepackage{float}
 \usepackage{multirow}
 \usepackage{placeins}
 \usepackage{hyperref}
->>>>>>> main
+
+\captionsetup[figure]{labelfont=bf}
+\captionsetup[table]{labelfont=bf}
+
 
 % ---------- Double-blind toggle ----------
 \newif\ifanonymized
@@ -65,8 +64,11 @@ filtering reduced assembly graph complexity at high chimera rates, with performa
 \input{sections/05_discussion.tex}
 \input{sections/06_conclusion.tex}
 
+
+
 \bibliographystyle{splncs04}
 \bibliography{bib/references}
+
 
 
 \end{document}
