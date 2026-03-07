@@ -1,7 +1,7 @@
 \section{Results}
 
 \subsection{Held-out test performance}
-Table~\ref{tab:perf_gb_cnn} summarizes held-out test performance for the tuned Gradient Boosting (feature-based) classifier and the final CNN1D (sequence-based) model. Precision/recall/F1 are reported for the chimeric class. The tuned Gradient Boosting model exhibits high precision (0.937) but lower recall (0.663), indicating a conservative decision strategy that reduced false positives at the expense of missed chimeric reads. In contrast, the CNN1D substantially increases recall (0.959) and overall discrimination (ROC--AUC 0.961), at the cost of reduced precision (0.872), resulting in more clean reads flagged as chimeric.
+Table~\ref{tab:perf_gb_cnn} summarizes held-out test performance for the tuned Gradient Boosting (feature-based) classifier and the CNN1D (sequence-based) model. Precision/recall/F1 are reported for the chimeric class. The tuned Gradient Boosting model exhibits high precision (0.937) but lower recall (0.663), indicating a conservative decision strategy that reduced false positives at the expense of missed chimeric reads. In contrast, the CNN1D substantially increases recall (0.959) and overall discrimination (ROC--AUC 0.961), at the cost of reduced precision (0.872), resulting in more clean reads flagged as chimeric.
 
 \begin{table}[htbp]
 \centering
