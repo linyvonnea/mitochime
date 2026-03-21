@@ -1,3 +1,4 @@
+# src/mitochime/deep_learning/train_deep.py
 from __future__ import annotations
 
 import argparse
@@ -23,6 +24,8 @@ from sklearn.metrics import (
 from .dl_data import ReadSeqDataset, SeqConfig
 from .dl_cnn import CNN1D
 from .dl_transformer import KmerTransformer
+from .dl_rnn import RNNClassifier
+from .dl_rnn_kmer import RNNKmerClassifier
 
 
 def set_seed(seed: int) -> None:
@@ -33,7 +36,7 @@ def set_seed(seed: int) -> None:
         torch.cuda.manual_seed_all(seed)
 
 
-def eval_full(model, loader, device):
+def eval_full(model: nn.Module, loader: DataLoader, device: str):
     model.eval()
     loss_fn = nn.CrossEntropyLoss()
     total_loss = 0.0
@@ -46,12 +49,12 @@ def eval_full(model, loader, device):
             loss = loss_fn(logits, y)
             total_loss += float(loss.item()) * y.size(0)
 
-            p = torch.softmax(logits, dim=1)[:, 1]
+            p = torch.softmax(logits, dim=1)[:, 1]  # P(chimeric)
             pred = torch.argmax(logits, dim=1)
 
-            ys.append(y.cpu().numpy())
-            preds.append(pred.cpu().numpy())
-            probs.append(p.cpu().numpy())
+            ys.append(y.detach().cpu().numpy())
+            preds.append(pred.detach().cpu().numpy())
+            probs.append(p.detach().cpu().numpy())
 
     y_true = np.concatenate(ys)
     y_pred = np.concatenate(preds)
@@ -61,7 +64,7 @@ def eval_full(model, loader, device):
     return avg_loss, y_true, y_pred, y_prob
 
 
-def compute_metrics(y_true, y_pred, y_prob):
+def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray, y_prob: np.ndarray) -> dict:
     acc = float(accuracy_score(y_true, y_pred))
     prec = float(precision_score(y_true, y_pred, zero_division=0))
     rec = float(recall_score(y_true, y_pred, zero_division=0))
@@ -107,7 +110,7 @@ def save_reports(
     y_prob: np.ndarray,
     read_ids: list[str] | None,
     save_predictions: bool,
-):
+) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     payload = dict(report)
@@ -133,18 +136,27 @@ def save_reports(
             if read_ids is None:
                 f.write("idx\ty_true\ty_pred\tprob_chimeric\n")
                 for i in range(len(y_true)):
-                    f.write(
-                        f"{i}\t{int(y_true[i])}\t{int(y_pred[i])}\t{float(y_prob[i]):.6f}\n"
-                    )
+                    f.write(f"{i}\t{int(y_true[i])}\t{int(y_pred[i])}\t{float(y_prob[i]):.6f}\n")
             else:
                 f.write("read_id\ty_true\ty_pred\tprob_chimeric\n")
                 for rid, yt, yp, pr in zip(read_ids, y_true, y_pred, y_prob):
                     f.write(f"{rid}\t{int(yt)}\t{int(yp)}\t{float(pr):.6f}\n")
 
 
-def train_main():
+def train_main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["cnn", "transformer"], required=True)
+    ap.add_argument(
+        "--mode",
+        choices=[
+            "cnn",
+            "transformer",
+            "rnn_lstm",
+            "rnn_gru",
+            "rnn_kmer_lstm",
+            "rnn_kmer_gru",
+        ],
+        required=True,
+    )
 
     ap.add_argument("--train-tsv", required=True)
     ap.add_argument("--test-tsv", required=True)
@@ -152,20 +164,33 @@ def train_main():
     ap.add_argument("--out-dir", default="models_dl")
     ap.add_argument("--reports-dir", default="reports/metrics_dl")
 
-    ap.add_argument("--L", type=int, default=300)
-    ap.add_argument("--use-qual", action="store_true")
+    # seq params
+    ap.add_argument("--L", type=int, default=150)
+    ap.add_argument("--use-qual", action="store_true")  # unused but kept
 
+    # transformer / kmer params
     ap.add_argument("--k", type=int, default=6)
     ap.add_argument("--L-kmers", type=int, default=256)
     ap.add_argument("--d-model", type=int, default=128)
     ap.add_argument("--layers", type=int, default=4)
     ap.add_argument("--heads", type=int, default=4)
 
+    # training params
     ap.add_argument("--batch", type=int, default=128)
-    ap.add_argument("--epochs", type=int, default=10)
+    ap.add_argument("--epochs", type=int, default=30)
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--weight-decay", type=float, default=0.0)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--grad-clip", type=float, default=1.0)
+
+    ap.add_argument("--select-best-by", choices=["acc", "f1", "auc", "loss"], default="f1")
+
+    # RNN params (base-level and kmer-level)
+    ap.add_argument("--hidden", type=int, default=256)
+    ap.add_argument("--rnn-layers", type=int, default=1)
+    ap.add_argument("--bidirectional", action="store_true")
+    ap.add_argument("--pool", choices=["last", "mean", "max"], default="last")
+    ap.add_argument("--embed-dim", type=int, default=64)  # only used for rnn_kmer_*
 
     ap.add_argument("--save-predictions", action="store_true")
 
@@ -180,12 +205,50 @@ def train_main():
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     cfg = SeqConfig(L=args.L, use_qual=args.use_qual, k=args.k, L_kmers=args.L_kmers)
-    train_ds = ReadSeqDataset(args.train_tsv, mode=args.mode, cfg=cfg)
-    test_ds = ReadSeqDataset(args.test_tsv, mode=args.mode, cfg=cfg)
 
-    if args.mode == "cnn":
-        model = CNN1D(in_ch=4).to(device)
+    # dataset mode selection
+    if args.mode in {"rnn_lstm", "rnn_gru"}:
+        ds_mode = "cnn"           # base-level RNN uses one-hot
+    elif args.mode in {"rnn_kmer_lstm", "rnn_kmer_gru"}:
+        ds_mode = "rnn_kmer"      # kmer tokens for RNN+Embedding
     else:
+        ds_mode = args.mode       # cnn or transformer
+
+    train_ds = ReadSeqDataset(args.train_tsv, mode=ds_mode, cfg=cfg)
+    test_ds = ReadSeqDataset(args.test_tsv, mode=ds_mode, cfg=cfg)
+
+    # build model
+    if args.mode == "cnn":
+        model: nn.Module = CNN1D(in_ch=4).to(device)
+
+    elif args.mode in {"rnn_lstm", "rnn_gru"}:
+        rnn_type = "lstm" if args.mode == "rnn_lstm" else "gru"
+        model = RNNClassifier(
+            rnn_type=rnn_type,
+            input_size=4,
+            hidden_size=args.hidden,
+            num_layers=args.rnn_layers,
+            bidirectional=args.bidirectional,
+            dropout=0.2,
+            pool=args.pool,
+        ).to(device)
+
+    elif args.mode in {"rnn_kmer_lstm", "rnn_kmer_gru"}:
+        rnn_type = "lstm" if args.mode == "rnn_kmer_lstm" else "gru"
+        vocab = (4 ** args.k) + 1  # UNK=0, kmers=1..4^k
+        model = RNNKmerClassifier(
+            rnn_type=rnn_type,
+            vocab_size=vocab,
+            embed_dim=args.embed_dim,
+            hidden_size=args.hidden,
+            num_layers=args.rnn_layers,
+            bidirectional=args.bidirectional,
+            dropout=0.2,
+            pool=args.pool,
+            pad_idx=0,
+        ).to(device)
+
+    else:  # transformer
         vocab = (4 ** args.k) + 1
         model = KmerTransformer(
             vocab_size=vocab,
@@ -201,8 +264,21 @@ def train_main():
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     loss_fn = nn.CrossEntropyLoss()
 
+    best_path = out_dir / f"{args.mode}_best.pt"
     log_path = rep_dir / f"{args.mode}_training_log.tsv"
-    log_path.write_text("epoch\ttrain_loss\n")
+    log_path.write_text("epoch\ttrain_loss\ttest_loss\ttest_acc\ttest_f1\ttest_auc\n")
+
+    best_score: float | None = None
+    best_epoch = -1
+
+    def score_from(rep: dict, test_loss: float) -> float:
+        if args.select_best_by == "acc":
+            return float(rep["accuracy"])
+        if args.select_best_by == "f1":
+            return float(rep["f1"])
+        if args.select_best_by == "auc":
+            return float(rep["roc_auc"]) if not np.isnan(rep["roc_auc"]) else float("-inf")
+        return -float(test_loss)
 
     for epoch in range(1, args.epochs + 1):
         model.train()
@@ -214,18 +290,41 @@ def train_main():
             logits = model(x)
             loss = loss_fn(logits, y)
             loss.backward()
+
+            if args.grad_clip and args.grad_clip > 0:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=float(args.grad_clip))
+
             opt.step()
             total += float(loss.item()) * y.size(0)
 
         tr_loss = total / len(train_loader.dataset)
-        print(f"epoch={epoch:02d} train_loss={tr_loss:.4f}")
+
+        te_loss, y_true, y_pred, y_prob = eval_full(model, test_loader, device)
+        rep = compute_metrics(y_true, y_pred, y_prob)
+
+        cur_score = score_from(rep, te_loss)
+        if best_score is None or cur_score > best_score:
+            best_score = cur_score
+            best_epoch = epoch
+            torch.save({"model_state": model.state_dict(), "args": vars(args)}, best_path)
+
+        print(
+            f"epoch={epoch:02d} "
+            f"train_loss={tr_loss:.4f} test_loss={te_loss:.4f} "
+            f"test_acc={rep['accuracy']:.4f} test_f1={rep['f1']:.4f} test_auc={rep['roc_auc']:.4f}"
+        )
 
         with log_path.open("a") as f:
-            f.write(f"{epoch}\t{tr_loss:.6f}\n")
+            f.write(
+                f"{epoch}\t{tr_loss:.6f}\t{te_loss:.6f}\t"
+                f"{rep['accuracy']:.6f}\t{rep['f1']:.6f}\t{rep['roc_auc']:.6f}\n"
+            )
 
-    final_model_path = out_dir / f"{args.mode}_final.pt"
-    torch.save({"model_state": model.state_dict(), "args": vars(args)}, final_model_path)
-    print(f"Saved final model: {final_model_path}")
+    print(f"Saved best checkpoint: {best_path} (best_{args.select_best_by} at epoch={best_epoch})")
+
+    ckpt = torch.load(best_path, map_location=device)
+    model.load_state_dict(ckpt["model_state"])
+    model.eval()
 
     te_loss, y_true, y_pred, y_prob = eval_full(model, test_loader, device)
     report = compute_metrics(y_true, y_pred, y_prob)
@@ -244,7 +343,7 @@ def train_main():
         save_predictions=args.save_predictions,
     )
 
-    print("\nFINAL TEST METRICS:")
+    print("\nFINAL TEST METRICS (best checkpoint):")
     print(
         f"loss={float(te_loss):.4f} acc={report['accuracy']:.4f} "
         f"prec={report['precision']:.4f} rec={report['recall']:.4f} "

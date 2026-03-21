@@ -134,23 +134,17 @@ def seq_to_kmer_tokens(seq: str, k: int, L_kmers: int) -> np.ndarray:
 # ----------------------------
 # Dataset
 # ----------------------------
-
 class ReadSeqDataset(Dataset):
     """
-    Deep learning dataset that reads from the seq TSV (train_seq_L300.tsv etc.)
-    and returns:
-      - cnn: (5, L) float tensor
-      - transformer: (L_kmers,) int64 token ids
+    Dataset that reads from seq TSV (read_id, label, seq) and returns:
+      - cnn:        (4, L) float tensor (one-hot)
+      - transformer:(L_kmers,) int64 tokens
+      - rnn_kmer:   (L_kmers,) int64 tokens   (same tokens as transformer, but used by RNN+Embedding)
     """
 
-    def __init__(
-        self,
-        seq_tsv_path: str,
-        mode: str,
-        cfg: SeqConfig,
-    ):
-        if mode not in {"cnn", "transformer"}:
-            raise ValueError("mode must be 'cnn' or 'transformer'")
+    def __init__(self, seq_tsv_path: str, mode: str, cfg: SeqConfig):
+        if mode not in {"cnn", "transformer", "rnn_kmer"}:
+            raise ValueError("mode must be 'cnn', 'transformer', or 'rnn_kmer'")
 
         self.mode = mode
         self.cfg = cfg
@@ -173,11 +167,11 @@ class ReadSeqDataset(Dataset):
         seq = self.seqs[idx]
 
         if self.mode == "cnn":
-            x_np = one_hot_4ch(seq)  # (4, L)
-            x = torch.from_numpy(x_np)           # float32
+            x_np = one_hot_4ch(seq)          # (4, L)
+            x = torch.from_numpy(x_np)       # float32
             return x, y
 
-        # transformer
+        # transformer OR rnn_kmer share the same tokens
         tok = seq_to_kmer_tokens(seq, k=self.cfg.k, L_kmers=self.cfg.L_kmers)  # (L_kmers,)
         x = torch.from_numpy(tok)  # int64
         return x, y

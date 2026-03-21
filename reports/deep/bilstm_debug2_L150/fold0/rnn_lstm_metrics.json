@@ -1,0 +1,51 @@
+{
+  "accuracy": 0.53109375,
+  "precision": 0.5596165368484122,
+  "recall": 0.291875,
+  "f1": 0.38365167385500104,
+  "roc_auc": 0.538407421875,
+  "confusion_matrix": [
+    [
+      2465,
+      735
+    ],
+    [
+      2266,
+      934
+    ]
+  ],
+  "n": 6400,
+  "n_pos": 3200,
+  "n_neg": 3200,
+  "classification_report": "              precision    recall  f1-score   support\n\n       clean     0.5210    0.7703    0.6216      3200\n    chimeric     0.5596    0.2919    0.3837      3200\n\n    accuracy                         0.5311      6400\n   macro avg     0.5403    0.5311    0.5026      6400\nweighted avg     0.5403    0.5311    0.5026      6400\n",
+  "test_loss": 0.6697440659999847,
+  "mode": "rnn_lstm",
+  "args": {
+    "mode": "rnn_lstm",
+    "train_tsv": "data/processed/cv_seq_L150_seed42/fold0_train_seq.tsv",
+    "test_tsv": "data/processed/cv_seq_L150_seed42/fold0_val_seq.tsv",
+    "out_dir": "models/deep/bilstm_debug2_L150/fold0",
+    "reports_dir": "reports/deep/bilstm_debug2_L150/fold0",
+    "L": 150,
+    "use_qual": false,
+    "k": 6,
+    "L_kmers": 256,
+    "d_model": 128,
+    "layers": 4,
+    "heads": 4,
+    "batch": 128,
+    "epochs": 20,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "grad_clip": 1.0,
+    "class_weight": "none",
+    "select_best_by": "auc",
+    "hidden": 128,
+    "rnn_layers": 1,
+    "bidirectional": true,
+    "pool": "last",
+    "proj_dim": 0,
+    "save_predictions": true
+  }
+}

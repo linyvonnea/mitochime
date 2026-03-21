@@ -1,0 +1,50 @@
+{
+  "accuracy": 0.951625,
+  "precision": 0.9394307954269034,
+  "recall": 0.9655,
+  "f1": 0.9522870176303785,
+  "roc_auc": 0.9849490624999999,
+  "confusion_matrix": [
+    [
+      3751,
+      249
+    ],
+    [
+      138,
+      3862
+    ]
+  ],
+  "n": 8000,
+  "n_pos": 4000,
+  "n_neg": 4000,
+  "classification_report": "              precision    recall  f1-score   support\n\n       clean     0.9645    0.9377    0.9509      4000\n    chimeric     0.9394    0.9655    0.9523      4000\n\n    accuracy                         0.9516      8000\n   macro avg     0.9520    0.9516    0.9516      8000\nweighted avg     0.9520    0.9516    0.9516      8000\n",
+  "test_loss": 0.24315887276828288,
+  "mode": "rnn_kmer_gru",
+  "args": {
+    "mode": "rnn_kmer_gru",
+    "train_tsv": "data/processed/PAIR_train_seq_L150.tsv",
+    "test_tsv": "data/processed/PAIR_test_seq_L150.tsv",
+    "out_dir": "models/deep/rnnkmer_bigru_final_L150_seed42",
+    "reports_dir": "reports/deep/rnnkmer_bigru_final_L150_seed42",
+    "L": 150,
+    "use_qual": false,
+    "k": 4,
+    "L_kmers": 147,
+    "d_model": 128,
+    "layers": 4,
+    "heads": 4,
+    "batch": 128,
+    "epochs": 30,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "grad_clip": 1.0,
+    "select_best_by": "f1",
+    "hidden": 256,
+    "rnn_layers": 1,
+    "bidirectional": true,
+    "pool": "last",
+    "embed_dim": 64,
+    "save_predictions": true
+  }
+}
