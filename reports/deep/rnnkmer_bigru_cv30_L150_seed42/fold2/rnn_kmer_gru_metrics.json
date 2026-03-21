@@ -1,0 +1,50 @@
+{
+  "accuracy": 0.93296875,
+  "precision": 0.9110056363097004,
+  "recall": 0.9596875,
+  "f1": 0.934713133465226,
+  "roc_auc": 0.9779931640625,
+  "confusion_matrix": [
+    [
+      2900,
+      300
+    ],
+    [
+      129,
+      3071
+    ]
+  ],
+  "n": 6400,
+  "n_pos": 3200,
+  "n_neg": 3200,
+  "classification_report": "              precision    recall  f1-score   support\n\n       clean     0.9574    0.9062    0.9311      3200\n    chimeric     0.9110    0.9597    0.9347      3200\n\n    accuracy                         0.9330      6400\n   macro avg     0.9342    0.9330    0.9329      6400\nweighted avg     0.9342    0.9330    0.9329      6400\n",
+  "test_loss": 0.29586067914962766,
+  "mode": "rnn_kmer_gru",
+  "args": {
+    "mode": "rnn_kmer_gru",
+    "train_tsv": "data/processed/cv_seq_L150_seed42/fold2_train_seq.tsv",
+    "test_tsv": "data/processed/cv_seq_L150_seed42/fold2_val_seq.tsv",
+    "out_dir": "models/deep/rnnkmer_bigru_cv30_L150_seed42/fold2",
+    "reports_dir": "reports/deep/rnnkmer_bigru_cv30_L150_seed42/fold2",
+    "L": 150,
+    "use_qual": false,
+    "k": 4,
+    "L_kmers": 147,
+    "d_model": 128,
+    "layers": 4,
+    "heads": 4,
+    "batch": 128,
+    "epochs": 30,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "grad_clip": 1.0,
+    "select_best_by": "f1",
+    "hidden": 256,
+    "rnn_layers": 1,
+    "bidirectional": true,
+    "pool": "last",
+    "embed_dim": 64,
+    "save_predictions": true
+  }
+}
