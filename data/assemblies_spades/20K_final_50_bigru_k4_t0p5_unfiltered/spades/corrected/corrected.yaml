@@ -1,9 +1,0 @@
-- "left reads":
-  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_50_bigru_k4_t0p5_unfiltered/spades/corrected/20K_final_50_R1.fastq00.0_0.cor.fastq.gz"
-  "number": !!int "1"
-  "orientation": "fr"
-  "right reads":
-  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_50_bigru_k4_t0p5_unfiltered/spades/corrected/20K_final_50_R2.fastq00.0_0.cor.fastq.gz"
-  "single reads":
-  - "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/20K_final_50_bigru_k4_t0p5_unfiltered/spades/corrected/20K_final_50_R_unpaired00.0_0.cor.fastq.gz"
-  "type": "paired-end"
