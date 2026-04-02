@@ -57,11 +57,14 @@
 \contentsline {subsubsection}{3200 Paired-end Reads}{57}{section*.31}%
 \contentsline {subsubsection}{10K Paired-end Reads}{58}{section*.32}%
 \contentsline {subsubsection}{20K Paired-end Reads}{58}{section*.33}%
-\contentsline {section}{\numberline {4.8}Summary of Findings}{59}{section.4.8}%
-\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{61}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{65}{appendix.B}%
-\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{65}{subsection.B.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{67}{subsection.B.0.2}%
-\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{67}{subsection.B.0.3}%
-\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{68}{subsection.B.0.4}%
-\contentsline {subsection}{\numberline {B.0.5}Others}{68}{subsection.B.0.5}%
+\contentsline {section}{\numberline {4.8}Recurrent Neural Network (RNN) Performance and Classification Results}{59}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Comparison Across Models}{62}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}Interpretation}{63}{subsection.4.8.2}%
+\contentsline {section}{\numberline {4.9}Summary of Findings}{63}{section.4.9}%
+\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{66}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{70}{appendix.B}%
+\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{70}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{72}{subsection.B.0.2}%
+\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{72}{subsection.B.0.3}%
+\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{73}{subsection.B.0.4}%
+\contentsline {subsection}{\numberline {B.0.5}Others}{73}{subsection.B.0.5}%
