@@ -1,171 +1,114 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# src/scripts/run_mitochime_cli.sh
+# Usage:
+#   bash src/scripts/run_pipeline_rnnkmer.sh <R1> <R2> <RUN_NAME> [THRESH=0.5]
 #
-# Interactive CLI to run MitoChime filtering pipelines:
-#   1) GB (reference-guided)
-#   2) CNN (reference-free)
-#   3) BOTH (GB + CNN)
-#   4) BiGRU-kmer (reference-free)
-#   5) ALL (GB + CNN + BiGRU-kmer)
-#
-# Optional: run SPAdes assemblies on unfiltered + filtered outputs.
-#
-# Assumes these scripts exist:
-#   src/scripts/run_pipeline_gb.sh
-#   src/scripts/run_pipeline_cnn.sh
-#   src/scripts/run_pipeline_rnnkmer.sh
-#   src/scripts/run_spades.sh (optional if you choose SPAdes)
+# Optional env:
+#   RNN_MODEL=/path/to/rnn_kmer_gru_best.pt
+#   OVERWRITE=1
+#   CHECK_SAMPLE=0
 
-prompt() {
-  local var="$1" msg="$2" def="${3:-}" ans
-  if [[ -n "$def" ]]; then
-    read -r -p "${msg} [${def}]: " ans
-    ans="${ans:-$def}"
-  else
-    read -r -p "${msg}: " ans
-  fi
-  printf -v "$var" "%s" "$ans"
-}
-
-require_file(){ [[ -f "$1" ]] || { echo "[ERROR] File not found: $1" >&2; exit 1; }; }
-require_cmd(){ command -v "$1" >/dev/null 2>&1 || { echo "[ERROR] Missing command: $1" >&2; exit 1; }; }
-to_abs(){ python3 -c 'import os,sys; print(os.path.abspath(sys.argv[1]))' "$1"; }
-
-echo "=== MitoChime CLI (GB + CNN + BiGRU-kmer) ==="
-
-require_cmd python3
-require_cmd bash
+R1="$1"
+R2="$2"
+RUN="$3"
+THRESH="${4:-0.5}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 cd "$ROOT_DIR"
 
-# --- collect inputs
-prompt R1 "Enter R1 FASTQ/FASTQ.GZ path"
-prompt R2 "Enter R2 FASTQ/FASTQ.GZ path"
-R1="$(to_abs "$R1")"
-R2="$(to_abs "$R2")"
-require_file "$R1"
-require_file "$R2"
+MODEL_DEFAULT="models/deep/rnnkmer_bigru_final_L150_seed42/rnn_kmer_gru_best.pt"
+MODEL="${RNN_MODEL:-$MODEL_DEFAULT}"
 
-prompt RUN "Base run name" "run1"
-prompt THRESH "Chimera threshold (0-1)" "0.5"
-prompt THREADS "Threads (GB mapping/assembly)" "8"
+OVERWRITE="${OVERWRITE:-0}"
+CHECK_SAMPLE="${CHECK_SAMPLE:-0}"
 
-echo ""
-echo "Mode:"
-echo "  1) GB only"
-echo "  2) CNN only"
-echo "  3) BOTH (GB + CNN on original reads)"
-echo "  4) BiGRU-kmer only"
-echo "  5) ALL (GB + CNN + BiGRU-kmer)"
-prompt MODE "Enter 1/2/3/4/5" "3"
+OUT_ENC="data/dl/${RUN}"
+OUT_PRED="data/predictions/${RUN}"
+OUT_FILT="data/filtered_reads/${RUN}"
 
-REF=""
-if [[ "$MODE" == "1" || "$MODE" == "3" || "$MODE" == "5" ]]; then
-  prompt REF "GB reference FASTA" "data/refs/original.fasta"
-  REF="$(to_abs "$REF")"
-  require_file "$REF"
+die() { echo "[ERROR] $*" >&2; exit 1; }
+
+[[ -f "$MODEL" ]] || die "Missing BiGRU model: $MODEL"
+[[ -f "$R1" ]] || die "Missing R1: $R1"
+[[ -f "$R2" ]] || die "Missing R2: $R2"
+
+if [[ "$OVERWRITE" == "1" ]]; then
+  echo "[OVERWRITE] removing old outputs for RUN=$RUN"
+  rm -rf "$OUT_ENC" "$OUT_PRED" "$OUT_FILT"
 fi
 
-prompt DO_SPADES "Run SPAdes assembly (y/n)" "n"
-prompt SPADES_ENV "SPAdes conda env name (blank if in PATH)" ""
+mkdir -p "$OUT_ENC" "$OUT_PRED" "$OUT_FILT"
 
-# --- scripts
-GB_SCRIPT="src/scripts/run_pipeline_gb.sh"
-CNN_SCRIPT="src/scripts/run_pipeline_cnn.sh"
-RNNKMER_SCRIPT="src/scripts/run_pipeline_rnnkmer.sh"
-SPADES_SCRIPT="src/scripts/run_spades.sh"
+echo "[INFO] RUN=$RUN"
+echo "[INFO] THRESH=$THRESH"
+echo "[INFO] MODEL=$MODEL"
 
-require_file "$GB_SCRIPT"
-require_file "$CNN_SCRIPT"
-require_file "$RNNKMER_SCRIPT"
-chmod +x "$GB_SCRIPT" "$CNN_SCRIPT" "$RNNKMER_SCRIPT" >/dev/null 2>&1 || true
-[[ -f "$SPADES_SCRIPT" ]] && chmod +x "$SPADES_SCRIPT" >/dev/null 2>&1 || true
+SEQ_TSV="${OUT_ENC}/${RUN}.seq.tsv"
 
-# --- derived run names
-GB_RUN="${RUN}_gb"
-CNN_RUN="${RUN}_cnn"
-RNN_RUN="${RUN}_bigru"
+echo "[1/3] Make sequence TSV for inference"
+PYTHONPATH=src python3 -m mitochime.deep_learning.make_seq_tsv_infer \
+  --r1 "$R1" \
+  --r2 "$R2" \
+  --L 150 \
+  --out "$SEQ_TSV"
 
-# --- expected outputs
-GB_R1_OUT="data/filtered_reads/${GB_RUN}/${GB_RUN}.gb.filtered_R1.fastq.gz"
-GB_R2_OUT="data/filtered_reads/${GB_RUN}/${GB_RUN}.gb.filtered_R2.fastq.gz"
+echo "[2/3] BiGRU-kmer inference"
+PYTHONPATH=src python3 -m mitochime.deep_learning.predict_deep \
+  --tsv "$SEQ_TSV" \
+  --ckpt "$MODEL" \
+  --out "${OUT_PRED}/${RUN}.bigru.pred.tsv" \
+  --remove-ids "${OUT_PRED}/${RUN}.bigru.remove_ids_raw.txt" \
+  --threshold "$THRESH" \
+  --L 150 \
+  --k 4 \
+  --L-kmers 147 \
+  --embed-dim 64 \
+  --hidden 256 \
+  --rnn-layers 1 \
+  --bidirectional \
+  --pool last
 
-CNN_R1_OUT="data/filtered_reads/${CNN_RUN}/${CNN_RUN}.cnn.filtered_R1.fastq.gz"
-CNN_R2_OUT="data/filtered_reads/${CNN_RUN}/${CNN_RUN}.cnn.filtered_R2.fastq.gz"
+echo "[3/3] Pair-safe filter mates"
+python3 "${SCRIPT_DIR}/filter_pairs_by_ids.py" \
+  --r1 "$R1" --r2 "$R2" \
+  --remove-ids "${OUT_PRED}/${RUN}.bigru.remove_ids_raw.txt" \
+  --out-r1 "${OUT_FILT}/${RUN}.bigru.filtered_R1.fastq.gz" \
+  --out-r2 "${OUT_FILT}/${RUN}.bigru.filtered_R2.fastq.gz"
 
-RNN_R1_OUT="data/filtered_reads/${RNN_RUN}/${RNN_RUN}.bigru.filtered_R1.fastq.gz"
-RNN_R2_OUT="data/filtered_reads/${RNN_RUN}/${RNN_RUN}.bigru.filtered_R2.fastq.gz"
+echo "[CHECK] Counting reads after filtering"
+R1N=$(seqkit stats "${OUT_FILT}/${RUN}.bigru.filtered_R1.fastq.gz" | awk 'NR==2{gsub(",","",$4); print $4}')
+R2N=$(seqkit stats "${OUT_FILT}/${RUN}.bigru.filtered_R2.fastq.gz" | awk 'NR==2{gsub(",","",$4); print $4}')
 
-# --- run pipelines
-if [[ "$MODE" == "1" || "$MODE" == "3" || "$MODE" == "5" ]]; then
-  echo ""
-  echo "[GB] Running..."
-  bash "$GB_SCRIPT" "$R1" "$R2" "$GB_RUN" "$THRESH" "$THREADS" "$REF"
-  require_file "$GB_R1_OUT"
-  require_file "$GB_R2_OUT"
+if [[ "$R1N" != "$R2N" ]]; then
+  die "Filtered pair counts mismatch: R1=$R1N vs R2=$R2N"
 fi
+echo "[OK] Filtered pairs: $R1N read-pairs kept"
 
-if [[ "$MODE" == "2" || "$MODE" == "3" || "$MODE" == "5" ]]; then
-  echo ""
-  echo "[CNN] Running..."
-  bash "$CNN_SCRIPT" "$R1" "$R2" "$CNN_RUN" "$THRESH"
-  require_file "$CNN_R1_OUT"
-  require_file "$CNN_R2_OUT"
-fi
+if [[ "$CHECK_SAMPLE" != "0" ]]; then
+  echo "[CHECK] Sampling $CHECK_SAMPLE headers to verify pair order (R1 vs R2)"
+  set +e
+  H1=$(gzip -cd "${OUT_FILT}/${RUN}.bigru.filtered_R1.fastq.gz" \
+    | awk -v n="$CHECK_SAMPLE" 'NR%4==1 {print; c++; if (c>=n) exit}' \
+    | sed -E 's/\/1$//; s/\/2$//; s/[[:space:]].*$//')
+  status1=$?
 
-if [[ "$MODE" == "4" || "$MODE" == "5" ]]; then
-  echo ""
-  echo "[BiGRU-kmer] Running..."
-  bash "$RNNKMER_SCRIPT" "$R1" "$R2" "$RNN_RUN" "$THRESH"
-  require_file "$RNN_R1_OUT"
-  require_file "$RNN_R2_OUT"
-fi
+  H2=$(gzip -cd "${OUT_FILT}/${RUN}.bigru.filtered_R2.fastq.gz" \
+    | awk -v n="$CHECK_SAMPLE" 'NR%4==1 {print; c++; if (c>=n) exit}' \
+    | sed -E 's/\/1$//; s/\/2$//; s/[[:space:]].*$//')
+  status2=$?
+  set -e
 
-echo ""
-echo "[DONE] Filtered outputs:"
-if [[ -f "$GB_R1_OUT" ]]; then
-  echo "  GB     R1: $GB_R1_OUT"
-  echo "  GB     R2: $GB_R2_OUT"
-fi
-if [[ -f "$CNN_R1_OUT" ]]; then
-  echo "  CNN    R1: $CNN_R1_OUT"
-  echo "  CNN    R2: $CNN_R2_OUT"
-fi
-if [[ -f "$RNN_R1_OUT" ]]; then
-  echo "  BiGRU  R1: $RNN_R1_OUT"
-  echo "  BiGRU  R2: $RNN_R2_OUT"
-fi
-
-# --- optional SPAdes
-if [[ "$DO_SPADES" =~ ^[Yy]$ ]]; then
-  [[ -f "$SPADES_SCRIPT" ]] || { echo "[ERROR] Missing $SPADES_SCRIPT" >&2; exit 1; }
-
-  echo ""
-  echo "[SPAdes] UNFILTERED..."
-  bash "$SPADES_SCRIPT" "$R1" "$R2" "data/assemblies_spades/${RUN}_unfiltered/spades" "$THREADS" "$SPADES_ENV"
-
-  if [[ -f "$GB_R1_OUT" ]]; then
-    echo ""
-    echo "[SPAdes] GB FILTERED..."
-    bash "$SPADES_SCRIPT" "$GB_R1_OUT" "$GB_R2_OUT" "data/assemblies_spades/${RUN}_gb_filtered/spades" "$THREADS" "$SPADES_ENV"
-  fi
-
-  if [[ -f "$CNN_R1_OUT" ]]; then
-    echo ""
-    echo "[SPAdes] CNN FILTERED..."
-    bash "$SPADES_SCRIPT" "$CNN_R1_OUT" "$CNN_R2_OUT" "data/assemblies_spades/${RUN}_cnn_filtered/spades" "$THREADS" "$SPADES_ENV"
-  fi
-
-  if [[ -f "$RNN_R1_OUT" ]]; then
-    echo ""
-    echo "[SPAdes] BiGRU-kmer FILTERED..."
-    bash "$SPADES_SCRIPT" "$RNN_R1_OUT" "$RNN_R2_OUT" "data/assemblies_spades/${RUN}_bigru_filtered/spades" "$THREADS" "$SPADES_ENV"
+  if [[ $status1 -ne 0 || $status2 -ne 0 ]]; then
+    echo "[WARN] Header sampling check skipped due to pipeline exit status."
+  elif ! diff -q <(echo "$H1") <(echo "$H2") >/dev/null; then
+    die "Header pairing check failed: R1 and R2 IDs diverge."
+  else
+    echo "[OK] Header pairing check passed"
   fi
 fi
 
-echo ""
-echo "[OK] Pipeline finished."
+echo "[DONE] BiGRU filtered:"
+echo "  ${OUT_FILT}/${RUN}.bigru.filtered_R1.fastq.gz"
+echo "  ${OUT_FILT}/${RUN}.bigru.filtered_R2.fastq.gz"

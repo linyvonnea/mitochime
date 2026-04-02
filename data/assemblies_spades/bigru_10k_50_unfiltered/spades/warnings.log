@@ -1,0 +1,5 @@
+
+=== Error correction and assembling warnings:
+ * 0:00:00.002     1M / 12M   WARN    General                 (memory_limit.cpp          :  53)   Failed to limit memory to 250 Gb, setrlimit(2) call failed, errno = 22 (Invalid argument). Watch your memory consumption!
+ * 0:00:00.353     1M / 70M   WARN    General                 (kmer_coverage_model.cpp   : 219)   Too many erroneous kmers, the estimates might be unreliable
+======= Warnings saved to /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_10k_50_unfiltered/spades/warnings.log
