@@ -415,16 +415,115 @@ Across read depths, GB consistently retained more reads and generally preserved 
 
 ///insert cite {Bankevich2012SPAdes,Antipov2016SPAdesHybrid,Wick2015Bandage}
 
+\section{Recurrent Neural Network (RNN) Performance and Classification Results}
 
+Across five cross-validation folds, the RNN-kmer BiGRU model achieved consistently high performance with low variability, as shown in Table~\ref{tab:rnn_cv_summary}. The mean cross-validation accuracy was 0.9303, mean precision was 0.9137, mean recall was 0.9505, mean F1-score was 0.9317, and mean ROC--AUC was 0.9734. Mean validation loss across folds was 0.3397. Individual fold F1-scores ranged from 0.9252 to 0.9386, while ROC--AUC ranged from 0.9672 to 0.9780, indicating only small variation across folds.
+
+\begin{table}[H]
+\centering
+\caption{Five-fold cross-validation performance of the RNN-kmer BiGRU model.}
+\label{tab:rnn_cv_summary}
+\begin{tabular}{lrr}
+\toprule
+Metric & Mean & Std. Dev. \\
+\midrule
+Loss      & 0.3397 & 0.0619 \\
+Accuracy  & 0.9303 & 0.0055 \\
+Precision & 0.9137 & 0.0118 \\
+Recall    & 0.9505 & 0.0094 \\
+F1-score  & 0.9317 & 0.0051 \\
+ROC--AUC  & 0.9734 & 0.0048 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The training curves also show stable optimization behavior. As shown in Figure~\ref{fig:rnn_training}, training loss decreases rapidly during the early epochs and continues to decline toward near-zero values, while validation loss drops sharply in the first several epochs before plateauing and fluctuating mildly. At the same time, validation F1 and validation AUC increase quickly and stabilize at high values, reaching approximately 0.93 and 0.97, respectively.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/rnn_loss.png}
+    \label{fig:rnn_loss}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/rnn_f1_auc.png}
+    \label{fig:rnn_f1_auc}
+  \end{subfigure}
+  \caption{Training and validation performance of the RNN-kmer BiGRU model across epochs.}
+  \label{fig:rnn_training}
+\end{figure}
+
+On the held-out balanced test set (\(n = 8000\); 4000 clean and 4000 chimeric reads), the final RNN-kmer BiGRU model achieved a test loss of 0.2432, accuracy of 0.9516, precision of 0.9394, recall of 0.9655, F1-score of 0.9523, and ROC--AUC of 0.9849, as summarized in Table~\ref{tab:gb_cnn_rnn_compare}. These values exceed those of both the tuned Gradient Boosting classifier and the CNN.
+
+Figure~\ref{fig:rnn_confusion} shows that the model correctly classified 3751 of 4000 clean reads and 3862 of 4000 chimeric reads. Only 249 clean reads were incorrectly labeled as chimeric, while 138 chimeric reads were misclassified as clean.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figures/rnn_confusion.png}
+  \caption{Confusion matrix of the RNN-kmer BiGRU model on the held-out test set.}
+  \label{fig:rnn_confusion}
+\end{figure}
+
+Class-wise performance also reflects this balanced behavior. For the chimeric class, recall reached 0.9655, while precision was 0.9394, as shown in Table~\ref{tab:gb_cnn_rnn_compare}. In contrast to the tuned Gradient Boosting model, which favored precision at the expense of recall, and the CNN, which favored recall but produced more false positives, the RNN achieved both high precision and high recall simultaneously.
+
+\subsection{Comparison Across Models}
+
+Direct comparison of the three best-performing approaches, shown in Table~\ref{tab:gb_cnn_rnn_compare} and Figure~\ref{fig:gb_cnn_rnn_compare}, shows a clear ranking. The tuned Gradient Boosting model achieved an F1-score of 0.7765 and ROC--AUC of 0.8459, while the CNN improved substantially to an F1-score of 0.9135 and ROC--AUC of 0.9607. The RNN-kmer BiGRU surpassed both, reaching an F1-score of 0.9523 and ROC--AUC of 0.9849.
+
+\begin{table}[H]
+\centering
+\caption{Comparison of held-out test performance across the top-performing models.}
+\label{tab:gb_cnn_rnn_compare}
+\begin{tabular}{lrrrrr}
+\toprule
+Model & Accuracy & Precision & Recall & F1-score & ROC--AUC \\
+\midrule
+Gradient Boosting (tuned) & 0.8091 & 0.9368 & 0.6630 & 0.7765 & 0.8459 \\
+CNN1D                     & 0.9093 & 0.8724 & 0.9588 & 0.9135 & 0.9607 \\
+RNN-kmer BiGRU            & 0.9516 & 0.9394 & 0.9655 & 0.9523 & 0.9849 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\linewidth]{figures/gb_cnn_rnn_compare.png}
+  \caption{Comparison of held-out test F1 and ROC--AUC for Gradient Boosting, CNN, and RNN models.}
+  \label{fig:gb_cnn_rnn_compare}
+\end{figure}
+
+% \subsection{Threshold Analysis}
+
+% Additional threshold analysis on the held-out test set showed that the default decision threshold of 0.50 already provides strong performance, but a small improvement in F1 can be obtained by lowering the threshold. The best read-level F1-score was achieved at a threshold of approximately 0.285, yielding accuracy of 0.9524, precision of 0.9320, recall of 0.9760, and F1-score of 0.9535. This improved recall while maintaining high precision, suggesting that the model's probabilistic outputs are well calibrated for threshold-based optimization.
+
+% Pair-level analysis further improved performance when read mates were aggregated. Using an AND rule based on the minimum probability of the pair, the best pair-level threshold (\(\approx 0.015\)) achieved an F1-score of 0.9845, with precision of 0.9816 and recall of 0.9875. The OR rule based on the maximum mate probability also performed well but was slightly inferior, with best F1-score of 0.9619. These findings suggest that paired-end information can further strengthen chimera detection when predictions are combined at the fragment level rather than treating reads independently.
+
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=0.75\linewidth]{figures/rnn_threshold_sweep.png}
+%   \caption{Threshold sweep for the RNN-kmer BiGRU model showing precision, recall, and F1 across decision thresholds.}
+%   \label{fig:rnn_threshold_sweep}
+% \end{figure}
+
+\subsection{Interpretation}
+
+Overall, the RNN results show that recurrent sequence modeling achieved the best classification performance among all evaluated methods. The RNN-kmer BiGRU model obtained the highest held-out test accuracy, F1-score, and ROC--AUC, exceeding both the feature-based classifiers and the CNN. In contrast to the feature-based approaches, which depend on engineered features, the RNN was trained on sequential k-mer representations. It also outperformed the CNN under the same evaluation setting.
+
+These findings suggest that RNN-based modeling is a highly promising approach for pre-assembly chimera detection in simulated mitochondrial Illumina data. Its strong performance on both read-level and pair-level prediction indicates that sequence-order information alone can provide highly accurate discrimination between clean and chimeric reads, even without relying exclusively on engineered features.
 
 \section{Summary of Findings}
 
 ///NOTE: TO BE REVISED AFTER FINAL CHECKS ON THE FULL RESULTS
 
-All evaluated machine learning models substantially outperformed the dummy baseline, demonstrating that the engineered feature set contains meaningful signals for detecting PCR-induced chimeric reads. Across classifiers, the best-performing models achieved test F1-scores of approximately 0.77 and ROC--AUC values around 0.84 on held-out simulated mitochondrial reads, indicating reliable discrimination between clean and chimeric sequences. Among the tested approaches, tree-based ensemble and boosting methods consistently showed the strongest and most stable performance. In particular, CatBoost and Gradient Boosting ranked among the top models across multiple evaluation metrics, both before and after hyperparameter tuning. These results suggest that non-linear ensemble methods are well suited to capturing the interaction between alignment-derived and sequence-derived features in this setting.
+All evaluated machine learning and deep learning models substantially outperformed the dummy baseline, demonstrating that both the engineered feature set and sequence-based representations contain meaningful signals for detecting PCR-induced chimeric reads. Among the feature-based classifiers, the best-performing classical models achieved test F1-scores of approximately 0.77 and ROC--AUC values around 0.84 on held-out simulated mitochondrial reads, indicating reliable discrimination between clean and chimeric sequences. Tree-based ensemble and boosting methods consistently showed the strongest performance among these classical approaches, with CatBoost and Gradient Boosting ranking among the top models before and after hyperparameter tuning.
 
 Analysis of feature behaviour revealed clear differences in how effectively feature groups distinguished clean and chimeric reads. Alignment- and clipping-based features, such as soft-clipping measures and total clipped bases, showed strong separation between clean and chimeric reads and emerged as the most informative signals. K-mer divergence features provided additional but weaker separation, contributing complementary information beyond alignment irregularities. In contrast, microhomology features and several supplementary alignment (SA) structure metrics exhibited minimal class separation and contributed little to overall predictive performance.
 
-Feature selection results further supported these observations. A reduced subset of four features, dominated by clipping-based and k-mer divergence metrics, achieved nearly identical performance to the full 23-feature model. Moreover, removing explicit microhomology features did not degrade performance and in some cases resulted in slightly improved metrics, suggesting that these features are largely redundant under the simulated conditions tested.
+Feature selection results further supported these observations. A reduced subset of four features, dominated by clipping-based and k-mer divergence metrics, achieved nearly identical performance to the full 23-feature model. In addition, removing explicit microhomology features did not substantially reduce classification performance, indicating that these features contributed little under the simulated conditions used in this study.
 
-Overall, these findings suggest that alignment-based and k-mer--based features provide sufficient signal to detect PCR-induced chimeric reads in simulated mitochondrial data, supporting the use of a compact and interpretable machine learning approach as a pre-assembly chimera detection step.
+The deep learning models achieved substantially stronger performance than the feature-based classifiers. The one-dimensional CNN improved held-out test performance to an F1-score of 0.9135 and a ROC--AUC of 0.9607, showing that sequence-based modeling can capture discriminative patterns beyond those represented by the engineered features alone. The RNN-kmer BiGRU model achieved the best overall performance among all evaluated methods, with a held-out test accuracy of 0.9516, precision of 0.9394, recall of 0.9655, F1-score of 0.9523, and ROC--AUC of 0.9849. Cross-validation results for the RNN were also consistent across folds, with mean F1-score of 0.9317 and mean ROC--AUC of 0.9734.
+
+Overall, these findings show that PCR-induced chimeric reads in simulated mitochondrial data can be detected effectively using both engineered-feature classifiers and sequence-based neural models, but the highest classification performance was achieved by the RNN. While alignment-based and k-mer-based engineered features provide a compact and interpretable basis for detection, the deep learning results indicate that sequential k-mer representations are highly effective for this objective. Taken together, the results support the use of machine learning as a pre-assembly chimera detection step, with the RNN-kmer BiGRU providing the strongest overall predictive performance in this study.
