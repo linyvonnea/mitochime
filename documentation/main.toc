@@ -53,13 +53,12 @@
 \contentsline {subsection}{\numberline {4.6.2}Performance Comparison Across Feature Sets}{53}{subsection.4.6.2}%
 \contentsline {subsection}{\numberline {4.6.3}Interpretation and Final Feature Set Choice}{55}{subsection.4.6.3}%
 \contentsline {section}{\numberline {4.7}Convolutional Neural Network (CNN) Performance and Classification Results}{55}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}External Assembly Testing}{57}{subsection.4.7.1}%
-\contentsline {subsubsection}{3200 Paired-end Reads}{57}{section*.31}%
-\contentsline {subsubsection}{10K Paired-end Reads}{58}{section*.32}%
-\contentsline {subsubsection}{20K Paired-end Reads}{58}{section*.33}%
-\contentsline {section}{\numberline {4.8}Recurrent Neural Network (RNN) Performance and Classification Results}{59}{section.4.8}%
-\contentsline {subsection}{\numberline {4.8.1}Comparison Across Models}{62}{subsection.4.8.1}%
-\contentsline {subsection}{\numberline {4.8.2}Interpretation}{63}{subsection.4.8.2}%
+\contentsline {section}{\numberline {4.8}Recurrent Neural Network (RNN) Performance and Classification Results}{57}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}External Assembly Testing}{60}{subsection.4.8.1}%
+\contentsline {subsubsection}{3200 Paired-end Reads}{60}{section*.34}%
+\contentsline {subsubsection}{10K Paired-end Reads}{61}{section*.35}%
+\contentsline {subsubsection}{20K Paired-end Reads}{61}{section*.36}%
+\contentsline {subsection}{\numberline {4.8.2}Comparison Across Models}{62}{subsection.4.8.2}%
 \contentsline {section}{\numberline {4.9}Summary of Findings}{63}{section.4.9}%
 \contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{66}{appendix.A}%
 \contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{70}{appendix.B}%

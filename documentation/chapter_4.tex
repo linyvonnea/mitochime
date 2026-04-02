@@ -400,21 +400,6 @@ Class-wise performance indicates that the model is strongly biased toward correc
   \label{fig:cnn_confusion}
 \end{figure}
 
-\subsection{External Assembly Testing}
-
-\subsubsection{3200 Paired-end Reads}
-At the minimum read depth (3200), assembly outcomes depended strongly on how many reads were retained after filtering. At 5\% chimeras, both filters resolved minor branching by reducing the graph from 2 nodes (unfiltered) to 1 node. However, at higher chimera rates (15--50\%), the CNN filter produced fragmentation (2 nodes). This fragmentation is consistent with aggressive read removal, where CNN retained only 50.72--75.81\% of reads, leaving insufficient support for a fully contiguous assembly. In contrast, GB maintained a 1-node graph by retaining more reads (77.88--93.38\%).
-
-\subsubsection{10K Paired-end Reads}
-At 10K reads and 5--15\% chimeras, all assemblies produced a clean 1-node graph, indicating that filtering mainly affected read retention rather than assembly structure. At 50\% chimeras, the unfiltered graph branched into 3 nodes. Filtering reduced this complexity: GB produced 2 nodes while retaining 78.94\% of reads, whereas CNN achieved a fully simplified 1-node graph while retaining 50.46\%. The residual node under GB suggests that its more conservative filtering retained some ambiguous reads that sustained a minor branch, while the stronger filtering under CNN removed these links and yielded a cleaner graph.
-
-\subsubsection{20K Paired-end Reads}
-At 20K reads, unfiltered assemblies showed increased branching at 10--15\% chimeras (3 nodes) and extreme fragmentation at 50\% (966 nodes). Both filters restored contiguity. At 50\% chimeras, CNN produced a simpler graph (2 nodes) than GB (3 nodes), consistent with more aggressive read removal (CNN: 50.88\% retention vs.\ GB: 78.49\%). These results indicate that at higher coverage, stronger filtering can reduce chimera-driven graph complexity without inducing the fragmentation observed for CNN at the minimum-depth setting.
-
-Across read depths, GB consistently retained more reads and generally preserved contiguous assemblies, making it reliable at low depth (3200). CNN reduced graph complexity more strongly at high chimera percentage (notably 10K/50\% and 20K/50\%) but became risky at the minimum depth when chimera rates increased (3200/15--50\%), where filtering likely removed enough reads to cause fragmentation. Overall, assembly outcomes depended on both read depth and chimera percentage: at higher coverage, stronger filtering can simplify graphs without harming assembly, but at minimum coverage it can reduce read support and split the assembly into multiple nodes. In some unfiltered conditions, Bandage still showed a single-node graph. This does not imply the absence of chimeric reads; rather, SPAdes outputs a simplified assembly graph after trimming tips, and removing erroneous (including chimeric) connections. If chimeric reads do not generate an alternative path with sufficient support to persist through simplification, the assembly collapses to one dominant segment and appears as a single node in Bandage. 
-
-///insert cite {Bankevich2012SPAdes,Antipov2016SPAdesHybrid,Wick2015Bandage}
-
 \section{Recurrent Neural Network (RNN) Performance and Classification Results}
 
 Across five cross-validation folds, the RNN-kmer BiGRU model achieved consistently high performance with low variability, as shown in Table~\ref{tab:rnn_cv_summary}. The mean cross-validation accuracy was 0.9303, mean precision was 0.9137, mean recall was 0.9505, mean F1-score was 0.9317, and mean ROC--AUC was 0.9734. Mean validation loss across folds was 0.3397. Individual fold F1-scores ranged from 0.9252 to 0.9386, while ROC--AUC ranged from 0.9672 to 0.9780, indicating only small variation across folds.
@@ -469,6 +454,26 @@ Figure~\ref{fig:rnn_confusion} shows that the model correctly classified 3751 of
 
 Class-wise performance also reflects this balanced behavior. For the chimeric class, recall reached 0.9655, while precision was 0.9394, as shown in Table~\ref{tab:gb_cnn_rnn_compare}. In contrast to the tuned Gradient Boosting model, which favored precision at the expense of recall, and the CNN, which favored recall but produced more false positives, the RNN achieved both high precision and high recall simultaneously.
 
+Overall, the RNN results show that recurrent sequence modeling achieved the best classification performance among all evaluated methods. The RNN-kmer BiGRU model obtained the highest held-out test accuracy, F1-score, and ROC--AUC, exceeding both the feature-based classifiers and the CNN. In contrast to the feature-based approaches, which depend on engineered features, the RNN was trained on sequential k-mer representations. It also outperformed the CNN under the same evaluation setting.
+
+These findings suggest that RNN-based modeling is a highly promising approach for pre-assembly chimera detection in simulated mitochondrial Illumina data. Its strong performance on both read-level and pair-level prediction indicates that sequence-order information alone can provide highly accurate discrimination between clean and chimeric reads, even without relying exclusively on engineered features.
+
+\subsection{External Assembly Testing}
+
+\subsubsection{3200 Paired-end Reads}
+At the minimum read depth (3200), assembly outcomes depended strongly on how many reads were retained after filtering. At 5\% chimeras, both filters resolved minor branching by reducing the graph from 2 nodes (unfiltered) to 1 node. However, at higher chimera rates (15--50\%), the CNN filter produced fragmentation (2 nodes). This fragmentation is consistent with aggressive read removal, where CNN retained only 50.72--75.81\% of reads, leaving insufficient support for a fully contiguous assembly. In contrast, GB maintained a 1-node graph by retaining more reads (77.88--93.38\%).
+
+\subsubsection{10K Paired-end Reads}
+At 10K reads and 5--15\% chimeras, all assemblies produced a clean 1-node graph, indicating that filtering mainly affected read retention rather than assembly structure. At 50\% chimeras, the unfiltered graph branched into 3 nodes. Filtering reduced this complexity: GB produced 2 nodes while retaining 78.94\% of reads, whereas CNN achieved a fully simplified 1-node graph while retaining 50.46\%. The residual node under GB suggests that its more conservative filtering retained some ambiguous reads that sustained a minor branch, while the stronger filtering under CNN removed these links and yielded a cleaner graph.
+
+\subsubsection{20K Paired-end Reads}
+At 20K reads, unfiltered assemblies showed increased branching at 10--15\% chimeras (3 nodes) and extreme fragmentation at 50\% (966 nodes). Both filters restored contiguity. At 50\% chimeras, CNN produced a simpler graph (2 nodes) than GB (3 nodes), consistent with more aggressive read removal (CNN: 50.88\% retention vs.\ GB: 78.49\%). These results indicate that at higher coverage, stronger filtering can reduce chimera-driven graph complexity without inducing the fragmentation observed for CNN at the minimum-depth setting.
+
+Across read depths, GB consistently retained more reads and generally preserved contiguous assemblies, making it reliable at low depth (3200). CNN reduced graph complexity more strongly at high chimera percentage (notably 10K/50\% and 20K/50\%) but became risky at the minimum depth when chimera rates increased (3200/15--50\%), where filtering likely removed enough reads to cause fragmentation. Overall, assembly outcomes depended on both read depth and chimera percentage: at higher coverage, stronger filtering can simplify graphs without harming assembly, but at minimum coverage it can reduce read support and split the assembly into multiple nodes. In some unfiltered conditions, Bandage still showed a single-node graph. This does not imply the absence of chimeric reads; rather, SPAdes outputs a simplified assembly graph after trimming tips, and removing erroneous (including chimeric) connections. If chimeric reads do not generate an alternative path with sufficient support to persist through simplification, the assembly collapses to one dominant segment and appears as a single node in Bandage. 
+
+///insert cite {Bankevich2012SPAdes,Antipov2016SPAdesHybrid,Wick2015Bandage}
+
+
 \subsection{Comparison Across Models}
 
 Direct comparison of the three best-performing approaches, shown in Table~\ref{tab:gb_cnn_rnn_compare} and Figure~\ref{fig:gb_cnn_rnn_compare}, shows a clear ranking. The tuned Gradient Boosting model achieved an F1-score of 0.7765 and ROC--AUC of 0.8459, while the CNN improved substantially to an F1-score of 0.9135 and ROC--AUC of 0.9607. The RNN-kmer BiGRU surpassed both, reaching an F1-score of 0.9523 and ROC--AUC of 0.9849.
@@ -508,11 +513,6 @@ RNN-kmer BiGRU            & 0.9516 & 0.9394 & 0.9655 & 0.9523 & 0.9849 \\
 %   \label{fig:rnn_threshold_sweep}
 % \end{figure}
 
-\subsection{Interpretation}
-
-Overall, the RNN results show that recurrent sequence modeling achieved the best classification performance among all evaluated methods. The RNN-kmer BiGRU model obtained the highest held-out test accuracy, F1-score, and ROC--AUC, exceeding both the feature-based classifiers and the CNN. In contrast to the feature-based approaches, which depend on engineered features, the RNN was trained on sequential k-mer representations. It also outperformed the CNN under the same evaluation setting.
-
-These findings suggest that RNN-based modeling is a highly promising approach for pre-assembly chimera detection in simulated mitochondrial Illumina data. Its strong performance on both read-level and pair-level prediction indicates that sequence-order information alone can provide highly accurate discrimination between clean and chimeric reads, even without relying exclusively on engineered features.
 
 \section{Summary of Findings}
 

@@ -15,9 +15,9 @@
 \contentsline {figure}{\numberline {4.10}{\ignorespaces Comparison of F1 and ROC--AUC for the full, top-4 selected, and no-microhomology feature set variants.}}{54}{figure.caption.28}%
 \contentsline {figure}{\numberline {4.11}{\ignorespaces Training and Test Performance of the CNN Model Across 15 Epochs}}{56}{figure.caption.29}%
 \contentsline {figure}{\numberline {4.12}{\ignorespaces Confusion Matrix of CNN Classification Performance on Clean and Chimeric Reads}}{57}{figure.caption.30}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Training and validation performance of the RNN-kmer BiGRU model across epochs.}}{60}{figure.caption.35}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Confusion matrix of the RNN-kmer BiGRU model on the held-out test set.}}{61}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Comparison of held-out test F1 and ROC--AUC for Gradient Boosting, CNN, and RNN models.}}{62}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Training and validation performance of the RNN-kmer BiGRU model across epochs.}}{58}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Confusion matrix of the RNN-kmer BiGRU model on the held-out test set.}}{59}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Comparison of held-out test F1 and ROC--AUC for Gradient Boosting, CNN, and RNN models.}}{63}{figure.caption.38}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {B.1}{\ignorespaces Boxplots of SA Structure features by class (1/2).}}{70}{figure.caption.39}%
