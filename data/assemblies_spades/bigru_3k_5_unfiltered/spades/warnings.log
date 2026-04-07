@@ -1,4 +1,0 @@
-
-=== Error correction and assembling warnings:
- * 0:00:00.002     1M / 12M   WARN    General                 (memory_limit.cpp          :  53)   Failed to limit memory to 250 Gb, setrlimit(2) call failed, errno = 22 (Invalid argument). Watch your memory consumption!
-======= Warnings saved to /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_5_unfiltered/spades/warnings.log

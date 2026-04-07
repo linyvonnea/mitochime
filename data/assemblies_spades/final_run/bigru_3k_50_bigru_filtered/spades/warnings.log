@@ -1,0 +1,11 @@
+
+=== Error correction and assembling warnings:
+ * 0:00:00.000     1M / 12M   WARN    General                 (memory_limit.cpp          :  53)   Failed to limit memory to 250 Gb, setrlimit(2) call failed, errno = 22 (Invalid argument). Watch your memory consumption!
+ * 0:00:00.452     1M / 38M   WARN    General                 (kmer_coverage_model.cpp   : 367)   Failed to determine erroneous kmer threshold. Threshold set to: 11
+ * 0:00:00.471     1M / 43M   WARN    General                 (simplification.cpp        : 517)   The determined erroneous connection coverage threshold may be determined improperly
+ * 0:00:00.331     2M / 38M   WARN    General                 (kmer_coverage_model.cpp   : 367)   Failed to determine erroneous kmer threshold. Threshold set to: 10
+ * 0:00:00.303     2M / 39M   WARN    General                 (kmer_coverage_model.cpp   : 367)   Failed to determine erroneous kmer threshold. Threshold set to: 6
+ * 0:00:00.325     2M / 40M   WARN    General                 (kmer_coverage_model.cpp   : 367)   Failed to determine erroneous kmer threshold. Threshold set to: 5
+ * 0:00:00.249     1M / 37M   WARN    General                 (kmer_coverage_model.cpp   : 219)   Too many erroneous kmers, the estimates might be unreliable
+ * 0:00:00.289     1M / 37M   WARN    General                 (kmer_coverage_model.cpp   : 328)   Valley value was estimated improperly, reset to 1
+======= Warnings saved to /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_50_bigru_filtered/spades/warnings.log

@@ -1,0 +1,5 @@
+
+=== Error correction and assembling warnings:
+ * 0:00:00.001     1M / 12M   WARN    General                 (memory_limit.cpp          :  53)   Failed to limit memory to 250 Gb, setrlimit(2) call failed, errno = 22 (Invalid argument). Watch your memory consumption!
+ * 0:00:00.394     2M / 57M   WARN    General                 (simplification.cpp        : 517)   The determined erroneous connection coverage threshold may be determined improperly
+======= Warnings saved to /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_10_bigru_filtered/spades/warnings.log

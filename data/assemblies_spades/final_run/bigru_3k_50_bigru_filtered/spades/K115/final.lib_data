@@ -1,0 +1,46 @@
+®---
+max read length: 150
+nomerge max read length: 150
+average read length: 150
+average coverage: 0.776018
+libraries:
+  - type:            paired-end
+    number:          1
+    orientation:     fr
+    left reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_50_bigru_filtered/spades/corrected/bigru_3k_50_bigru.bigru.filtered_R1.fastq00.0_0.cor.fastq.gz'
+    right reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_50_bigru_filtered/spades/corrected/bigru_3k_50_bigru.bigru.filtered_R2.fastq00.0_0.cor.fastq.gz'
+    single reads:
+      - '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_50_bigru_filtered/spades/corrected/bigru_3k_50_bigru.bigru.filtered_R_unpaired00.0_0.cor.fastq.gz'
+    data:
+      unmerged read length: 150
+      merged read length: 0
+      insert size mean: 498.625
+      insert size deviation: 46.7786
+      insert size left quantile: 433
+      insert size right quantile: 555
+      insert size median: 503
+      insert size mad: 34
+      insert size distribution: { 418: 1, 420: 1, 424: 1, 426: 1, 433: 1, 
+                                  434: 1, 440: 2, 447: 1, 449: 1, 453: 1, 
+                                  458: 1, 464: 2, 467: 1, 475: 1, 479: 1, 
+                                  481: 2, 482: 1, 485: 1, 497: 1, 499: 1, 
+                                  503: 1, 505: 1, 508: 1, 510: 1, 511: 1, 
+                                  516: 1, 518: 1, 520: 1, 524: 2, 533: 2, 
+                                  534: 1, 535: 2, 537: 1, 539: 1, 544: 1, 
+                                  553: 2, 555: 1, 569: 1, 577: 1, 578: 1, 
+                                  604: 1 }
+      pi threshold:    0
+      binary reads info:
+        binary converted: true
+        bin reads info file: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_50_bigru_filtered/spades/.bin_reads/INFO_0'
+        paired read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_50_bigru_filtered/spades/.bin_reads/paired_0'
+        merged read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_50_bigru_filtered/spades/.bin_reads/merged_0'
+        single read prefix: '/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_3k_50_bigru_filtered/spades/.bin_reads/single_0'
+        chunk num:       8
+      single reads mapped: false
+      library index:   0
+      number of reads: 2582
+      total nucleotides: 387299
+...

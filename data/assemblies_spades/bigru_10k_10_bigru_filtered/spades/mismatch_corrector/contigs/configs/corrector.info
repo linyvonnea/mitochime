@@ -1,7 +1,0 @@
-"bwa": "/Users/yvonnelin/miniconda3/envs/mitochime/bin/spades-bwa"
-"dataset": "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_10k_10_bigru_filtered/spades/input_dataset.yaml"
-"log_filename": "log.properties"
-"max_nthreads": !!int "8"
-"output_dir": "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_10k_10_bigru_filtered/spades/mismatch_corrector/contigs"
-"strategy": "mapped_squared"
-"work_dir": "/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_10k_10_bigru_filtered/spades/tmp/corrector_iwv79nc2"

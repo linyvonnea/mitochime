@@ -1,5 +1,0 @@
-
-=== Error correction and assembling warnings:
- * 0:00:00.001     1M / 12M   WARN    General                 (memory_limit.cpp          :  53)   Failed to limit memory to 250 Gb, setrlimit(2) call failed, errno = 22 (Invalid argument). Watch your memory consumption!
- * 0:00:00.728     1M / 213M  WARN    General                 (launcher.cpp              : 181)   Your data seems to have high uniform coverage depth. It is strongly recommended to use --isolate option.
-======= Warnings saved to /Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/bigru_20k_10_bigru_filtered/spades/warnings.log
