@@ -1,0 +1,13 @@
+dataset	filter	reads_pairs_unfiltered	reads_pairs_filtered	reads_kept_pct	contigs_unfiltered	contigs_filtered	bp_unfiltered	bp_filtered	delta_bp	N50_unfiltered	N50_filtered	delta_N50	max_unfiltered	max_filtered	delta_max	nodes_unfiltered	nodes_filtered	edges_unfiltered	edges_filtered	run_root	read_level	chimera_pct
+3200_final_5	gb				1	1	16599	16577	-22	16599	16577	-22	16599	16577	-22	2	1	0	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/3200_final_5_gb_t0p5	3200	5
+3200_final_10	gb				1	1	16591	16615	24	16591	16615	24	16591	16615	24	1	1	0	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/3200_final_10_gb_t0p5	3200	10
+3200_final_15	gb				1	1	16645	16606	-39	16645	16606	-39	16645	16606	-39	1	1	0	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/3200_final_15_gb_t0p5	3200	15
+3200_final_50	gb				1	1	16736	16646	-90	16736	16646	-90	16736	16646	-90	1	1	0	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/3200_final_50_gb_t0p5	3200	50
+10K_final_5	gb				1	1	16615	16615	0	16615	16615	0	16615	16615	0	1	1	0	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_5_gb_t0p5	10K	5
+10K_final_10	cnn				1	1	16704	16693	-11	16704	16693	-11	16704	16693	-11	1	1	0	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_10_cnn_fixedep25_t0p5	10K	10
+10K_final_15	gb				1	1	16735	16642	-93	16735	16642	-93	16735	16642	-93	1	1	0	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/10K_final_15_gb_t0p5	10K	15
+10K_final_50	bigru				1	1	16715	16590	-125	16715	16590	-125	16715	16590	-125	3	2	4	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/bigru_10k_50_bigru_filtered	10K	50
+20K_final_5	cnn				1	1	16669	16669	0	16669	16669	0	16669	16669	0	1	1	0	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_5_cnn_fixedep25_t0p5	20K	5
+20K_final_10	bigru				1	1	16799	16698	-101	16799	16698	-101	16799	16698	-101	3	1	4	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/bigru_20k_10_bigru_filtered	20K	10
+20K_final_15	gb				1	1	16747	16891	144	16747	16891	144	16747	16891	144	3	1	4	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_15_gb_t0p5	20K	15
+20K_final_50	cnn				966	1	163906	16745	-147161	188	16745	16557	407	16745	16338	966	1	1297	0	/Users/yvonnelin/Desktop/mitochime/data/assemblies_spades/final_run/20K_final_50_cnn_fixedep25_t0p5	20K	50
