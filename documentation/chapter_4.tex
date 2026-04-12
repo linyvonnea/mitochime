@@ -192,163 +192,89 @@ After tuning, gradient boosting achieved the best overall test performance, with
 
 Because improvements are small and within cross-validation variability, tuning was interpreted as stabilising and slightly refining the models rather than completely altering their behaviour or their relative ranking.
 
-\section{Detailed Evaluation of Representative Models}
+\subsection{Confusion Matrix and Error Patterns}
 
-For interpretability and diversity, four tuned models were selected for deeper analysis: CatBoost (best-performing boosted tree), scikit-learn gradient boosting (canonical gradient-boosting implementation), random forest (non-boosted ensemble baseline), and $L_2$-regularised logistic regression (linear baseline). All models were trained on the engineered feature set and evaluated on the same held-out test data.
+Gradient Boosting was selected as the final classifier, as it demonstrated the best overall performance. Its classification report and confusion matrix show an overall accuracy of approximately 0.81, with a macro-averaged F1-score of about 0.80. For clean reads, the model achieved precision of 0.74 and recall of 0.96, while for chimeric reads it achieved precision of 0.94 and recall of 0.66, corresponding to an F1-score of 0.777 for the chimeric class.
 
-\subsection{Confusion Matrices and Error Patterns}
-
-Classification reports and confusion matrices for the four models reveal consistent patterns. CatBoost and gradient boosting both achieved overall accuracy around 0.81, with similar macro-averaged F1 scores (0.80--0.805). For CatBoost, precision and recall for clean reads were 0.74 and 0.95, respectively, while for chimeric reads they were 0.94 and 0.66 (F1 = 0.775). Gradient boosting showed nearly identical trade-offs, with clean read precision/recall of 0.74/0.96 and chimeric read precision/recall of 0.94/0.66 (F1 = 0.777).
-
-Bagging trees achieved slightly lower accuracy (0.805) and chimeric F1 (0.772), whereas the multilayer perceptron (MLP) attained the lowest accuracy (0.793) and chimeric F1 (0.749), despite achieving high chimeric precision (0.95) at the cost of lower recall (0.62).
-
-Across all models, errors were asymmetric: false negatives (chimeric reads predicted as clean) were more frequent than false positives. For instance, CatBoost misclassified 1{,}352 chimeric reads as clean but only 215 clean reads as chimeric, while gradient boosting misclassified 1{,}352 chimeric reads as clean and 181 clean reads as chimeric. This pattern indicates that both models are conservative, prioritizing the avoidance of false chimera calls even if some true chimeras are missed. Consultation with PGC Visayas suggested that this conservative behavior is generally acceptable, although further evaluation is needed to assess its impact on downstream analyses.
-
+Errors were asymmetric, with false negatives (chimeric reads predicted as clean) occurring more often than false positives. Specifically, the model misclassified 1{,}352 chimeric reads as clean and 181 clean reads as chimeric. This pattern indicates that the classifier is conservative, prioritising the avoidance of false chimera calls even if some true chimeric reads are missed. Consultation with PGC Visayas suggested that this conservative behaviour is generally acceptable, although further assessment is still needed to determine its downstream impact on analysis workflows.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.45\linewidth]{figures/cm_catboost_pair.png}
-  \includegraphics[width=0.45\linewidth]{figures/cm_gradient_boosting_pair.png}\\[4pt]
-  \includegraphics[width=0.45\linewidth]{figures/cm_bagging_trees_pair.png}
-  \includegraphics[width=0.45\linewidth]{figures/cm_mlp_pair.png}
-  \caption{Confusion matrices for the four representative models on the held-out test set.}
-  \label{fig:confusion_matrices}
+  \includegraphics[width=0.5\linewidth]{figures/cm_pair_gradient_boosting.png}
+  \caption{Confusion matrix of the tuned Gradient Boosting classifier on the held-out test set.}
+  \label{fig:cm_gradient_boosting}
 \end{figure}
 
 \subsection{ROC and Precision--Recall Curves}
 
-Receiver operating characteristic (ROC) and precision--recall (PR) curves as shown in Figure~\ref{fig:roc_pr_curves} further support the similarity among the top models. The three tree-based ensembles (CatBoost, gradient boosting, bagging trees) achieved ROC--AUC values of approximately 0.84 and average precision (AP) around 0.88. MLP performed slightly worse (AUC $\approx 0.82$, AP $\approx 0.87$) but still substantially better than the dummy baseline.
+The receiver operating characteristic (ROC) and precision--recall (PR) curves further demonstrate the strong performance of the tuned Gradient Boosting classifier. The model achieved a ROC--AUC of approximately 0.84 and an average precision of approximately 0.88 on the held-out test set.
 
-The PR curves show that precision remains above 0.9 across a broad range of recall values (up to roughly 0.5--0.6), after which precision gradually declines. This behaviour indicates that the models can assign very high confidence to a subset of chimeric reads, while more ambiguous reads can only be recovered by accepting lower precision.
+The PR curve shows that precision remains above 0.9 across a broad range of recall values up to roughly 0.5--0.6, after which precision gradually declines. This behaviour suggests that the classifier can assign very high confidence to a subset of chimeric reads, while the recovery of more ambiguous reads requires accepting lower precision. Overall, these curves indicate that Gradient Boosting provides a strong balance between sensitivity and specificity for the detection of chimeric reads.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{figures/roc_pr_curves_pair.png}
-  \caption{ROC (left) and precision--recall (right) curves for the four representative models on the held-out test set.}
-  \label{fig:roc_pr_curves}
+  \includegraphics[width=0.8\linewidth]{figures/roc_pr_gradient_boosting.png}
+  \caption{ROC and precision--recall curves for the tuned Gradient Boosting classifier on the held-out test set.}
+  \label{fig:roc_pr_gradient_boosting}
 \end{figure}
 
 \section{Feature Importance}
 
 \subsection{Permutation Importance of Individual Features}
 
-To understand how each classifier made predictions, feature importance was quantified using permutation importance. This analysis was applied to four representative models: CatBoost, Gradient Boosting, Bagging Trees, and an MLP.
+To understand how the final classifier made predictions, feature importance was quantified using permutation importance for the tuned Gradient Boosting model.
 
-As shown in Figure~\ref{fig:all_models_imp}, \texttt{total\_clipped\_bases} consistently provides a strong predictive signal across all models, particularly in Gradient Boosting (importance = 0.117) and Bagging Trees (importance = 0.274). CatBoost assigns high importance to both \texttt{total\_clipped\_bases} (0.062) and \texttt{kmer\_js\_divergence} (0.045), while MLP relies on \texttt{total\_clipped\_bases} and soft-clipping features (\texttt{softclip\_left}, \texttt{softclip\_right}) as primary signals. Gradient Boosting emphasizes \texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff} alongside \texttt{total\_clipped\_bases}, but soft-clipping features contribute less.
+As shown in Figure~\ref{fig:gradient_imp}, \texttt{total\_clipped\_bases} provides the strongest predictive signal, with an importance of 0.117. This is followed by \texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff}, indicating that both clipping-based alignment irregularities and k-mer compositional shifts are central to the model’s decision-making process. In contrast, soft-clipping features contribute less strongly, while microhomology-related features such as \texttt{microhomology\_length} and \texttt{microhomology\_gc} provide minimal predictive value.
 
-Microhomology features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) provide minimal predictive value in all models, and some alignment-based split-read metrics (e.g., \texttt{sa\_min\_delta\_pos}, \texttt{sa\_max\_delta\_pos}) are leveraged primarily by the MLP. Overall, these results indicate that accurate detection of chimeric reads relies on both alignment-based signals and k-mer compositional information, with explicit microhomology features contributing little. Combining multiple feature types enhances model sensitivity and specificity.
+These results indicate that accurate detection of chimeric reads relies primarily on signals associated with breakpoint-related clipping patterns and abrupt compositional changes in sequence structure. By contrast, explicit microhomology features appear to add little information for this dataset.
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{figures/catboost_imp_pair.png}
-        \caption{CatBoost}
-        \label{fig:catboost_imp}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{figures/gradient_imp_pair.png}
-        \caption{Gradient Boosting}
-        \label{fig:gradient_imp}
-    \end{subfigure}
-
-    \vspace{0.5em}
-
-    \begin{subfigure}[b]{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{figures/bagging_trees_imp_pair.png}
-        \caption{Bagging Trees}
-        \label{fig:bagging_trees_imp}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{figures/mlp_imp_pair.png}
-        \caption{Multi-Layer Perceptron (MLP)}
-        \label{fig:mlp_imp}
-    \end{subfigure}
-
-    \caption{Permutation-based feature importance for four representative classifiers.}
-    \label{fig:all_models_imp}
+    \includegraphics[width=0.6\linewidth]{figures/gradient_imp_pair.png}
+    \caption{Permutation-based feature importance for the tuned Gradient Boosting classifier.}
+    \label{fig:gradient_imp}
 \end{figure}
 
 \subsection{Feature Family Importance}
 
-To evaluate broader predictive signals, features were grouped into five families: 
-SA\_structure (supplementary alignment and segment metrics, e.g., 
-\texttt{has\_sa}, \texttt{sa\_count}, \texttt{sa\_min\_delta\_pos}, \texttt{sa\_mean\_nm}), 
-Clipping (\texttt{softclip\_left}, \texttt{softclip\_right}, \texttt{total\_clipped\_bases}, 
-\texttt{breakpoint\_read\_pos}), 
-Kmer\_jump (\texttt{kmer\_cosine\_diff}, \texttt{kmer\_js\_divergence}), 
-Micro\_homology (\texttt{microhomology\_length}, \texttt{microhomology\_gc}), 
-and Other (e.g., \texttt{mapq}).
+To evaluate broader predictive patterns, features were grouped into five families: 
+SA\_structure, Clipping, Kmer\_jump, Micro\_homology, and Other.
 
-Aggregated analyses reveal consistent patterns across models. In CatBoost, the Clipping family dominates with cumulative importance 0.127, followed by Kmer\_jump (0.074), while Other (0.0045), SA\_structure (0.0033), and Micro\_homology (0.0013) contribute minimally. Gradient Boosting shows a similar trend, with Clipping (0.134) and Kmer\_jump (0.096) providing most predictive power, and the remaining families contributing negligibly. Bagging Trees emphasizes Clipping even more strongly (0.277), with Kmer\_jump secondary (0.037), and SA\_structure, Micro\_homology, and Other remaining minor contributors. Interestingly, the MLP exhibits a different pattern, prioritizing Clipping (0.104) and SA\_structure (0.078), while Kmer\_jump (0.000034) and Micro\_homology (0.000091) have almost no effect.
+For the tuned Gradient Boosting model, the Clipping family contributed the largest cumulative importance (0.134), followed by Kmer\_jump (0.096). The remaining families, namely SA\_structure, Micro\_homology, and Other, contributed only minimally. This pattern shows that the model draws most of its predictive power from alignment-based clipping signals and k-mer compositional changes, while explicit microhomology descriptors and other auxiliary alignment metrics play only a minor role.
 
-Both feature-level and aggregated analyses indicate that accurate detection of chimeric reads in this dataset relies primarily on alignment irregularities captured by Clipping features and, in most tree-based models, on k-mer compositional shifts (Kmer\_jump), which often arise from PCR-induced template switching events. Explicit microhomology features contribute minimally, and some reliance on SA\_structure signals is observed only in the MLP.
-
+Taken together, both feature-level and feature-family analyses indicate that Gradient Boosting relies primarily on breakpoint-associated clipping irregularities and shifts in local sequence composition to distinguish chimeric from clean reads.
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{catboost_family_pair.png}
-        \caption{CatBoost}
-        \label{fig:catboost_family}
-    \end{subfigure}%
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{gradient_family_pair.png}
-        \caption{Gradient Boosting}
-        \label{fig:gb_family}
-    \end{subfigure}
-    
-    \vspace{0.5em}
-    
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{randomforest_family.png} %change to bagging tree
-        \caption{Random Forest}
-        \label{fig:rf_family}
-    \end{subfigure}%
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{logreg_family.png} %change to mlp
-        \caption{L$_2$-regularized Logistic Regression}
-        \label{fig:logreg_family}
-    \end{subfigure}
-
-    \caption{Aggregated feature family importance across four models.}
-    \label{fig:feature_family_all}
+    \includegraphics[width=0.6\textwidth]{gradient_family_pair.png}
+    \caption{Aggregated feature family importance for the tuned Gradient Boosting classifier.}
+    \label{fig:gb_family}
 \end{figure}
 
 \section{Feature Selection}
 
-Feature selection was performed to identify the smallest subset reaching 95\% cumulative importance. Three models were evaluated as references: the full model with all 23 features, a reduced model with the top-\(k\) features, and an ablation model excluding microhomology features, using a tuned CatBoost classifier to assess feature contributions and overall classification performance.
+Feature selection was performed to identify the smallest subset reaching 95\% cumulative importance. Three configurations were evaluated as references: the full Gradient Boosting model with all 24 features, a reduced model with the top-\(k\) features, and an ablation model excluding microhomology features, using the tuned Gradient Boosting classifier to assess feature contributions and overall classification performance.
 
 \subsection{Cumulative Importance Curve}
 
-The cumulative importance curve was computed using the tuned Gradient Boosting classifier. Figure~\ref{fig:cumulative_importance} illustrates the contribution of features sorted by importance. The curve rises steeply for the top features and then gradually plateaus, indicating that a small number of features capture most of the model's predictive power. A cumulative importance of 95\% is reached at \(k = 4\) features, which are \texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}.
-
+The cumulative importance curve was computed using the tuned Gradient Boosting classifier. Figure~\ref{fig:cumulative_importance} shows that the importance rises steeply for the top-ranked features and then gradually plateaus, indicating that a relatively small number of predictors account for most of the model’s performance. A cumulative importance threshold of 95\% was reached at \(k = 4\) features: \texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/cumulative_gradient_pair.png}
-\caption{Cumulative importance curve of features sorted by importance.}
+\caption{Cumulative importance curve of features sorted by importance for the tuned Gradient Boosting classifier.}
 \label{fig:cumulative_importance}
 \end{figure}
 
 \subsection{Performance Comparison Across Feature Sets}
 
-Classification performance was compared across three feature sets using a tuned Gradient Boosting classifier. The full model, incorporating all 24 engineered features, achieved an F1 score of 0.7765 and a ROC--AUC of 0.8459. A reduced model using only the top four features (\texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}) achieved nearly equivalent performance with an F1 of 0.7768 and a ROC--AUC of 0.8369. An ablation model excluding microhomology features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) also performed comparably, with an F1 of 0.7761 and ROC--AUC of 0.8444. These results indicate that clipping and k-mer features capture almost all predictive signal, while microhomology features are largely redundant in this dataset.
+Classification performance was compared across three feature sets using the tuned Gradient Boosting classifier. The full model, incorporating all 24 engineered features, achieved an F1-score of 0.7765 and a ROC--AUC of 0.8459. A reduced model using only the top four features (\texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}) achieved nearly equivalent performance, with an F1-score of 0.7768 and a ROC--AUC of 0.8369. An ablation model excluding microhomology features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) also performed comparably, with an F1-score of 0.7761 and a ROC--AUC of 0.8444.
+
+These findings indicate that clipping and k-mer features capture nearly all of the predictive signal used by the model, while microhomology features are largely redundant in this dataset.
 
 \begin{table}[H]
 \centering
-\caption{Test set performance of three feature set variants using tuned Gradient Boosting.}
+\caption{Test set performance of feature set variants using the tuned Gradient Boosting classifier.}
 \label{tab:gb_feature_sets}
 \begin{tabular}{lrrr}
 \toprule
@@ -361,44 +287,80 @@ No microhomology & 22 & 0.7761 & 0.8444 \\
 \end{tabular}
 \end{table}
 
-
-Figure~\ref{fig:gradient_boost_three_sets} presents a bar chart comparing F1 and ROC--AUC across the three variants, with the x-axis showing the model variants and two bars per group representing the F1 and ROC--AUC values.
-
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/gradient_feature_sets_pair.png}
-\caption{Comparison of F1 and ROC--AUC for the full, top-4 selected, and no-microhomology feature set variants.}
+\caption{Comparison of F1 and ROC--AUC across feature set variants for the tuned Gradient Boosting classifier.}
 \label{fig:gradient_boost_three_sets}
 \end{figure}
 
 \subsection{Interpretation and Final Feature Set Choice}
 
-The full 23-feature model is retained as the primary configuration for the remainder of the study, while the four-feature subset serves as a lightweight alternative. Clipping features reflect alignment junctions and mapping disruptions typical of chimeric reads, and k-mer divergence captures changes in sequence composition across breakpoints. Microhomology features appear largely redundant, as their signal is either indirectly represented by clipping and k-mer features or not strongly expressed in the simulation dataset.
-
+The full 24-feature Gradient Boosting model was retained as the primary configuration for the remainder of the study, while the four-feature subset is presented as a lightweight alternative. Clipping features reflect alignment junctions and mapping disruptions typical of chimeric reads, whereas k-mer divergence features capture abrupt changes in sequence composition across breakpoints. Microhomology features appear largely redundant, suggesting that their signal is either indirectly captured by clipping and k-mer descriptors or not strongly expressed in the simulation dataset.
 
 \section{Convolutional Neural Network (CNN) Performance and Classification Results}
 
-As shown in Figure~\ref{fig:cnn_training}, the CNN shows stable learning behavior and strong overall generalization on the balanced test set ($n = 8000$; 4000 clean and 4000 chimeric). Training loss decreases steadily across epochs, from 0.6934 at epoch 1 to 0.0563 at epoch 25, indicating continuous improvement in fitting the training data. The validation loss also decreases during the early epochs, from about 0.69 to approximately 0.40 by the middle of training, then begins to fluctuate within a narrow range rather than continuing to decline, suggesting mild overfitting. However, the increase in overfitting appears limited, since the mean validation F1 and mean validation AUC both continue to improve and then stabilize at high values. Moreover, the final model achieves a test loss of 0.3034, test accuracy of 0.9093, F1-score of 0.9135, and ROC--AUC of 0.9607, confirming strong discrimination between clean and chimeric reads across decision thresholds.
+The CNN achieved strong and reasonably consistent performance across the five cross-validation folds, as summarized in Table~\ref{tab:cnn_cv_summary}. The mean validation loss across folds was 0.4444. The corresponding mean classification metrics were 0.8664 for accuracy, 0.8214 for precision, 0.9374 for recall, 0.8754 for F1-score, and 0.9359 for ROC--AUC. Across folds, F1-scores ranged from 0.8637 to 0.8898, while ROC--AUC values ranged from 0.9272 to 0.9467, indicating only modest variation in performance between validation splits.
 
-/// NOTE: MODIFY GRAPH
+\begin{table}[H]
+\centering
+\caption{Five-fold cross-validation performance of the CNN model.}
+\label{tab:cnn_cv_summary}
+\begin{tabular}{lrr}
+\toprule
+Metric & Mean & Std. Dev. \\
+\midrule
+Loss      & 0.4444 & 0.0308 \\
+Accuracy  & 0.8664 & 0.0139 \\
+Precision & 0.8214 & 0.0226 \\
+Recall    & 0.9374 & 0.0083 \\
+F1-score  & 0.8754 & 0.0110 \\
+ROC--AUC  & 0.9359 & 0.0081 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Figure~\ref{fig:cnn_training} illustrates the learning behaviour of the model across epochs. Training loss decreases steadily, while validation loss declines during the early epochs and then stabilizes with only small fluctuations. Validation F1 follows a similar pattern, rising early in training before reaching a plateau, which suggests that the network learns discriminative patterns quickly and then converges to a stable performance region.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{figures/cnn_training.png}
-  \caption{Training and Test Performance of the CNN Model Across 15 Epochs}
+  \includegraphics[width=\linewidth]{figures/cnn_cv_f1_loss_epoch25.png}
+  \caption{CNN training and validation loss and validation F1 across epochs.}
   \label{fig:cnn_training}
 \end{figure}
 
-Class-wise performance indicates that the model is strongly biased toward correctly identifying chimeric reads. Specifically, it achieved a recall of 0.9587 for the chimeric class, correctly detecting 3835 out of 4000 chimeric sequences, while recall for the clean class was lower at 0.8598, with 3439 out of 4000 clean reads correctly classified. The confusion matrix (Figure~\ref{fig:cnn_confusion}) reveals that only 165 chimeric reads were misclassified as clean, whereas a larger number of 561 clean reads were incorrectly labeled as chimeric. The results indicate that the model prioritizes minimizing false negatives for chimeric reads, thereby maximizing detection sensitivity, at the cost of a higher false-positive rate among clean reads. Despite this bias toward sensitivity, predictive reliability remains strong with chimeric precision of 0.8724 and its F1-score of 0.9135, while the clean class attains a precision of 0.9542 and an F1-score of 0.9045, suggesting that the high chimeric detection is not achieved at the expense of excessive false-positive predictions.
+When evaluated on the held-out balanced test set, the final CNN achieved a test loss of 0.3034, accuracy of 0.9092, precision of 0.8724, recall of 0.9588, F1-score of 0.9135, and ROC--AUC of 0.9607, as shown in Table~\ref{tab:cnn_test_summary}. These results indicate that the model generalizes well beyond the validation folds and maintains strong classification performance on previously unseen data.
 
-/// NOTE: MODIFY CONFUSION MATRIX
+\begin{table}[H]
+\centering
+\caption{Held-out test performance of the CNN model.}
+\label{tab:cnn_test_summary}
+\begin{tabular}{lr}
+\toprule
+Metric & Value \\
+\midrule
+Loss      & 0.3034 \\
+Accuracy  & 0.9092 \\
+Precision & 0.8724 \\
+Recall    & 0.9588 \\
+F1-score  & 0.9135 \\
+ROC--AUC  & 0.9607 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+As shown in Figure~\ref{fig:cnn_confusion}, the held-out test results indicate that the CNN is particularly effective at recovering chimeric reads, as reflected by its high recall. At the same time, its precision is lower than its recall, indicating that the model prioritizes sensitivity and accepts a moderate number of false-positive predictions in return. Nevertheless, the combination of a high F1-score and a ROC--AUC above 0.96 shows that the classifier still provides strong overall discrimination between clean and chimeric reads.
+
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{figures/cnn_confusion.png}
-  \caption{Confusion Matrix of CNN Classification Performance on Clean and Chimeric Reads}
+  \caption{Confusion matrix of the CNN model on the held-out test set.}
   \label{fig:cnn_confusion}
 \end{figure}
+
+% Taken together, these results show that the CNN is a reliable model for chimera detection and performs well under both cross-validation and held-out test evaluation. Its strongest characteristic is its ability to detect positive cases with high sensitivity, making it a useful approach when minimizing missed chimeric reads is an important objective.
 
 \section{Recurrent Neural Network (RNN) Performance and Classification Results}
 
@@ -426,22 +388,30 @@ The training curves also show stable optimization behavior. As shown in Figure~\
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/rnn_loss.png}
-    \label{fig:rnn_loss}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/rnn_f1_auc.png}
-    \label{fig:rnn_f1_auc}
-  \end{subfigure}
-  \caption{Training and validation performance of the RNN-kmer BiGRU model across epochs.}
+  \includegraphics[width=\linewidth]{figures/rnn_cv_f1_loss_epoch25.png}
+  \caption{RNN-kmer BiGRU training and validation loss and validation F1 across epochs.}
   \label{fig:rnn_training}
 \end{figure}
 
-On the held-out balanced test set (\(n = 8000\); 4000 clean and 4000 chimeric reads), the final RNN-kmer BiGRU model achieved a test loss of 0.2432, accuracy of 0.9516, precision of 0.9394, recall of 0.9655, F1-score of 0.9523, and ROC--AUC of 0.9849, as summarized in Table~\ref{tab:gb_cnn_rnn_compare}. These values exceed those of both the tuned Gradient Boosting classifier and the CNN.
+On the held-out balanced test set (\(n = 8000\); 4000 clean and 4000 chimeric reads), the final RNN-kmer BiGRU model achieved a test loss of 0.2432, accuracy of 0.9516, precision of 0.9394, recall of 0.9655, F1-score of 0.9523, and ROC--AUC of 0.9849, as summarized in Table~\ref{tab:rnn_test_summary}. These values exceed those of both the tuned Gradient Boosting classifier and the CNN.
+
+\begin{table}[H]
+\centering
+\caption{Held-out test performance of the RNN-kmer BiGRU model.}
+\label{tab:rnn_test_summary}
+\begin{tabular}{lr}
+\toprule
+Metric & Value \\
+\midrule
+Loss      & 0.2432 \\
+Accuracy  & 0.9516 \\
+Precision & 0.9394 \\
+Recall    & 0.9655 \\
+F1-score  & 0.9523 \\
+ROC--AUC  & 0.9849 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Figure~\ref{fig:rnn_confusion} shows that the model correctly classified 3751 of 4000 clean reads and 3862 of 4000 chimeric reads. Only 249 clean reads were incorrectly labeled as chimeric, while 138 chimeric reads were misclassified as clean.
 
@@ -452,11 +422,11 @@ Figure~\ref{fig:rnn_confusion} shows that the model correctly classified 3751 of
   \label{fig:rnn_confusion}
 \end{figure}
 
-Class-wise performance also reflects this balanced behavior. For the chimeric class, recall reached 0.9655, while precision was 0.9394, as shown in Table~\ref{tab:gb_cnn_rnn_compare}. In contrast to the tuned Gradient Boosting model, which favored precision at the expense of recall, and the CNN, which favored recall but produced more false positives, the RNN achieved both high precision and high recall simultaneously.
+% Class-wise performance also reflects this balanced behavior. For the chimeric class, recall reached 0.9655, while precision was 0.9394, as shown in Table~\ref{tab:rnn_test_summary}. In contrast to the tuned Gradient Boosting model, which favored precision at the expense of recall, and the CNN, which favored recall but produced more false positives, the RNN achieved both high precision and high recall simultaneously.
 
-Overall, the RNN results show that recurrent sequence modeling achieved the best classification performance among all evaluated methods. The RNN-kmer BiGRU model obtained the highest held-out test accuracy, F1-score, and ROC--AUC, exceeding both the feature-based classifiers and the CNN. In contrast to the feature-based approaches, which depend on engineered features, the RNN was trained on sequential k-mer representations. It also outperformed the CNN under the same evaluation setting.
+% Overall, the RNN results show that recurrent sequence modeling achieved the best classification performance among all evaluated methods. The RNN-kmer BiGRU model obtained the highest held-out test accuracy, F1-score, and ROC--AUC, exceeding both the feature-based classifiers and the CNN. In contrast to the feature-based approaches, which depend on engineered features, the RNN was trained on sequential k-mer representations. It also outperformed the CNN under the same evaluation setting.
 
-These findings suggest that RNN-based modeling is a highly promising approach for pre-assembly chimera detection in simulated mitochondrial Illumina data. Its strong performance on both read-level and pair-level prediction indicates that sequence-order information alone can provide highly accurate discrimination between clean and chimeric reads, even without relying exclusively on engineered features.
+% These findings suggest that RNN-based modeling is a highly promising approach for pre-assembly chimera detection in simulated mitochondrial Illumina data. Its strong performance on both read-level and pair-level prediction indicates that sequence-order information alone can provide highly accurate discrimination between clean and chimeric reads, even without relying exclusively on engineered features.
 
 \subsection{External Assembly Testing}
 
