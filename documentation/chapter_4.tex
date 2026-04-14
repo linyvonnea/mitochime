@@ -27,7 +27,7 @@ K-mer–based features, including \texttt{kmer\_js\_divergence} and \texttt{kmer
 
 Microhomology-related features, including \texttt{microhomology\_length} and \linebreak \texttt{microhomology\_gc}, exhibit nearly identical summary statistics between clean and chimeric reads. Most reads in both classes have short or zero-length microhomologies. Table~\ref{tab:key_feature_summary} shows that \texttt{microhomology\_gc} has a mean of 0.172 and a median of 0.0 in both clean and chimeric reads, while \texttt{microhomology\_length} averages 0.458 with a median of 0.0 in chimeric reads and 0.462 with a median of 0.0 in clean reads. These values indicate that microhomology features alone provide limited discriminatory power and are more appropriately considered as supporting evidence.
 
-Overall, the summary statistics indicate that alignment-based and clipping-based features provide the strongest class separation, k-mer features contribute limited but complementary signal, and microhomology features exhibit minimal discriminative power on their own. These observations motivate the combined multi-feature approach used in subsequent modeling and evaluation.
+The summary statistics indicate that alignment-based and clipping-based features provide the strongest class separation, k-mer features contribute limited but complementary signal, and microhomology features exhibit minimal discriminative power on their own. These observations motivate the combined multi-feature approach used in subsequent modeling and evaluation.
 
 \begin{table}[H]
 \centering
@@ -209,7 +209,7 @@ Errors were asymmetric, with false negatives (chimeric reads predicted as clean)
 
 The receiver operating characteristic (ROC) and precision--recall (PR) curves further demonstrate the strong performance of the tuned Gradient Boosting classifier. The model achieved a ROC--AUC of approximately 0.84 and an average precision of approximately 0.88 on the held-out test set.
 
-The PR curve shows that precision remains above 0.9 across a broad range of recall values up to roughly 0.5--0.6, after which precision gradually declines. This behaviour suggests that the classifier can assign very high confidence to a subset of chimeric reads, while the recovery of more ambiguous reads requires accepting lower precision. Overall, these curves indicate that Gradient Boosting provides a strong balance between sensitivity and specificity for the detection of chimeric reads.
+The PR curve shows that precision remains above 0.9 across a broad range of recall values up to roughly 0.5--0.6, after which precision gradually declines. This behaviour suggests that the classifier can assign very high confidence to a subset of chimeric reads, while the recovery of more ambiguous reads requires accepting lower precision. These curves indicate that Gradient Boosting provides a strong balance between sensitivity and specificity for the detection of chimeric reads.
 
 \begin{figure}[H]
   \centering
@@ -439,28 +439,100 @@ At 10K reads and 5--15\% chimeras, all assemblies produced a clean 1-node graph,
 \subsubsection{20K Paired-end Reads}
 At 20K reads, unfiltered assemblies showed increased branching at 10--15\% chimeras (3 nodes) and extreme fragmentation at 50\% (966 nodes). All filters restored contiguity. BiGRU produced a 1-node graph at 5--15\% chimeras while retaining 75.13--83.84\% of reads, and reduced the 50\% chimera graph to 2 nodes with 44.85\% retention. At this highest chimera level, CNN produced the simplest graph (1 node) with 49.89\% retention, whereas GB produced 3 nodes while retaining substantially more reads (78.49\%). These results indicate that at higher coverage, more stringent filtering reduced graph complexity relative to GB. In the 50\% chimera condition, CNN yielded a more simplified graph than BiGRU, as BiGRU still produced 2 nodes despite retaining a smaller proportion of reads.
 
-Across read depths, GB consistently retained the highest proportion of reads and generally preserved contiguous assemblies, making it the most reliable at low depth (3200). BiGRU showed an intermediate behaviour between GB and CNN. It retained fewer reads than GB and, under high chimera burden, reduced graph complexity more than GB, although not as effectively as CNN. At the minimum depth, BiGRU became risky at high chimera percentage, where retention dropped to 44.59\% and the assembly fragmented into 8 nodes. Overall, assembly outcomes depended on both read depth and chimera percentage. At higher coverage, stronger filtering could reduce graph complexity, but the extent of simplification varied across models: CNN achieved the strongest simplification at high chimera percentage, whereas BiGRU showed only partial simplification under the same condition. At minimum coverage, stronger filtering could reduce read support sufficiently to split the assembly into multiple nodes. In some unfiltered conditions, Bandage still showed a single-node graph. This does not imply the absence of chimeric reads; rather, SPAdes outputs a simplified assembly graph after trimming tips and removing erroneous, including chimeric, connections. If chimeric reads do not generate an alternative path with sufficient support to persist through simplification, the assembly collapses to one dominant segment and appears as a single node in Bandage.
+Across read depths, GB consistently retained the highest proportion of reads and generally preserved contiguous assemblies, making it the most reliable at low depth (3200). BiGRU showed an intermediate behaviour between GB and CNN. It retained fewer reads than GB and, under high chimera burden, reduced graph complexity more than GB, although not as effectively as CNN. At the minimum depth, BiGRU became risky at high chimera percentage, where retention dropped to 44.59\% and the assembly fragmented into 8 nodes, as shown in Figure~\ref{fig:3200_50_nodes}. Overall, assembly outcomes depended on both read depth and chimera percentage. At higher coverage, stronger filtering could reduce graph complexity, but the extent of simplification varied across models: CNN achieved the strongest simplification at high chimera percentage, whereas BiGRU showed only partial simplification under the same condition, as illustrated in Figure~\ref{fig:20k_50_nodes}. At minimum coverage, stronger filtering could reduce read support sufficiently to split the assembly into multiple nodes. In some unfiltered conditions, Bandage still showed a single-node graph. This does not imply the absence of chimeric reads; rather, SPAdes outputs a simplified assembly graph after trimming tips and removing erroneous, including chimeric, connections. If chimeric reads do not generate an alternative path with sufficient support to persist through simplification, the assembly collapses to one dominant segment and appears as a single node in Bandage \cite{Bankevich2012SPAdes,Antipov2016SPAdesHybrid,Wick2015Bandage}.
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Assembly graphs for 20K paired-end reads at 50\% chimera proportion.}
+    \label{fig:20k_50_nodes}
+    
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/20knodes_unfiltered.png}
+        \caption{Unfiltered}
+        \label{fig:20k_50_unfiltered}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/20knodes_gb.png}
+        \caption{GB}
+        \label{fig:20k_50_gb}
+    \end{subfigure}
+
+    \vspace{0.5em}
+
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/20knodes_cnn.png}
+        \caption{CNN}
+        \label{fig:20k_50_cnn}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/20knodes_rnn.png}
+        \caption{BiGRU}
+        \label{fig:20k_50_bigru}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Assembly graphs for 3200 paired-end reads at 50\% chimera proportion.}
+    \label{fig:3200_50_nodes}
+    
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/3200nodes_unfiltered.png}
+        \caption{Unfiltered}
+        \label{fig:3200_50_unfiltered}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/3200nodes_gb.png}
+        \caption{GB}
+        \label{fig:3200_50_gb}
+    \end{subfigure}
+
+    \vspace{0.5em}
+
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/3200nodes_cnn.png}
+        \caption{CNN}
+        \label{fig:3200_50_cnn}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/3200nodes_rnn.png}
+        \caption{BiGRU}
+        \label{fig:3200_50_bigru}
+    \end{subfigure}
+\end{figure}
 
 % Although BiGRU achieved the strongest overall classification performance on the held-out test set, CNN produced the simplest assembly graph in the 20K/50\% chimera condition. This indicates that downstream assembly outcomes depend not only on overall classification accuracy, but also on which reads are removed. In this case, CNN appears to have removed the reads sustaining residual branching more effectively, yielding a 1-node graph while retaining slightly more reads than BiGRU.
-
-///insert cite {Bankevich2012SPAdes,Antipov2016SPAdesHybrid,Wick2015Bandage}
 
 
 \subsection{Comparison Across Models}
 
-Direct comparison of the three best-performing approaches, shown in Table~\ref{tab:gb_cnn_rnn_compare} and Figure~\ref{fig:gb_cnn_rnn_compare}, shows a clear ranking. The tuned Gradient Boosting model achieved an F1-score of 0.7765 and ROC--AUC of 0.8459, while the CNN improved substantially to an F1-score of 0.9135 and ROC--AUC of 0.9607. The RNN-kmer BiGRU surpassed both, reaching an F1-score of 0.9523 and ROC--AUC of 0.9849.
+Direct comparison of the three best-performing approaches, shown in Table~\ref{tab:gb_cnn_rnn_compare} and Figure~\ref{fig:gb_cnn_rnn_compare}, shows a clear ranking. All models were trained and evaluated in the Kaggle environment. The tuned Gradient Boosting model achieved an F1-score of 0.7765 and ROC--AUC of 0.8459 with the shortest elapsed time of 0.50 minutes. The CNN improved substantially to an F1-score of 0.9135 and ROC--AUC of 0.9607, with an elapsed time of 1.39 minutes. The RNN-kmer BiGRU surpassed both in predictive performance, reaching an F1-score of 0.9523 and ROC--AUC of 0.9849, but required the longest elapsed time at 5.51 minutes.
+%  These results indicate a clear trade-off between predictive performance and computational cost: Gradient Boosting was the fastest but least accurate, CNN provided strong improvement with modest runtime, and BiGRU achieved the best classification performance at substantially higher computational expense.
 
 \begin{table}[H]
 \centering
-\caption{Comparison of held-out test performance across the top-performing models.}
+\small
+\caption{Comparison of held-out test performance and runtime across the top-performing models.}
 \label{tab:gb_cnn_rnn_compare}
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-Model & Accuracy & Precision & Recall & F1-score & ROC--AUC \\
+Model & Accuracy & Precision & Recall & F1-score & ROC--AUC & Runtime (min) \\
 \midrule
-Gradient Boosting (tuned) & 0.8091 & 0.9368 & 0.6630 & 0.7765 & 0.8459 \\
-CNN1D                     & 0.9093 & 0.8724 & 0.9588 & 0.9135 & 0.9607 \\
-RNN-kmer BiGRU            & 0.9516 & 0.9394 & 0.9655 & 0.9523 & 0.9849 \\
+Gradient Boosting (tuned) & 0.8091 & 0.9368 & 0.6630 & 0.7765 & 0.8459 & 0.50 \\
+CNN1D                     & 0.9093 & 0.8724 & 0.9588 & 0.9135 & 0.9607 & 1.39 \\
+RNN-kmer BiGRU            & 0.9516 & 0.9394 & 0.9655 & 0.9523 & 0.9849 & 5.51 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -484,18 +556,3 @@ RNN-kmer BiGRU            & 0.9516 & 0.9394 & 0.9655 & 0.9523 & 0.9849 \\
 %   \caption{Threshold sweep for the RNN-kmer BiGRU model showing precision, recall, and F1 across decision thresholds.}
 %   \label{fig:rnn_threshold_sweep}
 % \end{figure}
-
-
-\section{Summary of Findings}
-
-///NOTE: TO BE REVISED AFTER FINAL CHECKS ON THE FULL RESULTS
-
-All evaluated machine learning and deep learning models substantially outperformed the dummy baseline, demonstrating that both the engineered feature set and sequence-based representations contain meaningful signals for detecting PCR-induced chimeric reads. Among the feature-based classifiers, the best-performing classical models achieved test F1-scores of approximately 0.77 and ROC--AUC values around 0.84 on held-out simulated mitochondrial reads, indicating reliable discrimination between clean and chimeric sequences. Tree-based ensemble and boosting methods consistently showed the strongest performance among these classical approaches, with CatBoost and Gradient Boosting ranking among the top models before and after hyperparameter tuning.
-
-Analysis of feature behaviour revealed clear differences in how effectively feature groups distinguished clean and chimeric reads. Alignment- and clipping-based features, such as soft-clipping measures and total clipped bases, showed strong separation between clean and chimeric reads and emerged as the most informative signals. K-mer divergence features provided additional but weaker separation, contributing complementary information beyond alignment irregularities. In contrast, microhomology features and several supplementary alignment (SA) structure metrics exhibited minimal class separation and contributed little to overall predictive performance.
-
-Feature selection results further supported these observations. A reduced subset of four features, dominated by clipping-based and k-mer divergence metrics, achieved nearly identical performance to the full 23-feature model. In addition, removing explicit microhomology features did not substantially reduce classification performance, indicating that these features contributed little under the simulated conditions used in this study.
-
-The deep learning models achieved substantially stronger performance than the feature-based classifiers. The one-dimensional CNN improved held-out test performance to an F1-score of 0.9135 and a ROC--AUC of 0.9607, showing that sequence-based modeling can capture discriminative patterns beyond those represented by the engineered features alone. The RNN-kmer BiGRU model achieved the best overall performance among all evaluated methods, with a held-out test accuracy of 0.9516, precision of 0.9394, recall of 0.9655, F1-score of 0.9523, and ROC--AUC of 0.9849. Cross-validation results for the RNN were also consistent across folds, with mean F1-score of 0.9317 and mean ROC--AUC of 0.9734.
-
-Overall, these findings show that PCR-induced chimeric reads in simulated mitochondrial data can be detected effectively using both engineered-feature classifiers and sequence-based neural models, but the highest classification performance was achieved by the RNN. While alignment-based and k-mer-based engineered features provide a compact and interpretable basis for detection, the deep learning results indicate that sequential k-mer representations are highly effective for this objective. Taken together, the results support the use of machine learning as a pre-assembly chimera detection step, with the RNN-kmer BiGRU providing the strongest overall predictive performance in this study.

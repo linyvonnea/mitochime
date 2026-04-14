@@ -17,12 +17,15 @@
 \contentsline {figure}{\numberline {4.12}{\ignorespaces Confusion matrix of the CNN model on the held-out test set.}}{52}{figure.caption.28}%
 \contentsline {figure}{\numberline {4.13}{\ignorespaces RNN-kmer BiGRU training and validation loss and validation F1 across epochs.}}{54}{figure.caption.30}%
 \contentsline {figure}{\numberline {4.14}{\ignorespaces Confusion matrix of the RNN-kmer BiGRU model on the held-out test set.}}{55}{figure.caption.32}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Comparison of held-out test F1 and ROC--AUC for Gradient Boosting, CNN, and RNN models.}}{58}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Assembly graphs for 20K paired-end reads at 50\% chimera proportion.}}{58}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Assembly graphs for 3200 paired-end reads at 50\% chimera proportion.}}{59}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Comparison of held-out test F1 and ROC--AUC for Gradient Boosting, CNN, and RNN models.}}{61}{figure.caption.39}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Boxplots of SA Structure features by class (1/2).}}{65}{figure.caption.38}%
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Boxplots of SA Structure features by class (2/2).}}{66}{figure.caption.39}%
-\contentsline {figure}{\numberline {B.3}{\ignorespaces Boxplots of clipping-based features by class.}}{67}{figure.caption.40}%
-\contentsline {figure}{\numberline {B.4}{\ignorespaces Boxplots of k-mer features by class.}}{67}{figure.caption.41}%
-\contentsline {figure}{\numberline {B.5}{\ignorespaces Boxplots of microhomology features by class.}}{68}{figure.caption.42}%
-\contentsline {figure}{\numberline {B.6}{\ignorespaces Boxplots of other numeric features by class.}}{68}{figure.caption.43}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Boxplots of SA Structure features by class (1/2).}}{72}{figure.caption.40}%
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Boxplots of SA Structure features by class (2/2).}}{73}{figure.caption.41}%
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Boxplots of clipping-based features by class.}}{74}{figure.caption.42}%
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Boxplots of k-mer features by class.}}{74}{figure.caption.43}%
+\contentsline {figure}{\numberline {B.5}{\ignorespaces Boxplots of microhomology features by class.}}{75}{figure.caption.44}%
+\contentsline {figure}{\numberline {B.6}{\ignorespaces Boxplots of other numeric features by class.}}{75}{figure.caption.45}%

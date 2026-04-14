@@ -12,7 +12,8 @@
 \contentsline {table}{\numberline {4.6}{\ignorespaces Held-out test performance of the CNN model.}}{51}{table.caption.27}%
 \contentsline {table}{\numberline {4.7}{\ignorespaces Five-fold cross-validation performance of the RNN-kmer BiGRU model.}}{53}{table.caption.29}%
 \contentsline {table}{\numberline {4.8}{\ignorespaces Held-out test performance of the RNN-kmer BiGRU model.}}{54}{table.caption.31}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Comparison of held-out test performance across the top-performing models.}}{58}{table.caption.36}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Comparison of held-out test performance and runtime across the top-performing models.}}{60}{table.caption.38}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Complete per-class summary statistics for all extracted features.}}{62}{table.A.1}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Complete per-class summary statistics for all extracted features.}}{69}{table.A.1}%
 \addvspace {10\p@ }

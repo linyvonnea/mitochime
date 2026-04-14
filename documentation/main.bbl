@@ -32,6 +32,38 @@ Anderson, S.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Antipov%
+, Korobeynikov%
+, McLean%
+\BCBL {}\ \BBA {} Pevzner%
+}{%
+Antipov%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2016}}%
+}]{%
+Antipov2016SPAdesHybrid}
+\APACinsertmetastar {%
+Antipov2016SPAdesHybrid}%
+\begin{APACrefauthors}%
+Antipov, D.%
+, Korobeynikov, A.%
+, McLean, J\BPBI S.%
+\BCBL {}\ \BBA {} Pevzner, P\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {hybridSPAdes: An Algorithm for Hybrid Assembly of Short
+  and Long Reads} {hybridspades: An algorithm for hybrid assembly of short and
+  long reads}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Bioinformatics}{32}{7}{1009--1015}.
+\newblock
+\begin{APACrefDOI} \doi{10.1093/bioinformatics/btv688} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Arango%
 \ \protect \BOthers {.}}{%
 Arango%
@@ -61,6 +93,38 @@ Arango, G.%
 \APACjournalVolNumPages{Microbiome}{6}{}{}.
 \newblock
 \begin{APACrefDOI} \doi{10.1186/s40168-018-0401-z} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bankevich%
+\ \protect \BOthers {.}}{%
+Bankevich%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2012}}%
+}]{%
+Bankevich2012SPAdes}
+\APACinsertmetastar {%
+Bankevich2012SPAdes}%
+\begin{APACrefauthors}%
+Bankevich, A.%
+, Nurk, S.%
+, Antipov, D.%
+, Gurevich, A\BPBI A.%
+, Dvorkin, M.%
+, Kulikov, A\BPBI S.%
+\BDBL {}Pevzner, P\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {SPAdes: A New Genome Assembly Algorithm and Its
+  Applications to Single-Cell Sequencing} {Spades: A new genome assembly
+  algorithm and its applications to single-cell sequencing}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Computational Biology}{19}{5}{455--477}.
+\newblock
+\begin{APACrefDOI} \doi{10.1089/cmb.2012.0021} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -908,6 +972,38 @@ Vervier, K.%
   \end{APACrefURL}
 \newblock
 \begin{APACrefDOI} \doi{10.1093/bioinformatics/btv683} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wick%
+, Schultz%
+, Zobel%
+\BCBL {}\ \BBA {} Holt%
+}{%
+Wick%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2015}}%
+}]{%
+Wick2015Bandage}
+\APACinsertmetastar {%
+Wick2015Bandage}%
+\begin{APACrefauthors}%
+Wick, R\BPBI R.%
+, Schultz, M\BPBI B.%
+, Zobel, J.%
+\BCBL {}\ \BBA {} Holt, K\BPBI E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Bandage: Interactive Visualization of de novo Genome
+  Assemblies} {Bandage: Interactive visualization of de novo genome
+  assemblies}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Bioinformatics}{31}{20}{3350--3352}.
+\newblock
+\begin{APACrefDOI} \doi{10.1093/bioinformatics/btv383} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
