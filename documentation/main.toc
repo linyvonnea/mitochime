@@ -70,12 +70,16 @@
 \contentsline {subsubsection}{3200 Paired-end Reads}{55}{section*.33}%
 \contentsline {subsubsection}{10K Paired-end Reads}{56}{section*.34}%
 \contentsline {subsubsection}{20K Paired-end Reads}{56}{section*.35}%
-\contentsline {subsection}{\numberline {4.7.2}Comparison Across Models}{58}{subsection.4.7.2}%
-\contentsline {section}{\numberline {4.8}Summary of Findings}{59}{section.4.8}%
-\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{61}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{65}{appendix.B}%
-\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{65}{subsection.B.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{67}{subsection.B.0.2}%
-\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{67}{subsection.B.0.3}%
-\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{68}{subsection.B.0.4}%
-\contentsline {subsection}{\numberline {B.0.5}Others}{68}{subsection.B.0.5}%
+\contentsline {subsection}{\numberline {4.7.2}Comparison Across Models}{60}{subsection.4.7.2}%
+\contentsline {chapter}{\numberline {5}Conclusion}{62}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Summary of Findings}{62}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Conclusion}{65}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Limitations of the Study}{66}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Recommendations for Future Work}{66}{section.5.4}%
+\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{68}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{72}{appendix.B}%
+\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{72}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{74}{subsection.B.0.2}%
+\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{74}{subsection.B.0.3}%
+\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{75}{subsection.B.0.4}%
+\contentsline {subsection}{\numberline {B.0.5}Others}{75}{subsection.B.0.5}%
