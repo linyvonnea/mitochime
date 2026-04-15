@@ -1,0 +1,78 @@
+\chapter{Complete External Assembly Testing Results}
+\label{app:assembly_tables}
+
+This appendix presents the complete external assembly testing results across read depths, chimera proportions, and filtering methods. The table summarizes read retention after filtering, selected SPAdes assembly statistics, and assembly graph properties derived from the corresponding GFA outputs.
+
+\begin{landscape}
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Complete external assembly testing results across all evaluated conditions.}
+\label{tab:assembly_results_full}
+\begin{tabular}{lrlrrrrrr}
+\toprule
+Read Depth & Chimera \% & Model & \% Kept & SPAdes Contigs & SPAdes Max Len & GFA Components & GFA Nodes & GFA Links \\
+\midrule
+3200 & 5  & UNFILTERED & 100.000 & 1 & 16599 & 2 & 2 & 0 \\
+3200 & 5  & GB         & 97.406  & 1 & 16577 & 1 & 1 & 0 \\
+3200 & 5  & CNN        & 82.125  & 1 & 16575 & 1 & 1 & 0 \\
+3200 & 5  & BIGRU      & 82.938  & 1 & 16315 & 1 & 1 & 0 \\
+
+3200 & 10 & UNFILTERED & 100.000 & 1 & 16591 & 1 & 1 & 0 \\
+3200 & 10 & GB         & 95.219  & 1 & 16615 & 1 & 1 & 0 \\
+3200 & 10 & CNN        & 79.812  & 1 & 16590 & 1 & 1 & 0 \\
+3200 & 10 & BIGRU      & 78.938  & 1 & 16419 & 1 & 1 & 0 \\
+
+3200 & 15 & UNFILTERED & 100.000 & 1 & 16645 & 1 & 1 & 0 \\
+3200 & 15 & GB         & 93.375  & 1 & 16606 & 1 & 1 & 0 \\
+3200 & 15 & CNN        & 75.188  & 2 & 14925 & 1 & 3 & 2 \\
+3200 & 15 & BIGRU      & 75.562  & 1 & 16562 & 1 & 1 & 0 \\
+
+3200 & 50 & UNFILTERED & 100.000 & 1 & 16736 & 1 & 1 & 0 \\
+3200 & 50 & GB         & 77.875  & 1 & 16646 & 1 & 1 & 0 \\
+3200 & 50 & CNN        & 48.781  & 2 & 16247 & 2 & 2 & 0 \\
+3200 & 50 & BIGRU      & 44.594  & 8 & 7466  & 8 & 8 & 0 \\
+
+10K & 5  & UNFILTERED & 100.000 & 1 & 16615 & 1 & 1 & 0 \\
+10K & 5  & GB         & 97.320  & 1 & 16615 & 1 & 1 & 0 \\
+10K & 5  & CNN        & 83.090  & 1 & 16603 & 1 & 1 & 0 \\
+10K & 5  & BIGRU      & 82.840  & 1 & 16608 & 1 & 1 & 0 \\
+
+10K & 10 & UNFILTERED & 100.000 & 1 & 16704 & 1 & 1 & 0 \\
+10K & 10 & GB         & 95.300  & 1 & 16614 & 1 & 1 & 0 \\
+10K & 10 & CNN        & 78.470  & 1 & 16693 & 1 & 1 & 0 \\
+10K & 10 & BIGRU      & 79.380  & 1 & 16614 & 1 & 1 & 0 \\
+
+10K & 15 & UNFILTERED & 100.000 & 1 & 16735 & 1 & 1 & 0 \\
+10K & 15 & GB         & 93.330  & 1 & 16642 & 1 & 1 & 0 \\
+10K & 15 & CNN        & 75.950  & 1 & 16611 & 1 & 1 & 0 \\
+10K & 15 & BIGRU      & 75.210  & 1 & 16611 & 1 & 1 & 0 \\
+
+10K & 50 & UNFILTERED & 100.000 & 1 & 16715 & 1 & 3 & 4 \\
+10K & 50 & GB         & 78.940  & 1 & 16787 & 1 & 2 & 2 \\
+10K & 50 & CNN        & 49.470  & 1 & 16709 & 1 & 2 & 2 \\
+10K & 50 & BIGRU      & 44.680  & 1 & 16590 & 2 & 2 & 0 \\
+
+20K & 5  & UNFILTERED & 100.000 & 1 & 16669 & 1 & 1 & 0 \\
+20K & 5  & GB         & 97.490  & 1 & 16619 & 1 & 2 & 2 \\
+20K & 5  & CNN        & 82.575  & 1 & 16669 & 1 & 1 & 0 \\
+20K & 5  & BIGRU      & 83.840  & 1 & 16614 & 1 & 1 & 0 \\
+
+20K & 10 & UNFILTERED & 100.000 & 1 & 16799 & 1 & 3 & 4 \\
+20K & 10 & GB         & 95.135  & 1 & 16616 & 1 & 1 & 0 \\
+20K & 10 & CNN        & 78.935  & 1 & 16616 & 1 & 1 & 0 \\
+20K & 10 & BIGRU      & 79.400  & 1 & 16698 & 1 & 1 & 0 \\
+
+20K & 15 & UNFILTERED & 100.000 & 1 & 16747 & 1 & 3 & 4 \\
+20K & 15 & GB         & 93.345  & 1 & 16891 & 1 & 1 & 0 \\
+20K & 15 & CNN        & 75.220  & 1 & 16646 & 1 & 1 & 0 \\
+20K & 15 & BIGRU      & 75.125  & 1 & 16614 & 1 & 1 & 0 \\
+
+20K & 50 & UNFILTERED & 100.000 & 966 & 407 & 1 & 966 & 1297 \\
+20K & 50 & GB         & 78.485  & 1 & 16799 & 1 & 3 & 4 \\
+20K & 50 & CNN        & 49.890  & 1 & 16745 & 1 & 1 & 0 \\
+20K & 50 & BIGRU      & 44.850  & 1 & 16714 & 1 & 2 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{landscape}
