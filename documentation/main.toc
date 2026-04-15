@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1.2}Problem Statement}{3}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Research Objectives}{3}{section.1.3}%
 \contentsline {subsection}{\numberline {1.3.1}General Objective}{3}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Specific Objectives}{4}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.2}Specific Objectives}{3}{subsection.1.3.2}%
 \contentsline {section}{\numberline {1.4}Scope and Limitations of the Research}{4}{section.1.4}%
 \contentsline {section}{\numberline {1.5}Significance of the Research}{6}{section.1.5}%
 \contentsline {chapter}{\numberline {2}Review of Related Literature}{7}{chapter.2}%
@@ -20,68 +20,92 @@
 \contentsline {subsection}{\numberline {2.4.1}Feature-Based Representations of Genomic Sequences}{17}{subsection.2.4.1}%
 \contentsline {subsection}{\numberline {2.4.2}Sequence-Based Deep Learning Representations of Genomic Sequences}{18}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Synthesis of Chimera Detection Approaches}{18}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Research Methodology}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Research Activities}{21}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Data Collection}{23}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Data Simulation and Preprocessing}{23}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Simulation of Clean Reads}{23}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Simulation of Chimeric Reads}{24}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Reference Indexing and Alignment}{24}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Construction of Labelled Datasets}{25}{subsection.3.3.4}%
-\contentsline {section}{\numberline {3.4}Feature Extraction Pipeline}{25}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Supplementary Alignment and Alignment-Structure Features}{26}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Soft-Clipping and Breakpoint Features}{26}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}K-mer Composition Discontinuity}{26}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Microhomology Features}{27}{subsection.3.4.4}%
-\contentsline {subsection}{\numberline {3.4.5}Alignment Quality Features}{27}{subsection.3.4.5}%
-\contentsline {section}{\numberline {3.5}Classical Machine Learning Model Development}{27}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Hyperparameter Optimization and Model Evaluation}{28}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Feature Importance and Ablation}{29}{section.3.7}%
-\contentsline {section}{\numberline {3.8}Deep Learning Model Development}{29}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}Input Preparation}{30}{subsection.3.8.1}%
-\contentsline {subsection}{\numberline {3.8.2}Convolutional Neural Network}{30}{subsection.3.8.2}%
-\contentsline {subsection}{\numberline {3.8.3}Bidirectional GRU Model}{30}{subsection.3.8.3}%
-\contentsline {subsection}{\numberline {3.8.4}Training and Evaluation}{31}{subsection.3.8.4}%
-\contentsline {section}{\numberline {3.9}Threshold-Based Read Filtering}{31}{section.3.9}%
-\contentsline {section}{\numberline {3.10}Downstream Assembly Validation}{31}{section.3.10}%
-\contentsline {section}{\numberline {3.11}Validation and Comparative Testing}{32}{section.3.11}%
-\contentsline {section}{\numberline {3.12}Documentation and Reproducibility}{32}{section.3.12}%
-\contentsline {section}{\numberline {3.13}Calendar of Activities}{33}{section.3.13}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{34}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Descriptive Analysis of Features}{35}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Summary Statistics Per Class}{35}{subsection.4.1.1}%
-\contentsline {subsubsection}{Alignment and Supplementary Alignment Features}{35}{section*.7}%
-\contentsline {subsubsection}{Clipping-Based Features}{36}{section*.8}%
-\contentsline {subsubsection}{K-mer Distribution Features}{36}{section*.9}%
-\contentsline {subsubsection}{Microhomology Features}{36}{section*.10}%
-\contentsline {subsection}{\numberline {4.1.2}Correlation Analysis of Extracted Features}{40}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{41}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Effect of Hyperparameter Tuning}{43}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Confusion Matrix and Error Patterns}{45}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}ROC and Precision--Recall Curves}{46}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Feature Importance}{47}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Permutation Importance of Individual Features}{47}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Feature Family Importance}{48}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Feature Selection}{49}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Cumulative Importance Curve}{49}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Performance Comparison Across Feature Sets}{50}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Interpretation and Final Feature Set Choice}{51}{subsection.4.5.3}%
-\contentsline {section}{\numberline {4.6}Convolutional Neural Network (CNN) Performance and Classification Results}{52}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Recurrent Neural Network (RNN) Performance and Classification Results}{54}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}External Assembly Testing}{57}{subsection.4.7.1}%
-\contentsline {subsubsection}{3200 Paired-end Reads}{57}{section*.33}%
-\contentsline {subsubsection}{10K Paired-end Reads}{58}{section*.34}%
-\contentsline {subsubsection}{20K Paired-end Reads}{58}{section*.35}%
-\contentsline {subsection}{\numberline {4.7.2}Comparison Across Models}{62}{subsection.4.7.2}%
-\contentsline {chapter}{\numberline {5}Conclusion}{64}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Summary of Findings}{64}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Conclusion}{67}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Limitations of the Study}{68}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Recommendations for Future Work}{68}{section.5.4}%
-\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{70}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{74}{appendix.B}%
-\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{74}{subsection.B.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{76}{subsection.B.0.2}%
-\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{76}{subsection.B.0.3}%
-\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{77}{subsection.B.0.4}%
-\contentsline {subsection}{\numberline {B.0.5}Others}{77}{subsection.B.0.5}%
+\contentsline {chapter}{\numberline {3}Research Methodology}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Research Activities}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Data Collection}{21}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Data Simulation and Preprocessing}{21}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Simulation of Clean Reads}{21}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Simulation of Chimeric Reads}{22}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Reference Indexing and Alignment}{22}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Construction of Labelled Datasets}{23}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}Feature Extraction Pipeline}{23}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Supplementary Alignment and Alignment-Structure Features}{24}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Soft-Clipping and Breakpoint Features}{24}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}K-mer Composition Discontinuity}{24}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Microhomology Features}{25}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Alignment Quality Features}{25}{subsection.3.4.5}%
+\contentsline {section}{\numberline {3.5}Classical Machine Learning Model Development}{25}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Hyperparameter Optimization and Model Evaluation}{26}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Feature Importance and Ablation}{27}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Deep Learning Model Development}{27}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Input Preparation}{28}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Convolutional Neural Network}{28}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}Bidirectional GRU Model}{28}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.4}Training and Evaluation}{29}{subsection.3.8.4}%
+\contentsline {section}{\numberline {3.9}Threshold-Based Read Filtering}{29}{section.3.9}%
+\contentsline {section}{\numberline {3.10}Downstream Assembly Validation}{29}{section.3.10}%
+\contentsline {section}{\numberline {3.11}Validation and Comparative Testing}{30}{section.3.11}%
+\contentsline {section}{\numberline {3.12}Documentation and Reproducibility}{30}{section.3.12}%
+\contentsline {section}{\numberline {3.13}Calendar of Activities}{31}{section.3.13}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{32}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Descriptive Analysis of Features}{33}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Summary Statistics Per Class}{33}{subsection.4.1.1}%
+\contentsline {subsubsection}{Alignment and Supplementary Alignment Features}{33}{section*.6}%
+\contentsline {subsubsection}{Clipping-Based Features}{34}{section*.7}%
+\contentsline {subsubsection}{K-mer Distribution Features}{34}{section*.8}%
+\contentsline {subsubsection}{Microhomology Features}{34}{section*.9}%
+\contentsline {subsection}{\numberline {4.1.2}Correlation Analysis of Extracted Features}{38}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Baseline Classification Performance}{39}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Effect of Hyperparameter Tuning}{41}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Confusion Matrix and Error Patterns}{43}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}ROC and Precision--Recall Curves}{44}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Feature Importance}{45}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Permutation Importance of Individual Features}{45}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Feature Family Importance}{46}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Feature Selection}{47}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Cumulative Importance Curve}{48}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Performance Comparison Across Feature Sets}{48}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Interpretation and Final Feature Set Choice}{49}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}Convolutional Neural Network (CNN) Performance and Classification Results}{50}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Recurrent Neural Network (RNN) Performance and Classification Results}{53}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}External Assembly Testing}{55}{subsection.4.7.1}%
+\contentsline {subsubsection}{3200 Paired-end Reads}{55}{section*.32}%
+\contentsline {subsubsection}{10K Paired-end Reads}{56}{section*.33}%
+\contentsline {subsubsection}{20K Paired-end Reads}{56}{section*.34}%
+\contentsline {subsection}{\numberline {4.7.2}Comparison Across Models}{60}{subsection.4.7.2}%
+\contentsline {chapter}{\numberline {5}Conclusion}{62}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Summary of Findings}{62}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Conclusion}{65}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Limitations of the Study}{66}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Recommendations for Future Work}{66}{section.5.4}%
+\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{68}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{72}{appendix.B}%
+\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{72}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{75}{subsection.B.0.2}%
+\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{75}{subsection.B.0.3}%
+\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{76}{subsection.B.0.4}%
+\contentsline {subsection}{\numberline {B.0.5}Others}{76}{subsection.B.0.5}%
+\contentsline {chapter}{\numberline {C}Complete Feature Correlation Analysis}{77}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Supplementary Feature Importance Results Across Models}{79}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Top-10 Permutation Importance by Model}{80}{section.D.1}%
+\contentsline {section}{\numberline {D.2}Aggregated Feature Family Importance by Model}{82}{section.D.2}%
+\contentsline {chapter}{\numberline {E}Fold-Level Deep Learning Results}{84}{appendix.E}%
+\contentsline {section}{\numberline {E.1}CNN Fold-Level Results}{84}{section.E.1}%
+\contentsline {section}{\numberline {E.2}RNN-kmer BiGRU Fold-Level Results}{85}{section.E.2}%
+\contentsline {chapter}{\numberline {F}Supplementary Assembly Graph Figures}{86}{appendix.F}%
+\contentsline {section}{\numberline {F.1}3200 Paired-End Reads}{87}{section.F.1}%
+\contentsline {subsection}{\numberline {F.1.1}5\% Chimera Proportion}{87}{subsection.F.1.1}%
+\contentsline {subsection}{\numberline {F.1.2}10\% Chimera Proportion}{88}{subsection.F.1.2}%
+\contentsline {subsection}{\numberline {F.1.3}15\% Chimera Proportion}{89}{subsection.F.1.3}%
+\contentsline {subsection}{\numberline {F.1.4}50\% Chimera Proportion}{90}{subsection.F.1.4}%
+\contentsline {section}{\numberline {F.2}10K Paired-End Reads}{91}{section.F.2}%
+\contentsline {subsection}{\numberline {F.2.1}5\% Chimera Proportion}{91}{subsection.F.2.1}%
+\contentsline {subsection}{\numberline {F.2.2}10\% Chimera Proportion}{92}{subsection.F.2.2}%
+\contentsline {subsection}{\numberline {F.2.3}15\% Chimera Proportion}{93}{subsection.F.2.3}%
+\contentsline {subsection}{\numberline {F.2.4}50\% Chimera Proportion}{94}{subsection.F.2.4}%
+\contentsline {section}{\numberline {F.3}20K Paired-End Reads}{95}{section.F.3}%
+\contentsline {subsection}{\numberline {F.3.1}5\% Chimera Proportion}{95}{subsection.F.3.1}%
+\contentsline {subsection}{\numberline {F.3.2}10\% Chimera Proportion}{96}{subsection.F.3.2}%
+\contentsline {subsection}{\numberline {F.3.3}15\% Chimera Proportion}{97}{subsection.F.3.3}%
+\contentsline {subsection}{\numberline {F.3.4}50\% Chimera Proportion}{98}{subsection.F.3.4}%
+\contentsline {chapter}{\numberline {G}Complete External Assembly Testing Results}{99}{appendix.G}%

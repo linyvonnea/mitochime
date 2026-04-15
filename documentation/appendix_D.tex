@@ -1,0 +1,218 @@
+\chapter{Supplementary Feature Importance Results Across Models}
+\label{app:supp_feature_importance}
+
+This appendix provides supplementary permutation-based feature importance results across several classical machine learning models. These results complement the main-text interpretation of the tuned Gradient Boosting classifier by showing how the most influential individual features and feature families compare across Gradient Boosting, CatBoost, LightGBM, Bagging Trees, and the multilayer perceptron (MLP).
+
+\section{Top-10 Permutation Importance by Model}
+\label{app:top10_importance_models}
+
+Tables~\ref{tab:imp_gb}, \ref{tab:imp_catboost}, \ref{tab:imp_lightgbm}, \ref{tab:imp_bagging}, and \ref{tab:imp_mlp} list the top ten features ranked by permutation importance for each model. Across models, \texttt{total\_clipped\_bases} consistently ranks as the most important feature, while k-mer divergence and clipping-related variables also appear prominently.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Top-10 permutation importance ranking for Gradient Boosting.}
+\label{tab:imp_gb}
+\begin{tabular}{lrr}
+\toprule
+Feature & Importance Mean & Importance Std \\
+\midrule
+total\_clipped\_bases & 0.116642 & 0.003657 \\
+kmer\_js\_divergence & 0.058106 & 0.003268 \\
+kmer\_cosine\_diff & 0.038158 & 0.002506 \\
+softclip\_left & 0.011062 & 0.001767 \\
+softclip\_right & 0.006126 & 0.001456 \\
+mapq & 0.004542 & 0.000996 \\
+microhomology\_gc & 0.000549 & 0.000599 \\
+sa\_opp\_strand\_count & 0.000000 & 0.000000 \\
+breakpoint\_read\_pos & 0.000000 & 0.000000 \\
+sa\_mean\_nm & 0.000000 & 0.000000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Top-10 permutation importance ranking for CatBoost.}
+\label{tab:imp_catboost}
+\begin{tabular}{lrr}
+\toprule
+Feature & Importance Mean & Importance Std \\
+\midrule
+total\_clipped\_bases & 0.062111 & 0.004133 \\
+kmer\_js\_divergence & 0.045464 & 0.003056 \\
+softclip\_left & 0.032949 & 0.002186 \\
+softclip\_right & 0.032348 & 0.003370 \\
+kmer\_cosine\_diff & 0.028761 & 0.002122 \\
+mapq & 0.004543 & 0.000936 \\
+sa\_mean\_mapq & 0.002112 & 0.000726 \\
+has\_sa & 0.001332 & 0.000716 \\
+microhomology\_gc & 0.001086 & 0.000497 \\
+sa\_max\_delta\_pos & 0.001020 & 0.000792 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Top-10 permutation importance ranking for LightGBM.}
+\label{tab:imp_lightgbm}
+\begin{tabular}{lrr}
+\toprule
+Feature & Importance Mean & Importance Std \\
+\midrule
+total\_clipped\_bases & 0.092380 & 0.003306 \\
+kmer\_js\_divergence & 0.058242 & 0.003125 \\
+kmer\_cosine\_diff & 0.039922 & 0.001554 \\
+has\_sa & 0.028691 & 0.002774 \\
+softclip\_right & 0.017398 & 0.003132 \\
+softclip\_left & 0.015182 & 0.001771 \\
+mapq & 0.004533 & 0.000864 \\
+sa\_max\_mapq & 0.000760 & 0.000874 \\
+microhomology\_length & 0.000673 & 0.000283 \\
+microhomology\_gc & 0.000640 & 0.000423 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Top-10 permutation importance ranking for Bagging Trees.}
+\label{tab:imp_bagging}
+\begin{tabular}{lrr}
+\toprule
+Feature & Importance Mean & Importance Std \\
+\midrule
+total\_clipped\_bases & 0.273915 & 0.004894 \\
+kmer\_js\_divergence & 0.026137 & 0.003510 \\
+kmer\_cosine\_diff & 0.010739 & 0.002009 \\
+mapq & 0.003299 & 0.000666 \\
+softclip\_right & 0.002928 & 0.001239 \\
+microhomology\_length & 0.000210 & 0.000762 \\
+read\_length & 0.000000 & 0.000000 \\
+sa\_min\_nm & 0.000000 & 0.000000 \\
+sa\_diff\_contig & 0.000000 & 0.000000 \\
+breakpoint\_read\_pos & 0.000000 & 0.000000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Top-10 permutation importance ranking for MLP.}
+\label{tab:imp_mlp}
+\begin{tabular}{lrr}
+\toprule
+Feature & Importance Mean & Importance Std \\
+\midrule
+total\_clipped\_bases & 0.054920 & 0.004040 \\
+softclip\_right & 0.026253 & 0.003806 \\
+sa\_min\_delta\_pos & 0.025902 & 0.002782 \\
+sa\_max\_delta\_pos & 0.025902 & 0.002782 \\
+sa\_mean\_delta\_pos & 0.025902 & 0.002782 \\
+softclip\_left & 0.022333 & 0.001451 \\
+mapq & 0.001505 & 0.000598 \\
+microhomology\_gc & 0.000045 & 0.000056 \\
+microhomology\_length & 0.000045 & 0.000056 \\
+num\_segments & 0.000045 & 0.000056 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+
+\section{Aggregated Feature Family Importance by Model}
+\label{app:family_importance_models}
+
+Tables~\ref{tab:fam_gb}, \ref{tab:fam_catboost}, \ref{tab:fam_lightgbm}, \ref{tab:fam_bagging}, and \ref{tab:fam_mlp} summarize feature importance after aggregation by feature family. Across most models, the Clipping and Kmer\_jump families contribute the largest cumulative importance, while Micro\_homology contributes minimally. Gradient Boosting and Bagging Trees show slightly negative aggregate values for SA\_structure, indicating that this family contributed negligibly or inconsistently under permutation importance.
+
+\begin{table}[H]
+\centering
+\caption{Aggregated feature family importance for Gradient Boosting.}
+\label{tab:fam_gb}
+\begin{tabular}{lrrr}
+\toprule
+Family & Importance Sum & Importance Mean & $n$ Features \\
+\midrule
+Clipping & 0.133830 & 0.033458 & 4 \\
+Kmer\_jump & 0.096264 & 0.048132 & 2 \\
+Other & 0.003676 & 0.001225 & 3 \\
+Micro\_homology & 0.000347 & 0.000174 & 2 \\
+SA\_structure & -0.000859 & -0.000066 & 13 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Aggregated feature family importance for CatBoost.}
+\label{tab:fam_catboost}
+\begin{tabular}{lrrr}
+\toprule
+Family & Importance Sum & Importance Mean & $n$ Features \\
+\midrule
+Clipping & 0.127407 & 0.031852 & 4 \\
+Kmer\_jump & 0.074225 & 0.037113 & 2 \\
+Other & 0.003445 & 0.001148 & 3 \\
+SA\_structure & 0.003253 & 0.000250 & 13 \\
+Micro\_homology & 0.001298 & 0.000649 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Aggregated feature family importance for LightGBM.}
+\label{tab:fam_lightgbm}
+\begin{tabular}{lrrr}
+\toprule
+Family & Importance Sum & Importance Mean & $n$ Features \\
+\midrule
+Clipping & 0.124960 & 0.031240 & 4 \\
+Kmer\_jump & 0.098164 & 0.049082 & 2 \\
+SA\_structure & 0.028081 & 0.002160 & 13 \\
+Other & 0.004840 & 0.001613 & 3 \\
+Micro\_homology & 0.001314 & 0.000657 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Aggregated feature family importance for Bagging Trees.}
+\label{tab:fam_bagging}
+\begin{tabular}{lrrr}
+\toprule
+Family & Importance Sum & Importance Mean & $n$ Features \\
+\midrule
+Clipping & 0.276685 & 0.069171 & 4 \\
+Kmer\_jump & 0.036877 & 0.018438 & 2 \\
+Other & 0.002640 & 0.000880 & 3 \\
+Micro\_homology & 0.000118 & 0.000059 & 2 \\
+SA\_structure & -0.001632 & -0.000126 & 13 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Aggregated feature family importance for MLP.}
+\label{tab:fam_mlp}
+\begin{tabular}{lrrr}
+\toprule
+Family & Importance Sum & Importance Mean & $n$ Features \\
+\midrule
+Clipping & 0.103506 & 0.025876 & 4 \\
+SA\_structure & 0.077751 & 0.005981 & 13 \\
+Other & 0.001505 & 0.000502 & 3 \\
+Micro\_homology & 0.000091 & 0.000045 & 2 \\
+Kmer\_jump & 0.000034 & 0.000017 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier

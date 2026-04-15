@@ -1,0 +1,54 @@
+\chapter{Fold-Level Deep Learning Results}
+\label{app:dl_fold_results}
+
+This appendix provides fold-level cross-validation results for the deep learning models evaluated in this study. These tables complement the summary statistics reported in Chapter~4 by showing the performance of each validation fold separately for the CNN and RNN-kmer BiGRU models.
+
+\section{CNN Fold-Level Results}
+\label{app:cnn_fold_results}
+
+Table~\ref{tab:cnn_fold_results} presents the fold-level cross-validation performance of the CNN model.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Fold-level cross-validation performance of the CNN model.}
+\label{tab:cnn_fold_results}
+\begin{tabular}{lrrrrrr}
+\toprule
+Fold & Loss & Accuracy & Precision & Recall & F1-score & ROC--AUC \\
+\midrule
+Fold 0 & 0.4137 & 0.8845 & 0.8507 & 0.9328 & 0.8898 & 0.9467 \\
+Fold 1 & 0.4475 & 0.8686 & 0.8225 & 0.9400 & 0.8774 & 0.9389 \\
+Fold 2 & 0.4696 & 0.8519 & 0.7937 & 0.9509 & 0.8652 & 0.9283 \\
+Fold 3 & 0.4126 & 0.8739 & 0.8345 & 0.9328 & 0.8809 & 0.9385 \\
+Fold 4 & 0.4788 & 0.8531 & 0.8057 & 0.9306 & 0.8637 & 0.9272 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+
+\section{RNN-kmer BiGRU Fold-Level Results}
+\label{app:rnn_fold_results}
+
+Table~\ref{tab:rnn_fold_results} presents the fold-level cross-validation performance of the RNN-kmer BiGRU model.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Fold-level cross-validation performance of the RNN-kmer BiGRU model.}
+\label{tab:rnn_fold_results}
+\begin{tabular}{lrrrrrr}
+\toprule
+Fold & Loss & Accuracy & Precision & Recall & F1-score & ROC--AUC \\
+\midrule
+Fold 0 & 0.4155 & 0.9227 & 0.8958 & 0.9566 & 0.9252 & 0.9672 \\
+Fold 1 & 0.3981 & 0.9289 & 0.9130 & 0.9481 & 0.9302 & 0.9696 \\
+Fold 2 & 0.2959 & 0.9330 & 0.9110 & 0.9597 & 0.9347 & 0.9780 \\
+Fold 3 & 0.3047 & 0.9292 & 0.9238 & 0.9356 & 0.9297 & 0.9748 \\
+Fold 4 & 0.2845 & 0.9376 & 0.9250 & 0.9525 & 0.9386 & 0.9774 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
