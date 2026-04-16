@@ -1,49 +1,49 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Overall workflow of the study.}}{20}{figure.caption.4}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Overall workflow of the study.}}{27}{figure.caption.4}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Boxplots of selected features for clean and chimeric reads.}}{37}{figure.caption.11}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Feature correlation heatmap showing relationships among alignment-derived and sequence-derived features.}}{39}{figure.caption.12}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Test F1 of all baseline classifiers.}}{41}{figure.caption.14}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models.}}{42}{figure.caption.16}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Confusion matrix of the tuned Gradient Boosting classifier on the held-out test set.}}{44}{figure.caption.17}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces ROC and precision--recall curves for the tuned Gradient Boosting classifier on the held-out test set.}}{45}{figure.caption.18}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Permutation-based feature importance for the tuned Gradient Boosting classifier.}}{46}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Aggregated feature family importance for the tuned Gradient Boosting classifier.}}{47}{figure.caption.20}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Cumulative importance curve of features sorted by importance for the tuned Gradient Boosting classifier.}}{48}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Comparison of F1 and ROC--AUC across feature set variants for the tuned Gradient Boosting classifier.}}{49}{figure.caption.23}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces CNN training and validation loss and validation F1 across epochs.}}{51}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Confusion matrix of the CNN model on the held-out test set.}}{52}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces RNN-kmer BiGRU training and validation loss and validation F1 across epochs.}}{54}{figure.caption.29}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Confusion matrix of the RNN-kmer BiGRU model on the held-out test set.}}{55}{figure.caption.31}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Assembly graphs for 20K paired-end reads at 50\% chimera proportion.}}{58}{figure.caption.35}%
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Assembly graphs for 3200 paired-end reads at 50\% chimera proportion.}}{59}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Comparison of held-out test F1 and ROC--AUC for Gradient Boosting, CNN, and RNN models.}}{61}{figure.caption.38}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Boxplots of SA Structure features by class (1/2).}}{73}{figure.caption.39}%
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Boxplots of SA Structure features by class (2/2).}}{74}{figure.caption.40}%
-\contentsline {figure}{\numberline {B.3}{\ignorespaces Boxplots of clipping-based features by class.}}{75}{figure.caption.41}%
-\contentsline {figure}{\numberline {B.4}{\ignorespaces Boxplots of k-mer features by class.}}{75}{figure.caption.42}%
-\contentsline {figure}{\numberline {B.5}{\ignorespaces Boxplots of microhomology features by class.}}{76}{figure.caption.43}%
-\contentsline {figure}{\numberline {B.6}{\ignorespaces Boxplots of other numeric features by class.}}{76}{figure.caption.44}%
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Complete feature correlation heatmap for all extracted variables.}}{78}{figure.caption.45}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Boxplots of selected features for clean and chimeric reads.}}{44}{figure.caption.11}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Feature correlation heatmap showing relationships among alignment-derived and sequence-derived features.}}{46}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Test F1 of all baseline classifiers.}}{48}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Comparison of test F1 (left) and ROC--AUC (right) for baseline and tuned models.}}{49}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Confusion matrix of the tuned Gradient Boosting classifier on the held-out test set.}}{51}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces ROC and precision--recall curves for the tuned Gradient Boosting classifier on the held-out test set.}}{52}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Permutation-based feature importance for the tuned Gradient Boosting classifier.}}{53}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Aggregated feature family importance for the tuned Gradient Boosting classifier.}}{54}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Cumulative importance curve of features sorted by importance for the tuned Gradient Boosting classifier.}}{55}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Comparison of F1 and ROC--AUC across feature set variants for the tuned Gradient Boosting classifier.}}{56}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces CNN training and validation loss and validation F1 across epochs.}}{58}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Confusion matrix of the CNN model on the held-out test set.}}{59}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces RNN-kmer BiGRU training and validation loss and validation F1 across epochs.}}{61}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Confusion matrix of the RNN-kmer BiGRU model on the held-out test set.}}{62}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Assembly graphs for 20K paired-end reads at 50\% chimera proportion.}}{65}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Assembly graphs for 3200 paired-end reads at 50\% chimera proportion.}}{66}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Comparison of held-out test F1 and ROC--AUC for Gradient Boosting, CNN, and RNN models.}}{68}{figure.caption.38}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {F.1}{\ignorespaces Assembly graphs for 3200 paired-end reads at 5\% chimera proportion.}}{87}{figure.caption.58}%
-\contentsline {figure}{\numberline {F.2}{\ignorespaces Assembly graphs for 3200 paired-end reads at 10\% chimera proportion.}}{88}{figure.caption.59}%
-\contentsline {figure}{\numberline {F.3}{\ignorespaces Assembly graphs for 3200 paired-end reads at 15\% chimera proportion.}}{89}{figure.caption.60}%
-\contentsline {figure}{\numberline {F.4}{\ignorespaces Assembly graphs for 3200 paired-end reads at 50\% chimera proportion.}}{90}{figure.caption.61}%
-\contentsline {figure}{\numberline {F.5}{\ignorespaces Assembly graphs for 10K paired-end reads at 5\% chimera proportion.}}{91}{figure.caption.62}%
-\contentsline {figure}{\numberline {F.6}{\ignorespaces Assembly graphs for 10K paired-end reads at 10\% chimera proportion.}}{92}{figure.caption.63}%
-\contentsline {figure}{\numberline {F.7}{\ignorespaces Assembly graphs for 10K paired-end reads at 15\% chimera proportion.}}{93}{figure.caption.64}%
-\contentsline {figure}{\numberline {F.8}{\ignorespaces Assembly graphs for 10K paired-end reads at 50\% chimera proportion.}}{94}{figure.caption.65}%
-\contentsline {figure}{\numberline {F.9}{\ignorespaces Assembly graphs for 20K paired-end reads at 5\% chimera proportion.}}{95}{figure.caption.66}%
-\contentsline {figure}{\numberline {F.10}{\ignorespaces Assembly graphs for 20K paired-end reads at 10\% chimera proportion.}}{96}{figure.caption.67}%
-\contentsline {figure}{\numberline {F.11}{\ignorespaces Assembly graphs for 20K paired-end reads at 15\% chimera proportion.}}{97}{figure.caption.68}%
-\contentsline {figure}{\numberline {F.12}{\ignorespaces Assembly graphs for 20K paired-end reads at 50\% chimera proportion.}}{98}{figure.caption.69}%
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Boxplots of SA Structure features by class (1/2).}}{80}{figure.caption.39}%
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Boxplots of SA Structure features by class (2/2).}}{81}{figure.caption.40}%
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Boxplots of clipping-based features by class.}}{82}{figure.caption.41}%
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Boxplots of k-mer features by class.}}{82}{figure.caption.42}%
+\contentsline {figure}{\numberline {B.5}{\ignorespaces Boxplots of microhomology features by class.}}{83}{figure.caption.43}%
+\contentsline {figure}{\numberline {B.6}{\ignorespaces Boxplots of other numeric features by class.}}{83}{figure.caption.44}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Complete feature correlation heatmap for all extracted variables.}}{85}{figure.caption.45}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {F.1}{\ignorespaces Assembly graphs for 3200 paired-end reads at 5\% chimera proportion.}}{94}{figure.caption.58}%
+\contentsline {figure}{\numberline {F.2}{\ignorespaces Assembly graphs for 3200 paired-end reads at 10\% chimera proportion.}}{95}{figure.caption.59}%
+\contentsline {figure}{\numberline {F.3}{\ignorespaces Assembly graphs for 3200 paired-end reads at 15\% chimera proportion.}}{96}{figure.caption.60}%
+\contentsline {figure}{\numberline {F.4}{\ignorespaces Assembly graphs for 3200 paired-end reads at 50\% chimera proportion.}}{97}{figure.caption.61}%
+\contentsline {figure}{\numberline {F.5}{\ignorespaces Assembly graphs for 10K paired-end reads at 5\% chimera proportion.}}{98}{figure.caption.62}%
+\contentsline {figure}{\numberline {F.6}{\ignorespaces Assembly graphs for 10K paired-end reads at 10\% chimera proportion.}}{99}{figure.caption.63}%
+\contentsline {figure}{\numberline {F.7}{\ignorespaces Assembly graphs for 10K paired-end reads at 15\% chimera proportion.}}{100}{figure.caption.64}%
+\contentsline {figure}{\numberline {F.8}{\ignorespaces Assembly graphs for 10K paired-end reads at 50\% chimera proportion.}}{101}{figure.caption.65}%
+\contentsline {figure}{\numberline {F.9}{\ignorespaces Assembly graphs for 20K paired-end reads at 5\% chimera proportion.}}{102}{figure.caption.66}%
+\contentsline {figure}{\numberline {F.10}{\ignorespaces Assembly graphs for 20K paired-end reads at 10\% chimera proportion.}}{103}{figure.caption.67}%
+\contentsline {figure}{\numberline {F.11}{\ignorespaces Assembly graphs for 20K paired-end reads at 15\% chimera proportion.}}{104}{figure.caption.68}%
+\contentsline {figure}{\numberline {F.12}{\ignorespaces Assembly graphs for 20K paired-end reads at 50\% chimera proportion.}}{105}{figure.caption.69}%
 \addvspace {10\p@ }
