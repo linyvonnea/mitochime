@@ -1,6 +1,40 @@
 \begin{thebibliography}{}
 
 \bibitem [\protect \citeauthoryear {%
+Alipanahi%
+, Delong%
+, Weirauch%
+\BCBL {}\ \BBA {} Frey%
+}{%
+Alipanahi%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2015}}%
+}]{%
+Alipanahi2015}
+\APACinsertmetastar {%
+Alipanahi2015}%
+\begin{APACrefauthors}%
+Alipanahi, B.%
+, Delong, A.%
+, Weirauch, M\BPBI T.%
+\BCBL {}\ \BBA {} Frey, B\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Predicting the sequence specificities of DNA- and
+  RNA-binding proteins by deep learning} {Predicting the sequence specificities
+  of dna- and rna-binding proteins by deep learning}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature Biotechnology}{33}{8}{831--838}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1038/nbt.3300} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1038/nbt.3300} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Anderson%
 \ \protect \BOthers {.}}{%
 Anderson%
@@ -357,6 +391,40 @@ Edgar, R\BPBI C.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Fernandez-Castillo%
+, Barbosa-Santillán%
+, Falcon-Morales%
+\BCBL {}\ \BBA {} Sánchez-Escobar%
+}{%
+Fernandez-Castillo%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2022}}%
+}]{%
+FernandezCastillo2022}
+\APACinsertmetastar {%
+FernandezCastillo2022}%
+\begin{APACrefauthors}%
+Fernandez-Castillo, E.%
+, Barbosa-Santillán, L\BPBI I.%
+, Falcon-Morales, L.%
+\BCBL {}\ \BBA {} Sánchez-Escobar, J\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2022}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Deep Splicer: A {CNN} Model for Splice Site Prediction
+  in Genetic Sequences} {Deep splicer: A {CNN} model for splice site prediction
+  in genetic sequences}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Genes}{13}{5}{907}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.3390/genes13050907} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.3390/genes13050907} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Glenn%
 }{%
 Glenn%
@@ -472,6 +540,41 @@ Hahn, C.%
 \APACjournalVolNumPages{Nucleic Acids Research}{41}{13}{e129}.
 \newblock
 \begin{APACrefDOI} \doi{10.1093/nar/gkt371} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+He%
+, Shen%
+, Zhang%
+, Wang%
+\BCBL {}\ \BBA {} Huang%
+}{%
+He%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2021}}%
+}]{%
+He2021}
+\APACinsertmetastar {%
+He2021}%
+\begin{APACrefauthors}%
+He, Y.%
+, Shen, Z.%
+, Zhang, Q.%
+, Wang, S.%
+\BCBL {}\ \BBA {} Huang, D\BHBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021}{07}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A survey on deep learning in DNA/RNA motif mining} {A
+  survey on deep learning in dna/rna motif mining}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Briefings in Bioinformatics}{22}{4}{bbaa229}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1093/bib/bbaa229} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1093/bib/bbaa229} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -969,6 +1072,72 @@ Sfeir, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Shen%
+, Bao%
+\BCBL {}\ \BBA {} Huang%
+}{%
+Shen%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2018}}%
+}]{%
+Shen2018}
+\APACinsertmetastar {%
+Shen2018}%
+\begin{APACrefauthors}%
+Shen, Z.%
+, Bao, W.%
+\BCBL {}\ \BBA {} Huang, D\BHBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Recurrent Neural Network for Predicting Transcription
+  Factor Binding Sites} {Recurrent neural network for predicting transcription
+  factor binding sites}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Scientific Reports}{8}{1}{15270}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1038/s41598-018-33321-1}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1038/s41598-018-33321-1} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Tabane%
+, Mnkandla%
+\BCBL {}\ \BBA {} Wang%
+}{%
+Tabane%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2025}}%
+}]{%
+Tabane2025}
+\APACinsertmetastar {%
+Tabane2025}%
+\begin{APACrefauthors}%
+Tabane, E.%
+, Mnkandla, E.%
+\BCBL {}\ \BBA {} Wang, Z.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Optimizing {DNA} Sequence Classification via a Deep
+  Learning Hybrid of {LSTM} and {CNN} Architecture} {Optimizing {DNA} sequence
+  classification via a deep learning hybrid of {LSTM} and {CNN}
+  architecture}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Applied Sciences}{15}{15}{8225}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.3390/app15158225} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.3390/app15158225} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Vervier%
 , Mahé%
 , Tournoud%
@@ -1003,6 +1172,42 @@ Vervier, K.%
   \end{APACrefURL}
 \newblock
 \begin{APACrefDOI} \doi{10.1093/bioinformatics/btv683} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wang%
+, Tai%
+, E%
+\BCBL {}\ \BBA {} Wei%
+}{%
+Wang%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2018}}%
+}]{%
+Wang2018}
+\APACinsertmetastar {%
+Wang2018}%
+\begin{APACrefauthors}%
+Wang, M.%
+, Tai, C.%
+, E, W.%
+\BCBL {}\ \BBA {} Wei, L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {DeFine: deep convolutional neural networks accurately
+  quantify intensities of transcription factor-DNA binding and facilitate
+  evaluation of functional non-coding variants} {Define: deep convolutional
+  neural networks accurately quantify intensities of transcription factor-dna
+  binding and facilitate evaluation of functional non-coding variants}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nucleic Acids Research}{46}{11}{e69}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1093/nar/gky215} \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1093/nar/gky215} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

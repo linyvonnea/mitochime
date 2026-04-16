@@ -71,7 +71,109 @@ Alignment-derived features further inform junction detection. Long-read tools su
 Microhomology, or short sequences shared between adjacent segments, is another biologically meaningful feature. Short microhomologies, typically 3--20 bp, are involved in template switching both in cellular repair pathways and during PCR, where they act as signatures of chimera formation \citep{Sfeir2015,Peccoud2018}. In PCR-induced chimeras, short identical sequences at junctions provide a clear signature of chimerism. Measuring the longest exact overlap at each breakpoint complements k-mer and alignment features and helps identify reads that are potentially chimeric.
 
 \subsection{Sequence-Based Deep Learning Representations of Genomic Sequences}
+For deep learning models to process biological data, raw DNA or RNA sequences must be mapped into a numerical coordinate system. \citet{He2021} categorized several common preprocessing techniques for motif mining.
+
+One standard approach is one-hot encoding, where each nucleotide is transformed into a sparse binary vector, such as \(A = [1, 0, 0, 0]\). This method preserves both the discrete identity of the bases and their sequence order, making it suitable for convolutional models that scan across nucleotide positions. Another common method is k-mer tokenization. In this approach, a sequence is divided into overlapping subsequences of length \(k\), and each k-mer is treated as a token. These tokens can then be converted into integer indices and passed through an embedding layer. This allows the model to learn dense vector representations of recurring sequence patterns. In the present study, these encoding paradigms served as the foundation for extracting features from the short-read sequences.
+
+\subsection{CNN and RNN for Genomic Sequence Analysis}
+Convolutional neural networks (CNNs) have been widely used in genomic sequence analysis because they can learn local sequence patterns directly from encoded DNA or RNA inputs. In these models, convolutional filters slide across the sequence to detect recurring motifs, splice signals, binding sites, and short-range changes in nucleotide composition.
+
+A foundational implementation of this approach is DeepBind \citep{Alipanahi2015}, which used 1D CNNs to identify the binding specificities of DNA- and RNA-binding proteins. In this framework, each convolutional filter acts as a non-linear motif detector, learning to recognize specific binding sites directly from the raw sequence data. Building upon this motif-recognition capability, Deep Splicer \citep{FernandezCastillo2022} employed a CNN architecture to identify splice sites across diverse eukaryotic genomes. The study found that the model significantly reduced false-positive predictions compared to traditional tools and demonstrated a high degree of generalizability across species, including humans and mice. Beyond classification, CNNs can also be used for quantitative modeling. The DeFine framework \citep{Wang2018} used deep convolutional layers to accurately quantify transcription factor-DNA binding intensities and evaluate functional non-coding variants.
+
+In the context of PCR-induced chimera detection, using CNNs is relevant because chimeric reads may contain local breakpoint patterns, unusual sequence transitions, or short regions that differ from clean read structures. CNN can scan across the nucleotide sequence and learn filters that respond to these local signals.
+
+Recurrent neural networks (RNNs) are designed to model sequential data. In genomic sequence analysis, this makes them useful for tasks where the arrangement of nucleotides or k-mers affects the prediction. Unlike CNNs, which primarily capture local patterns through convolutional filters, recurrent models can capture features across positions in a sequence.
+
+\citet{Shen2018} utilized this approach in developing KEGRU, a model designed to identify transcription factor binding sites in DNA sequences by combining k-mer embedding with a Bidirectional Gated Recurrent Unit (BiGRU) network. The results of the study showed better performance compared to other models that used CNN-based feature extraction.
+
+Beyond standalone deep learning architectures, hybrid models that leverage the strengths of both CNNs and RNNs have demonstrated strong performance in complex sequence classification tasks. \citet{Tabane2025} demonstrated this through a hybrid CNN-BiLSTM model, where the convolutional layers served as automated feature extractors that identified local patterns, which were then fed into the Bidirectional Long Short-Term Memory (BiLSTM) layers to capture long-distance dependencies.
+
+Overall, these studies show that CNNs and RNNs are well suited for genomic sequence analysis. Although direct deep learning research or tools focused specifically on PCR-induced chimera detection in the mitochondrial genome remain limited, the previously presented studies show that neural networks can extract biologically meaningful patterns from various genomic data.
 
 
-\section{Synthesis of Chimera Detection Approaches}
+\section{Synthesis of Existing Tools and Machine Learning Approaches}
 
+To provide an integrated overview of the literature discussed in this chapter, Table~\ref{tab:study_summary} summarizes the existing chimera detection tools, traditional machine learning approaches, and deep learning-based genomic sequence models reviewed in this study. The synthesis highlights each method or tool’s core approach and key limitations in relation to the present study.
+
+\newgeometry{top=50pt, bottom=60pt, left=30pt, right=30pt}
+\begin{landscape}
+
+\begin{xltabular}{\linewidth}{>{\bfseries}p{3.2cm} X X}
+    \caption{Comparison of Chimera Detection Tools and Genomic Sequence Modeling Approaches}
+    \label{tab:study_summary} \\
+
+    \toprule
+    Method / Tool & \textbf{Core Approach} & \textbf{Key Limitations} \\
+    \midrule
+    \endfirsthead
+
+    \caption[]{Comparison of Chimera Detection Tools and Genomic Sequence Modeling Approaches (continued)} \\
+
+    \toprule
+    Method / Tool & \textbf{Core Approach} & \textbf{Key Limitations} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{r}{\textit{Continued on the next page}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    Reference-based Detection &
+    Compares each query sequence against curated databases of verified, non-chimeric sequences; evaluates segment similarity to identify mosaic patterns. &
+    Accuracy depends on database completeness; performs poorly for novel taxa or missing parents; limited sensitivity for low-divergence chimeras. \\
+    \addlinespace
+
+    De novo Detection &
+    Identifies chimeras using only internal dataset structure; leverages abundance hierarchy and compositional similarity to infer whether low-abundance sequences can be reconstructed from abundant parents. &
+    Assumes true sequences are more abundant; fails when amplification bias distorts abundances; struggles when parental sequences are similarly abundant or highly similar. \\
+    \addlinespace
+
+    UCHIME &
+    Alignment-based model that partitions the query into segments, identifies parent candidates, and computes a chimera score via a three-way alignment; supports reference and de novo modes. &
+    Reduced accuracy for very closely related parents ($<$0.8\% divergence); sensitive to incomplete databases; de novo mode fails if parents are absent or not sufficiently more abundant. \\
+    \addlinespace
+
+    UCHIME2 &
+    Updated UCHIME with improved benchmarking (CHSIMA) and multiple sensitivity/specificity presets; better handles incomplete references and dataset variability. &
+    ``Fake models'' limit theoretical accuracy; genuine variants may mimic chimeras; not recommended as a standalone step in OTU or denoising pipelines due to increased false positives/negatives. \\
+    \addlinespace
+
+    DADA2 &
+    Infers exact amplicon sequence variants from Illumina reads through quality filtering, dereplication, denoising, paired-end merging, and chimera removal; uses \texttt{isBimeraDenovo()} to identify exact two-parent bimeras from more abundant inferred sequences. &
+    Designed for ASV-level amplicon analysis, especially 16S rRNA data; not intended for direct read-level detection of PCR-induced chimeras in single-species mitochondrial sequencing data. \\
+    \addlinespace
+
+    CATCh &
+    First ensemble ML model for 16S chimera detection; integrates outputs of UCHIME, ChimeraSlayer, DECIPHER, Pintail, and Perseus using an SVM to boost overall prediction accuracy. &
+    Performance constrained by underlying tools; ML model cannot capture features not present in component algorithms; may misclassify in highly novel or low-coverage datasets. \\
+    \addlinespace
+
+    ChimPipe &
+    Pipeline for detecting biological chimeras in RNA-seq using discordant paired-end reads and split-read alignments; identifies isoforms and breakpoint coordinates. &
+    Requires high-quality genome and annotation; tailored to RNA-seq rather than amplicons; computationally intensive; limited to organisms with available reference genomes. \\
+    \addlinespace
+
+    CNN Approach &
+    Applies one-dimensional convolutional filters to encoded DNA or RNA sequences to learn local motifs, splice signals, binding patterns, and short-range sequence transitions. &
+    Requires careful encoding; learned features may be difficult to interpret; direct use for mitochondrial PCR-induced chimera detection remains limited. \\
+    \addlinespace
+
+    RNN Approach &
+    Treats nucleotides or k-mers as ordered sequences and uses recurrent layers to capture positional and longer-range dependencies across genomic reads. &
+    More computationally demanding than simpler ML models; performance depends on representation and tuning; direct use for mitochondrial PCR-induced chimera detection remains limited. \\
+    \addlinespace
+
+    Hybrid CNN--RNN Models &
+    Combines CNN-based local feature extraction with RNN-based sequence modeling to capture both short-range genomic patterns and longer-distance dependencies. &
+    More complex to train and tune; requires sufficient labeled data; existing studies support genomic sequence classification generally, but not specifically PCR-induced mitochondrial chimera detection. \\
+
+\end{xltabular}
+
+\end{landscape}
+\restoregeometry
+
+
+Across existing studies, no single approach reliably detects all forms of chimeric sequences, and the reviewed literature consistently shows that chimeras remain a persistent challenge in genomics and bioinformatics. Although the surveyed tools are not designed specifically for organelle genome assembly, they provide valuable insights into which methodological strategies are effective and where current approaches fall short. These limitations collectively define a clear research gap: the need for a specialized, feature-driven detection framework tailored to PCR-induced mitochondrial chimeras. Addressing this gap aligns with the research objective outlined in Section \ref{subsecsec:researchobjectives}, which is to develop and evaluate a machine learning-based pipeline (MitoChime) that improves the quality of downstream mitochondrial genome assembly. In support of this aim, the subsequent chapters describe the design, implementation, and evaluation of the proposed tool.
