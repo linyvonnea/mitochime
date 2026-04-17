@@ -1,0 +1,61 @@
+%   Filename    : preamble.tex
+%   Description : Preamble file
+
+\documentclass[12pt,titlepage,letterpaper]{book}
+
+% ---- Packages
+\usepackage[natbibapa]{apacite}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage{lineno}
+\usepackage{setspace}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{adjustbox}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{pdflscape}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{xltabular}
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+
+% ---- Prevent extra heading before bibliography
+\makeatletter
+\let\st@rtbibsection\@bibnewpage
+\let\st@rtbibchapter\@bibnewpage
+\makeatother
+
+% ---- Layout
+\setlength{\topmargin}{-0.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\voffset}{0in}
+\setlength{\hoffset}{0.5625in}
+\setlength{\textwidth}{5.75in}
+\setlength{\textheight}{8.5in}
+
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0.25in}
+\emergencystretch=2em
+
+% ---- Global formatting
+\doublespacing
+\hyphenation{ana-lysis know-ledge}
+
+% ---- Commands
+\newcommand{\degree}{^{\circ}}
+\newcommand{\etal}{et al.}
+\newcommand{\figref}[1]{Figure~\ref{#1}}
+\newcommand{\appref}[1]{Appendix~\ref{#1}}
+\newcommand{\thestitle}[1]{{\Large \textsc{#1}}}
+\newcommand{\signaturerule}{\rule{10em}{.4pt}}
