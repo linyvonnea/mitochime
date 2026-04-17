@@ -1,0 +1,51 @@
+%   Filename    : chapter_1.tex
+
+\chapter{Introduction}
+\label{sec:researchdesc}
+
+\section{Overview of the Current State of Technology}
+\label{sec:overview}
+
+The rapid advancement of next-generation sequencing (NGS) technologies has transformed genomic research by enabling high-throughput and cost-effective DNA analysis \citep{Metzker2010}. Among current platforms, Illumina sequencing remains the most widely adopted, capable of producing millions of short reads that can be assembled into reference genomes or analyzed for genetic variation \citep{Bentley2008,Glenn2011}. Despite its high base-calling accuracy, Illumina sequencing is prone to artifacts introduced during library preparation, particularly polymerase chain reaction (PCR)-induced chimeras, which are artificial hybrid sequences that do not exist in the true genome \citep{Judo1998}.
+
+PCR chimeras form when incomplete extension products from one template anneal to an unrelated DNA fragment and are extended, creating recombinant reads \citep{Qiu2001}. In mitochondrial genome assembly, such artifacts are especially problematic because the mitochondrial genome is small, circular, and often repetitive \citep{Boore1999,Cameron2014}. Even a small number of chimeric or misjoined reads can reduce assembly contiguity and introduce false junctions during organelle genome reconstruction \citep{Hahn2013,Dierckxsens2017,Jin2020}. Existing assembly tools such as GetOrganelle and MITObim assume that input reads are largely free of such artifacts \citep{Hahn2013,Jin2020}. Consequently, undetected chimeras may produce fragmented assemblies or misidentified organellar boundaries. To ensure accurate reconstruction of mitochondrial genomes, a reliable method for detecting PCR-induced chimeras before assembly is essential.
+
+This study focuses on mitochondrial sequencing data from the genus \textit{Sardinella}, a group of small pelagic fishes widely distributed in Philippine waters. Among them, \textit{Sardinella lemuru} (Bali sardinella) is one of the country’s most abundant and economically important species, providing protein and livelihood to coastal communities \citep{Willette2011,Labrador2021}. Accurate mitochondrial assemblies are critical for understanding its population genetics, stock structure, and evolutionary history. However, assembly pipelines often encounter errors or fail to complete due to undetected chimeric reads. To address this gap, this research introduces MitoChime, a machine learning pipeline designed to detect PCR-induced chimeric reads using both alignment-based and sequence-derived statistical features. The tool aims to provide bioinformatics laboratories, particularly the Philippine Genome Center Visayas (PGC Visayas), with an efficient solution for improving mitochondrial genome reconstruction.
+
+\section{Problem Statement}
+
+Chimeric reads can distort assembly graphs and cause misassemblies, with particularly severe effects in mitochondrial genomes \citep{Boore1999,Cameron2014}. Existing assembly pipelines such as GetOrganelle, MITObim, and NOVOPlasty assume that sequencing reads are free of such artifacts \citep{Hahn2013,Dierckxsens2017,Jin2020}. At PGC Visayas, several mitochondrial assemblies have failed or yielded incomplete contigs despite sufficient coverage, suggesting that undetected chimeric reads compromise assembly reliability. Meanwhile, existing chimera detection tools such as UCHIME and VSEARCH were developed primarily for amplicon-based community analysis and rely heavily on reference or taxonomic comparisons \citep{Edgar2011,Rognes2016}. These approaches are unsuitable for single-species organellar data, where complete reference genomes are often unavailable.
+
+\section{Research Objectives}
+\label{sec:researchobjectives}
+
+\subsection{General Objective}
+\label{sec:generalobjective}
+
+This study aims to develop and evaluate a machine learning-based pipeline (MitoChime) that detects PCR-induced chimeric reads in \textit{Sardinella lemuru} mitochondrial sequencing data in order to improve the quality and reliability of downstream mitochondrial genome assemblies.
+
+\subsection{Specific Objectives}
+\label{sec:specificobjectives}
+
+Specifically, the study aims to:
+\begin{enumerate}
+\item construct simulated \textit{Sardinella lemuru} Illumina paired-end datasets containing both clean and PCR-induced chimeric reads,
+\item extract alignment-based and sequence-based features such as k-mer composition, junction complexity, and split-alignment counts from both clean and chimeric reads,
+\item train, validate, and compare supervised machine learning models for classifying reads as clean or chimeric,
+\item determine feature importance and identify indicators of PCR-induced chimerism,
+\item integrate the optimized classifier into a modular and interpretable pipeline deployable on standard computing environments at PGC Visayas.
+\end{enumerate}
+
+\section{Scope and Limitations of the Research}
+\label{sec:scopelimitations}
+
+This study focuses solely on PCR-induced chimeric reads in \textit{Sardinella lemuru} mitochondrial sequencing data, with the species choice guided by four considerations: (1) to limit interspecific variation in mitochondrial genome size, GC content, and repetitive regions so that differences in read patterns can be attributed more directly to PCR-induced chimerism, (2) to align the analysis with relevant \textit{S. lemuru} sequencing projects at PGC Visayas, (3) to take advantage of the availability of \textit{S. lemuru} mitochondrial assemblies and raw datasets in public repositories such as the National Center for Biotechnology Information (NCBI), which facilitates reference selection and benchmarking, and (4) to develop a tool that directly supports local studies on \textit{S. lemuru} population structure and fisheries management.
+
+The study emphasizes \texttt{wgsim}-based simulations and selected empirical mitochondrial datasets from \textit{S. lemuru}. It excludes naturally occurring chimeras, nuclear mitochondrial pseudogenes (NUMTs), and large-scale assembly rearrangements in nuclear genomes. Feature extraction is restricted to low-dimensional alignment and sequence statistics, such as k-mer frequency profiles, GC content, soft and hard clipping metrics, and split-alignment counts rather than high-dimensional deep learning embeddings. This design keeps model behaviour interpretable and ensures that the pipeline can be run on standard workstations at PGC Visayas. Testing on long-read platforms (e.g., Nanopore, PacBio) and other taxa is outside the scope of this project.
+
+Other limitations in this study include the following: simulations with varying error rates were not performed, so the effect of different sequencing errors on model performance remains unexplored; alternative parameter settings, including k-mer lengths and microhomology window sizes, were not systematically tested, which could affect the sensitivity of both k-mer and microhomology feature detection; and the machine learning models rely on supervised training with labeled examples, which may limit their ability to detect novel or unexpected chimeric patterns.
+
+\section{Significance of the Research}
+\label{sec:significance}
+
+This research provides both methodological and practical contributions to mitochondrial genomics and bioinformatics. First, MitoChime detects PCR-induced chimeric reads prior to genome assembly, with the goal of improving the contiguity and correctness of \textit{Sardinella lemuru} mitochondrial assemblies. Second, it replaces informal manual curation with a documented workflow, improving automation and reproducibility. Third, the pipeline is designed to run on computing infrastructures commonly available in regional laboratories, enabling routine use at facilities such as PGC Visayas. Finally, more reliable mitochondrial assemblies for \textit{S. lemuru} provide a stronger basis for downstream applications in the field of fisheries and genomics.
