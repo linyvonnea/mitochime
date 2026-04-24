@@ -1,0 +1,76 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: title_page.aux
+A level-1 auxiliary file: approval.aux
+A level-1 auxiliary file: declaration.aux
+A level-1 auxiliary file: dedication.aux
+A level-1 auxiliary file: acknowledgment.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: chapter_1.aux
+A level-1 auxiliary file: chapter_2.aux
+A level-1 auxiliary file: chapter_3.aux
+A level-1 auxiliary file: chapter_4.aux
+A level-1 auxiliary file: chapter_5.aux
+A level-1 auxiliary file: chapter_6.aux
+The style file: apacite.bst
+A level-1 auxiliary file: appendix_A.aux
+A level-1 auxiliary file: appendix_B.aux
+A level-1 auxiliary file: appendix_C.aux
+A level-1 auxiliary file: appendix_D.aux
+A level-1 auxiliary file: appendix_E.aux
+A level-1 auxiliary file: appendix_F.aux
+A level-1 auxiliary file: appendix_G.aux
+A level-1 auxiliary file: appendix_H.aux
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: myreferences.bib
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+You've used 39 entries,
+            6951 wiz_defined-function locations,
+            1612 strings with 21108 characters,
+and the built_in function-call counts, 87996 in all, are:
+= -- 10329
+> -- 835
+< -- 4533
++ -- 4963
+- -- 78
+* -- 6175
+:= -- 16394
+add.period$ -- 151
+call.type$ -- 39
+change.case$ -- 678
+chr.to.int$ -- 0
+cite$ -- 78
+duplicate$ -- 2738
+empty$ -- 3292
+format.name$ -- 1558
+if$ -- 15928
+int.to.chr$ -- 0
+int.to.str$ -- 117
+missing$ -- 0
+newline$ -- 1147
+num.names$ -- 312
+pop$ -- 1195
+preamble$ -- 1
+purify$ -- 177
+quote$ -- 0
+skip$ -- 5142
+stack$ -- 0
+substring$ -- 5329
+swap$ -- 1549
+text.length$ -- 104
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 3120
+warning$ -- 0
+while$ -- 544
+width$ -- 0
+write$ -- 1489

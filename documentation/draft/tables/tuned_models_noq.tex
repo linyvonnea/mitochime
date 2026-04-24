@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Performance of tuned classifiers on the held-out test set.}
+  \label{tab:tuned_models_noq}
+  \begin{tabular}{lrrrr}
+    \toprule
+    model\_name &
+    test\_f1\_base &
+    test\_roc\_auc\_base &
+    test\_f1\_tuned &
+    test\_roc\_auc\_tuned \\
+    \midrule
+    gradient\_boosting & 0.774213 & 0.844844 & 0.776460 & 0.845858 \\
+    catboost & 0.775114 & 0.843362 & 0.775289 & 0.842918 \\
+    lightgbm & 0.772146 & 0.841671 & 0.773802 & 0.843451 \\
+    bagging\_trees & 0.769742 & 0.837357 & 0.772422 & 0.841870 \\
+    random\_forest & 0.769097 & 0.832766 & 0.772376 & 0.838799 \\
+    xgboost & 0.772747 & 0.841042 & 0.770118 & 0.843225 \\
+    extra\_trees & 0.763950 & 0.826517 & 0.769878 & 0.834912 \\
+    mlp & 0.749660 & 0.829611 & 0.749167 & 0.828506 \\
+    logreg\_l2 & 0.746860 & 0.829807 & 0.745187 & 0.825632 \\
+    linear\_svm\_calibrated & 0.747426 & 0.829602 & 0.744848 & 0.825147 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
