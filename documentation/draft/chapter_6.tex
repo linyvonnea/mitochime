@@ -1,5 +1,15 @@
-%   Filename    : chapter_6.tex
+% Filename: chapter_6.tex
 
 \chapter{References}
+\label{chap:references}
+
+\begingroup
+\makeatletter
+\renewcommand{\bibsection}{}
+\let\st@rtbibchapter\relax
+\let\st@rtbibsection\relax
+\makeatother
+
 \bibliographystyle{apacite}
 \bibliography{myreferences}
+\endgroup

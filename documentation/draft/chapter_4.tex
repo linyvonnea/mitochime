@@ -16,19 +16,19 @@ Only a subset of the features is summarized in the main text to highlight key tr
 
 \subsubsection{Alignment and Supplementary Alignment Features}
 
-Features related to supplementary alignments show strong separation between classes. Chimeric reads frequently exhibit supplementary alignments, reflected by higher values of \texttt{has\_sa}, \texttt{sa\_count}, and \texttt{num\_segments}, whereas clean reads consistently show a single alignment segment with no supplementary mappings. Table~\ref{tab:key_feature_summary} shows that \texttt{has\_sa} is present in chimeric reads (mean = 0.406) but absent in clean reads (mean = 0.000), while \texttt{num\_segments} increases from a constant value of 1.000 in clean reads to a mean of 1.406 in chimeric reads. These patterns align with the expected structure of chimeric reads and indicate that alignment-based features are highly informative.
+Features related to supplementary alignments show strong separation between classes. Chimeric reads frequently exhibit supplementary alignments, reflected by higher values of supplementary alignment presence, supplementary alignment count, and number of alignment segments, whereas clean reads consistently show a single alignment segment with no supplementary mappings. Table~\ref{tab:key_feature_summary} shows that supplementary alignment presence is present in chimeric reads (mean = 0.406) but absent in clean reads (mean = 0.000), while the number of alignment segments increases from a constant value of 1.000 in clean reads to a mean of 1.406 in chimeric reads. These patterns align with the expected structure of chimeric reads and indicate that alignment-based features are highly informative.
 
 \subsubsection{Clipping-Based Features}
 
-Clipping-related features, including \texttt{softclip\_left}, \texttt{softclip\_right}, and \texttt{total\_clipped\_bases}, display higher values and broader distributions in chimeric reads. In chimeric reads, \texttt{total\_clipped\_bases} reaches 25.44 on average, with a median of 19.0 and an IQR of 48.0, while \texttt{softclip\_left} and \texttt{softclip\_right} have averages of 12.55 and 12.90, medians of 0.0, and IQRs of 19.0. Clean reads maintain values near zero across all these metrics. These patterns indicate substantial clipping and increased variability in chimeric reads, reflecting junction-like alignment fragmentation, whereas clean reads remain unaltered.
+Clipping-related features, including left soft-clipped bases, right soft-clipped bases, and total clipped bases, display higher values and broader distributions in chimeric reads. In chimeric reads, total clipped bases reach 25.44 on average, with a median of 19.0 and an IQR of 48.0, while left soft-clipped bases and right soft-clipped bases have averages of 12.55 and 12.90, medians of 0.0, and IQRs of 19.0. Clean reads maintain values near zero across all these metrics. These patterns indicate substantial clipping and increased variability in chimeric reads, reflecting junction-like alignment fragmentation, whereas clean reads remain unaltered.
 
 \subsubsection{K-mer Distribution Features}
 
-K-mer--based features, including \texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff}, show only minor differences between clean and chimeric reads. In chimeric reads, \texttt{kmer\_js\_divergence} has a mean of 0.974 with a median of 0.986, and \texttt{kmer\_cosine\_diff} has a mean of 0.974 with a median of 0.986. Clean reads show similar values, with \texttt{kmer\_js\_divergence} at 0.976 with a median of 0.986, and \texttt{kmer\_cosine\_diff} at 0.976 with a median of 0.986. The close similarity of the means, medians, and overall ranges of values indicates that these features alone provide limited ability to distinguish clean from chimeric reads.
+K-mer--based features, including k-mer Jensen--Shannon divergence and k-mer cosine difference, show only minor differences between clean and chimeric reads. In chimeric reads, k-mer Jensen--Shannon divergence has a mean of 0.974 with a median of 0.986, and k-mer cosine difference has a mean of 0.974 with a median of 0.986. Clean reads show similar values, with k-mer Jensen--Shannon divergence at 0.976 with a median of 0.986, and k-mer cosine difference at 0.976 with a median of 0.986. The close similarity of the means, medians, and overall ranges of values indicates that these features alone provide limited ability to distinguish clean from chimeric reads.
 
 \subsubsection{Microhomology Features}
 
-Microhomology-related features, including \texttt{microhomology\_length} and \texttt{microhomology\_gc}, exhibit nearly identical summary statistics between clean and chimeric reads. Most reads in both classes have short or zero-length microhomologies. Table~\ref{tab:key_feature_summary} shows that \texttt{microhomology\_gc} has a mean of 0.172 and a median of 0.0 in both clean and chimeric reads, while \texttt{microhomology\_length} averages 0.458 with a median of 0.0 in chimeric reads and 0.462 with a median of 0.0 in clean reads. These values indicate that microhomology features alone provide limited discriminatory power and are more appropriately considered as supporting evidence.
+Microhomology-related features, including microhomology length and microhomology GC content, exhibit nearly identical summary statistics between clean and chimeric reads. Most reads in both classes have short or zero-length microhomologies. Table~\ref{tab:key_feature_summary} shows that microhomology GC content has a mean of 0.172 and a median of 0.0 in both clean and chimeric reads, while microhomology length averages 0.458 with a median of 0.0 in chimeric reads and 0.462 with a median of 0.0 in clean reads. These values indicate that microhomology features alone provide limited discriminatory power and are more appropriately considered as supporting evidence.
 
 The summary statistics indicate that alignment-based and clipping-based features provide the strongest class separation, k-mer features contribute limited but complementary signal, and microhomology features exhibit minimal discriminative power on their own. These observations motivate the combined multi-feature approach used in subsequent modeling and evaluation.
 
@@ -72,13 +72,13 @@ microhomology\_gc  & clean    & 0.172 & 0.361 & 0.0 & 0.0 \\
 
 Boxplots were generated for each feature, with the x-axis representing the class (clean reads and chimeric reads) and the y-axis representing the feature value. Figure~\ref{fig:boxplots_all_features} presents a panel of selected key features, while boxplots for all numeric features are provided in Appendix~\ref{app:boxplots_by_family}.
 
-For clipping-related features (\texttt{softclip\_left}, \texttt{softclip\_right}, and \texttt{total\_clipped\_bases}), chimeric reads exhibit higher medians and longer upper whiskers than clean reads, indicating increased variability and the presence of split alignments.
+For clipping-related features, left soft-clipped bases, right soft-clipped bases, and total clipped bases show higher medians and longer upper whiskers in chimeric reads than in clean reads, indicating increased variability and the presence of split alignments.
 
-Supplementary alignment features (\texttt{has\_sa} and \texttt{sa\_count}) show that clean reads are largely zero, whereas chimeric reads display a wider distribution, reflecting frequent supplementary alignments.
+Supplementary alignment features, including supplementary alignment presence and supplementary alignment count, show that clean reads are largely zero, whereas chimeric reads display a wider distribution, reflecting frequent supplementary alignments.
 
-K-mer metrics (\texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff}) show a slight upward shift for chimeric reads, but substantial overlap with clean reads indicates low discriminative power.
+K-mer metrics, including k-mer Jensen--Shannon divergence and k-mer cosine difference, show a slight upward shift for chimeric reads, but substantial overlap with clean reads indicates low discriminative power.
 
-Microhomology features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) have nearly overlapping distributions for both classes, consistent with their low standalone predictive importance.
+Microhomology features, including microhomology length and microhomology GC content, have nearly overlapping distributions for both classes, consistent with their low standalone predictive importance.
 
 \begin{figure}[H]
 \centering
@@ -220,7 +220,7 @@ The GB model achieved a ROC--AUC of approximately 0.84 and an average precision 
 
 To understand how the final classifier made predictions, feature importance was quantified using permutation importance for the tuned GB model.
 
-As shown in Figure~\ref{fig:gradient_imp}, \texttt{total\_clipped\_bases} provides the strongest predictive signal, with an importance of 0.117. This is followed by \texttt{kmer\_js\_divergence} and \texttt{kmer\_cosine\_diff}, indicating that both clipping-based alignment irregularities and k-mer compositional shifts are central to the model’s decision-making process. In contrast, soft-clipping features contribute less strongly, while microhomology-related features such as \texttt{microhomology\_length} and \texttt{microhomology\_gc} provide minimal predictive value.
+As shown in Figure~\ref{fig:gradient_imp}, total clipped bases provides the strongest predictive signal, with an importance of 0.117. This is followed by k-mer Jensen--Shannon divergence and k-mer cosine difference, indicating that both clipping-based alignment irregularities and k-mer compositional shifts are central to the model’s decision-making process. In contrast, soft-clipping features contribute less strongly, while microhomology-related features such as microhomology length and microhomology GC content provide minimal predictive value.
 
 These results indicate that accurate detection of chimeric reads relies primarily on signals associated with breakpoint-related clipping patterns and abrupt compositional changes in sequence structure. By contrast, explicit microhomology features appear to add little information for this dataset.
 
@@ -252,7 +252,7 @@ Feature selection was performed to identify the smallest subset reaching 95\% cu
 
 \subsection{Cumulative Importance Curve}
 
-The cumulative importance curve was computed using the tuned Gradient Boosting classifier. Figure~\ref{fig:cumulative_importance} shows that the importance rises steeply for the top-ranked features and then gradually plateaus, indicating that a relatively small number of predictors account for most of the model’s performance. A cumulative importance threshold of 95\% was reached at \(k = 4\) features: \texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}.
+The cumulative importance curve was computed using the tuned Gradient Boosting classifier. Figure~\ref{fig:cumulative_importance} shows that the importance rises steeply for the top-ranked features and then gradually plateaus, indicating that a relatively small number of predictors account for most of the model’s performance. A cumulative importance threshold of 95\% was reached at \(k = 4\) features: total clipped bases, k-mer Jensen--Shannon divergence, k-mer cosine difference, and left soft-clipped bases.
 
 \begin{figure}[H]
 \centering
@@ -263,7 +263,7 @@ The cumulative importance curve was computed using the tuned Gradient Boosting c
 
 \subsection{Performance Comparison Across Feature Sets}
 
-Classification performance was compared across three feature sets using the tuned Gradient Boosting classifier. The full model, incorporating all 23 engineered features, achieved an F1-score of 0.7765 and a ROC--AUC of 0.8459. A reduced model using only the top four features (\texttt{total\_clipped\_bases}, \texttt{kmer\_js\_divergence}, \texttt{kmer\_cosine\_diff}, and \texttt{softclip\_left}) achieved nearly equivalent performance, with an F1-score of 0.7768 and a ROC--AUC of 0.8369. An ablation model excluding microhomology features (\texttt{microhomology\_length} and \texttt{microhomology\_gc}) also performed comparably, with an F1-score of 0.7761 and a ROC--AUC of 0.8444.
+Classification performance was compared across three feature sets using the tuned Gradient Boosting classifier. The full model, incorporating all 23 engineered features, achieved an F1-score of 0.7765 and a ROC--AUC of 0.8459. A reduced model using only the top four features, namely total clipped bases, k-mer Jensen--Shannon divergence, k-mer cosine difference, and left soft-clipped bases, achieved nearly equivalent performance, with an F1-score of 0.7768 and a ROC--AUC of 0.8369. An ablation model excluding microhomology features, namely microhomology length and microhomology GC content, also performed comparably, with an F1-score of 0.7761 and a ROC--AUC of 0.8444.
 
 These findings indicate that clipping and k-mer features capture nearly all of the predictive signal used by the model, while microhomology features are largely redundant in this dataset.
 

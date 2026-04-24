@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  17 APR 2026 23:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 APR 2026 16:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -756,116 +756,73 @@ Overfull \hbox (13.75838pt too wide) in paragraph at lines 15--16
 ]
 \openout2 = `abstract.aux'.
 
- (./abstract.tex
-Underfull \vbox (badness 1226) has occurred while \output is active []
-
-
+ (./abstract.tex)
 
 [6
 
 
 
-])
-
-[7]
-
-[8
-
-
-
 ] (./main.toc
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[7
 
 
+
+]
+
+[8]
 
 [9]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[13]
-Underfull \vbox (badness 2913) has occurred while \output is active []
-
-
-
-[14])
+[12])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
 
 
-[15]
+[13]
 
-[16
+[14
 
 ] (./main.lof
-Overfull \hbox (6.69041pt too wide) in paragraph at lines 9--9
+Overfull \hbox (6.69041pt too wide) in paragraph at lines 10--10
  [][] [][]\OT1/cmr/m/n/12 Feature cor-re-la-tion heatmap show-ing re-la-tion-sh
 ips among alignment- 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[15]
 
+[16]
 
-[17]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[18]
-Underfull \vbox (badness 4328) has occurred while \output is active []
-
-
-
-[19])
+[17])
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
 
 
-[20] (./main.lot
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[18] (./main.lot
 
-
-
-[21
+[19
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[22])
+[20])
 \tf@lot=\write6
 \openout6 = `main.lot'.
 
 
 
-[23]
+[21]
 \openout2 = `chapter_1.aux'.
 
  (./chapter_1.tex
 Chapter 1.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 
 
 
@@ -878,19 +835,10 @@ l.10
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [2]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [3]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [4]
 
@@ -913,29 +861,23 @@ Chapter 2.
 
 
 [9]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [10]
-Overfull \hbox (4.52325pt too wide) in paragraph at lines 22--22
+<figures/PCR_flat.pdf, id=983, 301.125pt x 251.94125pt>
+File: figures/PCR_flat.pdf Graphic file (type pdf)
+<use figures/PCR_flat.pdf>
+Package pdftex.def Info: figures/PCR_flat.pdf  used on input line 22.
+(pdftex.def)             Requested size: 324.13043pt x 271.21599pt.
+
+
+[11 <./figures/PCR_flat.pdf>]
+Overfull \hbox (4.52325pt too wide) in paragraph at lines 29--29
 []\OT1/cmr/bx/n/17.28 Existing Tra-di-tional Ap-proaches for Chimera
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[11]
-Underfull \vbox (badness 1515) has occurred while \output is active []
-
-
 
 [12]
-Underfull \vbox (badness 3884) has occurred while \output is active []
-
-
 
 
 Overfull \hbox (16.93066pt too wide) has occurred while \output is active
@@ -944,14 +886,8 @@ T1/cmr/m/n/12 13
  []
 
 [13]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [14]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 
 Overfull \hbox (16.93066pt too wide) has occurred while \output is active
@@ -960,40 +896,39 @@ T1/cmr/m/n/12 15
  []
 
 [15]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [16]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
+Overfull \hbox (16.93066pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 2.3.  EXISTING TRADITIONAL APPROACHES FOR CHIMERA DETECTION \O
+T1/cmr/m/n/12 17
+ []
 
 [17]
-Underfull \hbox (badness 2828) in paragraph at lines 76--76
+Underfull \hbox (badness 2828) in paragraph at lines 83--83
 []\OT1/cmr/bx/n/14.4 Feature-Based Rep-re-sen-ta-tions of Ge-nomic Se-
  []
 
 
 
 [18]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [19]
-Underfull \vbox (badness 2020) has occurred while \output is active []
-
-
 
 [20]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [21]
 
 [22]
+
+
+Overfull \hbox (52.89853pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 2.5.  SYNTHESIS OF EXISTING TOOLS AND MACHINE LEARNING APPROAC
+HES \OT1/cmr/m/n/12 23
+ []
+
+[23]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: letterpaper
@@ -1027,76 +962,81 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
+Underfull \hbox (badness 10000) in paragraph at lines 192--192
 []|\OT1/cmr/bx/n/12 Reference-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
+Underfull \hbox (badness 10000) in paragraph at lines 192--192
 \OT1/cmr/bx/n/12 based De-tec-
  []
 
 
-Underfull \hbox (badness 5490) in paragraph at lines 185--185
+Underfull \hbox (badness 5490) in paragraph at lines 192--192
 []|\OT1/cmr/m/n/12 Compares each query se-quence against cu-rated
  []
 
 
-Underfull \hbox (badness 4328) in paragraph at lines 185--185
+Underfull \hbox (badness 4328) in paragraph at lines 192--192
 []|\OT1/cmr/m/n/12 Updated UCHIME with im-proved bench-mark-ing
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 185--185
+Underfull \hbox (badness 1048) in paragraph at lines 192--192
 []|\OT1/cmr/m/n/12 Performance con-strained by un-der-ly-ing tools; ML
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
+Underfull \hbox (badness 10000) in paragraph at lines 192--192
 []|\OT1/cmr/bx/n/12 RNN Ap-
  []
 
 
-Underfull \hbox (badness 3000) in paragraph at lines 185--185
+Underfull \hbox (badness 3000) in paragraph at lines 192--192
 []|\OT1/cmr/bx/n/12 Hybrid CNN--
  []
 
-[23
+[24
 
 
-] [24]
+] [25]
 
-[25])
+[26])
 
-[26
+
+Overfull \hbox (52.89853pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 2.5.  SYNTHESIS OF EXISTING TOOLS AND MACHINE LEARNING APPROAC
+HES \OT1/cmr/m/n/12 27
+ []
+
+[27
 
 
 ]
 \openout2 = `chapter_3.aux'.
 
  (./chapter_3.tex
-Chapter 3.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[27
+[28
 
 
 
 
 ]
-<figures/methodology.png, id=1145, 713.66624pt x 610.28pt>
+Chapter 3.
+
+
+[29]
+<figures/methodology.png, id=1245, 713.66624pt x 610.28pt>
 File: figures/methodology.png Graphic file (type png)
 <use figures/methodology.png>
 Package pdftex.def Info: figures/methodology.png  used on input line 15.
 (pdftex.def)             Requested size: 186.99734pt x 159.90756pt.
 
 
-[28 <./figures/methodology.png>]
+[30 <./figures/methodology.png>]
 
-[29]
+[31]
 Overfull \hbox (16.69772pt too wide) in paragraph at lines 54--54
 []\OT1/cmtt/m/n/12 minimap2 -ax sr -t 8 ref.mmi clean_R1.fastq clean_R2.fastq >
  clean.sam[] 
@@ -1110,131 +1050,286 @@ tq > chimera.sam[]
 
 
 
-[30]
+[32]
 Overfull \hbox (2.85455pt too wide) in paragraph at lines 87--87
 \OT1/cmtt/m/n/10.95 seq: GTAAGGCATAGTAAGGCAATGGTGAGGCTGTGTGTGATTGCAGCAGTTCAAATT
 CACT... 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 1163) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Mapping qual-ity score of the pri-mary
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Supplementary
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Supplementary
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Number of align-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Different-contig
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+\OT1/cmr/m/n/10.95 sup-ple-men-tary
+ []
+
+
+Underfull \hbox (badness 5726) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Minimum sup-ple-
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Maximum sup-ple-
+ []
+
+
+Underfull \hbox (badness 5008) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Mean sup-ple-men-
+ []
+
+
+Overfull \hbox (4.69508pt too wide) in paragraph at lines 187--187
+[]|\OT1/cmtt/m/n/10.95 sa[]mean[]delta[]pos| 
+ []
+
+
+Underfull \hbox (badness 7081) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Same-strand sup-
+ []
+
+
+Underfull \hbox (badness 5802) in paragraph at lines 187--187
+\OT1/cmr/m/n/10.95 ple-men-tary align-
+ []
+
+
+Overfull \hbox (21.94115pt too wide) in paragraph at lines 187--187
+[]|\OT1/cmtt/m/n/10.95 sa[]same[]strand[]count| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Opposite-strand
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+\OT1/cmr/m/n/10.95 sup-ple-men-tary
+ []
+
+
+Underfull \hbox (badness 1199) in paragraph at lines 187--187
+\OT1/cmr/m/n/10.95 the op-po-site strand from the pri-mary
+ []
+
+
+Overfull \hbox (16.19246pt too wide) in paragraph at lines 187--187
+[]|\OT1/cmtt/m/n/10.95 sa[]opp[]strand[]count| 
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Maximum sup-ple-
+ []
+
+
+Underfull \hbox (badness 5008) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Mean sup-ple-men-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+\OT1/cmr/m/n/10.95 tary align-ment
+ []
+
+
+Underfull \hbox (badness 5726) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Minimum sup-ple-
+ []
+
+
+Underfull \hbox (badness 5008) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Mean sup-ple-men-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+\OT1/cmr/m/n/10.95 tary align-ment
+ []
+
+
+Underfull \hbox (badness 1077) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Mean edit-distance or mis-match count
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Left soft-clipped
+ []
+
+
+Underfull \hbox (badness 2538) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Right soft-clipped
+ []
+
+
+Overfull \hbox (17.8021pt too wide) in paragraph at lines 187--187
+[]|\OT1/cmtt/m/n/10.95 total[]clipped[]bases| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Breakpoint read
+ []
+
+
+Overfull \hbox (17.8021pt too wide) in paragraph at lines 187--187
+[]|\OT1/cmtt/m/n/10.95 breakpoint[]read[]pos| 
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 K-mer co-sine dif-
+ []
+
+
+Overfull \hbox (0.55603pt too wide) in paragraph at lines 187--187
+[]|\OT1/cmtt/m/n/10.95 kmer[]cosine[]diff| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 K-mer Jensen--
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+\OT1/cmr/m/n/10.95 Shannon di-ver-
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Jensen--Shannon di-ver-gence be-tween k-
+ []
+
+
+Overfull \hbox (12.0534pt too wide) in paragraph at lines 187--187
+[]|\OT1/cmtt/m/n/10.95 kmer[]js[]divergence| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Microhomology
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmtt/m/n/10.95 microhomology[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\OT1/cmr/m/n/10.95 Microhomology
+ []
+
+
+Overfull \hbox (2.16566pt too wide) in paragraph at lines 187--187
+[]|\OT1/cmtt/m/n/10.95 microhomology[]gc| 
+ []
 
 
 
-[31]
+[33] [34] [35]
 
-[32]
+[36]
 
-[33]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[37]
 
+[38]
 
+[39]
 
-[34]
-
-[35]
-Underfull \hbox (badness 1389) in paragraph at lines 143--144
+[40]
+Underfull \hbox (badness 1389) in paragraph at lines 235--236
 []\OT1/cmr/m/n/12 An ab-la-tion ana-lysis was also con-ducted to ex-am-ine the 
 con-tri-bu-tion of
  []
 
 
-Overfull \hbox (45.0243pt too wide) in paragraph at lines 143--144
-\OT1/cmr/m/n/12 microhomology-related pre-dic-tors. In this ex-per-i-ment, the 
-fea-tures \OT1/cmtt/m/n/12 microhomology[]length
- []
 
+[41]
 
-Underfull \vbox (badness 3724) has occurred while \output is active []
+[42]
 
-
-
-[36]
-
-[37]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[38]
-Overfull \hbox (5.3611pt too wide) in paragraph at lines 169--170
+[43]
+Overfull \hbox (5.3611pt too wide) in paragraph at lines 261--262
 []\OT1/cmr/m/n/12 For the CNN, the fi-nal re-ported model was trained us-ing \O
 T1/cmtt/m/n/12 PAIR[]train[]seq[]L150.tsv
  []
 
 
 
-[39]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[44]
 
+[45]
 
+[46]
 
-[40]
-<figures/pipeline.png, id=1209, 286.06876pt x 593.21625pt>
+[47]
+<figures/pipeline.png, id=1333, 286.06876pt x 593.21625pt>
 File: figures/pipeline.png Graphic file (type png)
 <use figures/pipeline.png>
-Package pdftex.def Info: figures/pipeline.png  used on input line 197.
+Package pdftex.def Info: figures/pipeline.png  used on input line 319.
 (pdftex.def)             Requested size: 166.21844pt x 344.69023pt.
+)
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[48]
 
-
-
-[41])
-
-[42 <./figures/pipeline.png>]
+[49 <./figures/pipeline.png>]
 \openout2 = `chapter_4.aux'.
 
  (./chapter_4.tex
-Chapter 4.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[43
+[50
 
 
 
 
 ]
-
-[44]
-Underfull \hbox (badness 2671) in paragraph at lines 23--24
-\OT1/cmr/m/n/12 Clipping-related fea-tures, in-clud-ing \OT1/cmtt/m/n/12 softcl
-ip[]left\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 softclip[]right\OT1/cmr/m/n/12 , and
-
- []
+Chapter 4.
 
 
-Overfull \hbox (47.58499pt too wide) in paragraph at lines 31--32
-\OT1/cmr/m/n/12 Microhomology-related fea-tures, in-clud-ing \OT1/cmtt/m/n/12 m
-icrohomology[]length \OT1/cmr/m/n/12 and \OT1/cmtt/m/n/12 microhomology[]gc\OT1
-/cmr/m/n/12 ,
- []
+[51]
 
+[52]
 
+[53]
 
-[45]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[54]
 
-
-
-[46]
-Overfull \hbox (52.61299pt too wide) in paragraph at lines 75--76
-[]\OT1/cmr/m/n/12 For clipping-related fea-tures (\OT1/cmtt/m/n/12 softclip[]le
-ft\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 softclip[]right\OT1/cmr/m/n/12 , and \OT1/
-cmtt/m/n/12 total[]clipped[]bases\OT1/cmr/m/n/12 ),
- []
-
-<notebooks/figures/boxplots/box_softclip_left.png, id=1247, 353.6412pt x 281.37
+[55]
+<notebooks/figures/boxplots/box_softclip_left.png, id=1379, 353.6412pt x 281.37
 12pt>
 File: notebooks/figures/boxplots/box_softclip_left.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_softclip_left.png>
 Package pdftex.def Info: notebooks/figures/boxplots/box_softclip_left.png  used
  on input line 87.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_softclip_right.png, id=1248, 353.6412pt x 281.3
+<notebooks/figures/boxplots/box_softclip_right.png, id=1380, 353.6412pt x 281.3
 712pt>
 File: notebooks/figures/boxplots/box_softclip_right.png Graphic file (type png)
 
@@ -1242,20 +1337,20 @@ File: notebooks/figures/boxplots/box_softclip_right.png Graphic file (type png)
 Package pdftex.def Info: notebooks/figures/boxplots/box_softclip_right.png  use
 d on input line 93.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_has_sa.png, id=1249, 353.6412pt x 281.3712pt>
+<notebooks/figures/boxplots/box_has_sa.png, id=1381, 353.6412pt x 281.3712pt>
 File: notebooks/figures/boxplots/box_has_sa.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_has_sa.png>
 Package pdftex.def Info: notebooks/figures/boxplots/box_has_sa.png  used on inp
 ut line 99.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_sa_count.png, id=1250, 353.4003pt x 281.3712pt>
+<notebooks/figures/boxplots/box_sa_count.png, id=1382, 353.4003pt x 281.3712pt>
 
 File: notebooks/figures/boxplots/box_sa_count.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_sa_count.png>
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_count.png  used on i
 nput line 107.
 (pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
-<notebooks/figures/boxplots/box_total_clipped_bases.png, id=1251, 353.6412pt x 
+<notebooks/figures/boxplots/box_total_clipped_bases.png, id=1383, 353.6412pt x 
 281.3712pt>
 File: notebooks/figures/boxplots/box_total_clipped_bases.png Graphic file (type
  png)
@@ -1263,7 +1358,7 @@ File: notebooks/figures/boxplots/box_total_clipped_bases.png Graphic file (type
 Package pdftex.def Info: notebooks/figures/boxplots/box_total_clipped_bases.png
   used on input line 113.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_kmer_js_divergence.png, id=1252, 353.6412pt x 2
+<notebooks/figures/boxplots/box_kmer_js_divergence.png, id=1384, 353.6412pt x 2
 81.3712pt>
 File: notebooks/figures/boxplots/box_kmer_js_divergence.png Graphic file (type 
 png)
@@ -1271,7 +1366,7 @@ png)
 Package pdftex.def Info: notebooks/figures/boxplots/box_kmer_js_divergence.png 
  used on input line 119.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_kmer_cosine_diff.png, id=1253, 353.6412pt x 281
+<notebooks/figures/boxplots/box_kmer_cosine_diff.png, id=1385, 353.6412pt x 281
 .3712pt>
 File: notebooks/figures/boxplots/box_kmer_cosine_diff.png Graphic file (type pn
 g)
@@ -1279,7 +1374,7 @@ g)
 Package pdftex.def Info: notebooks/figures/boxplots/box_kmer_cosine_diff.png  u
 sed on input line 127.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_microhomology_length.png, id=1254, 353.6412pt x
+<notebooks/figures/boxplots/box_microhomology_length.png, id=1386, 353.6412pt x
  281.3712pt>
 File: notebooks/figures/boxplots/box_microhomology_length.png Graphic file (typ
 e png)
@@ -1287,7 +1382,7 @@ e png)
 Package pdftex.def Info: notebooks/figures/boxplots/box_microhomology_length.pn
 g  used on input line 133.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_microhomology_gc.png, id=1255, 353.6412pt x 281
+<notebooks/figures/boxplots/box_microhomology_gc.png, id=1387, 353.6412pt x 281
 .3712pt>
 File: notebooks/figures/boxplots/box_microhomology_gc.png Graphic file (type pn
 g)
@@ -1296,68 +1391,56 @@ Package pdftex.def Info: notebooks/figures/boxplots/box_microhomology_gc.png  u
 sed on input line 139.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[56]
 
-
-[47]
-
-[48 <./notebooks/figures/boxplots/box_softclip_left.png> <./notebooks/figures/b
+[57 <./notebooks/figures/boxplots/box_softclip_left.png> <./notebooks/figures/b
 oxplots/box_softclip_right.png> <./notebooks/figures/boxplots/box_has_sa.png> <
 ./notebooks/figures/boxplots/box_sa_count.png> <./notebooks/figures/boxplots/bo
 x_total_clipped_bases.png> <./notebooks/figures/boxplots/box_kmer_js_divergence
 .png> <./notebooks/figures/boxplots/box_kmer_cosine_diff.png> <./notebooks/figu
 res/boxplots/box_microhomology_length.png> <./notebooks/figures/boxplots/box_mi
 crohomology_gc.png>]
-<notebooks/figures/correlation.png, id=1276, 672.111pt x 570.933pt>
+<notebooks/figures/correlation.png, id=1406, 672.111pt x 570.933pt>
 File: notebooks/figures/correlation.png Graphic file (type png)
 <use notebooks/figures/correlation.png>
 Package pdftex.def Info: notebooks/figures/correlation.png  used on input line 
 154.
 (pdftex.def)             Requested size: 311.66437pt x 264.74931pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[49 <./notebooks/figures/correlation.png>] (./tables/baseline_models_noq.tex
+[58 <./notebooks/figures/correlation.png>] (./tables/baseline_models_noq.tex
 Overfull \hbox (30.4271pt too wide) in paragraph at lines 6--30
  [][] 
  []
 
 )
-<figures/baseline_models_pair.png, id=1283, 498.663pt x 281.853pt>
+<figures/baseline_models_pair.png, id=1414, 498.663pt x 281.853pt>
 File: figures/baseline_models_pair.png Graphic file (type png)
 <use figures/baseline_models_pair.png>
 Package pdftex.def Info: figures/baseline_models_pair.png  used on input line 1
 71.
 (pdftex.def)             Requested size: 332.44325pt x 187.90297pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[59]
 
-
-[50]
-
-[51 <./figures/baseline_models_pair.png>] (./tables/tuned_models_noq.tex
+[60 <./figures/baseline_models_pair.png>] (./tables/tuned_models_noq.tex
 Overfull \hbox (32.6621pt too wide) in paragraph at lines 6--26
  [][] 
  []
 
 )
-<figures/f1_auc_tuning_pair.png, id=1295, 854.2314pt x 354.123pt>
+<figures/f1_auc_tuning_pair.png, id=1425, 854.2314pt x 354.123pt>
 File: figures/f1_auc_tuning_pair.png Graphic file (type png)
 <use figures/f1_auc_tuning_pair.png>
 Package pdftex.def Info: figures/f1_auc_tuning_pair.png  used on input line 188
 .
 (pdftex.def)             Requested size: 415.55249pt x 172.26817pt.
 
-Underfull \vbox (badness 5345) has occurred while \output is active []
 
-
-
-[52]
-<figures/cm_pair_gradient_boosting.png, id=1300, 320.8788pt x 281.3712pt>
+[61]
+<figures/cm_pair_gradient_boosting.png, id=1430, 320.8788pt x 281.3712pt>
 File: figures/cm_pair_gradient_boosting.png Graphic file (type png)
 <use figures/cm_pair_gradient_boosting.png>
 Package pdftex.def Info: figures/cm_pair_gradient_boosting.png  used on input l
@@ -1365,22 +1448,19 @@ ine 201.
 (pdftex.def)             Requested size: 207.77625pt x 182.19359pt.
 
 
-[53 <./figures/f1_auc_tuning_pair.png>]
-<figures/roc_pr_gradient_boosting.png, id=1306, 714.7503pt x 317.5062pt>
+[62 <./figures/f1_auc_tuning_pair.png>]
+<figures/roc_pr_gradient_boosting.png, id=1436, 714.7503pt x 317.5062pt>
 File: figures/roc_pr_gradient_boosting.png Graphic file (type png)
 <use figures/roc_pr_gradient_boosting.png>
 Package pdftex.def Info: figures/roc_pr_gradient_boosting.png  used on input li
 ne 212.
 (pdftex.def)             Requested size: 332.44325pt x 147.68245pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[63 <./figures/cm_pair_gradient_boosting.png>]
 
-
-[54 <./figures/cm_pair_gradient_boosting.png>]
-
-[55 <./figures/roc_pr_gradient_boosting.png>]
-<figures/gradient_imp_pair.png, id=1318, 498.663pt x 281.853pt>
+[64 <./figures/roc_pr_gradient_boosting.png>]
+<figures/gradient_imp_pair.png, id=1449, 498.663pt x 281.853pt>
 File: figures/gradient_imp_pair.png Graphic file (type png)
 <use figures/gradient_imp_pair.png>
 Package pdftex.def Info: figures/gradient_imp_pair.png  used on input line 229.
@@ -1388,8 +1468,8 @@ Package pdftex.def Info: figures/gradient_imp_pair.png  used on input line 229.
 (pdftex.def)             Requested size: 249.33403pt x 140.92615pt.
 
 
-[56 <./figures/gradient_imp_pair.png>]
-<figures/gradient_family_pair.png, id=1326, 426.393pt x 281.853pt>
+[65 <./figures/gradient_imp_pair.png>]
+<figures/gradient_family_pair.png, id=1456, 426.393pt x 281.853pt>
 File: figures/gradient_family_pair.png Graphic file (type png)
 <use figures/gradient_family_pair.png>
 Package pdftex.def Info: figures/gradient_family_pair.png  used on input line 2
@@ -1397,8 +1477,8 @@ Package pdftex.def Info: figures/gradient_family_pair.png  used on input line 2
 (pdftex.def)             Requested size: 249.33403pt x 164.81238pt.
 
 
-[57 <./figures/gradient_family_pair.png>]
-<figures/cumulative_gradient_pair.png, id=1333, 425.6703pt x 281.853pt>
+[66 <./figures/gradient_family_pair.png>]
+<figures/cumulative_gradient_pair.png, id=1463, 425.6703pt x 281.853pt>
 File: figures/cumulative_gradient_pair.png Graphic file (type png)
 <use figures/cumulative_gradient_pair.png>
 Package pdftex.def Info: figures/cumulative_gradient_pair.png  used on input li
@@ -1406,8 +1486,8 @@ ne 259.
 (pdftex.def)             Requested size: 249.33403pt x 165.09622pt.
 
 
-[58 <./figures/cumulative_gradient_pair.png>]
-<figures/gradient_feature_sets_pair.png, id=1339, 498.663pt x 281.853pt>
+[67 <./figures/cumulative_gradient_pair.png>]
+<figures/gradient_feature_sets_pair.png, id=1469, 498.663pt x 281.853pt>
 File: figures/gradient_feature_sets_pair.png Graphic file (type png)
 <use figures/gradient_feature_sets_pair.png>
 Package pdftex.def Info: figures/gradient_feature_sets_pair.png  used on input 
@@ -1415,8 +1495,8 @@ line 287.
 (pdftex.def)             Requested size: 249.33403pt x 140.92615pt.
 
 
-[59 <./figures/gradient_feature_sets_pair.png>]
-<figures/cnn_cv_f1_loss_epoch25.png, id=1346, 570.2103pt x 353.6412pt>
+[68 <./figures/gradient_feature_sets_pair.png>]
+<figures/cnn_cv_f1_loss_epoch25.png, id=1476, 570.2103pt x 353.6412pt>
 File: figures/cnn_cv_f1_loss_epoch25.png Graphic file (type png)
 <use figures/cnn_cv_f1_loss_epoch25.png>
 Package pdftex.def Info: figures/cnn_cv_f1_loss_epoch25.png  used on input line
@@ -1424,100 +1504,94 @@ Package pdftex.def Info: figures/cnn_cv_f1_loss_epoch25.png  used on input line
 (pdftex.def)             Requested size: 415.55249pt x 257.72961pt.
 
 
-[60 <./figures/cnn_cv_f1_loss_epoch25.png>]
-<figures/cnn_confusion.png, id=1354, 358.941pt x 263.7855pt>
+[69 <./figures/cnn_cv_f1_loss_epoch25.png>]
+<figures/cnn_confusion.png, id=1484, 358.941pt x 263.7855pt>
 File: figures/cnn_confusion.png Graphic file (type png)
 <use figures/cnn_confusion.png>
 Package pdftex.def Info: figures/cnn_confusion.png  used on input line 345.
 (pdftex.def)             Requested size: 249.33403pt x 183.2358pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[61 <./figures/cnn_confusion.png>]
-<figures/rnn_cv_f1_loss_epoch25.png, id=1362, 570.2103pt x 353.6412pt>
+[70 <./figures/cnn_confusion.png>]
+<figures/rnn_cv_f1_loss_epoch25.png, id=1494, 570.2103pt x 353.6412pt>
 File: figures/rnn_cv_f1_loss_epoch25.png Graphic file (type png)
 <use figures/rnn_cv_f1_loss_epoch25.png>
 Package pdftex.def Info: figures/rnn_cv_f1_loss_epoch25.png  used on input line
  374.
 (pdftex.def)             Requested size: 415.55249pt x 257.72961pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[71]
 
-
-[62]
-
-[63 <./figures/rnn_cv_f1_loss_epoch25.png>]
-<figures/rnn_confusion.png, id=1375, 341.1144pt x 263.7855pt>
+[72 <./figures/rnn_cv_f1_loss_epoch25.png>]
+<figures/rnn_confusion.png, id=1506, 341.1144pt x 263.7855pt>
 File: figures/rnn_confusion.png Graphic file (type png)
 <use figures/rnn_confusion.png>
 Package pdftex.def Info: figures/rnn_confusion.png  used on input line 403.
 (pdftex.def)             Requested size: 249.33403pt x 192.81136pt.
 
 
-[64 <./figures/rnn_confusion.png>]
+[73 <./figures/rnn_confusion.png>]
 
-[65]
-<figures/20knodes_unfiltered.png, id=1397, 1129.21875pt x 1129.21875pt>
+[74]
+<figures/20knodes_unfiltered.png, id=1528, 1129.21875pt x 1129.21875pt>
 File: figures/20knodes_unfiltered.png Graphic file (type png)
 <use figures/20knodes_unfiltered.png>
 Package pdftex.def Info: figures/20knodes_unfiltered.png  used on input line 43
 2.
 (pdftex.def)             Requested size: 199.46341pt x 199.4599pt.
-<figures/20knodes_gb.png, id=1398, 1129.21875pt x 1129.21875pt>
+<figures/20knodes_gb.png, id=1529, 1129.21875pt x 1129.21875pt>
 File: figures/20knodes_gb.png Graphic file (type png)
 <use figures/20knodes_gb.png>
 Package pdftex.def Info: figures/20knodes_gb.png  used on input line 439.
 (pdftex.def)             Requested size: 199.46341pt x 199.4599pt.
-<figures/20knodes_cnn.png, id=1399, 1129.21875pt x 1129.21875pt>
+<figures/20knodes_cnn.png, id=1530, 1129.21875pt x 1129.21875pt>
 File: figures/20knodes_cnn.png Graphic file (type png)
 <use figures/20knodes_cnn.png>
 Package pdftex.def Info: figures/20knodes_cnn.png  used on input line 448.
 (pdftex.def)             Requested size: 199.46341pt x 199.4599pt.
-<figures/20knodes_rnn.png, id=1400, 1129.21875pt x 1129.21875pt>
+<figures/20knodes_rnn.png, id=1531, 1129.21875pt x 1129.21875pt>
 File: figures/20knodes_rnn.png Graphic file (type png)
 <use figures/20knodes_rnn.png>
 Package pdftex.def Info: figures/20knodes_rnn.png  used on input line 455.
 (pdftex.def)             Requested size: 199.46341pt x 199.4599pt.
-<figures/3200nodes_unfiltered.png, id=1401, 1129.21875pt x 1129.21875pt>
+<figures/3200nodes_unfiltered.png, id=1532, 1129.21875pt x 1129.21875pt>
 File: figures/3200nodes_unfiltered.png Graphic file (type png)
 <use figures/3200nodes_unfiltered.png>
 Package pdftex.def Info: figures/3200nodes_unfiltered.png  used on input line 4
 68.
 (pdftex.def)             Requested size: 199.46341pt x 199.4599pt.
-<figures/3200nodes_gb.png, id=1402, 1129.21875pt x 1129.21875pt>
+<figures/3200nodes_gb.png, id=1533, 1129.21875pt x 1129.21875pt>
 File: figures/3200nodes_gb.png Graphic file (type png)
 <use figures/3200nodes_gb.png>
 Package pdftex.def Info: figures/3200nodes_gb.png  used on input line 475.
 (pdftex.def)             Requested size: 199.46341pt x 199.4599pt.
-<figures/3200nodes_cnn.png, id=1403, 1129.21875pt x 1129.21875pt>
+<figures/3200nodes_cnn.png, id=1534, 1129.21875pt x 1129.21875pt>
 File: figures/3200nodes_cnn.png Graphic file (type png)
 <use figures/3200nodes_cnn.png>
 Package pdftex.def Info: figures/3200nodes_cnn.png  used on input line 484.
 (pdftex.def)             Requested size: 199.46341pt x 199.4599pt.
-<figures/3200nodes_rnn.png, id=1404, 1129.21875pt x 1129.21875pt>
+<figures/3200nodes_rnn.png, id=1535, 1129.21875pt x 1129.21875pt>
 File: figures/3200nodes_rnn.png Graphic file (type png)
 <use figures/3200nodes_rnn.png>
 Package pdftex.def Info: figures/3200nodes_rnn.png  used on input line 491.
 (pdftex.def)             Requested size: 199.46341pt x 199.4599pt.
 
 
-[66]
+[75]
 
-[67 <./figures/20knodes_unfiltered.png (PNG copy)> <./figures/20knodes_gb.png (
+[76 <./figures/20knodes_unfiltered.png (PNG copy)> <./figures/20knodes_gb.png (
 PNG copy)> <./figures/20knodes_cnn.png (PNG copy)> <./figures/20knodes_rnn.png 
 (PNG copy)>]
 
-[68 <./figures/3200nodes_unfiltered.png (PNG copy)> <./figures/3200nodes_gb.png
+[77 <./figures/3200nodes_unfiltered.png (PNG copy)> <./figures/3200nodes_gb.png
  (PNG copy)> <./figures/3200nodes_cnn.png (PNG copy)> <./figures/3200nodes_rnn.
 png (PNG copy)>]
 Overfull \hbox (8.03491pt too wide) in paragraph at lines 506--515
  [][] 
  []
 
-<figures/gb_cnn_rnn_compare.png, id=1425, 451.6875pt x 339.669pt>
+<figures/gb_cnn_rnn_compare.png, id=1555, 451.6875pt x 339.669pt>
 File: figures/gb_cnn_rnn_compare.png Graphic file (type png)
 <use figures/gb_cnn_rnn_compare.png>
 Package pdftex.def Info: figures/gb_cnn_rnn_compare.png  used on input line 519
@@ -1525,36 +1599,28 @@ Package pdftex.def Info: figures/gb_cnn_rnn_compare.png  used on input line 519
 (pdftex.def)             Requested size: 311.66437pt x 234.38222pt.
 )
 
-[69 <./figures/gb_cnn_rnn_compare.png>]
+[78 <./figures/gb_cnn_rnn_compare.png>]
 \openout2 = `chapter_5.aux'.
 
  (./chapter_5.tex
+Chapter 5.
 
-[70
+
+[79
 
 
 
 
 ]
-Chapter 5.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[80])
 
-
-
-[71]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[72])
-
-[73]
+[81]
 \openout2 = `chapter_6.aux'.
 
  (./chapter_6.tex
 
-[74
+[82
 
 
 
@@ -1563,54 +1629,33 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Chapter 6.
 (./main.bbl
 
-[75]
+[83]
 
-[76
+[84]
 
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[85]
 
+[86]
 
+[87]))
 
-[77]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[78]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[79]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[80]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[81]))
-
-[82]
+[88]
 \openout2 = `appendix_A.aux'.
 
  (./appendix_A.tex
 Appendix A.
 
 
-[83
+[89
 
 
 
 
-] [84
+] [90
 
-] [85]
+] [91]
 
-[86])
+[92])
 \openout2 = `appendix_B.aux'.
 
  (./appendix_B.tex
@@ -1624,7 +1669,7 @@ File: notebooks/figures/boxplots/box_has_sa.png Graphic file (type png)
 Package pdftex.def Info: notebooks/figures/boxplots/box_has_sa.png  used on inp
 ut line 18.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_num_segments.png, id=1557, 353.4003pt x 281.371
+<notebooks/figures/boxplots/box_num_segments.png, id=1667, 353.4003pt x 281.371
 2pt>
 File: notebooks/figures/boxplots/box_num_segments.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_num_segments.png>
@@ -1636,7 +1681,7 @@ File: notebooks/figures/boxplots/box_sa_count.png Graphic file (type png)
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_count.png  used on i
 nput line 28.
 (pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
-<notebooks/figures/boxplots/box_sa_diff_contig.png, id=1558, 353.6412pt x 281.3
+<notebooks/figures/boxplots/box_sa_diff_contig.png, id=1668, 353.6412pt x 281.3
 712pt>
 File: notebooks/figures/boxplots/box_sa_diff_contig.png Graphic file (type png)
 
@@ -1644,7 +1689,7 @@ File: notebooks/figures/boxplots/box_sa_diff_contig.png Graphic file (type png)
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_diff_contig.png  use
 d on input line 41.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_sa_max_delta_pos.png, id=1559, 353.6412pt x 281
+<notebooks/figures/boxplots/box_sa_max_delta_pos.png, id=1669, 353.6412pt x 281
 .3712pt>
 File: notebooks/figures/boxplots/box_sa_max_delta_pos.png Graphic file (type pn
 g)
@@ -1652,14 +1697,14 @@ g)
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_max_delta_pos.png  u
 sed on input line 46.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_sa_max_mapq.png, id=1560, 353.4003pt x 281.3712
+<notebooks/figures/boxplots/box_sa_max_mapq.png, id=1670, 353.4003pt x 281.3712
 pt>
 File: notebooks/figures/boxplots/box_sa_max_mapq.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_sa_max_mapq.png>
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_max_mapq.png  used o
 n input line 51.
 (pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
-<notebooks/figures/boxplots/box_sa_mean_delta_pos.png, id=1561, 353.6412pt x 28
+<notebooks/figures/boxplots/box_sa_mean_delta_pos.png, id=1671, 353.6412pt x 28
 1.3712pt>
 File: notebooks/figures/boxplots/box_sa_mean_delta_pos.png Graphic file (type p
 ng)
@@ -1667,21 +1712,21 @@ ng)
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_mean_delta_pos.png  
 used on input line 59.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_sa_mean_mapq.png, id=1562, 353.4003pt x 281.371
+<notebooks/figures/boxplots/box_sa_mean_mapq.png, id=1672, 353.4003pt x 281.371
 2pt>
 File: notebooks/figures/boxplots/box_sa_mean_mapq.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_sa_mean_mapq.png>
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_mean_mapq.png  used 
 on input line 64.
 (pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
-<notebooks/figures/boxplots/box_sa_mean_nm.png, id=1563, 353.4003pt x 281.3712p
+<notebooks/figures/boxplots/box_sa_mean_nm.png, id=1673, 353.4003pt x 281.3712p
 t>
 File: notebooks/figures/boxplots/box_sa_mean_nm.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_sa_mean_nm.png>
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_mean_nm.png  used on
  input line 69.
 (pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
-<notebooks/figures/boxplots/box_sa_min_delta_pos.png, id=1564, 353.6412pt x 281
+<notebooks/figures/boxplots/box_sa_min_delta_pos.png, id=1674, 353.6412pt x 281
 .3712pt>
 File: notebooks/figures/boxplots/box_sa_min_delta_pos.png Graphic file (type pn
 g)
@@ -1689,14 +1734,14 @@ g)
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_min_delta_pos.png  u
 sed on input line 77.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_sa_min_nm.png, id=1565, 353.6412pt x 281.3712pt
+<notebooks/figures/boxplots/box_sa_min_nm.png, id=1675, 353.6412pt x 281.3712pt
 >
 File: notebooks/figures/boxplots/box_sa_min_nm.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_sa_min_nm.png>
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_min_nm.png  used on 
 input line 82.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_sa_opp_strand_count.png, id=1566, 353.6412pt x 
+<notebooks/figures/boxplots/box_sa_opp_strand_count.png, id=1676, 353.6412pt x 
 281.3712pt>
 File: notebooks/figures/boxplots/box_sa_opp_strand_count.png Graphic file (type
  png)
@@ -1704,7 +1749,7 @@ File: notebooks/figures/boxplots/box_sa_opp_strand_count.png Graphic file (type
 Package pdftex.def Info: notebooks/figures/boxplots/box_sa_opp_strand_count.png
   used on input line 87.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_sa_same_strand_count.png, id=1567, 353.6412pt x
+<notebooks/figures/boxplots/box_sa_same_strand_count.png, id=1677, 353.6412pt x
  281.3712pt>
 File: notebooks/figures/boxplots/box_sa_same_strand_count.png Graphic file (typ
 e png)
@@ -1714,7 +1759,7 @@ g  used on input line 95.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
 
 
-[87
+[93
 
 
 
@@ -1724,13 +1769,13 @@ g  used on input line 95.
 
 
 Overfull \hbox (53.16017pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 88 \OT1/cmr/m/sl/12 APPENDIX B.  BOXPLOTS FOR ALL NUMERIC FEATU
+\OT1/cmr/m/n/12 94 \OT1/cmr/m/sl/12 APPENDIX B.  BOXPLOTS FOR ALL NUMERIC FEATU
 RES BY FEATURE FAMILY
  []
 
-[88 <./notebooks/figures/boxplots/box_num_segments.png>]
+[94 <./notebooks/figures/boxplots/box_num_segments.png>]
 
-[89 <./notebooks/figures/boxplots/box_sa_diff_contig.png> <./notebooks/figures/
+[95 <./notebooks/figures/boxplots/box_sa_diff_contig.png> <./notebooks/figures/
 boxplots/box_sa_max_delta_pos.png> <./notebooks/figures/boxplots/box_sa_max_map
 q.png> <./notebooks/figures/boxplots/box_sa_mean_delta_pos.png> <./notebooks/fi
 gures/boxplots/box_sa_mean_mapq.png> <./notebooks/figures/boxplots/box_sa_mean_
@@ -1770,11 +1815,11 @@ Package pdftex.def Info: notebooks/figures/boxplots/box_kmer_js_divergence.png
 
 
 Overfull \hbox (53.16017pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 90 \OT1/cmr/m/sl/12 APPENDIX B.  BOXPLOTS FOR ALL NUMERIC FEATU
+\OT1/cmr/m/n/12 96 \OT1/cmr/m/sl/12 APPENDIX B.  BOXPLOTS FOR ALL NUMERIC FEATU
 RES BY FEATURE FAMILY
  []
 
-[90
+[96
 
 ]
 File: notebooks/figures/boxplots/box_microhomology_length.png Graphic file (typ
@@ -1789,7 +1834,7 @@ g)
 Package pdftex.def Info: notebooks/figures/boxplots/box_microhomology_gc.png  u
 sed on input line 166.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_breakpoint_read_pos.png, id=1595, 353.6412pt x 
+<notebooks/figures/boxplots/box_breakpoint_read_pos.png, id=1707, 353.6412pt x 
 281.3712pt>
 File: notebooks/figures/boxplots/box_breakpoint_read_pos.png Graphic file (type
  png)
@@ -1797,13 +1842,13 @@ File: notebooks/figures/boxplots/box_breakpoint_read_pos.png Graphic file (type
 Package pdftex.def Info: notebooks/figures/boxplots/box_breakpoint_read_pos.png
   used on input line 183.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_mapq.png, id=1596, 353.4003pt x 281.3712pt>
+<notebooks/figures/boxplots/box_mapq.png, id=1708, 353.4003pt x 281.3712pt>
 File: notebooks/figures/boxplots/box_mapq.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_mapq.png>
 Package pdftex.def Info: notebooks/figures/boxplots/box_mapq.png  used on input
  line 188.
 (pdftex.def)             Requested size: 132.97983pt x 105.87457pt.
-<notebooks/figures/boxplots/box_mean_base_quality.png, id=1597, 353.6412pt x 28
+<notebooks/figures/boxplots/box_mean_base_quality.png, id=1709, 353.6412pt x 28
 1.3712pt>
 File: notebooks/figures/boxplots/box_mean_base_quality.png Graphic file (type p
 ng)
@@ -1811,14 +1856,14 @@ ng)
 Package pdftex.def Info: notebooks/figures/boxplots/box_mean_base_quality.png  
 used on input line 193.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_read_length.png, id=1598, 353.6412pt x 281.3712
+<notebooks/figures/boxplots/box_read_length.png, id=1710, 353.6412pt x 281.3712
 pt>
 File: notebooks/figures/boxplots/box_read_length.png Graphic file (type png)
 <use notebooks/figures/boxplots/box_read_length.png>
 Package pdftex.def Info: notebooks/figures/boxplots/box_read_length.png  used o
 n input line 201.
 (pdftex.def)             Requested size: 132.97983pt x 105.80588pt.
-<notebooks/figures/boxplots/box_ref_start_1based.png, id=1599, 353.4003pt x 281
+<notebooks/figures/boxplots/box_ref_start_1based.png, id=1711, 353.4003pt x 281
 .3712pt>
 File: notebooks/figures/boxplots/box_ref_start_1based.png Graphic file (type pn
 g)
@@ -1833,7 +1878,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 207--207
 
 )
 
-[91
+[97
 
  <./notebooks/figures/boxplots/box_breakpoint_read_pos.png> <./notebooks/figure
 s/boxplots/box_mapq.png> <./notebooks/figures/boxplots/box_mean_base_quality.pn
@@ -1845,11 +1890,11 @@ lots/box_ref_start_1based.png>]
 
 
 Overfull \hbox (53.16017pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 92 \OT1/cmr/m/sl/12 APPENDIX B.  BOXPLOTS FOR ALL NUMERIC FEATU
+\OT1/cmr/m/n/12 98 \OT1/cmr/m/sl/12 APPENDIX B.  BOXPLOTS FOR ALL NUMERIC FEATU
 RES BY FEATURE FAMILY
  []
 
-[92
+[98
 
 
 
@@ -1862,68 +1907,35 @@ Package pdftex.def Info: notebooks/figures/correlation.png  used on input line
 12.
 (pdftex.def)             Requested size: 373.99469pt x 317.69917pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[99])
 
-
-[93])
-
-[94]
+[100]
 \openout2 = `appendix_D.aux'.
 
  (./appendix_D.tex
 Appendix D.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[95
+[101
 
 
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[102]
 
+[103]
 
+[104])
 
-Overfull \hbox (90.37488pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 96 \OT1/cmr/m/sl/12 APPENDIX D.  SUPPLEMENTARY FEATURE IMPORTAN
-CE RESULTS ACROSS MODELS
- []
-
-[96]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[97]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-
-Overfull \hbox (90.37488pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 98 \OT1/cmr/m/sl/12 APPENDIX D.  SUPPLEMENTARY FEATURE IMPORTAN
-CE RESULTS ACROSS MODELS
- []
-
-[98])
-
-[99]
+[105]
 \openout2 = `appendix_E.aux'.
 
  (./appendix_E.tex
 
-
-Overfull \hbox (96.24982pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 100 \OT1/cmr/m/sl/12 APPENDIX D.  SUPPLEMENTARY FEATURE IMPORTA
-NCE RESULTS ACROSS MODELS
- []
-
-[100
+[106
 
 
 
@@ -1931,18 +1943,15 @@ NCE RESULTS ACROSS MODELS
 ]
 Appendix E.
 
-Underfull \vbox (badness 2103) has occurred while \output is active []
 
+[107])
 
-
-[101])
-
-[102]
+[108]
 \openout2 = `appendix_F.aux'.
 
  (./appendix_F.tex
 Appendix F.
-<figures/appendix_assembly/app_3200_5_unfiltered.png, id=1669, 781.92125pt x 56
+<figures/appendix_assembly/app_3200_5_unfiltered.png, id=1780, 781.92125pt x 56
 7.11874pt>
 File: figures/appendix_assembly/app_3200_5_unfiltered.png Graphic file (type pn
 g)
@@ -1950,21 +1959,21 @@ g)
 Package pdftex.def Info: figures/appendix_assembly/app_3200_5_unfiltered.png  u
 sed on input line 16.
 (pdftex.def)             Requested size: 199.46341pt x 144.6696pt.
-<figures/appendix_assembly/app_3200_5_gb.png, id=1670, 727.71875pt x 581.17125p
+<figures/appendix_assembly/app_3200_5_gb.png, id=1781, 727.71875pt x 581.17125p
 t>
 File: figures/appendix_assembly/app_3200_5_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_5_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_3200_5_gb.png  used on i
 nput line 23.
 (pdftex.def)             Requested size: 199.46341pt x 159.29494pt.
-<figures/appendix_assembly/app_3200_5_cnn.png, id=1671, 741.77126pt x 584.1825p
+<figures/appendix_assembly/app_3200_5_cnn.png, id=1782, 741.77126pt x 584.1825p
 t>
 File: figures/appendix_assembly/app_3200_5_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_5_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_3200_5_cnn.png  used on 
 input line 32.
 (pdftex.def)             Requested size: 199.46341pt x 157.08066pt.
-<figures/appendix_assembly/app_3200_5_bigru.png, id=1672, 709.65125pt x 565.111
+<figures/appendix_assembly/app_3200_5_bigru.png, id=1783, 709.65125pt x 565.111
 25pt>
 File: figures/appendix_assembly/app_3200_5_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_5_bigru.png>
@@ -1972,17 +1981,14 @@ Package pdftex.def Info: figures/appendix_assembly/app_3200_5_bigru.png  used o
 n input line 39.
 (pdftex.def)             Requested size: 199.46341pt x 158.83366pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[103
+[109
 
 
 
 
 ]
-<figures/appendix_assembly/app_3200_10_unfiltered.png, id=1677, 885.3075pt x 62
+<figures/appendix_assembly/app_3200_10_unfiltered.png, id=1788, 885.3075pt x 62
 3.32875pt>
 File: figures/appendix_assembly/app_3200_10_unfiltered.png Graphic file (type p
 ng)
@@ -1990,20 +1996,20 @@ ng)
 Package pdftex.def Info: figures/appendix_assembly/app_3200_10_unfiltered.png  
 used on input line 52.
 (pdftex.def)             Requested size: 199.46341pt x 140.43314pt.
-<figures/appendix_assembly/app_3200_10_gb.png, id=1678, 827.09pt x 634.37pt>
+<figures/appendix_assembly/app_3200_10_gb.png, id=1789, 827.09pt x 634.37pt>
 File: figures/appendix_assembly/app_3200_10_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_10_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_3200_10_gb.png  used on 
 input line 59.
 (pdftex.def)             Requested size: 199.46341pt x 152.98756pt.
-<figures/appendix_assembly/app_3200_10_cnn.png, id=1679, 816.04875pt x 659.4637
+<figures/appendix_assembly/app_3200_10_cnn.png, id=1790, 816.04875pt x 659.4637
 5pt>
 File: figures/appendix_assembly/app_3200_10_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_10_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_3200_10_cnn.png  used on
  input line 68.
 (pdftex.def)             Requested size: 199.46341pt x 161.19267pt.
-<figures/appendix_assembly/app_3200_10_bigru.png, id=1680, 780.9175pt x 620.317
+<figures/appendix_assembly/app_3200_10_bigru.png, id=1791, 780.9175pt x 620.317
 5pt>
 File: figures/appendix_assembly/app_3200_10_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_10_bigru.png>
@@ -2011,14 +2017,11 @@ Package pdftex.def Info: figures/appendix_assembly/app_3200_10_bigru.png  used
 on input line 75.
 (pdftex.def)             Requested size: 199.46341pt x 158.43916pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[104 <./figures/appendix_assembly/app_3200_5_unfiltered.png> <./figures/appendi
+[110 <./figures/appendix_assembly/app_3200_5_unfiltered.png> <./figures/appendi
 x_assembly/app_3200_5_gb.png> <./figures/appendix_assembly/app_3200_5_cnn.png> 
 <./figures/appendix_assembly/app_3200_5_bigru.png>]
-<figures/appendix_assembly/app_3200_15_unfiltered.png, id=1690, 883.3pt x 645.4
+<figures/appendix_assembly/app_3200_15_unfiltered.png, id=1800, 883.3pt x 645.4
 1125pt>
 File: figures/appendix_assembly/app_3200_15_unfiltered.png Graphic file (type p
 ng)
@@ -2026,21 +2029,21 @@ ng)
 Package pdftex.def Info: figures/appendix_assembly/app_3200_15_unfiltered.png  
 used on input line 88.
 (pdftex.def)             Requested size: 199.46341pt x 145.74306pt.
-<figures/appendix_assembly/app_3200_15_gb.png, id=1691, 854.19125pt x 660.4675p
+<figures/appendix_assembly/app_3200_15_gb.png, id=1801, 854.19125pt x 660.4675p
 t>
 File: figures/appendix_assembly/app_3200_15_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_15_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_3200_15_gb.png  used on 
 input line 95.
 (pdftex.def)             Requested size: 199.46341pt x 154.22224pt.
-<figures/appendix_assembly/app_3200_15_cnn.png, id=1692, 828.09375pt x 667.4937
+<figures/appendix_assembly/app_3200_15_cnn.png, id=1802, 828.09375pt x 667.4937
 4pt>
 File: figures/appendix_assembly/app_3200_15_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_15_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_3200_15_cnn.png  used on
  input line 104.
 (pdftex.def)             Requested size: 199.46341pt x 160.77214pt.
-<figures/appendix_assembly/app_3200_15_bigru.png, id=1693, 800.9925pt x 638.385
+<figures/appendix_assembly/app_3200_15_bigru.png, id=1803, 800.9925pt x 638.385
 pt>
 File: figures/appendix_assembly/app_3200_15_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_15_bigru.png>
@@ -2048,14 +2051,11 @@ Package pdftex.def Info: figures/appendix_assembly/app_3200_15_bigru.png  used
 on input line 111.
 (pdftex.def)             Requested size: 199.46341pt x 158.96269pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[105 <./figures/appendix_assembly/app_3200_10_unfiltered.png> <./figures/append
+[111 <./figures/appendix_assembly/app_3200_10_unfiltered.png> <./figures/append
 ix_assembly/app_3200_10_gb.png> <./figures/appendix_assembly/app_3200_10_cnn.pn
 g> <./figures/appendix_assembly/app_3200_10_bigru.png>]
-<figures/appendix_assembly/app_3200_50_unfiltered.png, id=1702, 708.6475pt x 49
+<figures/appendix_assembly/app_3200_50_unfiltered.png, id=1812, 708.6475pt x 49
 4.84875pt>
 File: figures/appendix_assembly/app_3200_50_unfiltered.png Graphic file (type p
 ng)
@@ -2063,21 +2063,21 @@ ng)
 Package pdftex.def Info: figures/appendix_assembly/app_3200_50_unfiltered.png  
 used on input line 124.
 (pdftex.def)             Requested size: 199.46341pt x 139.28157pt.
-<figures/appendix_assembly/app_3200_50_gb.png, id=1703, 644.4075pt x 525.965pt>
+<figures/appendix_assembly/app_3200_50_gb.png, id=1813, 644.4075pt x 525.965pt>
 
 File: figures/appendix_assembly/app_3200_50_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_50_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_3200_50_gb.png  used on 
 input line 131.
 (pdftex.def)             Requested size: 199.46341pt x 162.79866pt.
-<figures/appendix_assembly/app_3200_50_cnn.png, id=1704, 662.475pt x 410.53375p
+<figures/appendix_assembly/app_3200_50_cnn.png, id=1814, 662.475pt x 410.53375p
 t>
 File: figures/appendix_assembly/app_3200_50_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_50_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_3200_50_cnn.png  used on
  input line 140.
 (pdftex.def)             Requested size: 199.46341pt x 123.60583pt.
-<figures/appendix_assembly/app_3200_50_bigru.png, id=1705, 518.93875pt x 414.54
+<figures/appendix_assembly/app_3200_50_bigru.png, id=1815, 518.93875pt x 414.54
 875pt>
 File: figures/appendix_assembly/app_3200_50_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_3200_50_bigru.png>
@@ -2085,14 +2085,11 @@ Package pdftex.def Info: figures/appendix_assembly/app_3200_50_bigru.png  used
 on input line 147.
 (pdftex.def)             Requested size: 199.46341pt x 159.33925pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[106 <./figures/appendix_assembly/app_3200_15_unfiltered.png> <./figures/append
+[112 <./figures/appendix_assembly/app_3200_15_unfiltered.png> <./figures/append
 ix_assembly/app_3200_15_gb.png> <./figures/appendix_assembly/app_3200_15_cnn.pn
 g> <./figures/appendix_assembly/app_3200_15_bigru.png>]
-<figures/appendix_assembly/app_10k_5_unfiltered.png, id=1714, 749.80125pt x 595
+<figures/appendix_assembly/app_10k_5_unfiltered.png, id=1825, 749.80125pt x 595
 .22375pt>
 File: figures/appendix_assembly/app_10k_5_unfiltered.png Graphic file (type png
 )
@@ -2100,20 +2097,20 @@ File: figures/appendix_assembly/app_10k_5_unfiltered.png Graphic file (type png
 Package pdftex.def Info: figures/appendix_assembly/app_10k_5_unfiltered.png  us
 ed on input line 165.
 (pdftex.def)             Requested size: 199.46341pt x 158.34206pt.
-<figures/appendix_assembly/app_10k_5_gb.png, id=1715, 930.47626pt x 722.7pt>
+<figures/appendix_assembly/app_10k_5_gb.png, id=1826, 930.47626pt x 722.7pt>
 File: figures/appendix_assembly/app_10k_5_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_5_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_10k_5_gb.png  used on in
 put line 172.
 (pdftex.def)             Requested size: 199.46341pt x 154.9143pt.
-<figures/appendix_assembly/app_10k_5_cnn.png, id=1716, 1020.81375pt x 759.83875
+<figures/appendix_assembly/app_10k_5_cnn.png, id=1827, 1020.81375pt x 759.83875
 pt>
 File: figures/appendix_assembly/app_10k_5_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_5_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_10k_5_cnn.png  used on i
 nput line 181.
 (pdftex.def)             Requested size: 199.46341pt x 148.46361pt.
-<figures/appendix_assembly/app_10k_5_bigru.png, id=1717, 869.2475pt x 691.58376
+<figures/appendix_assembly/app_10k_5_bigru.png, id=1828, 869.2475pt x 691.58376
 pt>
 File: figures/appendix_assembly/app_10k_5_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_5_bigru.png>
@@ -2121,14 +2118,11 @@ Package pdftex.def Info: figures/appendix_assembly/app_10k_5_bigru.png  used on
  input line 188.
 (pdftex.def)             Requested size: 199.46341pt x 158.69157pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[107 <./figures/appendix_assembly/app_3200_50_unfiltered.png> <./figures/append
+[113 <./figures/appendix_assembly/app_3200_50_unfiltered.png> <./figures/append
 ix_assembly/app_3200_50_gb.png> <./figures/appendix_assembly/app_3200_50_cnn.pn
 g> <./figures/appendix_assembly/app_3200_50_bigru.png>]
-<figures/appendix_assembly/app_10k_10_unfiltered.png, id=1726, 710.655pt x 564.
+<figures/appendix_assembly/app_10k_10_unfiltered.png, id=1838, 710.655pt x 564.
 1075pt>
 File: figures/appendix_assembly/app_10k_10_unfiltered.png Graphic file (type pn
 g)
@@ -2136,21 +2130,21 @@ g)
 Package pdftex.def Info: figures/appendix_assembly/app_10k_10_unfiltered.png  u
 sed on input line 201.
 (pdftex.def)             Requested size: 199.46341pt x 158.32774pt.
-<figures/appendix_assembly/app_10k_10_gb.png, id=1727, 800.9925pt x 671.50874pt
+<figures/appendix_assembly/app_10k_10_gb.png, id=1839, 800.9925pt x 671.50874pt
 >
 File: figures/appendix_assembly/app_10k_10_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_10_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_10k_10_gb.png  used on i
 nput line 208.
 (pdftex.def)             Requested size: 199.46341pt x 167.21075pt.
-<figures/appendix_assembly/app_10k_10_cnn.png, id=1728, 881.2925pt x 723.70375p
+<figures/appendix_assembly/app_10k_10_cnn.png, id=1840, 881.2925pt x 723.70375p
 t>
 File: figures/appendix_assembly/app_10k_10_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_10_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_10k_10_cnn.png  used on 
 input line 217.
 (pdftex.def)             Requested size: 199.46341pt x 163.78703pt.
-<figures/appendix_assembly/app_10k_10_bigru.png, id=1729, 930.47626pt x 733.741
+<figures/appendix_assembly/app_10k_10_bigru.png, id=1841, 930.47626pt x 733.741
 26pt>
 File: figures/appendix_assembly/app_10k_10_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_10_bigru.png>
@@ -2158,14 +2152,11 @@ Package pdftex.def Info: figures/appendix_assembly/app_10k_10_bigru.png  used o
 n input line 224.
 (pdftex.def)             Requested size: 199.46341pt x 157.28107pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[108 <./figures/appendix_assembly/app_10k_5_unfiltered.png> <./figures/appendix
+[114 <./figures/appendix_assembly/app_10k_5_unfiltered.png> <./figures/appendix
 _assembly/app_10k_5_gb.png> <./figures/appendix_assembly/app_10k_5_cnn.png> <./
 figures/appendix_assembly/app_10k_5_bigru.png>]
-<figures/appendix_assembly/app_10k_15_unfiltered.png, id=1739, 673.51625pt x 54
+<figures/appendix_assembly/app_10k_15_unfiltered.png, id=1850, 673.51625pt x 54
 6.04pt>
 File: figures/appendix_assembly/app_10k_15_unfiltered.png Graphic file (type pn
 g)
@@ -2173,20 +2164,20 @@ g)
 Package pdftex.def Info: figures/appendix_assembly/app_10k_15_unfiltered.png  u
 sed on input line 237.
 (pdftex.def)             Requested size: 199.46341pt x 161.71362pt.
-<figures/appendix_assembly/app_10k_15_gb.png, id=1740, 668.4975pt x 523.9575pt>
+<figures/appendix_assembly/app_10k_15_gb.png, id=1851, 668.4975pt x 523.9575pt>
 
 File: figures/appendix_assembly/app_10k_15_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_15_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_10k_15_gb.png  used on i
 nput line 244.
 (pdftex.def)             Requested size: 199.46341pt x 156.333pt.
-<figures/appendix_assembly/app_10k_15_cnn.png, id=1741, 546.04pt x 405.515pt>
+<figures/appendix_assembly/app_10k_15_cnn.png, id=1852, 546.04pt x 405.515pt>
 File: figures/appendix_assembly/app_10k_15_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_15_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_10k_15_cnn.png  used on 
 input line 253.
 (pdftex.def)             Requested size: 199.46341pt x 148.13239pt.
-<figures/appendix_assembly/app_10k_15_bigru.png, id=1742, 649.42625pt x 514.923
+<figures/appendix_assembly/app_10k_15_bigru.png, id=1853, 649.42625pt x 514.923
 75pt>
 File: figures/appendix_assembly/app_10k_15_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_15_bigru.png>
@@ -2194,14 +2185,11 @@ Package pdftex.def Info: figures/appendix_assembly/app_10k_15_bigru.png  used o
 n input line 260.
 (pdftex.def)             Requested size: 199.46341pt x 158.14757pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[109 <./figures/appendix_assembly/app_10k_10_unfiltered.png> <./figures/appendi
+[115 <./figures/appendix_assembly/app_10k_10_unfiltered.png> <./figures/appendi
 x_assembly/app_10k_10_gb.png> <./figures/appendix_assembly/app_10k_10_cnn.png> 
 <./figures/appendix_assembly/app_10k_10_bigru.png>]
-<figures/appendix_assembly/app_10k_50_unfiltered.png, id=1751, 843.15pt x 615.2
+<figures/appendix_assembly/app_10k_50_unfiltered.png, id=1862, 843.15pt x 615.2
 9875pt>
 File: figures/appendix_assembly/app_10k_50_unfiltered.png Graphic file (type pn
 g)
@@ -2209,34 +2197,31 @@ g)
 Package pdftex.def Info: figures/appendix_assembly/app_10k_50_unfiltered.png  u
 sed on input line 273.
 (pdftex.def)             Requested size: 199.46341pt x 145.55287pt.
-<figures/appendix_assembly/app_10k_50_gb.png, id=1752, 788.9475pt x 634.37pt>
+<figures/appendix_assembly/app_10k_50_gb.png, id=1863, 788.9475pt x 634.37pt>
 File: figures/appendix_assembly/app_10k_50_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_50_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_10k_50_gb.png  used on i
 nput line 280.
 (pdftex.def)             Requested size: 199.46341pt x 160.38284pt.
-<figures/appendix_assembly/app_10k_50_cnn.png, id=1753, 707.64375pt x 563.10374
+<figures/appendix_assembly/app_10k_50_cnn.png, id=1864, 707.64375pt x 563.10374
 pt>
 File: figures/appendix_assembly/app_10k_50_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_50_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_10k_50_cnn.png  used on 
 input line 289.
 (pdftex.def)             Requested size: 199.46341pt x 158.71623pt.
-<figures/appendix_assembly/app_10k_50_bigru.png, id=1754, 778.91pt x 618.31pt>
+<figures/appendix_assembly/app_10k_50_bigru.png, id=1865, 778.91pt x 618.31pt>
 File: figures/appendix_assembly/app_10k_50_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_10k_50_bigru.png>
 Package pdftex.def Info: figures/appendix_assembly/app_10k_50_bigru.png  used o
 n input line 296.
 (pdftex.def)             Requested size: 199.46341pt x 158.3321pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[110 <./figures/appendix_assembly/app_10k_15_unfiltered.png> <./figures/appendi
+[116 <./figures/appendix_assembly/app_10k_15_unfiltered.png> <./figures/appendi
 x_assembly/app_10k_15_gb.png> <./figures/appendix_assembly/app_10k_15_cnn.png> 
 <./figures/appendix_assembly/app_10k_15_bigru.png>]
-<figures/appendix_assembly/app_20k_5_unfiltered.png, id=1764, 894.34125pt x 717
+<figures/appendix_assembly/app_20k_5_unfiltered.png, id=1874, 894.34125pt x 717
 .68124pt>
 File: figures/appendix_assembly/app_20k_5_unfiltered.png Graphic file (type png
 )
@@ -2244,20 +2229,20 @@ File: figures/appendix_assembly/app_20k_5_unfiltered.png Graphic file (type png
 Package pdftex.def Info: figures/appendix_assembly/app_20k_5_unfiltered.png  us
 ed on input line 314.
 (pdftex.def)             Requested size: 199.46341pt x 160.05864pt.
-<figures/appendix_assembly/app_20k_5_gb.png, id=1765, 748.7975pt x 710.655pt>
+<figures/appendix_assembly/app_20k_5_gb.png, id=1875, 748.7975pt x 710.655pt>
 File: figures/appendix_assembly/app_20k_5_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_5_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_20k_5_gb.png  used on in
 put line 321.
 (pdftex.def)             Requested size: 199.46341pt x 189.2986pt.
-<figures/appendix_assembly/app_20k_5_cnn.png, id=1766, 743.77875pt x 630.355pt>
+<figures/appendix_assembly/app_20k_5_cnn.png, id=1876, 743.77875pt x 630.355pt>
 
 File: figures/appendix_assembly/app_20k_5_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_5_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_20k_5_cnn.png  used on i
 nput line 330.
 (pdftex.def)             Requested size: 199.46341pt x 169.0439pt.
-<figures/appendix_assembly/app_20k_5_bigru.png, id=1767, 687.56876pt x 544.0325
+<figures/appendix_assembly/app_20k_5_bigru.png, id=1877, 687.56876pt x 544.0325
 pt>
 File: figures/appendix_assembly/app_20k_5_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_5_bigru.png>
@@ -2265,14 +2250,11 @@ Package pdftex.def Info: figures/appendix_assembly/app_20k_5_bigru.png  used on
  input line 337.
 (pdftex.def)             Requested size: 199.46341pt x 157.82349pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[111 <./figures/appendix_assembly/app_10k_50_unfiltered.png> <./figures/appendi
+[117 <./figures/appendix_assembly/app_10k_50_unfiltered.png> <./figures/appendi
 x_assembly/app_10k_50_gb.png> <./figures/appendix_assembly/app_10k_50_cnn.png> 
 <./figures/appendix_assembly/app_10k_50_bigru.png>]
-<figures/appendix_assembly/app_20k_10_unfiltered.png, id=1776, 811.03pt x 643.4
+<figures/appendix_assembly/app_20k_10_unfiltered.png, id=1886, 811.03pt x 643.4
 0375pt>
 File: figures/appendix_assembly/app_20k_10_unfiltered.png Graphic file (type pn
 g)
@@ -2280,20 +2262,20 @@ g)
 Package pdftex.def Info: figures/appendix_assembly/app_20k_10_unfiltered.png  u
 sed on input line 350.
 (pdftex.def)             Requested size: 199.46341pt x 158.23907pt.
-<figures/appendix_assembly/app_20k_10_gb.png, id=1777, 788.9475pt x 638.385pt>
+<figures/appendix_assembly/app_20k_10_gb.png, id=1887, 788.9475pt x 638.385pt>
 File: figures/appendix_assembly/app_20k_10_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_10_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_20k_10_gb.png  used on i
 nput line 357.
 (pdftex.def)             Requested size: 199.46341pt x 161.39792pt.
-<figures/appendix_assembly/app_20k_10_cnn.png, id=1778, 736.7525pt x 609.27625p
+<figures/appendix_assembly/app_20k_10_cnn.png, id=1888, 736.7525pt x 609.27625p
 t>
 File: figures/appendix_assembly/app_20k_10_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_10_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_20k_10_cnn.png  used on 
 input line 366.
 (pdftex.def)             Requested size: 199.46341pt x 164.94373pt.
-<figures/appendix_assembly/app_20k_10_bigru.png, id=1779, 744.7825pt x 590.205p
+<figures/appendix_assembly/app_20k_10_bigru.png, id=1889, 744.7825pt x 590.205p
 t>
 File: figures/appendix_assembly/app_20k_10_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_10_bigru.png>
@@ -2301,14 +2283,11 @@ Package pdftex.def Info: figures/appendix_assembly/app_20k_10_bigru.png  used o
 n input line 373.
 (pdftex.def)             Requested size: 199.46341pt x 158.06064pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[112 <./figures/appendix_assembly/app_20k_5_unfiltered.png> <./figures/appendix
+[118 <./figures/appendix_assembly/app_20k_5_unfiltered.png> <./figures/appendix
 _assembly/app_20k_5_gb.png> <./figures/appendix_assembly/app_20k_5_cnn.png> <./
 figures/appendix_assembly/app_20k_5_bigru.png>]
-<figures/appendix_assembly/app_20k_15_unfiltered.png, id=1788, 692.5875pt x 551
+<figures/appendix_assembly/app_20k_15_unfiltered.png, id=1899, 692.5875pt x 551
 .05875pt>
 File: figures/appendix_assembly/app_20k_15_unfiltered.png Graphic file (type pn
 g)
@@ -2316,21 +2295,21 @@ g)
 Package pdftex.def Info: figures/appendix_assembly/app_20k_15_unfiltered.png  u
 sed on input line 386.
 (pdftex.def)             Requested size: 199.46341pt x 158.70143pt.
-<figures/appendix_assembly/app_20k_15_gb.png, id=1789, 936.49875pt x 733.74126p
+<figures/appendix_assembly/app_20k_15_gb.png, id=1900, 936.49875pt x 733.74126p
 t>
 File: figures/appendix_assembly/app_20k_15_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_15_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_20k_15_gb.png  used on i
 nput line 393.
 (pdftex.def)             Requested size: 199.46341pt x 156.27342pt.
-<figures/appendix_assembly/app_20k_15_cnn.png, id=1790, 874.26625pt x 735.74875
+<figures/appendix_assembly/app_20k_15_cnn.png, id=1901, 874.26625pt x 735.74875
 pt>
 File: figures/appendix_assembly/app_20k_15_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_15_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_20k_15_cnn.png  used on 
 input line 402.
 (pdftex.def)             Requested size: 199.46341pt x 167.86023pt.
-<figures/appendix_assembly/app_20k_15_bigru.png, id=1791, 830.10126pt x 654.445
+<figures/appendix_assembly/app_20k_15_bigru.png, id=1902, 830.10126pt x 654.445
 pt>
 File: figures/appendix_assembly/app_20k_15_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_15_bigru.png>
@@ -2338,14 +2317,11 @@ Package pdftex.def Info: figures/appendix_assembly/app_20k_15_bigru.png  used o
 n input line 409.
 (pdftex.def)             Requested size: 199.46341pt x 157.24976pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[113 <./figures/appendix_assembly/app_20k_10_unfiltered.png> <./figures/appendi
+[119 <./figures/appendix_assembly/app_20k_10_unfiltered.png> <./figures/appendi
 x_assembly/app_20k_10_gb.png> <./figures/appendix_assembly/app_20k_10_cnn.png> 
 <./figures/appendix_assembly/app_20k_10_bigru.png>]
-<figures/appendix_assembly/app_20k_50_unfiltered.png, id=1800, 754.82pt x 600.2
+<figures/appendix_assembly/app_20k_50_unfiltered.png, id=1911, 754.82pt x 600.2
 425pt>
 File: figures/appendix_assembly/app_20k_50_unfiltered.png Graphic file (type pn
 g)
@@ -2353,42 +2329,39 @@ g)
 Package pdftex.def Info: figures/appendix_assembly/app_20k_50_unfiltered.png  u
 sed on input line 422.
 (pdftex.def)             Requested size: 199.46341pt x 158.61472pt.
-<figures/appendix_assembly/app_20k_50_gb.png, id=1801, 963.6pt x 760.8425pt>
+<figures/appendix_assembly/app_20k_50_gb.png, id=1912, 963.6pt x 760.8425pt>
 File: figures/appendix_assembly/app_20k_50_gb.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_50_gb.png>
 Package pdftex.def Info: figures/appendix_assembly/app_20k_50_gb.png  used on i
 nput line 429.
 (pdftex.def)             Requested size: 199.46341pt x 157.48296pt.
-<figures/appendix_assembly/app_20k_50_cnn.png, id=1802, 925.4575pt x 759.83875p
+<figures/appendix_assembly/app_20k_50_cnn.png, id=1913, 925.4575pt x 759.83875p
 t>
 File: figures/appendix_assembly/app_20k_50_cnn.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_50_cnn.png>
 Package pdftex.def Info: figures/appendix_assembly/app_20k_50_cnn.png  used on 
 input line 438.
 (pdftex.def)             Requested size: 199.46341pt x 163.76793pt.
-<figures/appendix_assembly/app_20k_50_bigru.png, id=1803, 907.39pt x 722.7pt>
+<figures/appendix_assembly/app_20k_50_bigru.png, id=1914, 907.39pt x 722.7pt>
 File: figures/appendix_assembly/app_20k_50_bigru.png Graphic file (type png)
 <use figures/appendix_assembly/app_20k_50_bigru.png>
 Package pdftex.def Info: figures/appendix_assembly/app_20k_50_bigru.png  used o
 n input line 445.
 (pdftex.def)             Requested size: 199.46341pt x 158.86215pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[114 <./figures/appendix_assembly/app_20k_15_unfiltered.png> <./figures/appendi
+[120 <./figures/appendix_assembly/app_20k_15_unfiltered.png> <./figures/appendi
 x_assembly/app_20k_15_gb.png> <./figures/appendix_assembly/app_20k_15_cnn.png> 
 <./figures/appendix_assembly/app_20k_15_bigru.png>])
 
-[115 <./figures/appendix_assembly/app_20k_50_unfiltered.png> <./figures/appendi
+[121 <./figures/appendix_assembly/app_20k_50_unfiltered.png> <./figures/appendi
 x_assembly/app_20k_50_gb.png> <./figures/appendix_assembly/app_20k_50_cnn.png> 
 <./figures/appendix_assembly/app_20k_50_bigru.png>]
 \openout2 = `appendix_G.aux'.
 
  (./appendix_G.tex
 
-[116
+[122
 
 
 
@@ -2397,7 +2370,7 @@ x_assembly/app_20k_50_gb.png> <./figures/appendix_assembly/app_20k_50_cnn.png>
 Appendix G.
 
 
-[117]
+[123]
 
 LaTeX Warning: Float too large for page by 87.76413pt on input line 79.
 
@@ -2405,11 +2378,11 @@ LaTeX Warning: Float too large for page by 87.76413pt on input line 79.
 
 
 Overfull \hbox (2.76872pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 118 \OT1/cmr/m/sl/12 APPENDIX G.  COMPLETE EXTERNAL ASSEMBLY TE
+\OT1/cmr/m/n/12 124 \OT1/cmr/m/sl/12 APPENDIX G.  COMPLETE EXTERNAL ASSEMBLY TE
 STING RESULTS
  []
 
-[118])
+[124])
 \openout2 = `appendix_H.aux'.
 
  (./appendix_H.tex
@@ -2421,7 +2394,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--47
 
 
 
-[119
+[125
 
 
 
@@ -2431,24 +2404,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--47
 ] (./main.aux (./title_page.aux) (./approval.aux) (./declaration.aux)
 (./dedication.aux) (./acknowledgment.aux) (./abstract.aux) (./chapter_1.aux)
 (./chapter_2.aux) (./chapter_3.aux) (./chapter_4.aux) (./chapter_5.aux)
-(./chapter_6.aux) (./appendix_A.aux) (./appendix_B.aux) (./appendix_C.aux)
-(./appendix_D.aux) (./appendix_E.aux) (./appendix_F.aux) (./appendix_G.aux)
-(./appendix_H.aux))
+(./chapter_6.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+) (./appendix_A.aux) (./appendix_B.aux) (./appendix_C.aux) (./appendix_D.aux)
+(./appendix_E.aux) (./appendix_F.aux) (./appendix_G.aux) (./appendix_H.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C66ED97CE64CA33E7D23BBEA2ACFF2C9;21439.
+(rerunfilecheck)             Checksum: 0220215BE8DB87F2F524E086BC0DECB6;21324.
  ) 
 Here is how much of TeX's memory you used:
- 17921 strings out of 473190
- 315311 string characters out of 5715801
- 732460 words of memory out of 5000000
- 40385 multiletter control sequences out of 15000+600000
- 570432 words of font info for 80 fonts, out of 8000000 for 9000
+ 17940 strings out of 473190
+ 315730 string characters out of 5715801
+ 732885 words of memory out of 5000000
+ 40400 multiletter control sequences out of 15000+600000
+ 570778 words of font info for 81 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 90i,10n,136p,1490b,742s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,9n,136p,1490b,742s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -2460,14 +2441,15 @@ cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/loc
 al/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local
 /texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
-xlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/tex
-live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texli
-ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texliv
-e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (142 pages, 28359536 bytes).
+xlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
+live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texl
+ive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texliv
+e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive
+/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on main.pdf (146 pages, 28443235 bytes).
 PDF statistics:
- 1985 PDF objects out of 2073 (max. 8388607)
- 1608 compressed objects within 17 object streams
- 365 named destinations out of 1000 (max. 500000)
- 1310 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2102 PDF objects out of 2487 (max. 8388607)
+ 1623 compressed objects within 17 object streams
+ 368 named destinations out of 1000 (max. 500000)
+ 1307 words of extra memory for PDF output out of 10000 (max. 10000000)
 

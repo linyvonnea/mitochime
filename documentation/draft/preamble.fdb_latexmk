@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1776400456.50131 "/Users/yvonnelin/Desktop/mitochime/documentation/draft/preamble.tex" "preamble.pdf" "preamble" 1776400456.96628 2
-  "/Users/yvonnelin/Desktop/mitochime/documentation/draft/preamble.tex" 1776400455.75274 1468 7c602d306d8597abb0a6251d693351bf ""
+["pdflatex"] 1777017060.80798 "/Users/yvonnelin/Desktop/mitochime/documentation/draft/preamble.tex" "preamble.pdf" "preamble" 1777017061.26858 2
+  "/Users/yvonnelin/Desktop/mitochime/documentation/draft/preamble.tex" 1777017060.00738 1339 70d7f48a15c984fe846104687d3860ae ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/local/texlive/2025/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -92,8 +92,8 @@
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "preamble.aux" 0 -1 0 "pdflatex"
-  "preamble.tex" 1776400455.75274 1468 7c602d306d8597abb0a6251d693351bf ""
+  "preamble.aux" 1777017060.80657 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "preamble.tex" 1777017060.00738 1339 70d7f48a15c984fe846104687d3860ae ""
   (generated)
   "preamble.aux"
   "preamble.log"

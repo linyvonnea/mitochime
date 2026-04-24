@@ -1,39 +1,39 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Comparison of Chimera Detection Tools and Genomic Sequence Modeling Approaches}}{23}{table.2.1}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Comparison of Chimera Detection Tools and Genomic Sequence Modeling Approaches}}{24}{table.2.1}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Timetable of activities.}}{42}{table.caption.7}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Summary of engineered features used for classical machine learning}}{34}{table.3.1}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Summary statistics of selected key features by class.}}{46}{table.caption.12}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Performance of baseline classifiers on the held-out test set.}}{51}{table.caption.15}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Performance of tuned classifiers on the held-out test set.}}{52}{table.caption.17}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Test set performance of feature set variants using the tuned Gradient Boosting classifier.}}{59}{table.caption.24}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Five-fold cross-validation performance of the CNN model.}}{60}{table.caption.26}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Held-out test performance of the CNN model.}}{61}{table.caption.28}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Five-fold cross-validation performance of the BiGRU model.}}{62}{table.caption.30}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Held-out test performance of the BiGRU model.}}{63}{table.caption.32}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Comparison of held-out test performance and runtime across the top-performing models.}}{69}{table.caption.39}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Complete per-class summary statistics for all extracted features.}}{84}{table.A.1}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Summary statistics of selected key features by class.}}{55}{table.caption.12}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Performance of baseline classifiers on the held-out test set.}}{60}{table.caption.15}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Performance of tuned classifiers on the held-out test set.}}{61}{table.caption.17}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Test set performance of feature set variants using the tuned Gradient Boosting classifier.}}{68}{table.caption.24}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Five-fold cross-validation performance of the CNN model.}}{69}{table.caption.26}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Held-out test performance of the CNN model.}}{70}{table.caption.28}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Five-fold cross-validation performance of the BiGRU model.}}{71}{table.caption.30}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Held-out test performance of the BiGRU model.}}{72}{table.caption.32}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Comparison of held-out test performance and runtime across the top-performing models.}}{78}{table.caption.39}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {D.1}{\ignorespaces Top-10 permutation importance ranking for Gradient Boosting.}}{96}{table.caption.49}%
-\contentsline {table}{\numberline {D.2}{\ignorespaces Top-10 permutation importance ranking for CatBoost.}}{96}{table.caption.50}%
-\contentsline {table}{\numberline {D.3}{\ignorespaces Top-10 permutation importance ranking for LightGBM.}}{97}{table.caption.51}%
-\contentsline {table}{\numberline {D.4}{\ignorespaces Top-10 permutation importance ranking for Bagging Trees.}}{97}{table.caption.52}%
-\contentsline {table}{\numberline {D.5}{\ignorespaces Top-10 permutation importance ranking for MLP.}}{97}{table.caption.53}%
-\contentsline {table}{\numberline {D.6}{\ignorespaces Aggregated feature family importance for Gradient Boosting.}}{98}{table.caption.54}%
-\contentsline {table}{\numberline {D.7}{\ignorespaces Aggregated feature family importance for CatBoost.}}{98}{table.caption.55}%
-\contentsline {table}{\numberline {D.8}{\ignorespaces Aggregated feature family importance for LightGBM.}}{99}{table.caption.56}%
-\contentsline {table}{\numberline {D.9}{\ignorespaces Aggregated feature family importance for Bagging Trees.}}{99}{table.caption.57}%
-\contentsline {table}{\numberline {D.10}{\ignorespaces Aggregated feature family importance for MLP.}}{99}{table.caption.58}%
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {E.1}{\ignorespaces Fold-level cross-validation performance of the CNN model.}}{101}{table.caption.59}%
-\contentsline {table}{\numberline {E.2}{\ignorespaces Fold-level cross-validation performance of the RNN-kmer BiGRU model.}}{102}{table.caption.60}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Complete per-class summary statistics for all extracted features.}}{90}{table.A.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {G.1}{\ignorespaces Complete external assembly testing results across all evaluated conditions.}}{118}{table.caption.73}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {D.1}{\ignorespaces Top-10 permutation importance ranking for Gradient Boosting.}}{102}{table.caption.48}%
+\contentsline {table}{\numberline {D.2}{\ignorespaces Top-10 permutation importance ranking for CatBoost.}}{102}{table.caption.49}%
+\contentsline {table}{\numberline {D.3}{\ignorespaces Top-10 permutation importance ranking for LightGBM.}}{103}{table.caption.50}%
+\contentsline {table}{\numberline {D.4}{\ignorespaces Top-10 permutation importance ranking for Bagging Trees.}}{103}{table.caption.51}%
+\contentsline {table}{\numberline {D.5}{\ignorespaces Top-10 permutation importance ranking for MLP.}}{103}{table.caption.52}%
+\contentsline {table}{\numberline {D.6}{\ignorespaces Aggregated feature family importance for Gradient Boosting.}}{104}{table.caption.53}%
+\contentsline {table}{\numberline {D.7}{\ignorespaces Aggregated feature family importance for CatBoost.}}{104}{table.caption.54}%
+\contentsline {table}{\numberline {D.8}{\ignorespaces Aggregated feature family importance for LightGBM.}}{105}{table.caption.55}%
+\contentsline {table}{\numberline {D.9}{\ignorespaces Aggregated feature family importance for Bagging Trees.}}{105}{table.caption.56}%
+\contentsline {table}{\numberline {D.10}{\ignorespaces Aggregated feature family importance for MLP.}}{105}{table.caption.57}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {E.1}{\ignorespaces Fold-level cross-validation performance of the CNN model.}}{107}{table.caption.58}%
+\contentsline {table}{\numberline {E.2}{\ignorespaces Fold-level cross-validation performance of the RNN-kmer BiGRU model.}}{108}{table.caption.59}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {G.1}{\ignorespaces Complete external assembly testing results across all evaluated conditions.}}{124}{table.caption.72}%
 \addvspace {10\p@ }

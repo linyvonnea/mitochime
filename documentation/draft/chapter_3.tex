@@ -2,7 +2,7 @@
 
 \chapter{Research Methodology}
 
-This chapter describes the methodology used in developing and evaluating MitoChime. It covers data collection, read simulation, preprocessing and alignment, feature extraction, classical and deep learning model development, feature importance analysis, ablation testing, threshold-based filtering, downstream assembly validation, and documentation.
+This chapter describes the methodology used in developing and evaluating MitoChime. It covers the collection and simulation of clean and chimeric mitochondrial reads, preprocessing and alignment, read-level feature extraction, model development and evaluation, feature importance and ablation analyses, pipeline integration, threshold-based read filtering, downstream assembly validation, and documentation for reproducibility.
 
 \section{Research Activities}
 
@@ -94,32 +94,124 @@ After preprocessing, reads were assigned class labels and organized into dataset
 
 A custom feature extraction pipeline was implemented in Python to compute read-level descriptors associated with PCR-induced chimerism from the BAM files. Each row of the resulting TSV matrix represented one read, and each column represented one numeric feature.
 
-The pipeline focused on five feature groups: (1) supplementary alignment and alignment-structure features, (2) soft-clipping and inferred breakpoint features, (3) k-mer composition discontinuity features, (4) microhomology features, and (5) alignment quality features.
+The pipeline focused on five feature groups: (1) supplementary alignment (SA) and alignment-structure features, (2) soft-clipping and inferred breakpoint features, (3) k-mer composition discontinuity features, (4) microhomology features, and (5) alignment quality features, as shown in Table~\ref{tab:engineered_features}.
+
+\begingroup
+
+\small
+
+\renewcommand{\arraystretch}{1.18}
+
+\setlength{\extrarowheight}{2pt}
+
+\begin{xltabular}{\textwidth}{p{3.2cm} X p{3.1cm}}
+
+\caption{Summary of engineered features used for classical machine learning}
+
+\label{tab:engineered_features}\\
+
+\toprule
+
+\textbf{Name} & \textbf{Description} & \textbf{Code} \\
+
+\midrule
+
+\endfirsthead
+
+\multicolumn{3}{l}{\textit{Table \thetable{} continued from previous page}}\\
+
+\toprule
+
+\textbf{Name} & \textbf{Description} & \textbf{Code} \\
+
+\midrule
+
+\endhead
+
+\midrule
+
+\multicolumn{3}{r}{\textit{Continued on next page}}\\
+
+\endfoot
+
+\bottomrule
+
+\endlastfoot
+
+Read length & Length of the read sequence in base pairs. & \texttt{read\_length} \\
+
+Mapping quality & Mapping quality score of the primary alignment. & \texttt{mapq} \\
+
+Supplementary alignment presence & Indicates whether the read has at least one supplementary alignment. & \texttt{has\_sa} \\
+
+Supplementary alignment count & Number of supplementary alignments associated with the read. & \texttt{sa\_count} \\
+
+Number of alignment segments & Total number of primary and supplementary alignment segments. & \texttt{num\_segments} \\
+
+Different-contig supplementary alignment & Indicates whether a supplementary alignment maps to a different contig. & \texttt{sa\_diff\_contig} \\
+
+Minimum supplementary alignment distance & Minimum positional distance between the primary and supplementary alignments. & \texttt{sa\_min\_delta\_pos} \\
+
+Maximum supplementary alignment distance & Maximum positional distance between the primary and supplementary alignments. & \texttt{sa\_max\_delta\_pos} \\
+
+Mean supplementary alignment distance & Mean positional distance between the primary and supplementary alignments. & \texttt{sa\_mean\_delta\_pos} \\
+
+Same-strand supplementary alignment count & Number of supplementary alignments on the same strand as the primary alignment. & \texttt{sa\_same\_strand\_count} \\
+
+Opposite-strand supplementary alignment count & Number of supplementary alignments on the opposite strand from the primary alignment. & \texttt{sa\_opp\_strand\_count} \\
+
+Maximum supplementary alignment quality & Maximum mapping quality among supplementary alignments. & \texttt{sa\_max\_mapq} \\
+
+Mean supplementary alignment quality & Mean mapping quality among supplementary alignments. & \texttt{sa\_mean\_mapq} \\
+
+Minimum supplementary alignment mismatches & Minimum edit-distance or mismatch count among supplementary alignments. & \texttt{sa\_min\_nm} \\
+
+Mean supplementary alignment mismatches & Mean edit-distance or mismatch count among supplementary alignments. & \texttt{sa\_mean\_nm} \\
+
+Left soft-clipped bases & Number of soft-clipped bases at the left end of the read. & \texttt{softclip\_left} \\
+
+Right soft-clipped bases & Number of soft-clipped bases at the right end of the read. & \texttt{softclip\_right} \\
+
+Total clipped bases & Total number of soft-clipped bases in the read. & \texttt{total\_clipped\_bases} \\
+
+Breakpoint read position & Inferred breakpoint or junction position within the read. & \texttt{breakpoint\_read\_pos} \\
+
+K-mer cosine difference & Cosine-based dissimilarity between k-mer profiles of the left and right read segments. & \texttt{kmer\_cosine\_diff} \\
+
+K-mer Jensen--Shannon divergence & Jensen--Shannon divergence between k-mer distributions of the left and right read segments. & \texttt{kmer\_js\_divergence} \\
+
+Microhomology length & Length of the longest exact overlap near the inferred breakpoint. & \texttt{microhomology\_\allowbreak length} \\
+
+Microhomology GC content & GC fraction of the detected microhomology overlap. & \texttt{microhomology\_gc} \\
+
+\end{xltabular}
+
+\endgroup
 
 \subsection{Supplementary Alignment and Alignment-Structure Features}
 
-For each primary read, the pipeline checked for the presence of the \texttt{SA} tag. If present, the tag was parsed to recover supplementary alignment information, including mapped position, strand, mapping quality, and mismatch count. From this, features such as \texttt{has\_sa}, \texttt{sa\_count}, number of alignment segments, strand consistency, and summary statistics of segment distances and mapping qualities were computed.
+For each primary read, the pipeline checked for the presence of the supplementary alignment tag. If present, the tag was parsed to recover supplementary alignment information, including mapped position, strand, mapping quality, and mismatch count. From this, features such as supplementary alignment presence, supplementary alignment count, number of alignment segments, strand consistency across segments, and summary statistics of segment distances and mapping qualities were computed.
 
 \subsection{Soft-Clipping and Breakpoint Features}
 
 Soft-clipped bases were extracted from the Concise Idiosyncratic Gapped Alignment Report (CIGAR) string. Left and right soft-clipped lengths, as well as total clipped bases, were recorded. A candidate breakpoint position was inferred using clipping boundaries where available, or alignment/read midpoints otherwise.
 \subsection{Feature Representation}
 
-For the classical machine learning pipeline, a tabular feature matrix was constructed in which each primary-mapped read was represented by a fixed-length numeric feature vector computed using \texttt{pysam} and NumPy. The extracted predictors were organized into several feature families. First, supplementary-alignment and alignment-structure summaries were derived from SA tags, including the presence and count of supplementary alignments, distances between aligned segments, strand consistency, and aggregate alignment statistics such as supplementary-alignment MAPQ and NM values. Second, CIGAR-derived clipping statistics were computed, including left and right soft clipping, total clipped bases, and an inferred breakpoint position. Third, k-mer composition discontinuity between read segments was quantified using \(k=6\), through cosine difference and Jensen--Shannon divergence between the left and right normalized k-mer profiles. Fourth, microhomology descriptors around the inferred breakpoint were extracted, including the longest exact suffix--prefix overlap within a \(\pm 40\) bp window and the GC fraction of the detected overlap. These were complemented by basic alignment-quality indicators such as mapping quality. In total, the resulting classical feature matrix contained 23 numeric predictor variables per read.
+For the classical machine learning pipeline, a tabular feature matrix was constructed in which each primary-mapped read was represented by a fixed-length numeric feature vector computed using \texttt{pysam} and NumPy. The extracted predictors were organized into several feature families. First, supplementary-alignment and alignment-structure summaries were derived from supplementary alignment tags, including supplementary alignment presence, supplementary alignment count, supplementary alignment distances, strand consistency, and aggregate alignment statistics such as supplementary alignment quality and supplementary alignment mismatches. Second, clipping statistics were computed, including left soft-clipped bases, right soft-clipped bases, total clipped bases, and breakpoint read position. Third, k-mer composition discontinuity between read segments was quantified using \(k=6\), through k-mer cosine difference and k-mer Jensen--Shannon divergence between the left and right normalized k-mer profiles. Fourth, microhomology descriptors around the inferred breakpoint were extracted, including microhomology length within a \(\pm 40\) bp window and microhomology GC content. These were complemented by basic alignment-quality indicators such as mapping quality. In total, the resulting classical feature matrix contained 23 numeric predictor variables per read.
 
 In parallel, for the deep learning experiments, the raw nucleotide sequence was retained as a separate input representation. Each read had fixed length \(L=150\), consistent with the simulated read length used throughout the study. For the convolutional neural network, sequences were one-hot encoded during both training and inference using four base channels corresponding to A, C, G, and T. Ambiguous bases were represented as all-zero vectors.
 
 \subsection{K-mer Composition Discontinuity}
 
-To capture compositional shifts consistent with chimeric junctions, each read was divided into left and right segments at the inferred breakpoint, and k-mer composition was compared between the two sides. In this study, \(k=6\) was used. For each segment, normalized 6-mer frequency profiles were computed after excluding ambiguous bases. Two complementary measures were then derived: cosine difference, which summarizes directional dissimilarity between the segment-wise k-mer vectors, and Jensen--Shannon divergence, which quantifies the divergence between the corresponding k-mer distributions. These were recorded as \texttt{kmer\_cosine\_diff} and \texttt{kmer\_js\_divergence}, respectively.
+To capture compositional shifts consistent with chimeric junctions, each read was divided into left and right segments at the inferred breakpoint, and k-mer composition was compared between the two sides. In this study, \(k=6\) was used. For each segment, normalized 6-mer frequency profiles were computed after excluding ambiguous bases. Two complementary measures were then derived: k-mer cosine difference, which summarizes directional dissimilarity between the segment-wise k-mer vectors, and k-mer Jensen--Shannon divergence, which quantifies the divergence between the corresponding k-mer distributions.
 
 \subsection{Microhomology Features}
 
-A local breakpoint-centered window was examined to characterize short exact overlaps between the left and right sides of a read, which may arise during chimera formation. In the present work, a microhomology search window of \(\pm 40\) bp was used. Within this window, the longest exact suffix--prefix overlap between the left and right segments was identified and recorded as \texttt{microhomology\_length}. The GC content of the detected overlap, when present, was computed and stored as \texttt{microhomology\_gc}. These features were included to assess whether local sequence overlap contributed useful discriminatory signal for chimera detection.
+A local breakpoint-centered window was examined to characterize short exact overlaps between the left and right sides of a read, which may arise during chimera formation. In the present work, a microhomology search window of \(\pm 40\) bp was used. Within this window, the longest exact suffix--prefix overlap between the left and right segments was identified as microhomology length. The GC content of the detected overlap, when present, was computed as microhomology GC content. These features were included to assess whether local sequence overlap contributed useful discriminatory signal for chimera detection.
 
 \subsection{Alignment Quality Features}
 
-General alignment quality measures were also incorporated as predictors. These included mapping quality (\texttt{mapq}), which is intended to capture whether chimeric reads exhibit different alignment irregularities relative to clean reads.
+General alignment quality measures were also incorporated as predictors. These included mapping quality, which is intended to capture whether chimeric reads exhibit different alignment irregularities relative to clean reads.
 
 \section{Classical Machine Learning Model Development}
 
@@ -140,7 +232,7 @@ Among the tuned feature-based models, the best validation performance was obtain
 
 Feature importance analysis was performed using the tuned Gradient Boosting model. Two complementary approaches were applied. First, the model’s built-in feature importance scores were examined to identify predictors that contributed most strongly to the learned decision rules. Second, permutation importance was computed on the held-out test set to assess the effect of disrupting each feature on predictive performance. For interpretability, the predictors were also grouped into conceptual feature families corresponding to alignment structure, soft clipping, k-mer discontinuity, microhomology, and alignment quality.
 
-An ablation analysis was also conducted to examine the contribution of microhomology-related predictors. In this experiment, the features \texttt{microhomology\_length} and \texttt{microhomology\_gc} were removed, and the Gradient Boosting model was retrained under the same modelling procedure. Performance of the ablated model was then compared against that of the full model to determine the extent to which breakpoint-local overlap information contributed to chimera classification.
+An ablation analysis was also conducted to examine the contribution of microhomology-related predictors. In this experiment, microhomology length and microhomology GC content were removed, and the Gradient Boosting model was retrained under the same modelling procedure. Performance of the ablated model was then compared against that of the full model to determine the extent to which breakpoint-local overlap information contributed to chimera classification.
 
 \section{Deep Learning Model Development}
 
@@ -168,17 +260,47 @@ Both deep learning models were trained on the same training split used for the c
 
 For the CNN, the final reported model was trained using \texttt{PAIR\_train\_seq\_L150.tsv} and evaluated on \texttt{PAIR\_test\_seq\_L150.tsv} with 30 epochs and batch size 128. For the BiGRU, five-fold cross-validation was first conducted on fold-specific training and validation TSV files, after which the final held-out model was trained on the full training split and evaluated on the held-out test split using the same architectural and optimization settings.
 
-\section{Threshold-Based Read Filtering}
+\section{Pipeline Integration and Threshold-Based Read Filtering}
 
-The final trained classifiers were also evaluated as practical filtering tools for read cleanup. Each read was assigned a probability of belonging to the chimeric class, and a user-specified threshold \(\tau \in [0,1]\) was used to determine whether the read should be removed. A read pair was retained if its assigned chimeric probability satisfied \(p < \tau\), and removed otherwise.
+The best-performing classifiers were integrated into MitoChime as modular and filtering components. Each classifier was saved as a separate trained model file and connected to a command-line workflow that accepts paired-end FASTQ inputs, a selected model mode, and a user-defined chimeric probability threshold.
 
-To preserve mate consistency, filtering was performed at the pair level using a normalized base read identifier, with mate suffixes such as \texttt{/1} and \texttt{/2} removed before matching. This ensured that both mates of a read pair were either retained together or removed together in the output FASTQ files. 
+The pipeline was organized into separate stages for input validation, prediction, threshold-based classification, pair-end filtering, and output generation. This modular design allowed the Gradient Boosting, CNN, and BiGRU classifiers to be executed through the same workflow. Model outputs were retained as probability scores and prediction summaries, making the filtering decisions interpretable.
+
+For each read, the selected classifier produced a probability of belonging to the chimeric class. Reads with chimeric probability greater than or equal to the threshold \(\tau\) were removed, while reads with \(p < \tau\) were retained. Filtering was performed at the pair level by normalizing read identifiers and removing mate suffixes such as \texttt{/1} and \texttt{/2}, ensuring that both mates were either retained or removed together.
+
+The pipeline generated filtered paired-end FASTQ files, prediction summaries, and report outputs.
 
 \section{Downstream Assembly Validation}
 
-To evaluate the practical value of filtering, downstream mitochondrial assemblies were generated from both unfiltered and filtered read sets. Assembly results were compared using metrics such as number of contigs, maximum contig length, and graph complexity.
+Downstream assembly validation was performed using newly simulated unseen datasets that were not used during model training, validation, or testing. This allowed the pipeline to be evaluated on independent read sets with varying sequencing depths and chimeric read proportions.
 
-Assemblies were produced using \texttt{SPAdes}. Improvement in assembly quality after filtering was interpreted as evidence that the removed reads were disruptive to mitochondrial reconstruction.
+Three read depths were considered: 3{,}200, 10{,}000, and 20{,}000 reads. The 3{,}200-read setting was used as the minimum-depth condition based on a coverage estimate recommended during consultation with a PGC Visayas bioinformatician. For mitochondrial assembly, a minimum coverage of approximately 30\(\times\) the expected target sequence length was recommended. The approximate number of reads was computed as:
+
+\[
+N = \frac{G \times C}{L}
+\]
+
+where \(N\) is the estimated number of reads, \(G\) is the expected mitochondrial genome size, \(C\) is the target coverage, and \(L\) is the read length. Using an expected mitochondrial genome size of 16{,}000 bp, a minimum coverage of 30\(\times\), and a read length of 150 bp, the estimated minimum number of reads was:
+
+\[
+N = \frac{16{,}000 \times 30}{150} = 3{,}200
+\]
+
+Thus, 3{,}200 reads represented the approximate minimum sequencing depth for assembly at 30\(\times\) coverage. Higher read-depth settings were then included for benchmarking. For the 10{,}000-read condition, the target coverage was increased to approximately 100\(\times\):
+
+\[
+N = \frac{16{,}000 \times 100}{150} \approx 10{,}667
+\]
+
+This value was rounded to 10{,}000 reads for benchmarking. For the 20{,}000-read condition, the target coverage was increased to approximately 200\(\times\):
+
+\[
+N = \frac{16{,}000 \times 200}{150} \approx 21{,}333
+\]
+
+Each read-depth setting was evaluated under four chimeric rates: 5\%, 10\%, 15\%, and 50\%. The 5\% setting was included as the expected chimeric read proportion, while the higher proportions were used as benchmark stress-test conditions to examine pipeline behavior under increasing levels of chimeric percentage.
+
+For each dataset, assemblies were generated from both unfiltered reads and filtered reads produced by MitoChime. Assemblies were produced using \texttt{SPAdes} under the same settings for both conditions. Assembly quality was assessed using read retention, number of nodes, and assembly graph structure. The \texttt{SPAdes} assembly graphs were visualized in \texttt{Bandage} to examine overall graph complexity. Improvements after filtering, such as simplified graph structures or fewer assembly irregularities, were interpreted as evidence that the pipeline effectively removed chimeric reads.
 
 \section{Validation and Comparative Testing}
 
@@ -198,34 +320,3 @@ The computational environment was standardized using Conda, with dependencies re
 \caption{Command-line execution interface of the MitoChime pipeline.}
 \label{fig:pipeline_cli}
 \end{figure}
-
-\section{Calendar of Activities}
-
-Table~\ref{tab:project_timeline} presents the overall timetable of activities for the study.
-
-\begin{table}[H]
-\centering
-\caption{Timetable of activities.}
-\label{tab:project_timeline}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline
-\textbf{Activities (2025--2026)} & \textbf{Nov} & \textbf{Dec} & \textbf{Jan} & \textbf{Feb} & \textbf{Mar} & \textbf{Apr} & \textbf{May} \\
-\hline
-Data Collection and Simulation & $\bullet\bullet\bullet\bullet$ & & & & & & \\
-\hline
-Alignment and Feature Extraction & $\bullet$ & $\bullet\bullet\bullet$ & & & & & \\
-\hline
-Classical ML Development and Benchmarking & & $\bullet$ & $\bullet\bullet\bullet$ & $\bullet\bullet\bullet$ & & & \\
-\hline
-Hyperparameter Tuning, Feature Importance, and Ablation & & & & $\bullet$ & $\bullet\bullet\bullet$ & $\bullet$ & \\
-\hline
-Deep Learning Development & & & $\bullet$ & $\bullet\bullet\bullet$ & $\bullet\bullet$ & & \\
-\hline
-Filtering and Assembly Validation & & & & & $\bullet$ & $\bullet\bullet\bullet$ & $\bullet$ \\
-\hline
-Documentation and Manuscript Writing & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ & $\bullet\bullet\bullet\bullet$ \\
-\hline
-\end{tabular}%
-}
-\end{table}
