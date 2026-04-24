@@ -2,17 +2,17 @@
 
 \chapter{Research Methodology}
 
-This chapter describes the methodology used in developing and evaluating \textit{MitoChime}, a machine learning pipeline for detecting PCR-induced chimeric reads in mitochondrial Illumina data. It covers data collection, read simulation, preprocessing and alignment, feature extraction, classical and deep learning model development, feature importance analysis, ablation testing, threshold-based filtering, downstream assembly validation, and documentation.
+This chapter describes the methodology used in developing and evaluating MitoChime. It covers data collection, read simulation, preprocessing and alignment, feature extraction, classical and deep learning model development, feature importance analysis, ablation testing, threshold-based filtering, downstream assembly validation, and documentation.
 
 \section{Research Activities}
 
-Figure~\ref{fig:process_diagram} summarizes the overall workflow of the study. The process began with the collection of a mitochondrial reference genome of \textit{Sardinella lemuru} from the National Center for Biotechnology Information (NCBI). This reference was used to simulate both clean and chimeric paired-end Illumina reads. The simulated reads were then aligned to the reference genome, and read-level features associated with chimeric structure were extracted.
+Figure~\ref{fig:process_diagram} summarizes the overall workflow of the study. The process began with the collection of a mitochondrial reference genome of \textit{Sardinella lemuru} from NCBI. This reference was used to simulate both clean and chimeric paired-end Illumina reads. The simulated reads were then aligned to the reference genome, and read-level features associated with chimeric structure were extracted.
 
-These features were used to train and evaluate classical machine learning models for chimera detection. The best-performing classical model, Gradient Boosting, was further examined through feature importance and ablation analyses. Subsequently, sequence-based deep learning models were also developed to assess whether chimeric reads could be identified directly from nucleotide sequences without relying on alignment-derived features. Finally, model predictions were used to filter suspected chimeric reads, and the effect of filtering was assessed through downstream mitochondrial assembly.
+These features were used to train and evaluate classical machine learning models for chimera detection. The best-performing classical model, Gradient Boosting (GB), was further examined through feature importance and ablation analyses. Subsequently, sequence-based deep learning models were also developed to assess whether chimeric reads could be identified directly from nucleotide sequences without relying on alignment-derived features. Finally, model predictions were used to filter suspected chimeric reads, and the effect of filtering was assessed through downstream mitochondrial assembly.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\linewidth]{figures/research_activities.png}
+\includegraphics[width=0.45\linewidth]{figures/methodology.png}
 \caption{Overall workflow of the study.}
 \label{fig:process_diagram}
 \end{figure}
@@ -72,7 +72,23 @@ Only mapped primary reads were retained for alignment-based feature extraction.
 
 \subsection{Construction of Labelled Datasets}
 
-After preprocessing, reads were assigned class labels and organized into datasets for modelling. Clean reads were labelled as class 0, whereas chimeric reads were labelled as class 1. Separate datasets were prepared for feature-based machine learning and sequence-based deep learning experiments.
+After preprocessing, reads were assigned class labels and organized into datasets for modelling. Clean reads were labelled as class 0, whereas chimeric reads were labelled as class 1. Separate datasets were prepared for feature-based machine learning and sequence-based deep learning experiments. An illustrative example of one read from the dataset is shown in Figure~\ref{fig:dataset_example}.
+
+\begin{figure}[H]
+\centering
+\fbox{
+\parbox{0.92\textwidth}{
+\small
+\textbf{Example data point from the dataset}\\[4pt]
+\texttt{read\_id: NC\_039553.1\_10001\_10492\_5:0:0\_8:0:0\_b77/1}\\
+\texttt{label: 0}\\
+\texttt{seq: GTAAGGCATAGTAAGGCAATGGTGAGGCTGTGTGTGATTGCAGCAGTTCAAATTCACT...}
+}
+}
+\caption{Illustrative example of one record from the simulated dataset. The sequence is truncated for readability.}
+\label{fig:dataset_example}
+\end{figure}
+
 
 \section{Feature Extraction Pipeline}
 
@@ -86,67 +102,77 @@ For each primary read, the pipeline checked for the presence of the \texttt{SA} 
 
 \subsection{Soft-Clipping and Breakpoint Features}
 
-Soft-clipped bases were extracted from the CIGAR string. Left and right soft-clipped lengths, as well as total clipped bases, were recorded. A candidate breakpoint position was inferred using clipping boundaries where available, or alignment/read midpoints otherwise.
+Soft-clipped bases were extracted from the Concise Idiosyncratic Gapped Alignment Report (CIGAR) string. Left and right soft-clipped lengths, as well as total clipped bases, were recorded. A candidate breakpoint position was inferred using clipping boundaries where available, or alignment/read midpoints otherwise.
+\subsection{Feature Representation}
+
+For the classical machine learning pipeline, a tabular feature matrix was constructed in which each primary-mapped read was represented by a fixed-length numeric feature vector computed using \texttt{pysam} and NumPy. The extracted predictors were organized into several feature families. First, supplementary-alignment and alignment-structure summaries were derived from SA tags, including the presence and count of supplementary alignments, distances between aligned segments, strand consistency, and aggregate alignment statistics such as supplementary-alignment MAPQ and NM values. Second, CIGAR-derived clipping statistics were computed, including left and right soft clipping, total clipped bases, and an inferred breakpoint position. Third, k-mer composition discontinuity between read segments was quantified using \(k=6\), through cosine difference and Jensen--Shannon divergence between the left and right normalized k-mer profiles. Fourth, microhomology descriptors around the inferred breakpoint were extracted, including the longest exact suffix--prefix overlap within a \(\pm 40\) bp window and the GC fraction of the detected overlap. These were complemented by basic alignment-quality indicators such as mapping quality. In total, the resulting classical feature matrix contained 23 numeric predictor variables per read.
+
+In parallel, for the deep learning experiments, the raw nucleotide sequence was retained as a separate input representation. Each read had fixed length \(L=150\), consistent with the simulated read length used throughout the study. For the convolutional neural network, sequences were one-hot encoded during both training and inference using four base channels corresponding to A, C, G, and T. Ambiguous bases were represented as all-zero vectors.
 
 \subsection{K-mer Composition Discontinuity}
 
-Each read was divided into left and right segments based on the inferred breakpoint. Normalized k-mer frequency profiles were computed for both segments, excluding ambiguous bases. Compositional differences were quantified using cosine difference and Jensen--Shannon divergence.
+To capture compositional shifts consistent with chimeric junctions, each read was divided into left and right segments at the inferred breakpoint, and k-mer composition was compared between the two sides. In this study, \(k=6\) was used. For each segment, normalized 6-mer frequency profiles were computed after excluding ambiguous bases. Two complementary measures were then derived: cosine difference, which summarizes directional dissimilarity between the segment-wise k-mer vectors, and Jensen--Shannon divergence, which quantifies the divergence between the corresponding k-mer distributions. These were recorded as \texttt{kmer\_cosine\_diff} and \texttt{kmer\_js\_divergence}, respectively.
 
 \subsection{Microhomology Features}
 
-A local window surrounding the inferred breakpoint was examined to identify the longest exact suffix--prefix overlap between the left and right segments. The overlap length was recorded as \texttt{microhomology\_length}, and its GC content as \texttt{microhomology\_gc}.
+A local breakpoint-centered window was examined to characterize short exact overlaps between the left and right sides of a read, which may arise during chimera formation. In the present work, a microhomology search window of \(\pm 40\) bp was used. Within this window, the longest exact suffix--prefix overlap between the left and right segments was identified and recorded as \texttt{microhomology\_length}. The GC content of the detected overlap, when present, was computed and stored as \texttt{microhomology\_gc}. These features were included to assess whether local sequence overlap contributed useful discriminatory signal for chimera detection.
 
 \subsection{Alignment Quality Features}
 
-General alignment quality measures, including mapping quality (\texttt{mapq}), were also included as predictors.
+General alignment quality measures were also incorporated as predictors. These included mapping quality (\texttt{mapq}), which is intended to capture whether chimeric reads exhibit different alignment irregularities relative to clean reads.
 
 \section{Classical Machine Learning Model Development}
 
 The extracted clean and chimeric feature matrices were merged into a single labelled dataset containing 23 numeric features. The dataset was partitioned into training (80\%) and test (20\%) subsets using stratified sampling.
 
-A benchmarking stage was conducted using multiple classification algorithms, including Logistic Regression, linear support vector machine (SVM), \(k\)-Nearest Neighbours, Gaussian Na\"ive Bayes, Random Forest, ExtraTrees, Bagging, Gradient Boosting, XGBoost, LightGBM, CatBoost, Multilayer Perceptron, and a dummy baseline. Model development was performed in Python using \texttt{scikit-learn} and related libraries.
+A benchmarking stage was conducted using multiple classification algorithms, including Logistic Regression, linear SVM, \(k\)-Nearest Neighbours, Gaussian Na\"ive Bayes, Random Forest, ExtraTrees, Bagging, Gradient Boosting, XGBoost, LightGBM, CatBoost, Multilayer Perceptron, and a dummy baseline. Model development was performed in Python using \texttt{scikit-learn} and related libraries.
 
 Five-fold stratified cross-validation was used on the training set. Performance was assessed using accuracy, precision, recall, F1-score for the chimeric class, and the area under the receiver operating characteristic curve (ROC--AUC).
+
 
 \section{Hyperparameter Optimization and Model Evaluation}
 
 Top-performing model families from the initial benchmark were selected for further optimization using randomized search with five-fold stratified cross-validation. Hyperparameters were tuned according to model type, including the number of estimators, depth, learning rate, regularization, and hidden-layer configuration where applicable.
 
-The best configuration for each model was selected based on mean cross-validation F1-score for the chimeric class. Tuned models were then retrained on the full training set and evaluated on the held-out test set. Final evaluation included accuracy, precision, recall, F1-score, ROC--AUC, and confusion matrices.
+Among the tuned feature-based models, the best validation performance was obtained by a \texttt{GradientBoostingClassifier} from \texttt{sklearn.ensemble}. The selected final configuration used \texttt{n\_estimators = 400}, \texttt{learning\_rate = 0.2}, \texttt{max\_depth = 3}, \texttt{min\_samples\_leaf = 4}, and \texttt{subsample = 1.0}. This model was then refit on the full training split and evaluated once on the held-out test split. Final evaluation on the held-out test set included accuracy, precision, recall, F1-score, ROC--AUC, and confusion matrix analysis. 
 
 \section{Feature Importance and Ablation}
 
-Feature importance analysis was performed using the Gradient Boosting model, which was identified as the best-performing classical machine learning model in the study. Two complementary approaches were applied: the model’s built-in feature importance scores and permutation importance computed on the held-out test set. To aid interpretation, features were also organized into conceptual families reflecting alignment structure, soft clipping, k-mer discontinuity, microhomology, and alignment quality.
+Feature importance analysis was performed using the tuned Gradient Boosting model. Two complementary approaches were applied. First, the model’s built-in feature importance scores were examined to identify predictors that contributed most strongly to the learned decision rules. Second, permutation importance was computed on the held-out test set to assess the effect of disrupting each feature on predictive performance. For interpretability, the predictors were also grouped into conceptual feature families corresponding to alignment structure, soft clipping, k-mer discontinuity, microhomology, and alignment quality.
 
-An ablation analysis was also performed by removing the microhomology-related features and retraining the Gradient Boosting model. Comparison of the full model and the microhomology-ablated variant enabled assessment of the specific contribution of microhomology to overall predictive performance.
+An ablation analysis was also conducted to examine the contribution of microhomology-related predictors. In this experiment, the features \texttt{microhomology\_length} and \texttt{microhomology\_gc} were removed, and the Gradient Boosting model was retrained under the same modelling procedure. Performance of the ablated model was then compared against that of the full model to determine the extent to which breakpoint-local overlap information contributed to chimera classification.
 
 \section{Deep Learning Model Development}
 
-In addition to feature-based models, sequence-based deep learning models were developed to classify reads directly from nucleotide sequence. Two architectures were implemented: a one-dimensional convolutional neural network (CNN) and a bidirectional gated recurrent unit (BiGRU) model.
+In addition to feature-based classical machine learning models, sequence-based deep learning models were developed to classify reads directly from nucleotide sequence. Two architectures were implemented in PyTorch: 1D CNN and a BiGRU model.
 
 \subsection{Input Preparation}
 
-For deep learning, read sequences were represented at a fixed length of 150 bp, consistent with the simulation settings used in the study.
-
-For the CNN, each nucleotide sequence was transformed into a one-hot encoded representation, where each base was encoded as a binary vector. For the BiGRU, sequences were converted into overlapping k-mer tokens and encoded as integer sequences suitable for embedding-based sequence modelling.
+For the CNN, each sequence was converted into a one-hot encoded representation with four base channels corresponding to A, C, G, and T. Ambiguous bases were encoded as all-zero vectors. For the BiGRU, sequences were transformed into overlapping k-mer tokens and encoded as integer sequences for embedding-based modelling. In the BiGRU configuration used in this work, \(k=4\) was applied. Since each read had length 150 bp, this produced \(150 - 4 + 1 = 147\) overlapping 4-mer tokens per read.
 
 \subsection{Convolutional Neural Network}
 
-The CNN was implemented in PyTorch as a one-dimensional sequence classifier. The architecture consisted of stacked one-dimensional convolutional layers followed by nonlinear activation and pooling operations, then fully connected layers for binary classification. This model was designed to capture local sequence motifs and short-range compositional patterns that may indicate chimeric junctions.
+The CNN architecture consisted of three convolutional blocks with 64, 128, and 256 filters, using kernel sizes of 7, 5, and 3, respectively. Rectified linear unit (ReLU) activations were applied after each convolution, and max-pooling was performed after the first two convolutional blocks. The convolutional feature maps were then reduced using adaptive max pooling and passed to a two-layer multilayer perceptron classification head with dimensions \(256 \rightarrow 128 \rightarrow 2\), with dropout set to 0.2.
+
+For the final experiments, the CNN was trained using mini-batches of 128 for up to 30 epochs, with learning rate \(1\times10^{-3}\) and weight decay \(1\times10^{-4}\). Model checkpoint selection was based on the best validation F1-score for the chimeric class. Training and evaluation were performed through the project deep learning pipeline using the sequence TSV files prepared from the labelled dataset.
 
 \subsection{Bidirectional GRU Model}
 
-The BiGRU model was likewise implemented in PyTorch. Tokenized k-mer sequences were first passed through an embedding layer, after which a bidirectional gated recurrent unit encoder was used to model sequential dependencies in both forward and reverse directions. The encoded representation was then passed to a classification head to predict whether a read was clean or chimeric.
+The BiGRU model was likewise implemented in PyTorch for sequence-based classification using tokenized k-mer input. Each integer-encoded 4-mer sequence was first passed through an embedding layer with embedding dimension 64. The embedded sequence was then processed by a BiGRU encoder with hidden size 256 and one recurrent layer. Bidirectional processing allowed the model to capture contextual dependencies in both forward and reverse sequence directions. The final sequence representation was obtained through last-state pooling and passed to a classification head for binary prediction.
+
+The BiGRU was trained for 30 epochs using a batch size of 128, learning rate \(1\times10^{-3}\), weight decay \(1\times10^{-4}\), and random seed 42. Model selection was based on the validation F1-score of the chimeric class. These same optimization settings were used both during five-fold cross-validation and during final held-out training and evaluation.
 
 \subsection{Training and Evaluation}
 
-Both deep learning models were trained on the same training split used for the classical machine learning experiments and evaluated on the same held-out test set. Model training was performed using mini-batch optimization for multiple epochs, and the best-performing model checkpoint was selected based on validation performance, with emphasis on the F1-score of the chimeric class. Final deep learning evaluation also included accuracy, precision, recall, F1-score, and ROC--AUC.
+Both deep learning models were trained on the same training split used for the classical machine learning experiments and were evaluated on the same held-out test split to ensure comparability across modelling approaches. Model training was performed using mini-batch optimization for multiple epochs, and the final reported checkpoint for each model was the one achieving the best validation F1-score for the chimeric class.
+
+For the CNN, the final reported model was trained using \texttt{PAIR\_train\_seq\_L150.tsv} and evaluated on \texttt{PAIR\_test\_seq\_L150.tsv} with 30 epochs and batch size 128. For the BiGRU, five-fold cross-validation was first conducted on fold-specific training and validation TSV files, after which the final held-out model was trained on the full training split and evaluated on the held-out test split using the same architectural and optimization settings.
 
 \section{Threshold-Based Read Filtering}
 
-The final trained models were applied as filtering tools by assigning each read a probability of belonging to the chimeric class. Reads exceeding a selected threshold were marked for removal. Read identifiers predicted as chimeric were collected, and both mates of each flagged pair were removed from the FASTQ files to preserve pairing structure.
+The final trained classifiers were also evaluated as practical filtering tools for read cleanup. Each read was assigned a probability of belonging to the chimeric class, and a user-specified threshold \(\tau \in [0,1]\) was used to determine whether the read should be removed. A read pair was retained if its assigned chimeric probability satisfied \(p < \tau\), and removed otherwise.
 
-Different probability thresholds were examined to assess the trade-off between chimera removal and retention of clean reads.
+To preserve mate consistency, filtering was performed at the pair level using a normalized base read identifier, with mate suffixes such as \texttt{/1} and \texttt{/2} removed before matching. This ensured that both mates of a read pair were either retained together or removed together in the output FASTQ files. 
 
 \section{Downstream Assembly Validation}
 
@@ -164,7 +190,14 @@ Comparative testing was performed across classical machine learning and deep lea
 
 All scripts, datasets, model outputs, and evaluation results were organized and version-controlled in a GitHub repository. Separate directories were maintained for references, simulated reads, alignments, extracted features, trained models, reports, and filtered outputs.
 
-The computational environment was standardized using Conda, with dependencies recorded in an \texttt{environment.yml} file. Analytical procedures, software versions, and command-line parameters were documented in the project \texttt{README}. Manuscript preparation was carried out using \LaTeX.
+The computational environment was standardized using Conda, with dependencies recorded in an \texttt{environment.yml} file. Analytical procedures, software versions, and command-line parameters were documented in the project \texttt{README}. Manuscript preparation was carried out using \LaTeX. Figure~\ref{fig:pipeline_cli} shows the command-line execution interface of the MitoChime pipeline used in the study.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{figures/pipeline.png}
+\caption{Command-line execution interface of the MitoChime pipeline.}
+\label{fig:pipeline_cli}
+\end{figure}
 
 \section{Calendar of Activities}
 
