@@ -380,36 +380,48 @@ Labels: \textcolor{MitoGreen}{clean = 0} \quad and \quad \textcolor{MitoRed}{chi
 \begin{frame}{Feature extraction}
 
 \centering
-\includegraphics[width=0.80\linewidth]{figures/feature_families.pdf}
+\includegraphics[width=0.88\linewidth]{figures/feature_families.pdf}
 
 \vspace{0.8em}
 
-\begin{columns}[T]
-\column{0.2\textwidth}
-\centering
-\small SA structure
+\begin{block}{Feature representation}
+Each read was converted into a set of 23 numeric predictors describing alignment structure, clipping behavior, sequence composition, microhomology, and mapping quality.
+\end{block}
 
-\column{0.2\textwidth}
-\centering
-\small Soft clipping
+\end{frame}
+% -------------------------------------------------
+% Slide 12.5: Dataset representation
+% -------------------------------------------------
+\begin{frame}{Dataset representation}
 
-\column{0.2\textwidth}
-\centering
-\small K-mer shift
+\begin{center}
+\large
+The labelled reads were prepared in two dataset formats.
+\end{center}
 
-\column{0.2\textwidth}
-\centering
-\small Microhomology
+\vspace{0.6em}
 
-\column{0.2\textwidth}
+\begin{columns}[T,onlytextwidth]
+
+\column{0.49\textwidth}
 \centering
-\small MAPQ
+\includegraphics[width=\linewidth]{figures/sequence_dataset.png}
+
+\vspace{0.4em}
+
+{\small \textbf{Sequence dataset}\\
+For sequence-based deep learning models}
+
+\column{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/feature_matrix.png}
+
+\vspace{0.4em}
+
+{\small \textbf{Feature matrix}\\
+For machine learning models}
+
 \end{columns}
-
-\vspace{0.8em}
-
-\small
-The classical machine learning models used 23 numeric read-level predictors.
 
 \end{frame}
 

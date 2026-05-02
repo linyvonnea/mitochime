@@ -343,70 +343,181 @@ ax.text(6.95, 2.35, "GB / CNN / BiGRU", ha="center", fontsize=10.5, color=GRAY)
 ax.text(11.7, 2.35, "SPAdes + Bandage", ha="center", fontsize=10.5, color=GRAY)
 
 save(fig, "methodology.png")
-
-
 # -------------------------------------------------
 # 6. Feature families
 # -------------------------------------------------
-fig, ax = plt.subplots(figsize=(12, 5.2))
+fig, ax = plt.subplots(figsize=(13.5, 5.4))
 clean(ax)
-ax.set_xlim(0, 12)
-ax.set_ylim(0, 5.2)
+ax.set_xlim(0, 13.5)
+ax.set_ylim(0, 5.4)
 
-ax.text(0.3, 4.75, "Evidence extracted from each read", fontsize=17, weight="bold", color=NAVY)
+ax.text(
+    0.3,
+    4.95,
+    "Read-level feature groups",
+    fontsize=17,
+    weight="bold",
+    color=NAVY,
+)
+
+# Read box
+read_x, read_y = 5.75, 3.85
+read_w, read_h = 2.0, 0.65
 
 ax.add_patch(
-    FancyBboxPatch((0.55, 2.35), 1.45, 0.62, boxstyle="round,pad=0.08", fc=NAVY, ec="none")
-)
-ax.text(1.275, 2.66, "Read", ha="center", va="center", color=WHITE, fontsize=12, weight="bold")
-
-labels = ["SA structure", "Soft clipping", "K-mer shift", "Microhomology", "MAPQ"]
-for i, lab in enumerate(labels):
-    x = 2.75 + i * 1.72
-    ax.add_patch(
-        FancyArrowPatch(
-            (2.08, 2.66),
-            (x - 0.63, 2.66),
-            arrowstyle="-|>",
-            mutation_scale=10,
-            lw=1.0,
-            color=MID_GRAY,
-            alpha=0.7,
-        )
+    FancyBboxPatch(
+        (read_x, read_y),
+        read_w,
+        read_h,
+        boxstyle="round,pad=0.08",
+        fc=NAVY,
+        ec="none",
     )
+)
+ax.text(
+    read_x + read_w / 2,
+    read_y + read_h / 2,
+    "Read",
+    ha="center",
+    va="center",
+    color=WHITE,
+    fontsize=12,
+    weight="bold",
+)
+
+# Feature group boxes
+labels = [
+    "SA\nstructure",
+    "Soft\nclipping",
+    "K-mer\nshift",
+    "Micro-\nhomology",
+    "MAPQ",
+]
+
+box_w = 1.65
+box_h = 0.82
+start_x = 1.15
+feature_y = 2.35
+gap = 0.75
+
+centers = []
+
+for i, lab in enumerate(labels):
+    x = start_x + i * (box_w + gap)
+    cx = x + box_w / 2
+    centers.append(cx)
+
     ax.add_patch(
         FancyBboxPatch(
-            (x - 0.61, 2.30),
-            1.22,
-            0.72,
+            (x, feature_y),
+            box_w,
+            box_h,
             boxstyle="round,pad=0.08",
             fc=SOFT_BLUE,
             ec=BLUE,
             lw=1.2,
         )
     )
-    ax.text(x, 2.66, lab, ha="center", va="center", color=NAVY, fontsize=10.2, weight="bold")
+    ax.text(
+        cx,
+        feature_y + box_h / 2,
+        lab,
+        ha="center",
+        va="center",
+        color=NAVY,
+        fontsize=10.5,
+        weight="bold",
+        linespacing=1.05,
+    )
+
+# Branch line from Read to feature groups
+read_center_x = read_x + read_w / 2
+read_bottom_y = read_y
+
+branch_y = 3.45
+feature_top_y = feature_y + box_h
+
+# vertical from read to branch
+ax.plot(
+    [read_center_x, read_center_x],
+    [read_bottom_y, branch_y],
+    color=MID_GRAY,
+    lw=1.2,
+)
+
+# horizontal branch line
+ax.plot(
+    [centers[0], centers[-1]],
+    [branch_y, branch_y],
+    color=MID_GRAY,
+    lw=1.2,
+)
+
+# vertical lines to each feature group
+for cx in centers:
+    ax.plot(
+        [cx, cx],
+        [branch_y, feature_top_y],
+        color=MID_GRAY,
+        lw=1.2,
+    )
+
+# Predictor vector box
+vector_x = 3.95
+vector_y = 0.75
+vector_w = 5.6
+vector_h = 0.70
 
 ax.add_patch(
     FancyBboxPatch(
-        (4.15, 0.72),
-        3.75,
-        0.62,
+        (vector_x, vector_y),
+        vector_w,
+        vector_h,
         boxstyle="round,pad=0.10",
         fc=LIGHT_GRAY,
         ec=MID_GRAY,
         lw=1.2,
     )
 )
-ax.text(6.03, 1.03, "23 numeric predictors", ha="center", va="center", fontsize=12.5, color=NAVY, weight="bold")
 
-for x in [4.5, 6.3, 8.1]:
-    ax.add_patch(
-        FancyArrowPatch((x, 2.18), (x, 1.45), arrowstyle="-|>", mutation_scale=11, lw=1.1, color=MID_GRAY)
+ax.text(
+    vector_x + vector_w / 2,
+    vector_y + vector_h / 2,
+    "Combined into 23 numeric read-level predictors",
+    ha="center",
+    va="center",
+    fontsize=12,
+    color=NAVY,
+    weight="bold",
+)
+
+# Lines from feature groups to predictor vector
+merge_y = 1.85
+vector_top_y = vector_y + vector_h
+
+ax.plot(
+    [centers[0], centers[-1]],
+    [merge_y, merge_y],
+    color=MID_GRAY,
+    lw=1.2,
+)
+
+for cx in centers:
+    ax.plot(
+        [cx, cx],
+        [feature_y, merge_y],
+        color=MID_GRAY,
+        lw=1.2,
     )
 
-save(fig, "feature_families.pdf")
+ax.plot(
+    [read_center_x, read_center_x],
+    [merge_y, vector_top_y],
+    color=MID_GRAY,
+    lw=1.2,
+)
 
+save(fig, "feature_families.pdf")
 
 # -------------------------------------------------
 # 7. Model architecture
