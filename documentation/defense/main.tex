@@ -491,7 +491,10 @@ The study evaluated both prediction quality and downstream utility.
 \centering
 \includegraphics[width=0.72\linewidth]{figures/gb_cnn_rnn_compare.png}
 
-\vspace{0.5em}
+
+\end{frame}
+
+\begin{frame}{Classification performance}
 
 \begin{table}
 \centering
@@ -514,22 +517,11 @@ BiGRU & 0.9523 & 0.9849 & 5.51 min \\
 % -------------------------------------------------
 \begin{frame}{Model behavior}
 
-\begin{columns}[T]
-\column{0.33\textwidth}
-\metriccard{Gradient Boosting}{Conservative}{Higher read retention}
-
-\column{0.33\textwidth}
-\metriccard{CNN}{Sensitive}{More aggressive filtering}
-
-\column{0.33\textwidth}
-\metriccard{BiGRU}{Highest F1}{Best read-level performance}
-\end{columns}
-
-\vspace{1.2em}
-
-\begin{block}{Interpretation}
-BiGRU achieved the best classification performance, but assembly outcomes also depended on how much read support remained after filtering.
-\end{block}
+\begin{itemize}
+    \item \textbf{Gradient Boosting} — Conservative filtering; higher read retention
+    \item \textbf{CNN} — Sensitive model; more aggressive filtering
+    \item \textbf{BiGRU} — Highest F1 score; best read-level performance
+\end{itemize}
 
 \end{frame}
 
@@ -555,11 +547,6 @@ BiGRU achieved the best classification performance, but assembly outcomes also d
 \small BiGRU
 \end{columns}
 
-\vspace{0.8em}
-
-\begin{block}{Main pattern}
-Gradient Boosting missed more chimeras but avoided over-filtering, while CNN and BiGRU detected more chimeras but removed more reads.
-\end{block}
 
 \end{frame}
 
@@ -568,30 +555,43 @@ Gradient Boosting missed more chimeras but avoided over-filtering, while CNN and
 % -------------------------------------------------
 \begin{frame}{Feature importance}
 
-\begin{columns}
-\column{0.55\textwidth}
 \centering
-\includegraphics[width=0.95\linewidth]{figures/gradient_imp_pair.png}
+\includegraphics[
+    width=\textwidth,
+    height=0.72\textheight,
+    keepaspectratio
+]{figures/gradient_imp_pair.png}
 
-\column{0.42\textwidth}
-\large
-Most informative predictors:\\[0.5em]
+\vspace{0.35em}
 
-\normalsize
-\begin{itemize}
-    \item total clipped bases,
-    \item k-mer Jensen--Shannon divergence,
-    \item k-mer cosine difference,
-    \item left soft clipping.
-\end{itemize}
+\begin{minipage}{0.96\textwidth}
+\footnotesize
+Most informative predictors: 
+\textbf{total clipped bases}, 
+\textbf{k-mer Jensen--Shannon divergence}, 
+\textbf{k-mer cosine difference}, and 
+\textbf{left soft clipping}.
+\end{minipage}
 
-\vspace{0.8em}
+\end{frame}
 
-\begin{block}{Interpretation}
-Chimeric reads were mainly identified through structural irregularities and sequence composition shifts.
-\end{block}
+\begin{frame}{Feature Family Importance}
 
-\end{columns}
+\begin{table}
+\centering
+\small
+\begin{tabular}{lrrr}
+\hline
+\textbf{Family} & \textbf{Importance Sum} & \textbf{Importance Mean} & \textbf{nFeatures} \\
+\hline
+Clipping & 0.133830 & 0.033458 & 4 \\
+K-mer jump & 0.096264 & 0.048132 & 2 \\
+Other & 0.003676 & 0.001225 & 3 \\
+Microhomology & 0.000347 & 0.000174 & 2 \\
+SA structure & -0.000859 & -0.000066 & 13 \\
+\hline
+\end{tabular}
+\end{table}
 
 \end{frame}
 
@@ -603,7 +603,7 @@ Chimeric reads were mainly identified through structural irregularities and sequ
 \begin{columns}
 \column{0.58\textwidth}
 \centering
-\includegraphics[width=0.95\linewidth]{figures/assembly_20k_50.pdf}
+\includegraphics[width=0.80\linewidth]{figures/assembly_20k_50.png}
 
 \column{0.38\textwidth}
 \large
@@ -630,7 +630,7 @@ Chimeric reads were mainly identified through structural irregularities and sequ
 \begin{columns}
 \column{0.58\textwidth}
 \centering
-\includegraphics[width=0.95\linewidth]{figures/assembly_3200_50.pdf}
+\includegraphics[width=0.80\linewidth]{figures/assembly_3200_50.png}
 
 \column{0.38\textwidth}
 \large
@@ -653,28 +653,25 @@ The safest model depends on coverage and chimera proportion.
 % -------------------------------------------------
 % Slide 22: Recommendations
 % -------------------------------------------------
-\begin{frame}{Recommendations}
+\begin{frame}{Recommendations: Practical Use}
 
-\begin{columns}[T]
-\column{0.48\textwidth}
-\begin{block}{For practical use}
 \begin{itemize}
-    \item Use Gradient Boosting when read depth is low.
-    \item Use BiGRU when read-level classification is the priority.
-    \item Use CNN cautiously under low coverage.
+    \item Use \textbf{Gradient Boosting} when read depth is low.
+    \item Use \textbf{BiGRU} when read-level classification is the priority.
+    \item \textbf{CNN} may be useful in high-coverage and high-chimera conditions.
+    
 \end{itemize}
-\end{block}
 
-\column{0.48\textwidth}
-\begin{block}{For future work}
+\end{frame}
+
+\begin{frame}{Recommendations: Future Work}
+
 \begin{itemize}
     \item Test on real mitochondrial datasets.
     \item Evaluate realistic class imbalance.
     \item Add varied sequencing-error profiles.
     \item Explore hybrid feature-sequence models.
 \end{itemize}
-\end{block}
-\end{columns}
 
 \end{frame}
 
