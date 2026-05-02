@@ -137,80 +137,76 @@ Division of Physical Sciences and Mathematics
 % -------------------------------------------------
 % Slide 2: Hook
 % -------------------------------------------------
-\begin{frame}{Opening question: which read is artificial?}
+\begin{frame}{Introduction}
 
-\begin{columns}[T]
-\column{0.58\textwidth}
 \centering
-\includegraphics[width=0.92\linewidth]{figures/impostor_reads.pdf}
 
-\column{0.38\textwidth}
-\begin{block}{Framing question}
-Which read shows evidence of being artificially joined?
+\begin{block}{Four simulated \textit{Sardinella lemuru} mtDNA short reads}
+\small
+\ttfamily
+\begin{tabular}{p{0.13\textwidth} p{0.76\textwidth}}
+Read 1 &
+TCAGCCTTTACCAAGGCCCCCACCCTTGCGGCCCTCGCCTGCTTAATTTTACTTTCTTA... \\[0.8em]
+
+Read 2 &
+TAAGTAAGAACTAGTAGGATCGAGGCCTTCCCGTCTAGATAGGCGTTGGCTTAATTGCA... \\[0.8em]
+
+Read 3 &
+ATAGGGCAGAAGGCCTAGCATGTTAATGGTAAATAGGAAAACCATTAGAGACGTAAATG... \\[0.8em]
+
+Read 4 &
+GAGGTGGCGAAAGTCAGCGTGGTTCCCAGTCCAAGGCTCATCAGCAAGACGGTTAGGCT...
+\end{tabular}
 \end{block}
 
-\vspace{0.8em}
+\vspace{0.6em}
 
-\begin{itemize}
-    \item Sequencing datasets contain thousands of reads.
-    \item Manual inspection is not practical.
-    \item The goal is automated read-level detection.
-\end{itemize}
-
-\end{columns}
+\normalfont
+\large
+\textbf{Question:} Out of these short reads, which ones are chimeric?
 
 \end{frame}
 
 % -------------------------------------------------
 % Slide 3: Real-world problem
 % -------------------------------------------------
-\begin{frame}{Real-world problem}
+\begin{frame}{The Problem}
 
-\begin{columns}
-\column{0.48\textwidth}
 \centering
-\includegraphics[width=0.92\linewidth]{figures/pcr_chimera.pdf}
 
-\column{0.48\textwidth}
-\Large
-PCR amplification can produce\\
-\keyword{artificial hybrid reads}.\\[0.8em]
+\includegraphics[
+    width=0.88\textwidth,
+    height=0.72\textheight,
+    keepaspectratio
+]{figures/pcr_image.png}
 
-\normalsize
-These reads may be included in sequencing data and mislead mitochondrial genome assembly.
+\vspace{0.6em}
 
-\vspace{1em}
-
-\begin{block}{Core issue}
-Some reads appear valid but do not represent the original mitochondrial sequence.
-\end{block}
-
-\end{columns}
+\small
+\textit{Schematic illustration of PCR-induced chimera formation through incomplete extension and template switching.}
 
 \end{frame}
 
 % -------------------------------------------------
 % Slide 4: Implications
 % -------------------------------------------------
-\begin{frame}{Why the problem matters}
+\begin{frame}{Implications}
 
-\begin{columns}[T]
-\column{0.33\textwidth}
-\metriccard{Assembly}{Fragmentation}{Contigs may break or branch}
+\begin{block}{Assembly quality}
+\begin{itemize}
+    \item Fragmented or failed mitochondrial assemblies
+    \item Reduced reliability of mitochondrial genomics workflows
+\end{itemize}
+\end{block}
 
-\column{0.33\textwidth}
-\metriccard{Analysis}{False signals}{Incorrect junctions may appear}
+\vspace{0.8em}
 
-\column{0.33\textwidth}
-\metriccard{Interpretation}{Lower reliability}{Downstream conclusions weaken}
-\end{columns}
-
-\vspace{1em}
-
-\begin{center}
-\large
-For \textit{Sardinella lemuru}, unreliable mitochondrial assemblies may affect fisheries genetics, population structure, and evolutionary analysis.
-\end{center}
+\begin{block}{Research impact}
+\begin{itemize}
+    \item Limited downstream analyses in fisheries, population genetics, and evolution
+    \item Wasted sequencing effort, computing time, and researcher labor
+\end{itemize}
+\end{block}
 
 \end{frame}
 
@@ -219,51 +215,47 @@ For \textit{Sardinella lemuru}, unreliable mitochondrial assemblies may affect f
 % -------------------------------------------------
 \begin{frame}{Existing approaches}
 
-\begin{columns}[T]
-\column{0.32\textwidth}
-\begin{block}{Reference-based}
-Compares query sequences against known non-chimeric references.
-\end{block}
+\scriptsize
+\renewcommand{\arraystretch}{1.35}
 
-\column{0.32\textwidth}
-\begin{block}{De novo}
-Uses internal dataset patterns such as abundance and similarity.
-\end{block}
+\begin{table}
+\centering
+\begin{tabular}{p{0.23\textwidth} p{0.30\textwidth} p{0.37\textwidth}}
+\hline
+\textbf{Tool / Approach} & \textbf{Main focus} & \textbf{Gap for this study} \\
+\hline
+UCHIME / UCHIME2 &
+Amplicon chimeras &
+Reference/abundance dependent \\
 
-\column{0.32\textwidth}
-\begin{block}{Tool-based}
-Includes UCHIME, UCHIME2, DADA2, CATCh, and ChimPipe.
-\end{block}
-\end{columns}
+DADA2 &
+ASV-level filtering &
+Not read-level mtDNA filtering \\
 
-\vspace{1.2em}
+CATCh &
+16S rRNA ensemble ML &
+Not for mtDNA; inconsistent \\
+
+ChimPipe &
+RNA-seq fusion/chimera detection &
+Not PCR-induced mtDNA artifacts \\
+
+DL-based tools &
+DNA sequence motif prediction &
+Few to no tools for chimera detection \\
+
+\textbf{MitoChime} &
+\textbf{Read-level mtDNA chimeras} &
+\textbf{Pre-assembly ML/DL filtering} \\
+\hline
+\end{tabular}
+\end{table}
+
+\vspace{0.5em}
 
 \centering
-\includegraphics[width=0.76\linewidth]{figures/tool_gap_matrix.pdf}
-
-\end{frame}
-
-% -------------------------------------------------
-% Slide 6: Gap
-% -------------------------------------------------
-\begin{frame}{Research gap}
-
-\Large
-Most existing tools were designed for:\\[0.5em]
-
-\normalsize
-\begin{itemize}
-    \item microbial amplicon or ASV/OTU-level analysis,
-    \item reference-based or abundance-based detection,
-    \item community-level filtering,
-    \item biological chimeras or other sequencing contexts.
-\end{itemize}
-
-\vspace{1em}
-
-\begin{block}{Gap addressed by this study}
-There is limited support for direct \keyword{read-level detection} of PCR-induced chimeras in single-species mitochondrial Illumina data.
-\end{block}
+\footnotesize
+Most existing tools target amplicon, ASV, or RNA-seq chimeras; MitoChime targets PCR-induced mitochondrial short-read artifacts.
 
 \end{frame}
 
