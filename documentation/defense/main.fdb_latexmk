@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1777822697.9682 "/Users/yvonnelin/Desktop/mitochime/documentation/defense/main.tex" "main.pdf" "main" 1777822702.17817 0
-  "/Users/yvonnelin/Desktop/mitochime/documentation/defense/main.tex" 1777822697.62072 18188 c746f6c3b85a8cd5e6d191187f87321d ""
+["pdflatex"] 1777824303.7762 "/Users/yvonnelin/Desktop/mitochime/documentation/defense/main.tex" "main.pdf" "main" 1777824307.86024 0
+  "/Users/yvonnelin/Desktop/mitochime/documentation/defense/main.tex" 1777824292.4544 18188 c746f6c3b85a8cd5e6d191187f87321d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1202520719 2840 216e6e45ad352e2456e1149f28885bee ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -251,10 +251,10 @@
   "figures/sequence_dataset.png" 1777704362.71302 105455 569fa02ea50557c9471056574267c2b2 ""
   "figures/training_cnn.png" 1777822652.00667 141808 3684dafec74eda442ebd5e7a1465f065 ""
   "figures/training_rnn.png" 1777822652.00799 108154 01f826e0653e6c69e61e31e389b4385e ""
-  "main.aux" 1777822702.05785 4130 10406d25ed34820ac8c4fcfaec72abcd "pdflatex"
-  "main.nav" 1777822702.05873 2783 f8b0d1eaf383f71e4268670ac899f7e1 "pdflatex"
-  "main.out" 1777822698.648 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1777822697.62072 18188 c746f6c3b85a8cd5e6d191187f87321d ""
+  "main.aux" 1777824307.74042 4130 10406d25ed34820ac8c4fcfaec72abcd "pdflatex"
+  "main.nav" 1777824307.74133 2783 f8b0d1eaf383f71e4268670ac899f7e1 "pdflatex"
+  "main.out" 1777824304.38778 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1777824292.4544 18188 c746f6c3b85a8cd5e6d191187f87321d ""
   (generated)
   "main.aux"
   "main.log"
