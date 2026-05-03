@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.3)  3 MAY 2026 13:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.3)  3 MAY 2026 17:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1329,80 +1329,93 @@ Overfull \vbox (14.82652pt too high) detected at line 447
 ] [15
 
 ]
-<figures/held_out_compare.png, id=395, 519.44063pt x 293.59688pt>
-File: figures/held_out_compare.png Graphic file (type png)
-<use figures/held_out_compare.png>
-Package pdftex.def Info: figures/held_out_compare.png  used on input line 499.
-(pdftex.def)             Requested size: 312.00822pt x 176.35211pt.
+<figures/training_cnn.png, id=395, 702.82574pt x 413.1435pt>
+File: figures/training_cnn.png Graphic file (type png)
+<use figures/training_cnn.png>
+Package pdftex.def Info: figures/training_cnn.png  used on input line 504.
+(pdftex.def)             Requested size: 195.00348pt x 114.6266pt.
+<figures/training_rnn.png, id=396, 658.25925pt x 383.63326pt>
+File: figures/training_rnn.png Graphic file (type png)
+<use figures/training_rnn.png>
+Package pdftex.def Info: figures/training_rnn.png  used on input line 504.
+(pdftex.def)             Requested size: 195.00348pt x 113.64497pt.
  [16
 
- <./figures/held_out_compare.png (PNG copy)>] [17
+ <./figures/training_cnn.png> <./figures/training_rnn.png>]
+<figures/held_out_compare.png, id=404, 519.44063pt x 293.59688pt>
+File: figures/held_out_compare.png Graphic file (type png)
+<use figures/held_out_compare.png>
+Package pdftex.def Info: figures/held_out_compare.png  used on input line 515.
+(pdftex.def)             Requested size: 312.00822pt x 176.35211pt.
+ [17
 
-] [18
+ <./figures/held_out_compare.png (PNG copy)>] [18
+
+] [19
 
 ]
-<figures/gb_confusion_matrix.png, id=411, 770.88pt x 770.88pt>
+<figures/gb_confusion_matrix.png, id=421, 770.88pt x 770.88pt>
 File: figures/gb_confusion_matrix.png Graphic file (type png)
 <use figures/gb_confusion_matrix.png>
-Package pdftex.def Info: figures/gb_confusion_matrix.png  used on input line 55
-5.
+Package pdftex.def Info: figures/gb_confusion_matrix.png  used on input line 57
+1.
 (pdftex.def)             Requested size: 128.703pt x 128.69533pt.
-<figures/cnn_confusion_matrix.png, id=412, 770.88pt x 770.88pt>
+<figures/cnn_confusion_matrix.png, id=422, 770.88pt x 770.88pt>
 File: figures/cnn_confusion_matrix.png Graphic file (type png)
 <use figures/cnn_confusion_matrix.png>
 Package pdftex.def Info: figures/cnn_confusion_matrix.png  used on input line 5
-55.
+71.
 (pdftex.def)             Requested size: 128.703pt x 128.69533pt.
-<figures/rnn_confusion_matrix.png, id=413, 770.88pt x 770.88pt>
+<figures/rnn_confusion_matrix.png, id=423, 770.88pt x 770.88pt>
 File: figures/rnn_confusion_matrix.png Graphic file (type png)
 <use figures/rnn_confusion_matrix.png>
 Package pdftex.def Info: figures/rnn_confusion_matrix.png  used on input line 5
-55.
+71.
 (pdftex.def)             Requested size: 128.703pt x 128.69533pt.
- [19
+ [20
 
  <./figures/gb_confusion_matrix.png (PNG copy)> <./figures/cnn_confusion_matrix
 .png (PNG copy)> <./figures/rnn_confusion_matrix.png (PNG copy)>]
-<figures/gb_features.png, id=420, 519.44063pt x 293.59688pt>
+<figures/gb_features.png, id=429, 519.44063pt x 293.59688pt>
 File: figures/gb_features.png Graphic file (type png)
 <use figures/gb_features.png>
-Package pdftex.def Info: figures/gb_features.png  used on input line 580.
+Package pdftex.def Info: figures/gb_features.png  used on input line 596.
 (pdftex.def)             Requested size: 310.40654pt x 175.44716pt.
- [20
+ [21
 
- <./figures/gb_features.png (PNG copy)>] [21
+ <./figures/gb_features.png (PNG copy)>] [22
 
 ]
-<figures/assembly_20k_50.png, id=431, 385.44pt x 410.7345pt>
+<figures/assembly_20k_50.png, id=440, 385.44pt x 410.7345pt>
 File: figures/assembly_20k_50.png Graphic file (type png)
 <use figures/assembly_20k_50.png>
-Package pdftex.def Info: figures/assembly_20k_50.png  used on input line 627.
+Package pdftex.def Info: figures/assembly_20k_50.png  used on input line 643.
 (pdftex.def)             Requested size: 201.07301pt x 214.2663pt.
 
-Overfull \vbox (2.00089pt too high) detected at line 627
- []
-
-[22
-
- <./figures/assembly_20k_50.png>]
-<figures/assembly_3200_50.png, id=438, 367.3725pt x 401.70074pt>
-File: figures/assembly_3200_50.png Graphic file (type png)
-<use figures/assembly_3200_50.png>
-Package pdftex.def Info: figures/assembly_3200_50.png  used on input line 655.
-(pdftex.def)             Requested size: 201.07301pt x 219.86343pt.
-
-Overfull \vbox (7.59802pt too high) detected at line 655
+Overfull \vbox (2.00089pt too high) detected at line 643
  []
 
 [23
 
- <./figures/assembly_3200_50.png>] [24
+ <./figures/assembly_20k_50.png>]
+<figures/assembly_3200_50.png, id=447, 367.3725pt x 401.70074pt>
+File: figures/assembly_3200_50.png Graphic file (type png)
+<use figures/assembly_3200_50.png>
+Package pdftex.def Info: figures/assembly_3200_50.png  used on input line 671.
+(pdftex.def)             Requested size: 201.07301pt x 219.86343pt.
 
-] [25
+Overfull \vbox (7.59802pt too high) detected at line 671
+ []
+
+[24
+
+ <./figures/assembly_3200_50.png>] [25
 
 ] [26
 
 ] [27
+
+] [28
 
 ]
 \tf@nav=\write6
@@ -1423,10 +1436,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25851 strings out of 467867
- 520287 string characters out of 5417367
+ 25869 strings out of 467867
+ 520754 string characters out of 5417367
  881903 words of memory out of 5000000
- 54138 multiletter control sequences out of 15000+600000
+ 54154 multiletter control sequences out of 15000+600000
  727498 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,12n,123p,381b,785s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1441,9 +1454,9 @@ ic/lm/lmsso12.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/lm/lmsy10.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/lm/lmtt10.pfb><C:/Users/Duranne/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (27 pages, 1159168 bytes).
+Output written on main.pdf (28 pages, 1366476 bytes).
 PDF statistics:
- 538 PDF objects out of 1000 (max. 8388607)
- 55 named destinations out of 1000 (max. 500000)
- 726 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 547 PDF objects out of 1000 (max. 8388607)
+ 57 named destinations out of 1000 (max. 500000)
+ 736 words of extra memory for PDF output out of 10000 (max. 10000000)
 
