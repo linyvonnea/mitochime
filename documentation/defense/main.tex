@@ -605,6 +605,11 @@ BiGRU & 0.9523 & 0.9849 & 5.51 min \\
 \small BiGRU
 \end{columns}
 
+\vspace{0.5em}
+
+\centering
+\footnotesize
+\textit{\textit{These classification results were reviewed with PGC Visayas and were considered suitable for the intended mitochondrial assembly workflow.}}
 
 \end{frame}
 
@@ -714,10 +719,10 @@ The safest model depends on coverage and chimera proportion.
 \begin{frame}{Recommendations: Practical Use}
 
 \begin{itemize}
-    \item Use \textbf{Gradient Boosting} when read depth is low.
-    \item Use \textbf{BiGRU} when read-level classification is the priority.
+    \item Use \textbf{Gradient Boosting} when read depth is low or interpretability is important.
+    \item Use \textbf{BiGRU} when read-level classification performance is the priority.
     \item \textbf{CNN} may be useful in high-coverage and high-chimera conditions.
-    
+    \item Deep learning models performed better, but their black-box nature makes interpretability a tradeoff.
 \end{itemize}
 
 \end{frame}
@@ -774,5 +779,114 @@ The safest model depends on coverage and chimera proportion.
 
 \end{frame}
 }
+
+
+
+% -------------------------------------------------
+% Appendix
+% -------------------------------------------------
+\appendix
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[MitoNavy] (current page.south west) rectangle (current page.north east);
+    \node[align=center,text=white] at (current page.center) {
+        {\Huge \textbf{Appendix}}\\[0.8em]
+        {\large Supplementary exploratory data analysis figures}
+    };
+\end{tikzpicture}
+\end{frame}
+}
+
+% -------------------------------------------------
+% Appendix Slide: EDA Summary
+% -------------------------------------------------
+\begin{frame}{Appendix: EDA Summary}
+
+\centering
+\includegraphics[
+    width=0.95\textwidth,
+    height=0.78\textheight,
+    keepaspectratio
+]{figures/eda_summary.png}
+
+\end{frame}
+
+% -------------------------------------------------
+% Appendix Slide: Feature Boxplots
+% -------------------------------------------------
+\begin{frame}{Appendix: Feature Boxplots}
+
+\centering
+\includegraphics[
+    width=0.95\textwidth,
+    height=0.78\textheight,
+    keepaspectratio
+]{figures/boxplots.png}
+
+\end{frame}
+
+% -------------------------------------------------
+% Appendix Slide: 3,200 reads
+% -------------------------------------------------
+\begin{frame}{Appendix: External Assembly Graphs (3,200 reads)}
+
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/3200_5.png} &
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/3200_10.png} \\
+
+{\scriptsize 5\% chimeras} & {\scriptsize 10\% chimeras} \\[0.6em]
+
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/3200_15.png} &
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/3200_50.png} \\
+
+{\scriptsize 15\% chimeras} & {\scriptsize 50\% chimeras}
+\end{tabular}
+
+\end{frame}
+
+% -------------------------------------------------
+% Appendix Slide: 10,000 reads
+% -------------------------------------------------
+\begin{frame}{Appendix: External Assembly Graphs (10,000 reads)}
+
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/10k_5.png} &
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/10k_10.png} \\
+
+{\scriptsize 5\% chimeras} & {\scriptsize 10\% chimeras} \\[0.6em]
+
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/10k_15.png} &
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/10k_50.png} \\
+
+{\scriptsize 15\% chimeras} & {\scriptsize 50\% chimeras}
+\end{tabular}
+
+\end{frame}
+
+% -------------------------------------------------
+% Appendix Slide: 20,000 reads
+% -------------------------------------------------
+\begin{frame}{Appendix: External Assembly Graphs (20,000 reads)}
+
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/20k_5.png} &
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/20k_10.png} \\
+
+{\scriptsize 5\% chimeras} & {\scriptsize 10\% chimeras} \\[0.6em]
+
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/20k_15.png} &
+\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/20k_50.png} \\
+
+{\scriptsize 15\% chimeras} & {\scriptsize 50\% chimeras}
+\end{tabular}
+
+\end{frame}
+
 
 \end{document}
