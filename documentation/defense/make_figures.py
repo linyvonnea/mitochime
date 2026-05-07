@@ -388,8 +388,8 @@ ax.text(
 # Feature group boxes
 labels = [
     "SA\nstructure",
-    "Soft\nclipping",
-    "K-mer\nshift",
+    "Clippings",
+    "Kmer\nShift",
     "Micro-\nhomology",
     "MAPQ",
 ]
