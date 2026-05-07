@@ -781,7 +781,6 @@ The safest model depends on coverage and chimera proportion.
 }
 
 
-
 % -------------------------------------------------
 % Appendix
 % -------------------------------------------------
@@ -794,11 +793,43 @@ The safest model depends on coverage and chimera proportion.
     \fill[MitoNavy] (current page.south west) rectangle (current page.north east);
     \node[align=center,text=white] at (current page.center) {
         {\Huge \textbf{Appendix}}\\[0.8em]
-        {\large Supplementary exploratory data analysis figures}
+        {\large Supplementary model settings, EDA figures, and assembly validation}
     };
 \end{tikzpicture}
 \end{frame}
 }
+% -------------------------------------------------
+% Appendix Slide: Final Model Parameters
+% -------------------------------------------------
+\begin{frame}{Appendix: Final Model Parameters}
+
+\scriptsize
+\renewcommand{\arraystretch}{1.45}
+
+\begin{table}
+\centering
+\begin{tabular}{p{0.20\textwidth} p{0.28\textwidth} p{0.43\textwidth}}
+\toprule
+\textbf{Model} & \textbf{Input} & \textbf{Parameters} \\
+\midrule
+
+Gradient Boosting &
+23 engineered features &
+400 estimators; learning rate = 0.2; max depth = 3; min samples leaf = 4 \\
+
+1D CNN &
+One-hot DNA sequence, $L = 150$ &
+Conv filters: 64 $\rightarrow$ 128 $\rightarrow$ 256; kernels: 7, 5, 3; dropout = 0.2 \\
+
+BiGRU &
+4-mer tokens, 147 tokens/read &
+embedding = 64; hidden = 256; bidirectional; 1 layer \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
 
 % -------------------------------------------------
 % Appendix Slide: EDA Summary
@@ -835,13 +866,29 @@ The safest model depends on coverage and chimera proportion.
 
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/3200_5.png} &
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/3200_10.png} \\
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/3200_5.png} &
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/3200_10.png} \\
 
 {\scriptsize 5\% chimeras} & {\scriptsize 10\% chimeras} \\[0.6em]
 
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/3200_15.png} &
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/3200_50.png} \\
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/3200_15.png} &
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/3200_50.png} \\
 
 {\scriptsize 15\% chimeras} & {\scriptsize 50\% chimeras}
 \end{tabular}
@@ -855,13 +902,29 @@ The safest model depends on coverage and chimera proportion.
 
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/10k_5.png} &
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/10k_10.png} \\
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/10k_5.png} &
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/10k_10.png} \\
 
 {\scriptsize 5\% chimeras} & {\scriptsize 10\% chimeras} \\[0.6em]
 
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/10k_15.png} &
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/10k_50.png} \\
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/10k_15.png} &
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/10k_50.png} \\
 
 {\scriptsize 15\% chimeras} & {\scriptsize 50\% chimeras}
 \end{tabular}
@@ -875,13 +938,29 @@ The safest model depends on coverage and chimera proportion.
 
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/20k_5.png} &
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/20k_10.png} \\
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/20k_5.png} &
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/20k_10.png} \\
 
 {\scriptsize 5\% chimeras} & {\scriptsize 10\% chimeras} \\[0.6em]
 
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/20k_15.png} &
-\includegraphics[width=0.45\linewidth,height=0.32\textheight,keepaspectratio]{figures/20k_50.png} \\
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/20k_15.png} &
+\includegraphics[
+    width=0.45\linewidth,
+    height=0.32\textheight,
+    keepaspectratio
+]{figures/20k_50.png} \\
 
 {\scriptsize 15\% chimeras} & {\scriptsize 50\% chimeras}
 \end{tabular}
