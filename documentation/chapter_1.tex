@@ -16,7 +16,6 @@ This study focuses on mitochondrial sequencing data from the genus \textit{Sardi
 Chimeric reads can distort assembly graphs and cause misassemblies, with particularly severe effects in mitochondrial genomes \citep{Boore1999,Cameron2014}. Existing assembly pipelines such as GetOrganelle, MITObim, and NOVOPlasty assume that sequencing reads are free of such artifacts \citep{Hahn2013,Dierckxsens2017,Jin2020}. At PGC Visayas, several mitochondrial assemblies have failed or yielded incomplete contigs despite sufficient coverage, suggesting that undetected chimeric reads compromise assembly reliability. Meanwhile, existing chimera detection tools such as UCHIME and VSEARCH were developed primarily for amplicon-based community analysis and rely heavily on reference or taxonomic comparisons \citep{Edgar2011,Rognes2016}. These approaches are unsuitable for single-species organellar data, where complete reference genomes are often unavailable.
 
 \section{Research Objectives}\label{subsecsec:researchobjectives}
-
 \subsection{General Objective}\label{subsec:generalobjective}
 
 This study aims to develop and evaluate a machine learning-based pipeline (MitoChime) that detects PCR-induced chimeric reads in \textit{Sardinella lemuru} mitochondrial sequencing data in order to improve the quality and reliability of downstream mitochondrial genome assemblies.
@@ -28,8 +27,8 @@ Specifically, the study aims to:
  \item construct simulated \textit{Sardinella lemuru} Illumina paired-end datasets containing both clean and PCR-induced chimeric reads,
  \item extract alignment-based and sequence-based features such as k-mer composition, junction complexity, and split-alignment counts from both clean and chimeric reads,
  \item train, validate, and compare supervised machine learning models for classifying reads as clean or chimeric,
- \item determine feature importance and identify indicators of PCR-induced chimerism,
- \item integrate the optimized classifier into a modular and interpretable pipeline deployable on standard computing environments at PGC Visayas.
+ \item determine feature importance and identify indicators of PCR-induced chimerism, and
+ \item identify suitable classifier configurations for pipeline integration by comparing predictive performance, interpretability, runtime, read retention, and downstream assembly behavior, and integrate the selected model options into a modular pipeline deployable on standard computing environments at PGC Visayas.
 \end{enumerate}
 
 \section{Scope and Limitations of the Research}\label{sec:scopelimitations}
