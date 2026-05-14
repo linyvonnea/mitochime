@@ -156,7 +156,7 @@ Assemblies were produced using \texttt{SPAdes}. Improvement in assembly quality 
 
 Validation was conducted using both internal and external evaluation. Internal validation was achieved through five-fold stratified cross-validation on the training data, while external evaluation was performed on the held-out test set.
 
-Comparative testing was performed across classical machine learning and deep learning models to determine which approach provided the best balance of predictive accuracy, interpretability, and downstream utility.
+Comparative testing was performed across classical machine learning and deep learning models to determine the most suitable classifier configurations for pipeline integration. Rather than selecting a classifier based only on a single metric, models were compared using multiple criteria: read-level classification performance, ROC--AUC, precision--recall behavior, runtime, interpretability, read retention after filtering, and downstream assembly graph effects. This allowed the study to distinguish between the best classifier for predictive performance, the most practical classifier for deployment, and the classifier that produced the strongest assembly simplification under selected external testing conditions.
 
 \section{Documentation and Reproducibility}
 

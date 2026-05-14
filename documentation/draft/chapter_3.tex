@@ -262,7 +262,8 @@ For the CNN, the final reported model was trained using \texttt{PAIR\_train\_seq
 
 \section{Pipeline Integration and Threshold-Based Read Filtering}
 
-The best-performing classifiers were integrated into MitoChime as modular and filtering components. Each classifier was saved as a separate trained model file and connected to a command-line workflow that accepts paired-end FASTQ inputs, a selected model mode, and a user-defined chimeric probability threshold.
+The final classifier options were integrated into MitoChime as modular filtering components. Because model performance was evaluated using multiple criteria, classifier selection was not based solely on a single metric. Instead, the integrated models represented different deployment trade-offs: the strongest feature-based classifier, the sequence-based classifier with high sensitivity, and the sequence-based classifier with the strongest read-level performance. Each classifier was saved as a separate trained model file and connected to a command-line workflow that accepts paired-end FASTQ inputs, a selected model mode, and a user-defined chimeric probability threshold.
+
 
 The pipeline was organized into separate stages for input validation, prediction, threshold-based classification, pair-end filtering, and output generation. This modular design allowed the Gradient Boosting, CNN, and BiGRU classifiers to be executed through the same workflow. Model outputs were retained as probability scores and prediction summaries, making the filtering decisions interpretable.
 
@@ -306,7 +307,7 @@ For each dataset, assemblies were generated from both unfiltered reads and filte
 
 Validation was conducted using both internal and external evaluation. Internal validation was achieved through five-fold stratified cross-validation on the training data, while external evaluation was performed on the held-out test set.
 
-Comparative testing was performed across classical machine learning and deep learning models to determine which approach provided the best balance of predictive accuracy, interpretability, and downstream utility.
+Comparative testing was performed across classical machine learning and deep learning models to determine which classifier configurations were most suitable for pipeline integration. The comparison considered multiple criteria, including held-out F1-score, ROC--AUC, precision, recall, runtime, interpretability, read retention after filtering, and downstream assembly graph behavior. This allowed the study to distinguish between the best classifier for read-level prediction and the classifier that produced the strongest assembly simplification under selected external testing conditions.
 
 \section{Documentation and Reproducibility}
 

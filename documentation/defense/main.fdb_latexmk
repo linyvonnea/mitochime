@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1778172237.94362 "/Users/yvonnelin/Desktop/mitochime/documentation/defense/main.tex" "main.pdf" "main" 1778172264.83916 0
-  "/Users/yvonnelin/Desktop/mitochime/documentation/defense/main.tex" 1778172237.30402 23724 339d36c3114c9a5df37489266988b728 ""
+["pdflatex"] 1778213960.06323 "/Users/yvonnelin/Desktop/mitochime/documentation/defense/main.tex" "main.pdf" "main" 1778213987.43177 0
+  "/Users/yvonnelin/Desktop/mitochime/documentation/defense/main.tex" 1778213959.24711 24651 e3ff9c6c2faf822eeaad3974e38130cc ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1202520719 2840 216e6e45ad352e2456e1149f28885bee ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc" 1202520719 2327 9d6df24f9c4f7368395224341a95523a ""
@@ -253,6 +253,7 @@
   "figures/3200_15.png" 1778140860.04435 225501 032270a8e5c376841b83a2fdde1e6be2 ""
   "figures/3200_5.png" 1778140860.04566 217114 a5d4caf691aa50b3e90606f367bdec7a ""
   "figures/3200_50.png" 1778140860.04634 187316 15f76bc2091084959147e5f7b5a45c10 ""
+  "figures/accuracy.png" 1778213888.22933 71925 d936562256c35baabab36fb2e33a978e ""
   "figures/assembly_20k_50.png" 1777702272.03125 265828 1e110a33c07b187b143e99e6b58e4ff9 ""
   "figures/assembly_3200_50.png" 1777702272.03267 180890 ac2088c9f34f0bc4e22ffaff0d4d2d3e ""
   "figures/boxplots.png" 1778140860.04749 146443 05343b549a47c881e5e2878e2d20a278 ""
@@ -272,10 +273,11 @@
   "figures/sequence_dataset.png" 1777704362.71302 105455 569fa02ea50557c9471056574267c2b2 ""
   "figures/training_cnn.png" 1777822652.00667 141808 3684dafec74eda442ebd5e7a1465f065 ""
   "figures/training_rnn.png" 1777822652.00799 108154 01f826e0653e6c69e61e31e389b4385e ""
-  "main.aux" 1778172264.59879 5722 423a1c74af82692c256be339a1886452 "pdflatex"
-  "main.nav" 1778172264.6011 3899 c588e25b9a7a64aef79e60749ef7c1bc "pdflatex"
-  "main.out" 1778172264.60045 81 5bcea9cf7d2d9aece7cac4018e9f6c5b "pdflatex"
-  "main.tex" 1778172237.30402 23724 339d36c3114c9a5df37489266988b728 ""
+  "figures/tuned.png" 1778213801.27965 149068 048dc836093d6784d19cab4090900ba2 ""
+  "main.aux" 1778213987.26218 6109 5b282dc0de451b62da49bf5bab67d7e4 "pdflatex"
+  "main.nav" 1778213987.2637 4178 75cf0540f300b628a0323db53daeee7b "pdflatex"
+  "main.out" 1778213987.26309 81 5bcea9cf7d2d9aece7cac4018e9f6c5b "pdflatex"
+  "main.tex" 1778213959.24711 24651 e3ff9c6c2faf822eeaad3974e38130cc ""
   (generated)
   "main.aux"
   "main.log"
