@@ -73,37 +73,38 @@
 \contentsline {subsubsection}{10K Paired-end Reads}{74}{section*.35}%
 \contentsline {subsubsection}{20K Paired-end Reads}{74}{section*.36}%
 \contentsline {section}{\numberline {4.9}Comparison Across Models}{75}{section.4.9}%
-\contentsline {chapter}{\numberline {5}Conclusion}{79}{chapter.5}%
-\contentsline {chapter}{\numberline {6}References}{83}{chapter.6}%
-\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{89}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{93}{appendix.B}%
-\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{93}{subsection.B.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{96}{subsection.B.0.2}%
-\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{96}{subsection.B.0.3}%
-\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{97}{subsection.B.0.4}%
-\contentsline {subsection}{\numberline {B.0.5}Others}{97}{subsection.B.0.5}%
-\contentsline {chapter}{\numberline {C}Complete Feature Correlation Analysis}{99}{appendix.C}%
-\contentsline {chapter}{\numberline {D}Supplementary Feature Importance Results}{101}{appendix.D}%
-\contentsline {section}{\numberline {D.1}Top-10 Permutation Importance by Model}{101}{section.D.1}%
-\contentsline {section}{\numberline {D.2}Aggregated Feature Family Importance by Model}{104}{section.D.2}%
-\contentsline {chapter}{\numberline {E}Fold-Level Deep Learning Results}{107}{appendix.E}%
-\contentsline {section}{\numberline {E.1}CNN Fold-Level Results}{107}{section.E.1}%
-\contentsline {section}{\numberline {E.2}RNN-kmer BiGRU Fold-Level Results}{108}{section.E.2}%
-\contentsline {chapter}{\numberline {F}Supplementary Assembly Graph Figures}{109}{appendix.F}%
-\contentsline {section}{\numberline {F.1}3200 Paired-End Reads}{110}{section.F.1}%
-\contentsline {subsection}{\numberline {F.1.1}5\% Chimera Proportion}{110}{subsection.F.1.1}%
-\contentsline {subsection}{\numberline {F.1.2}10\% Chimera Proportion}{111}{subsection.F.1.2}%
-\contentsline {subsection}{\numberline {F.1.3}15\% Chimera Proportion}{112}{subsection.F.1.3}%
-\contentsline {subsection}{\numberline {F.1.4}50\% Chimera Proportion}{113}{subsection.F.1.4}%
-\contentsline {section}{\numberline {F.2}10K Paired-End Reads}{114}{section.F.2}%
-\contentsline {subsection}{\numberline {F.2.1}5\% Chimera Proportion}{114}{subsection.F.2.1}%
-\contentsline {subsection}{\numberline {F.2.2}10\% Chimera Proportion}{115}{subsection.F.2.2}%
-\contentsline {subsection}{\numberline {F.2.3}15\% Chimera Proportion}{116}{subsection.F.2.3}%
-\contentsline {subsection}{\numberline {F.2.4}50\% Chimera Proportion}{117}{subsection.F.2.4}%
-\contentsline {section}{\numberline {F.3}20K Paired-End Reads}{118}{section.F.3}%
-\contentsline {subsection}{\numberline {F.3.1}5\% Chimera Proportion}{118}{subsection.F.3.1}%
-\contentsline {subsection}{\numberline {F.3.2}10\% Chimera Proportion}{119}{subsection.F.3.2}%
-\contentsline {subsection}{\numberline {F.3.3}15\% Chimera Proportion}{120}{subsection.F.3.3}%
-\contentsline {subsection}{\numberline {F.3.4}50\% Chimera Proportion}{121}{subsection.F.3.4}%
-\contentsline {chapter}{\numberline {G}Complete External Assembly Testing Results}{123}{appendix.G}%
-\contentsline {chapter}{\numberline {H}Resource Person}{125}{appendix.H}%
+\contentsline {subsection}{\numberline {4.9.1}Classifier Suitability for Pipeline Integration}{78}{subsection.4.9.1}%
+\contentsline {chapter}{\numberline {5}Conclusion}{81}{chapter.5}%
+\contentsline {chapter}{\numberline {6}References}{85}{chapter.6}%
+\contentsline {chapter}{\numberline {A}Complete Per-Class Summary Statistics}{91}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Boxplots for All Numeric Features by Feature Family}{95}{appendix.B}%
+\contentsline {subsection}{\numberline {B.0.1}SA Structure (Supplementary Alignment and Segment Metrics)}{95}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}Clipping-Based Features}{98}{subsection.B.0.2}%
+\contentsline {subsection}{\numberline {B.0.3}K-mer Features}{98}{subsection.B.0.3}%
+\contentsline {subsection}{\numberline {B.0.4}Microhomology Features}{99}{subsection.B.0.4}%
+\contentsline {subsection}{\numberline {B.0.5}Others}{99}{subsection.B.0.5}%
+\contentsline {chapter}{\numberline {C}Complete Feature Correlation Analysis}{101}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Supplementary Feature Importance Results}{103}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Top-10 Permutation Importance by Model}{103}{section.D.1}%
+\contentsline {section}{\numberline {D.2}Aggregated Feature Family Importance by Model}{106}{section.D.2}%
+\contentsline {chapter}{\numberline {E}Fold-Level Deep Learning Results}{109}{appendix.E}%
+\contentsline {section}{\numberline {E.1}CNN Fold-Level Results}{109}{section.E.1}%
+\contentsline {section}{\numberline {E.2}RNN-kmer BiGRU Fold-Level Results}{110}{section.E.2}%
+\contentsline {chapter}{\numberline {F}Supplementary Assembly Graph Figures}{111}{appendix.F}%
+\contentsline {section}{\numberline {F.1}3200 Paired-End Reads}{112}{section.F.1}%
+\contentsline {subsection}{\numberline {F.1.1}5\% Chimera Proportion}{112}{subsection.F.1.1}%
+\contentsline {subsection}{\numberline {F.1.2}10\% Chimera Proportion}{113}{subsection.F.1.2}%
+\contentsline {subsection}{\numberline {F.1.3}15\% Chimera Proportion}{114}{subsection.F.1.3}%
+\contentsline {subsection}{\numberline {F.1.4}50\% Chimera Proportion}{115}{subsection.F.1.4}%
+\contentsline {section}{\numberline {F.2}10K Paired-End Reads}{116}{section.F.2}%
+\contentsline {subsection}{\numberline {F.2.1}5\% Chimera Proportion}{116}{subsection.F.2.1}%
+\contentsline {subsection}{\numberline {F.2.2}10\% Chimera Proportion}{117}{subsection.F.2.2}%
+\contentsline {subsection}{\numberline {F.2.3}15\% Chimera Proportion}{118}{subsection.F.2.3}%
+\contentsline {subsection}{\numberline {F.2.4}50\% Chimera Proportion}{119}{subsection.F.2.4}%
+\contentsline {section}{\numberline {F.3}20K Paired-End Reads}{120}{section.F.3}%
+\contentsline {subsection}{\numberline {F.3.1}5\% Chimera Proportion}{120}{subsection.F.3.1}%
+\contentsline {subsection}{\numberline {F.3.2}10\% Chimera Proportion}{121}{subsection.F.3.2}%
+\contentsline {subsection}{\numberline {F.3.3}15\% Chimera Proportion}{122}{subsection.F.3.3}%
+\contentsline {subsection}{\numberline {F.3.4}50\% Chimera Proportion}{123}{subsection.F.3.4}%
+\contentsline {chapter}{\numberline {G}Complete External Assembly Testing Results}{125}{appendix.G}%
+\contentsline {chapter}{\numberline {H}Resource Person}{127}{appendix.H}%

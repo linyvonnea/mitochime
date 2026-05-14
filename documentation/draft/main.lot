@@ -16,24 +16,24 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Complete per-class summary statistics for all extracted features.}}{90}{table.A.1}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Complete per-class summary statistics for all extracted features.}}{92}{table.A.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {D.1}{\ignorespaces Top-10 permutation importance ranking for Gradient Boosting.}}{102}{table.caption.48}%
-\contentsline {table}{\numberline {D.2}{\ignorespaces Top-10 permutation importance ranking for CatBoost.}}{102}{table.caption.49}%
-\contentsline {table}{\numberline {D.3}{\ignorespaces Top-10 permutation importance ranking for LightGBM.}}{103}{table.caption.50}%
-\contentsline {table}{\numberline {D.4}{\ignorespaces Top-10 permutation importance ranking for Bagging Trees.}}{103}{table.caption.51}%
-\contentsline {table}{\numberline {D.5}{\ignorespaces Top-10 permutation importance ranking for MLP.}}{103}{table.caption.52}%
-\contentsline {table}{\numberline {D.6}{\ignorespaces Aggregated feature family importance for Gradient Boosting.}}{104}{table.caption.53}%
-\contentsline {table}{\numberline {D.7}{\ignorespaces Aggregated feature family importance for CatBoost.}}{104}{table.caption.54}%
-\contentsline {table}{\numberline {D.8}{\ignorespaces Aggregated feature family importance for LightGBM.}}{105}{table.caption.55}%
-\contentsline {table}{\numberline {D.9}{\ignorespaces Aggregated feature family importance for Bagging Trees.}}{105}{table.caption.56}%
-\contentsline {table}{\numberline {D.10}{\ignorespaces Aggregated feature family importance for MLP.}}{105}{table.caption.57}%
+\contentsline {table}{\numberline {D.1}{\ignorespaces Top-10 permutation importance ranking for Gradient Boosting.}}{104}{table.caption.48}%
+\contentsline {table}{\numberline {D.2}{\ignorespaces Top-10 permutation importance ranking for CatBoost.}}{104}{table.caption.49}%
+\contentsline {table}{\numberline {D.3}{\ignorespaces Top-10 permutation importance ranking for LightGBM.}}{105}{table.caption.50}%
+\contentsline {table}{\numberline {D.4}{\ignorespaces Top-10 permutation importance ranking for Bagging Trees.}}{105}{table.caption.51}%
+\contentsline {table}{\numberline {D.5}{\ignorespaces Top-10 permutation importance ranking for MLP.}}{105}{table.caption.52}%
+\contentsline {table}{\numberline {D.6}{\ignorespaces Aggregated feature family importance for Gradient Boosting.}}{106}{table.caption.53}%
+\contentsline {table}{\numberline {D.7}{\ignorespaces Aggregated feature family importance for CatBoost.}}{106}{table.caption.54}%
+\contentsline {table}{\numberline {D.8}{\ignorespaces Aggregated feature family importance for LightGBM.}}{107}{table.caption.55}%
+\contentsline {table}{\numberline {D.9}{\ignorespaces Aggregated feature family importance for Bagging Trees.}}{107}{table.caption.56}%
+\contentsline {table}{\numberline {D.10}{\ignorespaces Aggregated feature family importance for MLP.}}{107}{table.caption.57}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {E.1}{\ignorespaces Fold-level cross-validation performance of the CNN model.}}{107}{table.caption.58}%
-\contentsline {table}{\numberline {E.2}{\ignorespaces Fold-level cross-validation performance of the RNN-kmer BiGRU model.}}{108}{table.caption.59}%
+\contentsline {table}{\numberline {E.1}{\ignorespaces Fold-level cross-validation performance of the CNN model.}}{109}{table.caption.58}%
+\contentsline {table}{\numberline {E.2}{\ignorespaces Fold-level cross-validation performance of the RNN-kmer BiGRU model.}}{110}{table.caption.59}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {G.1}{\ignorespaces Complete external assembly testing results across all evaluated conditions.}}{124}{table.caption.72}%
+\contentsline {table}{\numberline {G.1}{\ignorespaces Complete external assembly testing results across all evaluated conditions.}}{126}{table.caption.72}%
 \addvspace {10\p@ }

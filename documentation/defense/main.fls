@@ -444,8 +444,8 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmss8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmsso10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmsso8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmsso8.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmssbx10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmss8.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmssbx10.tfm
 INPUT ./figures/pcr_image.png
 INPUT ./figures/pcr_image.png
 INPUT ./figures/pcr_image.png
@@ -611,6 +611,16 @@ INPUT ./figures/20k_50.png
 INPUT ./figures/20k_50.png
 INPUT ./figures/20k_50.png
 INPUT ./figures/20k_50.png
+INPUT ./figures/tuned.png
+INPUT ./figures/tuned.png
+INPUT ./figures/tuned.png
+INPUT ./figures/tuned.png
+INPUT ./figures/tuned.png
+INPUT ./figures/accuracy.png
+INPUT ./figures/accuracy.png
+INPUT ./figures/accuracy.png
+INPUT ./figures/accuracy.png
+INPUT ./figures/accuracy.png
 OUTPUT main.nav
 OUTPUT main.toc
 OUTPUT main.snm

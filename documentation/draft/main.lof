@@ -27,28 +27,28 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Boxplots of SA Structure features by class (1/2).}}{94}{figure.caption.41}%
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Boxplots of SA Structure features by class (2/2).}}{95}{figure.caption.42}%
-\contentsline {figure}{\numberline {B.3}{\ignorespaces Boxplots of clipping-based features by class.}}{96}{figure.caption.43}%
-\contentsline {figure}{\numberline {B.4}{\ignorespaces Boxplots of k-mer features by class.}}{96}{figure.caption.44}%
-\contentsline {figure}{\numberline {B.5}{\ignorespaces Boxplots of microhomology features by class.}}{97}{figure.caption.45}%
-\contentsline {figure}{\numberline {B.6}{\ignorespaces Boxplots of other numeric features by class.}}{97}{figure.caption.46}%
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Boxplots of SA Structure features by class (1/2).}}{96}{figure.caption.41}%
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Boxplots of SA Structure features by class (2/2).}}{97}{figure.caption.42}%
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Boxplots of clipping-based features by class.}}{98}{figure.caption.43}%
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Boxplots of k-mer features by class.}}{98}{figure.caption.44}%
+\contentsline {figure}{\numberline {B.5}{\ignorespaces Boxplots of microhomology features by class.}}{99}{figure.caption.45}%
+\contentsline {figure}{\numberline {B.6}{\ignorespaces Boxplots of other numeric features by class.}}{99}{figure.caption.46}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Complete feature correlation heatmap for all extracted variables.}}{100}{figure.caption.47}%
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Complete feature correlation heatmap for all extracted variables.}}{102}{figure.caption.47}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {F.1}{\ignorespaces Assembly graphs for 3200 paired-end reads at 5\% chimera proportion.}}{110}{figure.caption.60}%
-\contentsline {figure}{\numberline {F.2}{\ignorespaces Assembly graphs for 3200 paired-end reads at 10\% chimera proportion.}}{111}{figure.caption.61}%
-\contentsline {figure}{\numberline {F.3}{\ignorespaces Assembly graphs for 3200 paired-end reads at 15\% chimera proportion.}}{112}{figure.caption.62}%
-\contentsline {figure}{\numberline {F.4}{\ignorespaces Assembly graphs for 3200 paired-end reads at 50\% chimera proportion.}}{113}{figure.caption.63}%
-\contentsline {figure}{\numberline {F.5}{\ignorespaces Assembly graphs for 10K paired-end reads at 5\% chimera proportion.}}{114}{figure.caption.64}%
-\contentsline {figure}{\numberline {F.6}{\ignorespaces Assembly graphs for 10K paired-end reads at 10\% chimera proportion.}}{115}{figure.caption.65}%
-\contentsline {figure}{\numberline {F.7}{\ignorespaces Assembly graphs for 10K paired-end reads at 15\% chimera proportion.}}{116}{figure.caption.66}%
-\contentsline {figure}{\numberline {F.8}{\ignorespaces Assembly graphs for 10K paired-end reads at 50\% chimera proportion.}}{117}{figure.caption.67}%
-\contentsline {figure}{\numberline {F.9}{\ignorespaces Assembly graphs for 20K paired-end reads at 5\% chimera proportion.}}{118}{figure.caption.68}%
-\contentsline {figure}{\numberline {F.10}{\ignorespaces Assembly graphs for 20K paired-end reads at 10\% chimera proportion.}}{119}{figure.caption.69}%
-\contentsline {figure}{\numberline {F.11}{\ignorespaces Assembly graphs for 20K paired-end reads at 15\% chimera proportion.}}{120}{figure.caption.70}%
-\contentsline {figure}{\numberline {F.12}{\ignorespaces Assembly graphs for 20K paired-end reads at 50\% chimera proportion.}}{121}{figure.caption.71}%
+\contentsline {figure}{\numberline {F.1}{\ignorespaces Assembly graphs for 3200 paired-end reads at 5\% chimera proportion.}}{112}{figure.caption.60}%
+\contentsline {figure}{\numberline {F.2}{\ignorespaces Assembly graphs for 3200 paired-end reads at 10\% chimera proportion.}}{113}{figure.caption.61}%
+\contentsline {figure}{\numberline {F.3}{\ignorespaces Assembly graphs for 3200 paired-end reads at 15\% chimera proportion.}}{114}{figure.caption.62}%
+\contentsline {figure}{\numberline {F.4}{\ignorespaces Assembly graphs for 3200 paired-end reads at 50\% chimera proportion.}}{115}{figure.caption.63}%
+\contentsline {figure}{\numberline {F.5}{\ignorespaces Assembly graphs for 10K paired-end reads at 5\% chimera proportion.}}{116}{figure.caption.64}%
+\contentsline {figure}{\numberline {F.6}{\ignorespaces Assembly graphs for 10K paired-end reads at 10\% chimera proportion.}}{117}{figure.caption.65}%
+\contentsline {figure}{\numberline {F.7}{\ignorespaces Assembly graphs for 10K paired-end reads at 15\% chimera proportion.}}{118}{figure.caption.66}%
+\contentsline {figure}{\numberline {F.8}{\ignorespaces Assembly graphs for 10K paired-end reads at 50\% chimera proportion.}}{119}{figure.caption.67}%
+\contentsline {figure}{\numberline {F.9}{\ignorespaces Assembly graphs for 20K paired-end reads at 5\% chimera proportion.}}{120}{figure.caption.68}%
+\contentsline {figure}{\numberline {F.10}{\ignorespaces Assembly graphs for 20K paired-end reads at 10\% chimera proportion.}}{121}{figure.caption.69}%
+\contentsline {figure}{\numberline {F.11}{\ignorespaces Assembly graphs for 20K paired-end reads at 15\% chimera proportion.}}{122}{figure.caption.70}%
+\contentsline {figure}{\numberline {F.12}{\ignorespaces Assembly graphs for 20K paired-end reads at 50\% chimera proportion.}}{123}{figure.caption.71}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

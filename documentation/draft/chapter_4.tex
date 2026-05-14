@@ -520,3 +520,13 @@ BiGRU            & 0.9516 & 0.9394 & 0.9655 & 0.9523 & 0.9849 & 5.51 \\
 \caption{Comparison of held-out test F1 and ROC--AUC for Gradient Boosting, CNN, and RNN models.}
 \label{fig:gb_cnn_rnn_compare}
 \end{figure}
+
+\subsection{Classifier Suitability for Pipeline Integration}
+
+The comparative results indicate that classifier suitability for pipeline integration depends on the evaluation criterion considered. When read-level predictive performance is used as the primary basis, the BiGRU model performed strongest among the final models. It achieved the highest held-out accuracy, precision, recall, F1-score, and ROC--AUC, with an F1-score of 0.9523 and a ROC--AUC of 0.9849. These results suggest that sequential k-mer representations are highly effective for distinguishing clean and chimeric reads in the simulated mitochondrial dataset.
+
+However, predictive performance alone did not fully determine practical suitability for deployment. Although Gradient Boosting produced lower read-level classification scores than the neural network models, it had the shortest runtime and offered greater interpretability because its predictions were based on explicit engineered features, including clipping patterns, supplementary alignment indicators, and k-mer discontinuity metrics. This makes Gradient Boosting a practical option for lightweight settings where model behaviour needs to be more easily explained.
+
+The CNN showed a different practical advantage during downstream assembly testing. Although it did not achieve the highest read-level F1-score or ROC--AUC, it produced the simplest assembly graph in the 20K paired-end read dataset with 50\% chimeric reads. This result suggests that assembly improvement depends not only on overall classification performance, but also on which reads are removed and how much read support remains after filtering.
+
+Taken together, the results show that no single classifier was uniformly superior across all evaluation criteria. Instead, the final models represented different trade-offs. BiGRU was most suitable when the priority was read-level classification accuracy, Gradient Boosting was most suitable when the priority was speed and interpretability, and CNN was useful under selected high-coverage and high-chimera conditions where stronger graph simplification was desired. This criterion-dependent behavior supports the modular design of MitoChime, where multiple classifier options can be used depending on the intended analysis context.
