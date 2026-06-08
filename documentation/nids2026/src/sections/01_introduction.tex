@@ -3,7 +3,7 @@ Polymerase chain reaction (PCR) amplification during next-generation sequencing 
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.78\textwidth]{figures/PCR_flat.pdf}
+    \includegraphics[width=0.60\textwidth]{figures/PCR_flat.pdf}
     \caption{Schematic illustration of PCR-induced chimera formation through incomplete extension and template switching, adapted from \cite{Sieber2011}.}
     \label{fig:pcr_chimera}
 \end{figure}
@@ -12,4 +12,4 @@ Mitochondrial genomes are particularly susceptible to this issue because they ar
 
 Many existing chimera detection approaches were originally developed for amplicon-based microbial community sequencing and often use differences in sequence frequency to help identify chimeras \cite{Edgar2011,Rognes2016}. Although effective in many microbial studies, these approaches are not well suited to single-species organellar sequencing, highlighting the need for a more specialized method. A pipeline that detects chimeric reads from alignment and sequence irregularities can therefore serve as a useful pre-assembly filtering step.
 
-\textit{Sardinella lemuru} was selected as the target organism because it is an economically important sardine species in the Philippines and a relevant subject for mitochondrial genome analysis \cite{Labrador2021,Willette2011}. Its selection was also supported by the availability of mitochondrial assemblies and raw sequencing datasets in public repositories such as the National Center for Biotechnology Information (NCBI), which facilitates reference selection and benchmarking. This study introduces MitoChime, a pipeline for detecting PCR-induced chimeric reads in \textit{Sardinella lemuru} mitochondrial Illumina paired-end data. The pipeline extracts interpretable features from standard BAM and FASTQ artifacts, benchmarks supervised machine learning models together with a sequence-based convolutional neural network (CNN), and evaluates the effects of filtering on downstream assembly graph complexity.
+\textit{Sardinella lemuru} was selected as the target organism because it is an economically important sardine species in the Philippines and a relevant subject for mitochondrial genome analysis \cite{Labrador2021,Willette2011}. Its selection was also supported by the availability of mitochondrial assemblies and raw sequencing datasets in public repositories such as the National Center for Biotechnology Information (NCBI), which facilitates reference selection and benchmarking. This study introduces MitoChime, a pipeline for detecting PCR-induced chimeric reads in simulated \textit{Sardinella lemuru} mitochondrial Illumina paired-end data. The pipeline extracts interpretable features from standard BAM and FASTQ artifacts, benchmarks supervised machine learning models together with a sequence-based convolutional neural network (CNN), and evaluates the effects of filtering on downstream assembly graph complexity.
